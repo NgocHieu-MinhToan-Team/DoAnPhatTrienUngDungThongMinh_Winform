@@ -11,6 +11,8 @@ GO
 
 
 
+
+
 -- nhóm người dùng || phân quyền
 CREATE TABLE GROUP_USER
 (
