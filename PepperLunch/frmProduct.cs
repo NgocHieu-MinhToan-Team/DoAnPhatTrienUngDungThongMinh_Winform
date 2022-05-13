@@ -117,6 +117,17 @@ namespace PepperLunch
         {
 
         }
-        
+
+        private void accordionCtrlE_upLoadFirebase_Click(object sender, EventArgs e)
+        {
+            if (BLL_Category.insertCategoriesToFirebase())
+            {
+                MessageBox.Show("Insert Successully ");
+            }
+            else
+            {
+                MessageBox.Show("Insert Error ");
+            }
+        }
     }
 }

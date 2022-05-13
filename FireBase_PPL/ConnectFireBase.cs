@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 // lib firebase 
 using FireSharp.Config;
 using FireSharp.Interfaces;
+using DTO_PPL;
 
 
 namespace FireBase_PPL
@@ -25,26 +26,38 @@ namespace FireBase_PPL
             return client;
         }
 
-        public static async void FirebaseInsertData(IFirebaseClient client, object data, string rootName)
+        public static async void FirebaseInsertData(IFirebaseClient client, CATEGORY data, string rootName)
         {
-            if (client != null)
+            //IFirebaseClient client = CreateFirebaseClient();
+            try
             {
-                await client.SetTaskAsync(rootName, data);
+                if (client != null)
+                {
+                    await client.SetAsync(rootName, data);
+                }
             }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+           
         }
         public static async void FirebaseDeleteData(IFirebaseClient client, string rootName)
         {
+            //IFirebaseClient client = CreateFirebaseClient();
+
             if (client != null)
             {
-                await client.DeleteTaskAsync(rootName);
+                await client.DeleteAsync(rootName);
             }
         }
-        public static async void FirebaseUpdateData(IFirebaseClient client, object
-        data, string rootName)
+        public static async void FirebaseUpdateData( IFirebaseClient client,object data, string rootName)
         {
+            //IFirebaseClient client = CreateFirebaseClient();
+
             if (client != null)
             {
-                await client.UpdateTaskAsync(rootName, data);
+                await client.UpdateAsync(rootName, data);
             }
         }
     }

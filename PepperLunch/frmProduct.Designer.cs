@@ -47,6 +47,7 @@ namespace PepperLunch
             this.accordionControlElement8 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement9 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement10 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionCtrlE_upLoadFirebase = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Product)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_product)).BeginInit();
@@ -100,7 +101,8 @@ namespace PepperLunch
             this.accordionCtrlE_Category.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionItem_AddCategory,
             this.accordionItem_UpdateCategory,
-            this.accordionItem_RemoveCategory});
+            this.accordionItem_RemoveCategory,
+            this.accordionCtrlE_upLoadFirebase});
             this.accordionCtrlE_Category.Expanded = true;
             this.accordionCtrlE_Category.Name = "accordionCtrlE_Category";
             this.accordionCtrlE_Category.Text = "Category";
@@ -196,6 +198,13 @@ namespace PepperLunch
             this.accordionControlElement10.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement10.Text = "Element1";
             // 
+            // accordionCtrlE_upLoadFirebase
+            // 
+            this.accordionCtrlE_upLoadFirebase.Name = "accordionCtrlE_upLoadFirebase";
+            this.accordionCtrlE_upLoadFirebase.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionCtrlE_upLoadFirebase.Text = "Up Load to Firebase";
+            this.accordionCtrlE_upLoadFirebase.Click += new System.EventHandler(this.accordionCtrlE_upLoadFirebase_Click);
+            // 
             // frmProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -238,5 +247,6 @@ namespace PepperLunch
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement9;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement10;
         public DevExpress.XtraGrid.Views.Grid.GridView gridView_product;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrlE_upLoadFirebase;
     }
 }

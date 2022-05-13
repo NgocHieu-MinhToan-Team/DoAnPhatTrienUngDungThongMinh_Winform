@@ -16,7 +16,6 @@ namespace BLL_PPL
 {
     public class BLL_Receipt
     {
-        DAL_Receipt dalReceipt = new DAL_Receipt();
         
         public BLL_Receipt()
         {
@@ -91,7 +90,8 @@ namespace BLL_PPL
         {
             try
             {
-                List<RECEIPT> list = await FB_Receipt.getListReceipt("Database/Receipt/");
+                List<RECEIPT> listFromSql = DAL_Receipt.readReceipt();
+                List<RECEIPT> list = await FB_Receipt.getListReceipt("Database/Receipt/", listFromSql);
                 if (list == null) { return null; }
                 else
                     return list;
@@ -100,6 +100,21 @@ namespace BLL_PPL
             {
                 MessageBox.Show(ex.Message);
                 return null;
+            }
+        }
+
+        public static bool insertReceiptsToFirebase()
+        {
+            try
+            {
+                List<RECEIPT> listFromSql = DAL_Receipt.readReceipt();
+                //ConnectFireBase.FirebaseInsertData(listFromSql, "Database/Receipt/");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
             }
         }
 

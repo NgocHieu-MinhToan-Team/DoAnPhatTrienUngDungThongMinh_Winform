@@ -142,7 +142,7 @@ namespace PepperLunch
             this.accordionCtrlE_getDataFromFB.Name = "accordionCtrlE_getDataFromFB";
             this.accordionCtrlE_getDataFromFB.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionCtrlE_getDataFromFB.Text = "Get From FB";
-            this.accordionCtrlE_getDataFromFB.Click += new System.EventHandler(this.accordionCtrlE_getDataFromFB_Click);
+            this.accordionCtrlE_getDataFromFB.Click += new System.EventHandler(this.AccordionCtrlE_getDataFromFB_Click);
             // 
             // frmReceipt
             // 

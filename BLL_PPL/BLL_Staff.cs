@@ -14,7 +14,7 @@ using Excel = Microsoft.Office.Interop.Excel;
 using System.Data;
 
 using System.Collections;
-
+using System.Windows;
 
 namespace BLL_PPL
 {
@@ -51,9 +51,23 @@ namespace BLL_PPL
             return false;
         }
 
-        public  bool createStaff(STAFF staff)
+        public static void createStaff(STAFF staff)
         {
-            return dalStaff.createStaff(staff);
+            try
+            {
+                if (DAL_Staff.createStaff(staff))
+                {
+                    MessageBox.Show("Create Successfully !");
+                }
+                else
+                {
+                    MessageBox.Show("Create Failed !");
+                }
+            }
+            catch 
+            {
+                MessageBox.Show("Có Lỗi Xảy Ra ở Create Method BLL Staff ");
+            }
         }
 
        

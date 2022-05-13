@@ -28,9 +28,30 @@ namespace DAL_PPL
             return db.GROUP_USERs.Select(t => t).ToList<GROUP_USER>();
         }
 
-        public  bool createStaff(STAFF staff)
+        public static bool createStaff(STAFF staff)
         {
-            db.STAFFs.InsertOnSubmit(staff);
+            try
+            {
+                db.STAFFs.InsertOnSubmit(staff);
+                db.SubmitChanges();
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public static bool removeStaff(string username)
+        {
+            try
+            {
+                db.SubmitChanges();
+            }
+            catch
+            {
+                return false;
+            }
             return true;
         }
 

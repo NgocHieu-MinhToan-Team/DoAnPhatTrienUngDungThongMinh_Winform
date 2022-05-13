@@ -22,82 +22,40 @@ namespace FireBase_PPL
         {
             if (client != null)
             {
-                FirebaseResponse response = await client.GetTaskAsync(rootName);
+                FirebaseResponse response = await client.GetAsync(rootName);
                 return response.ResultAs<RECEIPT>();
             }
             return null;
         }
 
-        public static async Task<Dictionary<string, List<RECEIPT>>> getID(string rootName)
-        {
-            if (client != null)
-            {
-                FirebaseResponse response = await client.GetTaskAsync(rootName);
-                Dictionary<string, List<RECEIPT>> data = response.ResultAs<Dictionary<string, List<RECEIPT>>>();
-                return data;
-            }
-            return null;
-        }
 
         //get list Receipts
-        //public static async Task<List<RECEIPT>> getListReceipt(string rootName)
-        //{
-        //    List<RECEIPT> list = new List<RECEIPT>();
-        //    bool reader = true;
-        //    while (reader)
-        //    {
-        //        try
-        //        {
-        //            // 
-        //            var child = await getID(rootName);
-
-        //            if (child == null)
-        //            {
-        //                reader = false;
-        //                break;
-        //            }
-        //            else
-        //            {
-        //                RECEIPT item = await getReceipt(rootName + "/" +child.ToString());
-        //                if (item == null)
-        //                {
-        //                    break;
-        //                }
-        //                list.Add(item);
-
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            reader = false;
-        //        }
-        //    }
-        //    return list;
-
-        //}
-        public static async Task<List<RECEIPT>> getListReceipt(string rootName)
+        public static async Task<List<RECEIPT>> getListReceipt(string rootName,List<RECEIPT> listOfFirebse)
         {
-            List<RECEIPT> list = new List<RECEIPT>();
+            List<RECEIPT> listOfSql = new List<RECEIPT>();
             try
             {
-                // 
-                Dictionary<string, List<RECEIPT>> listChildOfParent=await getID(rootName);
-                foreach(var child in listChildOfParent)
+                foreach (RECEIPT itemOfFB in listOfFirebse)
                 {
-                    //RECEIPT receipt = new RECEIPT();
-                    //receipt = child.Value;
-                    //list.Add(receipt);
+                    RECEIPT itemOfSql = await getReceipt(rootName + "/" + itemOfFB.ID_RECEIPT.ToString()+"/");
+                    if (itemOfSql != null)
+                    {
+                        listOfSql.Add(itemOfSql);
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
-                return list;
-                   
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
                 return null;
             }
+            return listOfSql;
 
         }
+        
 
     }
 }

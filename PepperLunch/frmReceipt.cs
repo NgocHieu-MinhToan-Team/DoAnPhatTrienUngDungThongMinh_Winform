@@ -28,17 +28,16 @@ namespace PepperLunch
 
         }
 
-        private  async void frmReceipt_Load(object sender, EventArgs e)
+        private  void frmReceipt_Load(object sender, EventArgs e)
         {
             //List<RECEIPT> list = await BLL_Receipt.getReceiptFromFirebase();
-            
             //gridControl_receipt.DataSource = list;
 
-            //listData = bllReceipt.read_Receipt();
-            //gridControl_receipt.DataSource = listData;
-            //gridView = new GridView();
-            //gridControl_receipt.MainView = gridView;
-            //gridView.FocusedRowChanged += GridView_FocusedRowChanged;
+            listData = BLL_Receipt.read_Receipt();
+            gridControl_receipt.DataSource = listData;
+            gridView = new GridView();
+            gridControl_receipt.MainView = gridView;
+            gridView.FocusedRowChanged += GridView_FocusedRowChanged;
         }
 
         private void GridView_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
@@ -71,9 +70,10 @@ namespace PepperLunch
             Process.Start(path);
         }
 
-        private async void accordionCtrlE_getDataFromFB_Click(object sender, EventArgs e)
+        private void AccordionCtrlE_getDataFromFB_Click(object sender, EventArgs e)
         {
-           
+            //gridControl_receipt.DataSource = BLL_Receipt.getReceiptFromFirebase();
+            BLL_Receipt.insertReceiptsToFirebase();
         }
     }
 }

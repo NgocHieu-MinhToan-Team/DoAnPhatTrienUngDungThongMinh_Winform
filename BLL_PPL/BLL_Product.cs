@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DTO_PPL;
 using DAL_PPL;
-
+using System.Windows;
 
 namespace BLL_PPL
 {
@@ -15,5 +15,6 @@ namespace BLL_PPL
         {
             return DAL_Product.getProducts();
         }
+       
     }
 }

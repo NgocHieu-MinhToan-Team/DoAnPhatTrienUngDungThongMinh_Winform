@@ -18,6 +18,8 @@ using System.Diagnostics;
 using DevExpress.XtraRichEdit;
 using System.Windows.Documents;
 using System.Data.Linq.SqlClient;
+//
+using CallAPI_PPL;
 
 namespace PepperLunch
 {
@@ -44,14 +46,18 @@ namespace PepperLunch
 
         private void frmStaff_Load(object sender, EventArgs e)
         {
-            gridControl_staff.DataSource = bllStaff.readStaff();
+            //gridControl_staff.DataSource = CallAPI.GetWatchList();
+            LoadData();
         }
 
-
+        private void LoadData()
+        {
+            gridControl_staff.DataSource = bllStaff.readStaff();
+        }
         private async void create(STAFF staff)
         {
             fireClient = new FireSharp.FirebaseClient(fireConfig);
-            SetResponse response = await fireClient.SetTaskAsync("staff/" + staff.USERNAME_STAFF, staff);
+            SetResponse response = await fireClient.SetAsync("staff/" + staff.USERNAME_STAFF, staff);
             STAFF result = response.ResultAs<STAFF>();
             MessageBox.Show("Thanh Cong " + result.NAME_STAFF +staff.SURNAME_STAFF);
         }
@@ -86,6 +92,7 @@ namespace PepperLunch
             staff.ADDRESS_STAFF = txtAddress.Text.Trim();
             staff.FLAG_DEL = 0;
             // validate 
+
             if (BLL_Staff.validateCreateStaff(staff))
             {
 
@@ -95,7 +102,8 @@ namespace PepperLunch
                 else { MessageBox.Show("gender is not selected !"); return; }
                 if (cbbRole.SelectedItem != null) { staff.GROUP_USER = (GROUP_USER)cbbRole.SelectedItem; }
                 else { MessageBox.Show("gender is not selected !"); return; }
-                //create(staff);
+                BLL_Staff.createStaff(staff);
+                LoadData();
             }
             else
             {
@@ -103,6 +111,14 @@ namespace PepperLunch
             }
         }
 
-    
+        private void accordionCtrlEle_removeStaff_Click(object sender, EventArgs e)
+        {
+            int[] data = gridView_Staff.GetSelectedRows();
+            if (data.Length >0)
+            {
+                string username = txtUsername.Text.Trim();
+
+            }
+        }
     }
 }
