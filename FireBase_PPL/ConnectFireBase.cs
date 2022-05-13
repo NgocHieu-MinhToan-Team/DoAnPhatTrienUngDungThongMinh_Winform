@@ -24,5 +24,28 @@ namespace FireBase_PPL
             client = new FireSharp.FirebaseClient(config);
             return client;
         }
+
+        public static async void FirebaseInsertData(IFirebaseClient client, object data, string rootName)
+        {
+            if (client != null)
+            {
+                await client.SetTaskAsync(rootName, data);
+            }
+        }
+        public static async void FirebaseDeleteData(IFirebaseClient client, string rootName)
+        {
+            if (client != null)
+            {
+                await client.DeleteTaskAsync(rootName);
+            }
+        }
+        public static async void FirebaseUpdateData(IFirebaseClient client, object
+        data, string rootName)
+        {
+            if (client != null)
+            {
+                await client.UpdateTaskAsync(rootName, data);
+            }
+        }
     }
 }

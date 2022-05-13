@@ -15,5 +15,22 @@ namespace BLL_PPL
         {
             return DAL_Category.getCategories();
         }
+
+        //public static async Task<bool> insertToFirebase()
+        //{
+        //    try
+        //    {
+        //        // get data from sql
+        //        List<CATEGORY> list = DAL_Category.getCategories();
+        //        //insert to firebase
+                
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return null;
+        //    }
+        //}
+
+
     }
 }

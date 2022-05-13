@@ -20,7 +20,6 @@ namespace PepperLunch
 {
     public partial class frmReceipt : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
-        BLL_Receipt bllReceipt = new BLL_Receipt();
         List<RECEIPT> listData;
         GridView gridView;
         public frmReceipt()
@@ -31,15 +30,9 @@ namespace PepperLunch
 
         private  async void frmReceipt_Load(object sender, EventArgs e)
         {
-            RECEIPT item = await bllReceipt.getReceiptFromFirebase();
-            List<RECEIPT> list = new List<RECEIPT>();
-            if (item == null)
-                MessageBox.Show("Item return null");
-            else
-            {
-               list.Add(item);
-            }
-            gridControl_receipt.DataSource = list;
+            //List<RECEIPT> list = await BLL_Receipt.getReceiptFromFirebase();
+            
+            //gridControl_receipt.DataSource = list;
 
             //listData = bllReceipt.read_Receipt();
             //gridControl_receipt.DataSource = listData;
@@ -60,7 +53,7 @@ namespace PepperLunch
             int index = gridView.FocusedRowHandle;
             RECEIPT receipt = listData[index];
             // retrieve to receipt to export 
-            bllReceipt.export_ReceiptToWord(receipt.ID_RECEIPT);
+            BLL_Receipt.export_ReceiptToWord(receipt.ID_RECEIPT);
         }
 
         private void accordionCtrlE_exportExcel_Click(object sender, EventArgs e)

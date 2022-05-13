@@ -1,27 +1,27 @@
-﻿using DevExpress.XtraBars;
-using DevExpress.XtraBars.Navigation;
+﻿using DevExpress.XtraBars.Navigation;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 using BLL_PPL;
 using DTO_PPL;
-
+using DevExpress.XtraGrid;
+using DevExpress.CodeParser;
+using DevExpress.XtraGrid;
+using System.Windows.Controls;
+using DevExpress.XtraEditors.Repository;
+using PepperLunch.PopupForm;
 
 namespace PepperLunch
 {
     public partial class frmProduct : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
-        private List<PRODUCT> listProduct = BLL_Product.getProducts();
         public frmProduct()
         {
             InitializeComponent();
-            
+
         }
 
         private void frmProduct_Load(object sender, EventArgs e)
@@ -67,9 +67,56 @@ namespace PepperLunch
             }
         }
 
+       
+
         private void loadDataByID_Category(string ID_Category)
         {
-            gridControl_Product.DataSource = listProduct.Where(t => t.ID_CATEGORY == ID_Category).ToList<PRODUCT>();
+            refreshGridView();
+            gridControl_Product.DataSource = BLL_Product.getProducts().Where(t => t.ID_CATEGORY == ID_Category).ToList<PRODUCT>();
+            gridView_product.Columns["FLAG_DEL"].Visible = false;
         }
+
+        private void accordionCtrlE_Category_Click(object sender, EventArgs e)
+        {
+            refreshGridView();
+            gridControl_Product.DataSource = BLL_Category.getCategories();
+            gridView_product.Columns["FLAG_DEL"].Visible = false;
+            //gridView_product.Columns.Add(new DevExpress.XtraGrid.Columns.GridColumn()
+            //{
+            //    Caption = "Control",
+            //    //ColumnEdit = new RepositoryItemCheckEdit() { },
+            //    VisibleIndex = 0,
+            //    Width = 25,
+            //    UnboundType = DevExpress.Data.UnboundColumnType.Boolean
+            //});
+        }
+
+        private void accordionItem_AddCategory_Click(object sender, EventArgs e)
+        {
+            gridView_product.AddNewRow();
+            }
+
+        private void accordionItem_UpdateCategory_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void accordionItem_RemoveCategory_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        void refreshGridView()
+        {
+            gridControl_Product.DataSource = "";
+            gridView_product.Columns.Clear();
+          
+        }
+
+        private void gridView_product_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
+        {
+
+        }
+        
     }
 }

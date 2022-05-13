@@ -16,7 +16,7 @@ namespace PepperLunch
         public frmContainer()
         {
             InitializeComponent();
-            OpenForm(typeof(frmProduct));
+            OpenForm(typeof(frmStaff));
         }
 
 
