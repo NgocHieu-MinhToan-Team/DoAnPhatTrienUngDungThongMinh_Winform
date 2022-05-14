@@ -20,10 +20,23 @@ namespace PepperLunch
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            frmContainer frm = new frmContainer();
-            frm.Show();
-            this.Hide();
+            if(txtpassword.Text !=null && txtusername.Text != null)
+            {
+                //if()
+                //frmContainer frm = new frmContainer();
+
+
+                //frm.Show();
+                //this.Hide();
+
+            }
+            else
+            {
+                MessageBox.Show("Please enter your username & password !");
+            }
         }
+
+
 
     }
 }

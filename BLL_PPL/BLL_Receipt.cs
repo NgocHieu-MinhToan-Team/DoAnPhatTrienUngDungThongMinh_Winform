@@ -91,7 +91,7 @@ namespace BLL_PPL
             try
             {
                 List<RECEIPT> listFromSql = DAL_Receipt.readReceipt();
-                List<RECEIPT> list = await FB_Receipt.getListReceipt("Database/Receipt/", listFromSql);
+                List<RECEIPT> list = await FB_Receipt.getListReceipts("Database/Receipt/", listFromSql);
                 if (list == null) { return null; }
                 else
                     return list;

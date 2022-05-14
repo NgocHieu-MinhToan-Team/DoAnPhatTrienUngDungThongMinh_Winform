@@ -369,7 +369,6 @@ E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMin
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\PepperLunch\obj\Debug\PepperLunch.frmReceipt.resources
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\PepperLunch\obj\Debug\PepperLunch.frmStaff.resources
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\PepperLunch\obj\Debug\PepperLunch.frmLogin.resources
-E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\PepperLunch\obj\Debug\PepperLunch.PopupForm.frmPopupAddCategory.resources
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\PepperLunch\obj\Debug\PepperLunch.Properties.Resources.resources
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\PepperLunch\obj\Debug\GUI_PPL.csproj.GenerateResource.cache
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\PepperLunch\obj\Debug\PepperLunch.exe.licenses
@@ -392,3 +391,4 @@ E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMin
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\PepperLunch\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.xml
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\PepperLunch\bin\Debug\System.Net.Http.Extensions.xml
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\PepperLunch\bin\Debug\System.Net.Http.Primitives.xml
+E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\PepperLunch\obj\Debug\PepperLunch.frmCategory.resources

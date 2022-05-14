@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BLL_PPL
 {
-    public class General
+    public class GeneralMethods
     {
-        public string createID(string prefix)
+        public static string createID(string prefix)
         {
             
             string id = prefix+DateTime.Now.Year + DateTime.Now.Month+ DateTime.Now.Day+ DateTime.Now.Hour+ DateTime.Now.Minute+ DateTime.Now.Second+ DateTime.Now.Millisecond;

@@ -26,9 +26,9 @@ namespace FireBase_PPL
             return client;
         }
 
-        public static async void FirebaseInsertData(IFirebaseClient client, CATEGORY data, string rootName)
+        public static async void FirebaseInsertData(CATEGORY data, string rootName)
         {
-            //IFirebaseClient client = CreateFirebaseClient();
+            IFirebaseClient client = CreateFirebaseClient();
             try
             {
                 if (client != null)
@@ -42,18 +42,18 @@ namespace FireBase_PPL
             }
            
         }
-        public static async void FirebaseDeleteData(IFirebaseClient client, string rootName)
+        public static async void FirebaseDeleteData( string rootName)
         {
-            //IFirebaseClient client = CreateFirebaseClient();
+            IFirebaseClient client = CreateFirebaseClient();
 
             if (client != null)
             {
                 await client.DeleteAsync(rootName);
             }
         }
-        public static async void FirebaseUpdateData( IFirebaseClient client,object data, string rootName)
+        public static async void FirebaseUpdateData(object data, string rootName)
         {
-            //IFirebaseClient client = CreateFirebaseClient();
+            IFirebaseClient client = CreateFirebaseClient();
 
             if (client != null)
             {

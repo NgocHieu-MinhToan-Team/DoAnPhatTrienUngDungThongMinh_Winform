@@ -29,14 +29,12 @@ namespace PepperLunch
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
+            this.layout_gridCtrl = new System.Windows.Forms.TableLayoutPanel();
             this.gridControl_Product = new DevExpress.XtraGrid.GridControl();
-            this.gridView_product = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.layout_dish = new System.Windows.Forms.TableLayoutPanel();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
-            this.accordionCtrlE_Category = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionItem_AddCategory = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionItem_UpdateCategory = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionItem_RemoveCategory = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.accordionControlElement2 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -47,94 +45,91 @@ namespace PepperLunch
             this.accordionControlElement8 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement9 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement10 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionCtrlE_upLoadFirebase = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.fluentDesignFormContainer1.SuspendLayout();
+            this.layout_gridCtrl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Product)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView_product)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // fluentDesignFormContainer1
             // 
-            this.fluentDesignFormContainer1.Controls.Add(this.gridControl_Product);
+            this.fluentDesignFormContainer1.Controls.Add(this.layout_gridCtrl);
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fluentDesignFormContainer1.Location = new System.Drawing.Point(312, 39);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(849, 708);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(621, 708);
             this.fluentDesignFormContainer1.TabIndex = 0;
+            // 
+            // layout_gridCtrl
+            // 
+            this.layout_gridCtrl.BackColor = System.Drawing.Color.Transparent;
+            this.layout_gridCtrl.ColumnCount = 1;
+            this.layout_gridCtrl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.layout_gridCtrl.Controls.Add(this.gridControl_Product, 0, 0);
+            this.layout_gridCtrl.Controls.Add(this.layout_dish, 0, 1);
+            this.layout_gridCtrl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layout_gridCtrl.Location = new System.Drawing.Point(0, 0);
+            this.layout_gridCtrl.Name = "layout_gridCtrl";
+            this.layout_gridCtrl.RowCount = 2;
+            this.layout_gridCtrl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.layout_gridCtrl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.layout_gridCtrl.Size = new System.Drawing.Size(621, 708);
+            this.layout_gridCtrl.TabIndex = 1;
             // 
             // gridControl_Product
             // 
             this.gridControl_Product.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl_Product.Location = new System.Drawing.Point(0, 0);
-            this.gridControl_Product.MainView = this.gridView_product;
+            this.gridControl_Product.Location = new System.Drawing.Point(3, 3);
+            this.gridControl_Product.MainView = this.gridView1;
             this.gridControl_Product.Name = "gridControl_Product";
-            this.gridControl_Product.Size = new System.Drawing.Size(849, 708);
+            this.gridControl_Product.Size = new System.Drawing.Size(615, 489);
             this.gridControl_Product.TabIndex = 0;
             this.gridControl_Product.UseEmbeddedNavigator = true;
             this.gridControl_Product.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView_product});
+            this.gridView1});
             // 
-            // gridView_product
+            // layout_dish
             // 
-            this.gridView_product.GridControl = this.gridControl_Product;
-            this.gridView_product.Name = "gridView_product";
-            this.gridView_product.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
-            this.gridView_product.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
-            this.gridView_product.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.gridView_product_InitNewRow);
+            this.layout_dish.ColumnCount = 3;
+            this.layout_dish.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.layout_dish.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.layout_dish.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 188F));
+            this.layout_dish.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layout_dish.Location = new System.Drawing.Point(3, 498);
+            this.layout_dish.Name = "layout_dish";
+            this.layout_dish.RowCount = 3;
+            this.layout_dish.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 66.31579F));
+            this.layout_dish.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.68421F));
+            this.layout_dish.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 78F));
+            this.layout_dish.Size = new System.Drawing.Size(615, 207);
+            this.layout_dish.TabIndex = 1;
             // 
             // accordionControl1
             // 
+            this.accordionControl1.Appearance.AccordionControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.accordionControl1.Appearance.AccordionControl.Options.UseBackColor = true;
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.accordionCtrlE_Category});
+            this.accordionControlElement1});
             this.accordionControl1.Location = new System.Drawing.Point(0, 39);
             this.accordionControl1.Name = "accordionControl1";
+            this.accordionControl1.OptionsMinimizing.AllowMinimizeMode = DevExpress.Utils.DefaultBoolean.False;
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
+            this.accordionControl1.ShowFilterControl = DevExpress.XtraBars.Navigation.ShowFilterControl.Auto;
             this.accordionControl1.Size = new System.Drawing.Size(312, 708);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
-            // 
-            // accordionCtrlE_Category
-            // 
-            this.accordionCtrlE_Category.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.accordionItem_AddCategory,
-            this.accordionItem_UpdateCategory,
-            this.accordionItem_RemoveCategory,
-            this.accordionCtrlE_upLoadFirebase});
-            this.accordionCtrlE_Category.Expanded = true;
-            this.accordionCtrlE_Category.Name = "accordionCtrlE_Category";
-            this.accordionCtrlE_Category.Text = "Category";
-            this.accordionCtrlE_Category.Click += new System.EventHandler(this.accordionCtrlE_Category_Click);
-            // 
-            // accordionItem_AddCategory
-            // 
-            this.accordionItem_AddCategory.Name = "accordionItem_AddCategory";
-            this.accordionItem_AddCategory.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionItem_AddCategory.Text = "Add Category";
-            this.accordionItem_AddCategory.Click += new System.EventHandler(this.accordionItem_AddCategory_Click);
-            // 
-            // accordionItem_UpdateCategory
-            // 
-            this.accordionItem_UpdateCategory.Name = "accordionItem_UpdateCategory";
-            this.accordionItem_UpdateCategory.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionItem_UpdateCategory.Text = "Update Category";
-            this.accordionItem_UpdateCategory.Click += new System.EventHandler(this.accordionItem_UpdateCategory_Click);
-            // 
-            // accordionItem_RemoveCategory
-            // 
-            this.accordionItem_RemoveCategory.Name = "accordionItem_RemoveCategory";
-            this.accordionItem_RemoveCategory.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionItem_RemoveCategory.Text = "Remove Category";
-            this.accordionItem_RemoveCategory.Click += new System.EventHandler(this.accordionItem_RemoveCategory_Click);
             // 
             // fluentDesignFormControl1
             // 
             this.fluentDesignFormControl1.FluentDesignForm = this;
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1161, 39);
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(933, 39);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             // 
@@ -198,18 +193,25 @@ namespace PepperLunch
             this.accordionControlElement10.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement10.Text = "Element1";
             // 
-            // accordionCtrlE_upLoadFirebase
+            // accordionControlElement1
             // 
-            this.accordionCtrlE_upLoadFirebase.Name = "accordionCtrlE_upLoadFirebase";
-            this.accordionCtrlE_upLoadFirebase.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionCtrlE_upLoadFirebase.Text = "Up Load to Firebase";
-            this.accordionCtrlE_upLoadFirebase.Click += new System.EventHandler(this.accordionCtrlE_upLoadFirebase_Click);
+            this.accordionControlElement1.Name = "accordionControlElement1";
+            this.accordionControlElement1.Text = "Element1";
+            // 
+            // gridView1
+            // 
+            gridFormatRule1.Name = "Format0";
+            gridFormatRule1.Rule = null;
+            this.gridView1.FormatRules.Add(gridFormatRule1);
+            this.gridView1.GridControl = this.gridControl_Product;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
             // 
             // frmProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1161, 747);
+            this.ClientSize = new System.Drawing.Size(933, 747);
             this.ControlContainer = this.fluentDesignFormContainer1;
             this.Controls.Add(this.fluentDesignFormContainer1);
             this.Controls.Add(this.accordionControl1);
@@ -220,10 +222,11 @@ namespace PepperLunch
             this.Text = "frmProduct";
             this.Load += new System.EventHandler(this.frmProduct_Load);
             this.fluentDesignFormContainer1.ResumeLayout(false);
+            this.layout_gridCtrl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Product)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView_product)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -231,12 +234,8 @@ namespace PepperLunch
         #endregion
         private DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer fluentDesignFormContainer1;
         private DevExpress.XtraBars.Navigation.AccordionControl accordionControl1;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrlE_Category;
         private DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl fluentDesignFormControl1;
         private DevExpress.XtraGrid.GridControl gridControl_Product;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionItem_AddCategory;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionItem_UpdateCategory;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionItem_RemoveCategory;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement2;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement3;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement4;
@@ -246,7 +245,9 @@ namespace PepperLunch
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement8;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement9;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement10;
-        public DevExpress.XtraGrid.Views.Grid.GridView gridView_product;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrlE_upLoadFirebase;
+        private System.Windows.Forms.TableLayoutPanel layout_gridCtrl;
+        private System.Windows.Forms.TableLayoutPanel layout_dish;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
     }
 }

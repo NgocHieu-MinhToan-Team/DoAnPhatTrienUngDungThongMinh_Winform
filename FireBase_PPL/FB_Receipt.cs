@@ -30,17 +30,17 @@ namespace FireBase_PPL
 
 
         //get list Receipts
-        public static async Task<List<RECEIPT>> getListReceipt(string rootName,List<RECEIPT> listOfFirebse)
+        public static async Task<List<RECEIPT>> getListReceipts(string rootName,List<RECEIPT> listOfSql)
         {
-            List<RECEIPT> listOfSql = new List<RECEIPT>();
+            List<RECEIPT> listOfFirebase = new List<RECEIPT>();
             try
             {
-                foreach (RECEIPT itemOfFB in listOfFirebse)
+                foreach (RECEIPT itemOfSql in listOfSql)
                 {
-                    RECEIPT itemOfSql = await getReceipt(rootName + "/" + itemOfFB.ID_RECEIPT.ToString()+"/");
-                    if (itemOfSql != null)
+                    RECEIPT itemOfFirebase = await getReceipt(rootName + "/" + itemOfSql.ID_RECEIPT.ToString()+"/");
+                    if (itemOfFirebase != null)
                     {
-                        listOfSql.Add(itemOfSql);
+                        listOfFirebase.Add(itemOfFirebase);
                     }
                     else
                     {
@@ -52,7 +52,7 @@ namespace FireBase_PPL
             {
                 return null;
             }
-            return listOfSql;
+            return listOfFirebase;
 
         }
         

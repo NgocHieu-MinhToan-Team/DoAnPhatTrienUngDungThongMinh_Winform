@@ -1,0 +1,8 @@
+﻿<XtraSerializer version="1.0" application="Appearances">
+  <property name="Card" iskey="true" value="Card">
+    <property name="Options" isnull="true" iskey="true">
+      <property name="UseBackColor">true</property>
+    </property>
+    <property name="BackColor">Red</property>
+  </property>
+</XtraSerializer>

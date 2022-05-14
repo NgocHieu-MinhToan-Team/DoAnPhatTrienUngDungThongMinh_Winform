@@ -16,7 +16,7 @@ namespace PepperLunch
         public frmContainer()
         {
             InitializeComponent();
-            OpenForm(typeof(frmProduct));
+            //OpenForm(typeof(frmProduct));
         }
 
 
@@ -64,6 +64,11 @@ namespace PepperLunch
         private void barBtn_Product_ItemClick(object sender, ItemClickEventArgs e)
         {
             OpenForm(typeof(frmProduct));
+        }
+
+        private void barBtn_Category_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            OpenForm(typeof(frmCategory));
         }
     }
 }
