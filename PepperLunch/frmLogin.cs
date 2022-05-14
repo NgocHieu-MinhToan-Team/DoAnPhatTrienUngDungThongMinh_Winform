@@ -22,12 +22,9 @@ namespace PepperLunch
         {
             if(txtpassword.Text !=null && txtusername.Text != null)
             {
-                //if()
-                //frmContainer frm = new frmContainer();
-
-
-                //frm.Show();
-                //this.Hide();
+                frmContainer frm = new frmContainer();
+                frm.Show();
+                this.Hide();
 
             }
             else

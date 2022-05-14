@@ -20,58 +20,136 @@ namespace BLL_PPL
 {
     public class BLL_Staff
     {
-        DAL_Staff dalStaff = new DAL_Staff();
 
         public BLL_Staff() { }
 
-        public  List<STAFF> readStaff()
+        public static  List<STAFF> getStaffs()
         {
-            return dalStaff.readStaff();
+            return DAL_Staff.getStaffs();
         }
 
 
-        public List<GROUP_USER> readGroupUser()
+        public static List<GROUP_USER> readGroupUser()
         {
-            return dalStaff.readGroupUser();
+            return DAL_Staff.getGroupUsers();
         }
 
         public static bool validateCreateStaff(STAFF staff)
         {
-            if (staff.USERNAME_STAFF != null
-              && staff.PASSWORD_STAFF != null
-              && staff.SURNAME_STAFF != null
-              && staff.NAME_STAFF != null
-              && staff.NUMBER_PHONE != null
-              && staff.ADDRESS_STAFF != null
+            if (staff.USERNAME_STAFF != ""
+              && staff.PASSWORD_STAFF != ""
+              && staff.SURNAME_STAFF != ""
+              && staff.NAME_STAFF != ""
+              && staff.NUMBER_PHONE != ""
+              && staff.ADDRESS_STAFF != ""
                )
             {
+                if (!staff.DATE_OF_BIRTH.HasValue) 
+                { 
+                    MessageBox.Show("Date of birth is not selected !");
+                    return false;
+                }
+                if (staff.GENDER_STAFF < 0) 
+                { 
+                    MessageBox.Show("gender is not selected !");
+                    return false;
+                }
+                if (staff.ID_GROUP == null) 
+                { 
+                    MessageBox.Show("gender is not selected !");
+                    return false; 
+                }
                 return true;
             }
-
-            return false;
+            else
+            {
+                MessageBox.Show("please fill full infomation !");
+                return false;
+            }
         }
 
-        public static void createStaff(STAFF staff)
+        public static bool insertStaff(STAFF data)
         {
             try
             {
-                if (DAL_Staff.createStaff(staff))
+                if (DAL_Staff.insertStaff(data))
                 {
-                    MessageBox.Show("Create Successfully !");
+                    MessageBox.Show("Insert Data Sucessfully !");
+                    return true;
                 }
                 else
                 {
-                    MessageBox.Show("Create Failed !");
+                    MessageBox.Show("Insert Data Failed !");
+                    return false;
                 }
             }
-            catch 
+            catch (Exception ex)
             {
-                MessageBox.Show("Có Lỗi Xảy Ra ở Create Method BLL Staff ");
+                MessageBox.Show(ex.Message);
+                return false;
             }
         }
 
-       
+        public static bool deleteStaff(STAFF data)
+        {
+            try
+            {
+                if (DAL_Staff.deleteStaff(data))
+                {
+                    MessageBox.Show("Delete Data Sucessfully !");
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Delete Data Failed !");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
 
+        public static bool updateStaff(STAFF data)
+        {
+            try
+            {
+                if (DAL_Staff.updateStaff(data))
+                {
+                    MessageBox.Show("Update Data Sucessfully !");
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Update Data Failed !");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
 
+        public static bool checkPrimaryKey(string s)
+        {
+            try
+            {
+                List<STAFF> list = DAL_Staff.getStaffs();
+                foreach(STAFF item in list)
+                {
+                    if (item.USERNAME_STAFF == s)
+                        return false;
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

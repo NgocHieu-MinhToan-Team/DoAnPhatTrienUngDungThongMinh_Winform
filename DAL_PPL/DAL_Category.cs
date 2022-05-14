@@ -66,6 +66,10 @@ namespace DAL_PPL
         {
             try
             {
+                CATEGORY itemUpdate = db.CATEGORies.SingleOrDefault(t => t.ID_CATEGORY == data.ID_CATEGORY);
+                itemUpdate.GROUP_CATEGORY = data.GROUP_CATEGORY;
+                itemUpdate.NAME_CATEGORY = data.NAME_CATEGORY;
+                itemUpdate.FLAG_DEL = 0;
                 db.SubmitChanges();
                 return true;
             }

@@ -35,9 +35,9 @@ namespace PepperLunch
 
         void loadComboboxGroupCate(List<CATEGORY> list)
         {
-            //cbb_GroupCate.DataSource = list.GroupBy(n => new { n.GROUP_CATEGORY }).Select(g => new { g.Key.GROUP_CATEGORY }).ToList();
-            //cbb_GroupCate.DisplayMember = "GROUP_CATEGORY";
-            //cbb_GroupCate.ValueMember = "GROUP_CATEGORY";
+            cbbGroupCate.DataSource = list.GroupBy(n => new { n.GROUP_CATEGORY }).Select(g => new { g.Key.GROUP_CATEGORY }).ToList();
+            cbbGroupCate.DisplayMember = "GROUP_CATEGORY";
+            cbbGroupCate.ValueMember = "GROUP_CATEGORY";
         }
 
         private void accordionCtrlEGroup_Click(object sender, EventArgs e)
@@ -47,11 +47,11 @@ namespace PepperLunch
 
         private void accordionCtrlE_AddCate_Click(object sender, EventArgs e)
         {
-            if (txtNameCate.Text != null && txtGroupCate.Text!=null)
+            if (txtNameCate.Text != null && cbbGroupCate.Text!=null)
             {
                 CATEGORY data = new CATEGORY();
                 data.ID_CATEGORY = GeneralMethods.createID("CATE");
-                data.GROUP_CATEGORY = txtGroupCate.Text;
+                data.GROUP_CATEGORY = cbbGroupCate.Text;
                 data.NAME_CATEGORY = txtNameCate.Text;
                 data.FLAG_DEL = 0;
                 if (BLL_Category.insertCategories(data))
@@ -74,7 +74,29 @@ namespace PepperLunch
 
         private void accordionCtrlE_UpdateCate_Click(object sender, EventArgs e)
         {
-
+            int[] index = gridView_Category.GetSelectedRows();
+            if (txtNameCate.Text != null && cbbGroupCate.Text != null)
+            {
+                CATEGORY data = (CATEGORY)gridView_Category.GetRow(index[0]);
+                data.GROUP_CATEGORY = cbbGroupCate.Text;
+                data.NAME_CATEGORY = txtNameCate.Text;
+                if (BLL_Category.updateCategories(data))
+                {
+                    LoadData(false);
+                }
+            }
         }
+
+        private void gridView_Category_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            int[] index = gridView_Category.GetSelectedRows();
+            if (index.Length > 0)
+            {
+                CATEGORY data = (CATEGORY)gridView_Category.GetRow(index[0]);
+                cbbGroupCate.Text = data.GROUP_CATEGORY;
+                txtNameCate.Text = data.NAME_CATEGORY;
+            }
+        }
+
     }
 }

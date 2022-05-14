@@ -32,28 +32,27 @@ namespace PepperLunch
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCategory));
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.gridControl_Category = new DevExpress.XtraGrid.GridControl();
+            this.gridView_Category = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtNameCate = new Modify_Control.EditText_Letter();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionCtrlEGroup = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionCtrlE_AddCate = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionCtrlE_RemoveCate = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionCtrlE_UpdateCate = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
-            this.gridView_Category = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridControl_Category = new DevExpress.XtraGrid.GridControl();
-            this.txtGroupCate = new Modify_Control.EditText_Letter();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtNameCate = new Modify_Control.EditText_Letter();
+            this.cbbGroupCate = new System.Windows.Forms.ComboBox();
             this.fluentDesignFormContainer1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl_Category)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_Category)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNameCate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView_Category)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl_Category)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtGroupCate.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNameCate.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // fluentDesignFormContainer1
@@ -80,6 +79,24 @@ namespace PepperLunch
             this.tableLayoutPanel1.Size = new System.Drawing.Size(723, 545);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
+            // gridControl_Category
+            // 
+            this.gridControl_Category.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl_Category.Location = new System.Drawing.Point(3, 112);
+            this.gridControl_Category.MainView = this.gridView_Category;
+            this.gridControl_Category.Name = "gridControl_Category";
+            this.gridControl_Category.Size = new System.Drawing.Size(717, 430);
+            this.gridControl_Category.TabIndex = 0;
+            this.gridControl_Category.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView_Category});
+            // 
+            // gridView_Category
+            // 
+            this.gridView_Category.GridControl = this.gridControl_Category;
+            this.gridView_Category.Name = "gridView_Category";
+            this.gridView_Category.OptionsBehavior.Editable = false;
+            this.gridView_Category.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView_Category_RowClick);
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 4;
@@ -90,7 +107,7 @@ namespace PepperLunch
             this.tableLayoutPanel2.Controls.Add(this.txtNameCate, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.label2, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.label1, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.txtGroupCate, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.cbbGroupCate, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 32);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -99,6 +116,14 @@ namespace PepperLunch
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(717, 74);
             this.tableLayoutPanel2.TabIndex = 1;
+            // 
+            // txtNameCate
+            // 
+            this.txtNameCate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtNameCate.Location = new System.Drawing.Point(289, 40);
+            this.txtNameCate.Name = "txtNameCate";
+            this.txtNameCate.Size = new System.Drawing.Size(280, 28);
+            this.txtNameCate.TabIndex = 1;
             // 
             // label2
             // 
@@ -109,6 +134,16 @@ namespace PepperLunch
             this.label2.Size = new System.Drawing.Size(173, 37);
             this.label2.TabIndex = 3;
             this.label2.Text = "Group Category";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Location = new System.Drawing.Point(110, 37);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(173, 37);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Name of Category";
             // 
             // accordionControl1
             // 
@@ -189,47 +224,14 @@ namespace PepperLunch
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             // 
-            // gridView_Category
+            // cbbGroupCate
             // 
-            this.gridView_Category.GridControl = this.gridControl_Category;
-            this.gridView_Category.Name = "gridView_Category";
-            // 
-            // gridControl_Category
-            // 
-            this.gridControl_Category.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl_Category.Location = new System.Drawing.Point(3, 112);
-            this.gridControl_Category.MainView = this.gridView_Category;
-            this.gridControl_Category.Name = "gridControl_Category";
-            this.gridControl_Category.Size = new System.Drawing.Size(717, 430);
-            this.gridControl_Category.TabIndex = 0;
-            this.gridControl_Category.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView_Category});
-            // 
-            // txtGroupCate
-            // 
-            this.txtGroupCate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtGroupCate.Location = new System.Drawing.Point(289, 3);
-            this.txtGroupCate.Name = "txtGroupCate";
-            this.txtGroupCate.Size = new System.Drawing.Size(280, 28);
-            this.txtGroupCate.TabIndex = 4;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(110, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(173, 37);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Name of Category";
-            // 
-            // txtNameCate
-            // 
-            this.txtNameCate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNameCate.Location = new System.Drawing.Point(289, 40);
-            this.txtNameCate.Name = "txtNameCate";
-            this.txtNameCate.Size = new System.Drawing.Size(280, 28);
-            this.txtNameCate.TabIndex = 1;
+            this.cbbGroupCate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbbGroupCate.FormattingEnabled = true;
+            this.cbbGroupCate.Location = new System.Drawing.Point(289, 3);
+            this.cbbGroupCate.Name = "cbbGroupCate";
+            this.cbbGroupCate.Size = new System.Drawing.Size(280, 29);
+            this.cbbGroupCate.TabIndex = 4;
             // 
             // frmCategory
             // 
@@ -247,14 +249,13 @@ namespace PepperLunch
             this.Load += new System.EventHandler(this.frmCategory_Load);
             this.fluentDesignFormContainer1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl_Category)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_Category)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNameCate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView_Category)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl_Category)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtGroupCate.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNameCate.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -272,8 +273,8 @@ namespace PepperLunch
         private System.Windows.Forms.Label label2;
         private DevExpress.XtraGrid.GridControl gridControl_Category;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView_Category;
-        private Modify_Control.EditText_Letter txtGroupCate;
         private Modify_Control.EditText_Letter txtNameCate;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbbGroupCate;
     }
 }
