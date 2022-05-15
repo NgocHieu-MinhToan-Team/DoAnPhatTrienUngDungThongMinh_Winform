@@ -41,18 +41,18 @@ namespace PepperLunch
             this.barBtn_signOut = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_Product = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_Category = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtn_SyncManual = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage_manager = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.barBtn_SyncManual = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
@@ -171,6 +171,14 @@ namespace PepperLunch
             this.barBtn_Category.Name = "barBtn_Category";
             this.barBtn_Category.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_Category_ItemClick);
             // 
+            // barBtn_SyncManual
+            // 
+            this.barBtn_SyncManual.Caption = "Sync Manual";
+            this.barBtn_SyncManual.Id = 23;
+            this.barBtn_SyncManual.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtn_SyncManual.ImageOptions.SvgImage")));
+            this.barBtn_SyncManual.Name = "barBtn_SyncManual";
+            this.barBtn_SyncManual.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_SyncManual_ItemClick);
+            // 
             // ribbonPage_manager
             // 
             this.ribbonPage_manager.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -196,6 +204,19 @@ namespace PepperLunch
             this.ribbonPageGroup2.ItemLinks.Add(this.barBtn_Product);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "Manage Menu";
+            // 
+            // ribbonPageGroup3
+            // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.barBtn_SyncManual);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            this.ribbonPageGroup3.Text = "Firebase";
+            // 
+            // ribbonPageGroup4
+            // 
+            this.ribbonPageGroup4.Alignment = DevExpress.XtraBars.Ribbon.RibbonPageGroupAlignment.Far;
+            this.ribbonPageGroup4.ItemLinks.Add(this.barBtn_signOut);
+            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
+            this.ribbonPageGroup4.Text = "System";
             // 
             // repositoryItemButtonEdit1
             // 
@@ -229,30 +250,10 @@ namespace PepperLunch
             this.barButtonItem3.LargeWidth = 70;
             this.barButtonItem3.Name = "barButtonItem3";
             // 
-            // ribbonPageGroup3
-            // 
-            this.ribbonPageGroup3.ItemLinks.Add(this.barBtn_SyncManual);
-            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
-            this.ribbonPageGroup3.Text = "Firebase";
-            // 
-            // ribbonPageGroup4
-            // 
-            this.ribbonPageGroup4.Alignment = DevExpress.XtraBars.Ribbon.RibbonPageGroupAlignment.Far;
-            this.ribbonPageGroup4.ItemLinks.Add(this.barBtn_signOut);
-            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
-            this.ribbonPageGroup4.Text = "System";
-            // 
             // popupMenu1
             // 
             this.popupMenu1.Name = "popupMenu1";
             this.popupMenu1.Ribbon = this.ribbon;
-            // 
-            // barBtn_SyncManual
-            // 
-            this.barBtn_SyncManual.Caption = "Sync Manual";
-            this.barBtn_SyncManual.Id = 23;
-            this.barBtn_SyncManual.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtn_SyncManual.ImageOptions.SvgImage")));
-            this.barBtn_SyncManual.Name = "barBtn_SyncManual";
             // 
             // frmContainer
             // 
@@ -308,5 +309,6 @@ namespace PepperLunch
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private DevExpress.XtraBars.BarButtonItem barBtn_SyncManual;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

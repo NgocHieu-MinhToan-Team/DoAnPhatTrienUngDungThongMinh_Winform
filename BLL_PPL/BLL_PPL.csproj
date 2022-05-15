@@ -113,6 +113,7 @@
     <Compile Include="BLL_Product.cs" />
     <Compile Include="BLL_Receipt.cs" />
     <Compile Include="BLL_Staff.cs" />
+    <Compile Include="BLL_Synchronized.cs" />
     <Compile Include="GeneralMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

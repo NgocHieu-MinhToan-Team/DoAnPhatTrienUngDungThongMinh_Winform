@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraBars;
+using DevExpress.XtraSplashScreen;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,7 +24,8 @@ namespace PepperLunch
         private void OpenForm(Type objForm)
         {
             // if objForm is activated , let's activate it 
-            foreach(Form frm in MdiChildren)
+            //SplashScreenManager.ShowForm(typeof(waitFrmLoading));
+            foreach (Form frm in MdiChildren)
             {
                 if(frm.GetType() == objForm)
                 {
@@ -33,6 +35,7 @@ namespace PepperLunch
             }
             // otherwise initialize form and set MdiParent 
             Form newForm = (Form)Activator.CreateInstance(objForm);
+            //SplashScreenManager.CloseForm();
             newForm.MdiParent = this;
             newForm.Show();
         }
@@ -69,6 +72,12 @@ namespace PepperLunch
         private void barBtn_Category_ItemClick(object sender, ItemClickEventArgs e)
         {
             OpenForm(typeof(frmCategory));
+        }
+        bool isActive = false;
+        private void barBtn_SyncManual_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            OpenForm(typeof(frmHandleFirebase));
+           
         }
     }
 }

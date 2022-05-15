@@ -16,30 +16,11 @@ namespace BLL_PPL
     public class BLL_Category
     {
         public BLL_Category() { }
-        public  static async Task<List<CATEGORY>> getCategoriesAsync(bool isSynchronous)
+
+        public static  List<CATEGORY> getCategories()
         {
             List<CATEGORY> list = DAL_Category.getCategories();
-            // is Synchronous ? yes
-            if (isSynchronous)
-            {
-                //check connect to firebase
-                var client = ConnectFireBase.CreateFirebaseClient();
-                if (client != null)
-                {
-                    //get data from firebase
-                    return await FB_Category.getListCategories(list);
-                }
-                else
-                {
-                    //get data from sql
-                    return list;
-                }
-            }
-            // is Synchronous ? no
-            else
-            {
-                return list;
-            }
+            return list;
         }
 
         public static bool insertCategories(CATEGORY data)
@@ -107,26 +88,6 @@ namespace BLL_PPL
             }
         }
 
-
-        //insert data to firebase
-        public static bool insertCategoriesToFirebase()
-        {
-            try
-            {
-                List<CATEGORY> listFromSql = DAL_Category.getCategories();//tao doi tuong
-                // loop through list data and insert each ID node
-                foreach (CATEGORY item in listFromSql)
-                {
-                    ConnectFireBase.FirebaseInsertData(item, "Database/Category/"+ item.ID_CATEGORY.ToString());
-                }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return false;
-            }
-        }
 
 
     }

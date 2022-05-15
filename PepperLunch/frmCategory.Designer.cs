@@ -38,13 +38,13 @@ namespace PepperLunch
             this.txtNameCate = new Modify_Control.EditText_Letter();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.cbbGroupCate = new System.Windows.Forms.ComboBox();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionCtrlEGroup = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionCtrlE_AddCate = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionCtrlE_RemoveCate = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionCtrlE_UpdateCate = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
-            this.cbbGroupCate = new System.Windows.Forms.ComboBox();
             this.fluentDesignFormContainer1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Category)).BeginInit();
@@ -145,6 +145,15 @@ namespace PepperLunch
             this.label1.TabIndex = 2;
             this.label1.Text = "Name of Category";
             // 
+            // cbbGroupCate
+            // 
+            this.cbbGroupCate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbbGroupCate.FormattingEnabled = true;
+            this.cbbGroupCate.Location = new System.Drawing.Point(289, 3);
+            this.cbbGroupCate.Name = "cbbGroupCate";
+            this.cbbGroupCate.Size = new System.Drawing.Size(280, 29);
+            this.cbbGroupCate.TabIndex = 4;
+            // 
             // accordionControl1
             // 
             this.accordionControl1.Appearance.AccordionControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
@@ -223,15 +232,6 @@ namespace PepperLunch
             this.fluentDesignFormControl1.Size = new System.Drawing.Size(983, 39);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
-            // 
-            // cbbGroupCate
-            // 
-            this.cbbGroupCate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbbGroupCate.FormattingEnabled = true;
-            this.cbbGroupCate.Location = new System.Drawing.Point(289, 3);
-            this.cbbGroupCate.Name = "cbbGroupCate";
-            this.cbbGroupCate.Size = new System.Drawing.Size(280, 29);
-            this.cbbGroupCate.TabIndex = 4;
             // 
             // frmCategory
             // 

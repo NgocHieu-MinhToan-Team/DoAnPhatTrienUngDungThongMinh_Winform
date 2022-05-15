@@ -258,7 +258,6 @@ namespace PepperLunch
             this.tablePanel3.SetRow(this.txtUsername, 0);
             this.txtUsername.Size = new System.Drawing.Size(141, 24);
             this.txtUsername.TabIndex = 28;
-            this.txtUsername.Leave += new System.EventHandler(this.txtUsername_Leave);
             // 
             // txtPassword
             // 

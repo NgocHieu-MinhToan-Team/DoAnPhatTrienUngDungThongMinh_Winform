@@ -54,6 +54,7 @@
     </Reference>
     <Reference Include="DevExpress.BonusSkins.v19.2" />
     <Reference Include="DevExpress.CodeParser.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Dashboard.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v19.2" />
     <Reference Include="DevExpress.DataAccess.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.DataAccess.v19.2.UI, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -162,6 +163,18 @@
     <Compile Include="frmContainer.Designer.cs">
       <DependentUpon>frmContainer.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmHandleFirebase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHandleFirebase.Designer.cs">
+      <DependentUpon>frmHandleFirebase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="waitFrmLoading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="waitFrmLoading.Designer.cs">
+      <DependentUpon>waitFrmLoading.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmProduct.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,6 +206,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmContainer.resx">
       <DependentUpon>frmContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHandleFirebase.resx">
+      <DependentUpon>frmHandleFirebase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="waitFrmLoading.resx">
+      <DependentUpon>waitFrmLoading.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmProduct.resx">
       <DependentUpon>frmProduct.cs</DependentUpon>

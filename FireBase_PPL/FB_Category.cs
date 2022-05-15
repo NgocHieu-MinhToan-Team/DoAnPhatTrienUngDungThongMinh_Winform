@@ -41,18 +41,61 @@ namespace FireBase_PPL
                     {
                         listOfFirebase.Add(itemOfFirebase);
                     }
-                    // if item of firebase don't have , perform insert into that
-                    else
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+            return listOfFirebase;
+
+        }
+        public static async Task<List<CATEGORY>> getCategoriesNotSync(List<CATEGORY> listOfSql)
+        {
+            List<CATEGORY> listNotSync  = new List<CATEGORY>();
+            try
+            {
+                foreach (CATEGORY itemOfSql in listOfSql)
+                {
+                    CATEGORY itemOfFirebase = await getCategory("Database/Category/" + itemOfSql.ID_CATEGORY.ToString() + "/");
+                    if (itemOfFirebase != null)
                     {
-                        ConnectFireBase.FirebaseInsertData(itemOfSql, "Database/Category/" + itemOfSql.ID_CATEGORY.ToString());
+                        if(itemOfFirebase.GROUP_CATEGORY != itemOfSql.GROUP_CATEGORY 
+                        || itemOfFirebase.NAME_CATEGORY != itemOfSql.NAME_CATEGORY)
+                        {
+                            listNotSync.Add(itemOfSql);
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return null;
             }
-            return listOfFirebase;
+            return listNotSync;
+
+        }
+        public static bool synchronizedCategoriesToFirebase(List<CATEGORY> listOfSql)
+        {
+            
+            try
+            {
+                // delete node parent
+                ConnectFireBase.FirebaseDeleteData("Database/Category");
+                // insert again entire data from sql to firebase
+                foreach (CATEGORY itemOfSql in listOfSql)
+                {
+                    ConnectFireBase.FirebaseInsertData(itemOfSql, "Database/Category/" + itemOfSql.ID_CATEGORY + "/");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+            return true;
 
         }
 

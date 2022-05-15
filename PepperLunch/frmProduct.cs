@@ -12,6 +12,7 @@ namespace PepperLunch
 {
     public partial class frmProduct : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
+
         public frmProduct()
         {
             InitializeComponent();
@@ -22,10 +23,10 @@ namespace PepperLunch
             LoadData(false);
         }
 
-         async void LoadData(bool isSynchronous)
+          void LoadData(bool isSynchronous)
         {
             //load categories
-            List<CATEGORY> listCate =await BLL_Category.getCategoriesAsync(isSynchronous);
+            List<CATEGORY> listCate = BLL_Category.getCategories();
             // group by GROUP CATEGORY
             var results = listCate.GroupBy(n => new { n.GROUP_CATEGORY }).Select(g => new { g.Key.GROUP_CATEGORY }).ToList();
             foreach (var item in results)

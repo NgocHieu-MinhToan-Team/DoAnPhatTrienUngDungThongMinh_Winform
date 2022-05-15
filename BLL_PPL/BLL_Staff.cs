@@ -36,12 +36,13 @@ namespace BLL_PPL
 
         public static bool validateCreateStaff(STAFF staff)
         {
-            if (staff.USERNAME_STAFF != ""
-              && staff.PASSWORD_STAFF != ""
-              && staff.SURNAME_STAFF != ""
-              && staff.NAME_STAFF != ""
-              && staff.NUMBER_PHONE != ""
-              && staff.ADDRESS_STAFF != ""
+
+            if (GeneralMethods.isLetterOrDigit(staff.USERNAME_STAFF, false)
+                && GeneralMethods.isLetterOrDigit(staff.PASSWORD_STAFF, false)
+                && GeneralMethods.isLetter(staff.SURNAME_STAFF, true)
+                && GeneralMethods.isLetter(staff.NAME_STAFF, true)
+                && GeneralMethods.isDigit(staff.NUMBER_PHONE, false)
+                && GeneralMethods.isLetter(staff.ADDRESS_STAFF, true)
                )
             {
                 if (!staff.DATE_OF_BIRTH.HasValue) 

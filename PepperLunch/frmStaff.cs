@@ -86,17 +86,25 @@ namespace PepperLunch
             if (index.Length > 0)
             {
                 STAFF data = (STAFF)gridView_Staff.GetRow(index[0]);
-                data.USERNAME_STAFF = txtUsername.Text.Trim();
-                data.PASSWORD_STAFF = txtPassword.Text.Trim();
-                data.SURNAME_STAFF = txtSurname.Text.Trim();
-                data.NAME_STAFF = txtName.Text.Trim();
-                data.NUMBER_PHONE = txtPhone.Text.Trim();
-                data.ADDRESS_STAFF = txtAddress.Text.Trim();
-                data.GENDER_STAFF = cbbGender.SelectedIndex;
-                data.ID_GROUP = (string)cbbRole.SelectedValue;
-                data.DATE_OF_BIRTH = dateEdit_birth.DateTime;
-                BLL_Staff.updateStaff(data);
-                LoadData();
+                if (BLL_Staff.validateCreateStaff(data))
+                {
+                    data.USERNAME_STAFF = txtUsername.Text.Trim();
+                    data.PASSWORD_STAFF = txtPassword.Text.Trim();
+                    data.SURNAME_STAFF = txtSurname.Text.Trim();
+                    data.NAME_STAFF = txtName.Text.Trim();
+                    data.NUMBER_PHONE = txtPhone.Text.Trim();
+                    data.ADDRESS_STAFF = txtAddress.Text.Trim();
+                    data.GENDER_STAFF = cbbGender.SelectedIndex;
+                    data.ID_GROUP = (string)cbbRole.SelectedValue;
+                    data.DATE_OF_BIRTH = dateEdit_birth.DateTime;
+                    BLL_Staff.updateStaff(data);
+                    LoadData();
+                }
+                else
+                {
+                    MessageBox.Show("This username has existed , pleased try again !");
+                    txtUsername.Text = "";
+                }
             }
         }
         private void accordionCtrlEle_removeStaff_Click(object sender, EventArgs e)
@@ -125,23 +133,6 @@ namespace PepperLunch
                 cbbGender.SelectedIndex = (int)data.GENDER_STAFF;
                 cbbRole.SelectedValue = data.ID_GROUP;
                 dateEdit_birth.DateTime = (DateTime)data.DATE_OF_BIRTH;
-            }
-        }
-        //check primary key
-        private void txtUsername_Leave(object sender, EventArgs e)
-        {
-            if (txtUsername.Text != null)
-            {
-                if (BLL_Staff.checkPrimaryKey(txtUsername.Text))
-                {
-                    // do nothing 
-                }
-                else
-                {
-                    MessageBox.Show("This username has existed , pleased try again !");
-                    txtUsername.Text = "";
-                    txtUsername.Focus();
-                }
             }
         }
     }

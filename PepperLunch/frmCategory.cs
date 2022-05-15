@@ -14,6 +14,7 @@ namespace PepperLunch
 {
     public partial class frmCategory : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
+
         List<CATEGORY> list = new List<CATEGORY>();
         public frmCategory()
         {
@@ -22,12 +23,12 @@ namespace PepperLunch
 
         private void frmCategory_Load(object sender, EventArgs e)
         {
-            LoadData(false);
+            LoadData();
 
         }
-        async void LoadData(bool isSynchronous)
+         void LoadData()
         {
-            list = await BLL_Category.getCategoriesAsync(isSynchronous);
+            list = BLL_Category.getCategories();
             gridControl_Category.DataSource = list;
             gridView_Category.Columns["FLAG_DEL"].Visible = false;
             loadComboboxGroupCate(list);
@@ -56,7 +57,7 @@ namespace PepperLunch
                 data.FLAG_DEL = 0;
                 if (BLL_Category.insertCategories(data))
                 {
-                    LoadData(false);
+                    LoadData();
                 }
             }
         }
@@ -68,7 +69,7 @@ namespace PepperLunch
             {
                 CATEGORY data = (CATEGORY)gridView_Category.GetRow(index[0]);
                 if (BLL_Category.deleteCategories(data))
-                    LoadData(false);
+                    LoadData();
             }
         }
 
@@ -82,7 +83,7 @@ namespace PepperLunch
                 data.NAME_CATEGORY = txtNameCate.Text;
                 if (BLL_Category.updateCategories(data))
                 {
-                    LoadData(false);
+                    LoadData();
                 }
             }
         }

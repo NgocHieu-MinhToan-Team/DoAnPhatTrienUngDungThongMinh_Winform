@@ -30,6 +30,29 @@ namespace DAL_PPL
                 item.ID_CATEGORY = itemAnonymous.ID_CATEGORY;
                 item.NAME_CATEGORY = itemAnonymous.NAME_CATEGORY;
                 item.GROUP_CATEGORY = itemAnonymous.GROUP_CATEGORY;
+                item.FLAG_DEL = item.FLAG_DEL;
+                list.Add(item);
+            }
+            return list;
+        }
+        public static List<CATEGORY> getFullCategories()
+        {
+            var listAnonymous = from cate in db.CATEGORies
+                                select new
+                                {
+                                    ID_CATEGORY = cate.ID_CATEGORY,
+                                    NAME_CATEGORY = cate.NAME_CATEGORY,
+                                    GROUP_CATEGORY = cate.GROUP_CATEGORY,
+                                    FLAG_DEL = cate.FLAG_DEL
+                                };
+            List<CATEGORY> list = new List<CATEGORY>();
+            foreach (var itemAnonymous in listAnonymous)
+            {
+                CATEGORY item = new CATEGORY();
+                item.ID_CATEGORY = itemAnonymous.ID_CATEGORY;
+                item.NAME_CATEGORY = itemAnonymous.NAME_CATEGORY;
+                item.GROUP_CATEGORY = itemAnonymous.GROUP_CATEGORY;
+                item.FLAG_DEL = item.FLAG_DEL;
                 list.Add(item);
             }
             return list;
