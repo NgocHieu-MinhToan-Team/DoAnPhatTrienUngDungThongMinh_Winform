@@ -73,7 +73,6 @@ namespace PepperLunch
         {
             OpenForm(typeof(frmCategory));
         }
-        bool isActive = false;
         private void barBtn_SyncManual_ItemClick(object sender, ItemClickEventArgs e)
         {
             OpenForm(typeof(frmHandleFirebase));

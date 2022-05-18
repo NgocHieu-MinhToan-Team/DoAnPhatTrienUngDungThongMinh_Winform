@@ -23,11 +23,11 @@ namespace BLL_PPL
             return list;
         }
 
-        public static bool insertCategories(CATEGORY data)
+        public static bool insertCategory(CATEGORY data)
         {
             try
             {
-                if (DAL_Category.insertCategories(data))
+                if (DAL_Category.insertCategory(data))
                 {
                     MessageBox.Show("Insert Data Sucessfully !");
                     return true;
@@ -44,11 +44,11 @@ namespace BLL_PPL
             }
         }
 
-        public static bool deleteCategories(CATEGORY data)
+        public static bool deleteCategory(CATEGORY data)
         {
             try
             {
-                if (DAL_Category.deleteCategories(data))
+                if (DAL_Category.deleteCategory(data))
                 {
                     MessageBox.Show("Delete Data Sucessfully !");
                     return true;
@@ -66,11 +66,11 @@ namespace BLL_PPL
             }
         }
 
-        public static bool updateCategories(CATEGORY data)
+        public static bool updateCategory(CATEGORY data)
         {
             try
             {
-                if (DAL_Category.updateCategories(data))
+                if (DAL_Category.updateCategory(data))
                 {
                     MessageBox.Show("Update Data Sucessfully !");
                     return true;

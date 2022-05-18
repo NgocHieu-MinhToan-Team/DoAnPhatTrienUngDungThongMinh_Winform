@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConnectFireBase.cs" />
+    <Compile Include="FB_Product.cs" />
     <Compile Include="FB_Receipt.cs" />
     <Compile Include="FB_Category.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

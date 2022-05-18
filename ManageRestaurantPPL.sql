@@ -66,11 +66,11 @@ CREATE TABLE DETAIL_PRODUCT
 )
 
 --nguyên vật liệu && kho
-CREATE TABLE MATERIAL
+CREATE TABLE INGREDIENT
 (
-	ID_MATERIAL VARCHAR(50) NOT NULL PRIMARY KEY,
+	ID_INGREDIENT VARCHAR(50) NOT NULL PRIMARY KEY,
 	ID_DETAIL VARCHAR(50) NOT NULL,
-	NAME_MATERIAL NVARCHAR(50) NOT NULL,
+	NAME_INGREDIENT NVARCHAR(50) NOT NULL,
 	INVENTORY INT,
 	FLAG_DEL INT,
 )
@@ -128,7 +128,7 @@ CREATE TABLE RECEIPT
 (
 	ID_RECEIPT VARCHAR(50) NOT NULL PRIMARY KEY,
 	ID_VOUCHER VARCHAR(50),
-	ID_CUSTOMER VARCHAR(50) ,
+	ID_CUSTOMER VARCHAR(50),
 	ID_METHOD VARCHAR(50),
 	DATE_CREATE DATE,
 	TOTAL_PRODUCT int,
@@ -360,9 +360,53 @@ INSERT INTO PRODUCT VALUES
 ('MAMONCB01','IDLMON11','SET A',N'Combo A',30000,'IMAGE',0),
 ('MAMONCB02','IDLMON11','SET B',N'Combo B',40000,'IMAGE',0)
 
+--METHOD_PAY
+INSERT INTO METHOD_PAY 
+VALUES
+('0001', '0001.11', '12/05/2022', N'Thanh toán tiền mặt',  0),
+('0002', '0002.12', '10/05/2022', N'Thanh toán tiền mặt', 0),
+('0003', '0003.13', '06/05/2022', N' Thanh toán ví điện tử', 0),
+('0004', '0004.14', '15/05/2022', N'Thanh toán thẻ tín dụng', 0),
+('0005', '0005.15', '16/05/2022', N'Thanh toán thẻ tín dụng', 0)
+
+--VOUCHER
+
+INSERT INTO VOUCHER
+VALUES
+('TANM010', '0001.11', '12/05/2022', '20/05/2022', '22/05/2022', null,'15%', 1, 1, 0),
+('TANM020', '0002.12', '10/05/2022', '18/05/2022', '20/05/2022', null,'18%', 1, 1, 0),
+('TANM030', '0003.13', '06/05/2022', '17/05/2022', '19/05/2022', null,'16%', 1, 1, 0),
+('TANM040', '0004.14', '15/05/2022', '22/05/2022', '24/05/2022', null,'15%', 1, 1, 0),
+('TANM050', '0005.15', '16/05/2022', '25/05/2022', '27/05/2022', null,'17%', 1, 1, 0)
+
+--SUPPLIER
+
+Insert into SUPPLIER
+VALUES
+('NCC0101', N'Công Ty TNHH MTV Thực Phẩm Tấn Tài', '0989078678', N'904/35-904/35A, Nguyễn Duy, Phường 12, Quận 8,Tp.Hồ Chí Minh', 0),
+('NCC0202', N'Công Ty TNHH Thương Mại Dịch Vụ Thiên Linh Thanh', '0989675456', N'KP.Tân Hạnh, P.Phú Mỹ, TX.Phú Mỹ,Bà Rịa-Vũng Tàu', 0),
+('NCC0303', N'Công Ty TNHH SX TMDV Thực Phẩm Xanh Đồng Nai', '0789675678', N'Số 2778A, QL.1A, Ấp Tam Hiệp, X.Xuân Hiệp, H.Xuân Lộc,Đồng Nai', 0),
+('NCC0404', N'Công Ty CP Zin Food Việt Nam', '0956756789', N'TT10-39, KĐT Mới Văn Phú, P. Phú La, Q.Hà Đông,Hà Nội', 0),
+('NCC0505', N'Công Ty TNHH San Hà', '0978345234', N'Công Ty TNHH San Hà Số 951 Tạ Quang Bửu, P.6, Q.8,Tp.Hồ Chí Minh', 0)
 
 
 
+Insert into NEWS
+VALUES
+('SK01', 'IM01', '12/05/2022', '0001.11', N'Khuyến mãi', N'Khi mua một dĩa rau trộn được tặng súp và kem', '20/05/2022', '22/05/2022'),
+('SK02', 'IM02', '10/05/2022', '0002.12', N'Khuyến mãi', N'Khi mua một dĩa kim chi được tặng dĩa xà lách', '18/05/2022', '20/05/2022'),
+('SK03', 'IM03', '06/05/2022', '0003.13', N'Khuyến mãi', N'Khi mua một ly nước ngọt nhỏ được tặng súp', '17/05/2022', '19/05/2022'),
+('SK04', 'IM04', '15/05/2022', '0004.14', N'Khuyến mãi', N'Khi mua một ly nước ngọt lớn được tặng súp và kem', '22/05/2022', '24/05/2022'),
+('SK05', 'IM05', '16/05/2022', '0005.15', N'Khuyến mãi', N'Khi mua một dĩa rau trộn được tặng súp và kem', '25/05/2022', '27/05/2022')
+
+--IMAGE_NEWS
+Insert into IMAGE_NEWS
+values
+('IM01', null),
+('IM02', null),
+('IM03', null),
+('IM04', null),
+('IM05', null)
 -- CREATE VIEWS HERE
 
 CREATE VIEW RECEIPT_FULL AS

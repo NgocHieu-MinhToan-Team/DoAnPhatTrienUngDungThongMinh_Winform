@@ -309,6 +309,5 @@ namespace PepperLunch
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private DevExpress.XtraBars.BarButtonItem barBtn_SyncManual;
-        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

@@ -13,16 +13,16 @@ namespace BLL_PPL
     public class BLL_Synchronized
     {
         public BLL_Synchronized() { }
+        #region Category
         // pull data from firebase
         public static async Task<List<CATEGORY>> getCategoriesFromFireBase()
         {
-            List<CATEGORY> list = DAL_Category.getFullCategories();
             //check connect to firebase
             var client = ConnectFireBase.CreateFirebaseClient();
             if (client != null)
             {
                 //get data from firebase
-                return await FB_Category.getListCategories(list);
+                return await FB_Category.getEntire();
             }
             else
             {
@@ -30,16 +30,16 @@ namespace BLL_PPL
                 return null;
             }
         }
-
+        // pull and compare 
         public static async Task<List<CATEGORY>> getCategoriesNotSync()
         {
-            List<CATEGORY> list = DAL_Category.getFullCategories();
+            List<CATEGORY> list = DAL_Category.getCategories();
             //check connect to firebase
             var client = ConnectFireBase.CreateFirebaseClient();
             if (client != null)
             {
                 //get data from firebase
-                return await FB_Category.getCategoriesNotSync(list);
+                return await FB_Category.getEntireNotSync(list);
             }
             else
             {
@@ -49,7 +49,7 @@ namespace BLL_PPL
         }
 
         // sync from sql to firebase
-        public static bool synchronizedCategoriesToFireBase()
+        public  static async Task<bool> updateCategoriesToFirebaseAsync()
         {
             List<CATEGORY> list = DAL_Category.getCategories();
             //check connect to firebase
@@ -57,7 +57,7 @@ namespace BLL_PPL
             if (client != null)
             {
                 //sync here
-                bool result = FB_Category.synchronizedCategoriesToFirebase(list);
+                bool result = await FB_Category.updateToFirebaseAsync(list);
                 return result;
             }
             else
@@ -66,5 +66,61 @@ namespace BLL_PPL
                 return false;
             }
         }
+
+        #endregion
+        #region Dish
+        // pull data from firebase
+        public static async Task<List<PRODUCT>> getProductsFromFireBase()
+        {
+            //check connect to firebase
+            var client = ConnectFireBase.CreateFirebaseClient();
+            if (client != null)
+            {
+                //get data from firebase
+                return await FB_Product.getEntire();
+            }
+            else
+            {
+                MessageBox.Show("Interet have a problem ? cannot retrieve data from firebase");
+                return null;
+            }
+        }
+        // pull and compare 
+        public static async Task<List<PRODUCT>> getProductsNotSync()
+        {
+            List<PRODUCT> list = DAL_Product.getProducts();
+            //check connect to firebase
+            var client = ConnectFireBase.CreateFirebaseClient();
+            if (client != null)
+            {
+                //get data from firebase
+                return await FB_Product.getEntireNotSync(list);
+            }
+            else
+            {
+                MessageBox.Show("Interet have a problem ? cannot retrieve data from firebase");
+                return null;
+            }
+        }
+
+        // sync from sql to firebase
+        public static async Task<bool> updateProductsToFirebaseAsync()
+        {
+            List<PRODUCT> list = DAL_Product.getProducts();
+            //check connect to firebase
+            var client = ConnectFireBase.CreateFirebaseClient();
+            if (client != null)
+            {
+                //sync here
+                bool result = await FB_Product.updateToFirebaseAsync(list);
+                return result;
+            }
+            else
+            {
+                MessageBox.Show("Interet have a problem ? cannot retrieve data from firebase");
+                return false;
+            }
+        }
+        #endregion
     }
 }

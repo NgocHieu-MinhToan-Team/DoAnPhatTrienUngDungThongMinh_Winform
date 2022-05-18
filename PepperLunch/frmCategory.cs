@@ -55,7 +55,7 @@ namespace PepperLunch
                 data.GROUP_CATEGORY = cbbGroupCate.Text;
                 data.NAME_CATEGORY = txtNameCate.Text;
                 data.FLAG_DEL = 0;
-                if (BLL_Category.insertCategories(data))
+                if (BLL_Category.insertCategory(data))
                 {
                     LoadData();
                 }
@@ -68,7 +68,7 @@ namespace PepperLunch
             if (index.Length > 0)
             {
                 CATEGORY data = (CATEGORY)gridView_Category.GetRow(index[0]);
-                if (BLL_Category.deleteCategories(data))
+                if (BLL_Category.deleteCategory(data))
                     LoadData();
             }
         }
@@ -81,7 +81,7 @@ namespace PepperLunch
                 CATEGORY data = (CATEGORY)gridView_Category.GetRow(index[0]);
                 data.GROUP_CATEGORY = cbbGroupCate.Text;
                 data.NAME_CATEGORY = txtNameCate.Text;
-                if (BLL_Category.updateCategories(data))
+                if (BLL_Category.updateCategory(data))
                 {
                     LoadData();
                 }

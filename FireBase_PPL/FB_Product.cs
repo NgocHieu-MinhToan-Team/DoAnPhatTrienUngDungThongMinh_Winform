@@ -1,47 +1,49 @@
-﻿using FireSharp.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using DTO_PPL;
+using FireSharp.Interfaces;
 using FireSharp.Response;
+
 
 namespace FireBase_PPL
 {
-    public class FB_Category
+    public class FB_Product
     {
         //get state connect firebase
         static IFirebaseClient client = ConnectFireBase.CreateFirebaseClient();
-        
-        //get one category
-        public static async Task<CATEGORY> getOne(string rootName)
+
+        //get one PRODUCT
+        public static async Task<PRODUCT> getOne(string rootName)
         {
             if (client != null)
             {
                 FirebaseResponse response = await client.GetAsync(rootName);
-                return response.ResultAs<CATEGORY>();
+                return response.ResultAs<PRODUCT>();
             }
             return null;
         }
 
-        // get all node on branch Category
-        private static async Task<Dictionary<string, CATEGORY>> getEntireOnBranch(string rootName)
+        // get all node on branch PRODUCT
+        private static async Task<Dictionary<string, PRODUCT>> getEntireOnBranch(string rootName)
         {
             if (client != null)
             {
                 FirebaseResponse response = await client.GetAsync(rootName);
-                return response.ResultAs<Dictionary<string, CATEGORY>>();
+                return response.ResultAs<Dictionary<string, PRODUCT>>();
             }
             return null;
         }
 
 
-        //get list category
-        public static async Task<List<CATEGORY>> getEntire()
+        //get list PRODUCT
+        public static async Task<List<PRODUCT>> getEntire()
         {
-            List<CATEGORY> listOfFirebase = new List<CATEGORY>();
-            Dictionary<string, CATEGORY> listData = await getEntireOnBranch("Database/Category");
+            List<PRODUCT> listOfFirebase = new List<PRODUCT>();
+            Dictionary<string, PRODUCT> listData = await getEntireOnBranch("Database/Dish");
             try
             {
                 // convert from Dictionary to list 
@@ -49,7 +51,7 @@ namespace FireBase_PPL
                 {
                     foreach (var itemData in listData)
                     {
-                        CATEGORY itemOfFirebase = itemData.Value;
+                        PRODUCT itemOfFirebase = itemData.Value;
                         listOfFirebase.Add(itemOfFirebase);
                     }
                 }
@@ -64,20 +66,25 @@ namespace FireBase_PPL
         }
 
         // get categories that was not synchronized 
-        public static async Task<List<CATEGORY>> getEntireNotSync(List<CATEGORY> listOfSql)
+        public static async Task<List<PRODUCT>> getEntireNotSync(List<PRODUCT> listOfSql)
         {
-            List<CATEGORY> listNotSync  = new List<CATEGORY>();
-            Dictionary<string, CATEGORY> listData = await getEntireOnBranch("Database/Category");
+            List<PRODUCT> listNotSync = new List<PRODUCT>();
+            Dictionary<string, PRODUCT> listData = await getEntireOnBranch("Database/Dish");
             try
             {
-                
-                foreach (CATEGORY itemOfSql in listOfSql)
+
+                foreach (PRODUCT itemOfSql in listOfSql)
                 {
-                    CATEGORY itemOfFirebase = await getOne("Database/Category/" + itemOfSql.ID_CATEGORY.ToString() + "/");
+                    PRODUCT itemOfFirebase = await getOne("Database/Dish/" + itemOfSql.ID_PRODUCT.ToString() + "/");
                     if (itemOfFirebase != null)
                     {
-                        if(itemOfFirebase.GROUP_CATEGORY != itemOfSql.GROUP_CATEGORY 
-                        || itemOfFirebase.NAME_CATEGORY != itemOfSql.NAME_CATEGORY)
+                        if (itemOfFirebase.ID_PRODUCT != itemOfSql.ID_PRODUCT
+                        || itemOfFirebase.ID_CATEGORY != itemOfSql.ID_CATEGORY
+                        || itemOfFirebase.NAME_PRODUCT_EN != itemOfSql.NAME_PRODUCT_EN
+                        || itemOfFirebase.NAME_PRODUCT_VN != itemOfSql.NAME_PRODUCT_VN
+                        || itemOfFirebase.PRICE_PRODUCT != itemOfSql.PRICE_PRODUCT
+                        || itemOfFirebase.IMAGE_PRODUCT != itemOfSql.IMAGE_PRODUCT
+                        )
                         {
                             listNotSync.Add(itemOfSql);
                         }
@@ -97,21 +104,21 @@ namespace FireBase_PPL
 
         }
         // update data on firebase 
-        
+
 
 
         //
-        public static async Task<bool> updateToFirebaseAsync(List<CATEGORY> listOfSql)
+        public static async Task<bool> updateToFirebaseAsync(List<PRODUCT> listOfSql)
         {
 
             try
             {
 
-                await ConnectFireBase.FirebaseDeleteData("Database/Category");
+                await ConnectFireBase.FirebaseDeleteData("Database/Dish");
 
-                foreach (CATEGORY itemOfSql in listOfSql)
+                foreach (PRODUCT itemOfSql in listOfSql)
                 {
-                    await ConnectFireBase.FirebaseInsertData(itemOfSql, "Database/Category/" + itemOfSql.ID_CATEGORY.ToString() + "/"); 
+                    await ConnectFireBase.FirebaseInsertData(itemOfSql, "Database/Dish/" + itemOfSql.ID_PRODUCT.ToString() + "/");
                 }
             }
             catch (Exception ex)
@@ -123,6 +130,5 @@ namespace FireBase_PPL
             return true;
 
         }
-
     }
 }

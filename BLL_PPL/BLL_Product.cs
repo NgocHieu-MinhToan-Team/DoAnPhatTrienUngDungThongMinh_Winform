@@ -15,6 +15,70 @@ namespace BLL_PPL
         {
             return DAL_Product.getProducts();
         }
-       
+        public static bool insertProduct(PRODUCT data)
+        {
+            try
+            {
+                if (DAL_Product.insertProduct(data))
+                {
+                    MessageBox.Show("Insert Data Sucessfully !");
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Insert Data Failed !");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
+        public static bool deleteProduct(PRODUCT data)
+        {
+            try
+            {
+                if (DAL_Product.deleteProduct(data))
+                {
+                    MessageBox.Show("Delete Data Sucessfully !");
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Delete Data Failed !");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
+        public static bool updateProduct(PRODUCT data)
+        {
+            try
+            {
+                if (DAL_Product.updateProduct(data))
+                {
+                    MessageBox.Show("Update Data Sucessfully !");
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Update Data Failed !");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
     }
 }

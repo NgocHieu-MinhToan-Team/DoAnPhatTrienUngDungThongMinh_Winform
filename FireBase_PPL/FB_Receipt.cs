@@ -50,6 +50,7 @@ namespace FireBase_PPL
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return null;
             }
             return listOfFirebase;
