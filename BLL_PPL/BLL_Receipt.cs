@@ -12,27 +12,24 @@ using Aspose.Words;
 using Aspose.Words.Tables;
 using System.Windows;
 
-// lib use for connect to firebase
-
-
 namespace BLL_PPL
 {
     public class BLL_Receipt
     {
-        DAL_Receipt dalReceipt = new DAL_Receipt();
+        
         public BLL_Receipt()
         {
 
         }
-
-        public List<RECEIPT> read_Receipt()
+        //lay data tu sql
+        public static List<RECEIPT> read_Receipt()
         {
-            return dalReceipt.readReceipt();
+            return DAL_Receipt.readReceipt();
         }
 
-        public void export_ReceiptToWord(string id_receipt)
+        public static void export_ReceiptToWord(string id_receipt)
         {
-            List< RECEIPT_FULL> listData= dalReceipt.readReceiptToExport();
+            List< RECEIPT_FULL> listData= DAL_Receipt.readReceiptToExport();
             RECEIPT_FULL data = listData.FirstOrDefault(t => t.ID_RECEIPT == id_receipt);
             var homNay = DateTime.Now;
             //Bước 1: Nạp file mẫu
@@ -68,7 +65,7 @@ namespace BLL_PPL
         }
 
 
-        public void export_ReceiptToExcel()
+        public static void export_ReceiptToExcel()
         {
             
         }
@@ -88,11 +85,13 @@ namespace BLL_PPL
         //    }
         //}
 
-        public async Task<RECEIPT> getReceiptFromFirebase()
+        //lay danh sach hoa don tu firebase
+        public static async Task<List<RECEIPT>> getReceiptFromFirebase()
         {
             try
             {
-                RECEIPT list = await FB_Receipt.getReceipt("Receipt/hd01");
+                List<RECEIPT> listFromSql = DAL_Receipt.readReceipt();
+                List<RECEIPT> list = await FB_Receipt.getListReceipts("Database/Receipt/", listFromSql);
                 if (list == null) { return null; }
                 else
                     return list;
@@ -101,6 +100,21 @@ namespace BLL_PPL
             {
                 MessageBox.Show(ex.Message);
                 return null;
+            }
+        }
+
+        public static bool insertReceiptsToFirebase()
+        {
+            try
+            {
+                List<RECEIPT> listFromSql = DAL_Receipt.readReceipt();
+                //ConnectFireBase.FirebaseInsertData(listFromSql, "Database/Receipt/");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
             }
         }
 

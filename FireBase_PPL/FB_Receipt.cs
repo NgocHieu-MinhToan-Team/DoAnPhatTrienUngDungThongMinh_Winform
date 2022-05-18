@@ -3,34 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using DTO_PPL;
-// lib firebase 
+using FireSharp;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
+// lib firebase 
 
 namespace FireBase_PPL
 {
     public class FB_Receipt
     {
-        // get client firebase
-        //static IFirebaseClient client = ConnectFireBase.CreateFirebaseClient();
-        public static IFirebaseClient CreateFirebaseClient()
-        {
-
-            IFirebaseConfig config = new FirebaseConfig
-            {
-                AuthSecret = "zYmLpaTpZnly0nflP3EpvVK0y53vxFXpiKR3UsG8",
-                BasePath = "https://dbpepperlunch-default-rtdb.asia-southeast1.firebasedatabase.app/"
-            };
-            IFirebaseClient client;
-            client = new FireSharp.FirebaseClient(config);
-            return client;
-        }
+        //get Client from  firebase
+        static IFirebaseClient client = ConnectFireBase.CreateFirebaseClient();
+        
         public static async Task<RECEIPT> getReceipt(string rootName)
         {
-            IFirebaseClient client = CreateFirebaseClient();
-             
             if (client != null)
             {
                 FirebaseResponse response = await client.GetAsync(rootName);
@@ -39,54 +28,34 @@ namespace FireBase_PPL
             return null;
         }
 
-        // get list thong tin khoa
-        //public static async Task<List<RECEIPT>> getListReceipt(string rootName)
-        //{
-        //    IFirebaseClient client = CreateFirebaseClient();
-        //    List<RECEIPT> list = new List<RECEIPT>();
-        //    bool reader = true;
-        //    while (reader)
-        //    {
-        //        try
-        //        {   
-        //            RECEIPT item = await getReceipt(client,rootName);
-        //            if (item == null)
-        //            {
-        //                reader = false;
-        //                break;
-        //            }
-        //            list.Add(item);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            reader = false;
-        //        }
-        //    }
-        //    return list;
 
-        //}
-        //public static async void FirebaseInsertData(IFirebaseClient client, object data, string rootName)
-        //{
-        //    if (client != null)
-        //    {
-        //        await client.SetAsync(rootName, data);
-        //    }
-        //}
-        //public static async void FirebaseDeleteData(IFirebaseClient client, string rootName)
-        //{
-        //    if (client != null)
-        //    {
-        //        await client.DeleteAsync(rootName);
-        //    }
-        //}
-        //public static async void FirebaseUpdateData(IFirebaseClient client, object
-        //data, string rootName)
-        //{
-        //    if (client != null)
-        //    {
-        //        await client.UpdateAsync(rootName, data);
-        //    }
-        //}
+        //get list Receipts
+        public static async Task<List<RECEIPT>> getListReceipts(string rootName,List<RECEIPT> listOfSql)
+        {
+            List<RECEIPT> listOfFirebase = new List<RECEIPT>();
+            try
+            {
+                foreach (RECEIPT itemOfSql in listOfSql)
+                {
+                    RECEIPT itemOfFirebase = await getReceipt(rootName + "/" + itemOfSql.ID_RECEIPT.ToString()+"/");
+                    if (itemOfFirebase != null)
+                    {
+                        listOfFirebase.Add(itemOfFirebase);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            return listOfFirebase;
+
+        }
+        
 
     }
 }
