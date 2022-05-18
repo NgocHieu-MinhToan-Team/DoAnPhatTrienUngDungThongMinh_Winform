@@ -193,3 +193,18 @@ E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMin
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\bin\Debug\System.Net.Http.Primitives.xml
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\obj\Debug\Modify_Control.csproj.App.config
 >>>>>>> af325aefcc649c22b845633ab2ba0d7316ebecfb
+Z:\Documents\Win10\DoAnWinform\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\bin\Debug\Accord.dll.config
+Z:\Documents\Win10\DoAnWinform\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\bin\Debug\Modify_Control.dll.config
+Z:\Documents\Win10\DoAnWinform\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\bin\Debug\Accord.dll
+Z:\Documents\Win10\DoAnWinform\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\bin\Debug\Microsoft.Threading.Tasks.dll
+Z:\Documents\Win10\DoAnWinform\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+Z:\Documents\Win10\DoAnWinform\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\bin\Debug\Microsoft.Threading.Tasks.Extensions.dll
+Z:\Documents\Win10\DoAnWinform\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\bin\Debug\System.Net.Http.Extensions.dll
+Z:\Documents\Win10\DoAnWinform\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\bin\Debug\System.Net.Http.Primitives.dll
+Z:\Documents\Win10\DoAnWinform\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\bin\Debug\Accord.xml
+Z:\Documents\Win10\DoAnWinform\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\bin\Debug\Microsoft.Threading.Tasks.xml
+Z:\Documents\Win10\DoAnWinform\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\bin\Debug\Microsoft.Threading.Tasks.Extensions.xml
+Z:\Documents\Win10\DoAnWinform\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.xml
+Z:\Documents\Win10\DoAnWinform\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\bin\Debug\System.Net.Http.Extensions.xml
+Z:\Documents\Win10\DoAnWinform\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\bin\Debug\System.Net.Http.Primitives.xml
+Z:\Documents\Win10\DoAnWinform\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\obj\Debug\Modify_Control.csproj.App.config
