@@ -45,7 +45,7 @@ namespace PepperLunch
             changeObject(typeCATEGORY);
             hanldeOnCategory();
         }
-
+        
         private void accordionCtrlE_Dish_Click(object sender, EventArgs e)
         {
             changeObject(typeDISH);
