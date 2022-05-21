@@ -22,9 +22,9 @@ namespace BLL_PPL
 
         }
         //lay data tu sql
-        public static List<RECEIPT> read_Receipt()
+        public static List<RECEIPT_FULL> read_Receipt()
         {
-            return DAL_Receipt.readReceipt();
+            return DAL_Receipt.getReceipts();
         }
 
         public static void export_ReceiptToWord(string id_receipt)
@@ -65,51 +65,23 @@ namespace BLL_PPL
         }
 
 
-        public static void export_ReceiptToExcel()
-        {
-            
-        }
+        public static void export_ReceiptToExcel(){}
 
-        //public async Task<List<RECEIPT>> getReceiptFromFirebase()
-        //{
-        //    try
-        //    {
-        //        List<RECEIPT> list = await FB_Receipt.getListReceipt("Database/Receipt/HD01/");
-        //        if (list == null) { return null; }
-        //        else
-        //            return list;
-        //    }
-        //    catch
-        //    {
-        //        return null;
-        //    }
-        //}
 
-        //lay danh sach hoa don tu firebase
-        public static async Task<List<RECEIPT>> getReceiptFromFirebase()
+        public static bool deleteReceipt(RECEIPT_FULL data)
         {
             try
             {
-                List<RECEIPT> listFromSql = DAL_Receipt.readReceipt();
-                List<RECEIPT> list = await FB_Receipt.getListReceipts("Database/Receipt/", listFromSql);
-                if (list == null) { return null; }
+                if (DAL_Receipt.deleteReceipt(data))
+                {
+                    MessageBox.Show("Delete Data Sucessfully !");
+                    return true;
+                }
                 else
-                    return list;
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return null;
-            }
-        }
-
-        public static bool insertReceiptsToFirebase()
-        {
-            try
-            {
-                List<RECEIPT> listFromSql = DAL_Receipt.readReceipt();
-                //ConnectFireBase.FirebaseInsertData(listFromSql, "Database/Receipt/");
-                return true;
+                {
+                    MessageBox.Show("Delete Data Failed !");
+                    return false;
+                }
             }
             catch (Exception ex)
             {
@@ -117,6 +89,7 @@ namespace BLL_PPL
                 return false;
             }
         }
+
 
     }
 }

@@ -152,5 +152,25 @@ namespace BLL_PPL
                 return false;
             }
         }
+
+        public static bool checkLogin(string username,string password)
+        {
+            try
+            {
+                if (GeneralMethods.isLetterOrDigit(username, false) && GeneralMethods.isLetterOrDigit(password,false))
+                {
+                    List<STAFF> list = BLL_Staff.getStaffs();
+                    STAFF account = list.SingleOrDefault(t => t.USERNAME_STAFF == username && t.PASSWORD_STAFF == password);
+                    if (account != null)
+                        return true;
+                }
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
     }
 }

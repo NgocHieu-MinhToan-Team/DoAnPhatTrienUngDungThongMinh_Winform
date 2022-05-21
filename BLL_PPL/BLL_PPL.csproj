@@ -110,6 +110,7 @@
   <ItemGroup>
     <Compile Include="API_ExportWord.cs" />
     <Compile Include="BLL_Category.cs" />
+    <Compile Include="BLL_Customer.cs" />
     <Compile Include="BLL_Product.cs" />
     <Compile Include="BLL_Receipt.cs" />
     <Compile Include="BLL_Staff.cs" />

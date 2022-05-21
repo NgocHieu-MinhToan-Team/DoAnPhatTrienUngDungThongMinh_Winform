@@ -53,7 +53,7 @@ namespace BLL_PPL
         {
             List<CATEGORY> list = DAL_Category.getCategories();
             //check connect to firebase
-            var client = ConnectFireBase.CreateFirebaseClient();
+            var client =  ConnectFireBase.CreateFirebaseClient();
             if (client != null)
             {
                 //sync here
@@ -121,6 +121,152 @@ namespace BLL_PPL
                 return false;
             }
         }
+        #endregion
+        #region Receipt
+        // pull data from firebase
+        public static async Task<List<RECEIPT_FULL>> getReceiptsFromFireBase()
+        {
+            //check connect to firebase
+            var client = ConnectFireBase.CreateFirebaseClient();
+            if (client != null)
+            {
+                //get data from firebase
+                return await FB_Receipt.getEntire();
+            }
+            else
+            {
+                MessageBox.Show("Interet have a problem ? cannot retrieve data from firebase");
+                return null;
+            }
+        }
+        // pull and compare 
+        public static async Task<List<RECEIPT_FULL>> getReceiptsNotSync()
+        {
+            List<RECEIPT_FULL> list =DAL_Receipt.getReceipts();
+            //check connect to firebase
+            var client = ConnectFireBase.CreateFirebaseClient();
+            if (client != null)
+            {
+                //get data from firebase
+                return await FB_Receipt.getEntireNotSync(list);
+            }
+            else
+            {
+                MessageBox.Show("Interet have a problem ? cannot retrieve data from firebase");
+                return null;
+            }
+        }
+
+        // sync from sql to firebase
+        public static async Task<bool> updateReceiptsFromFirebaseAsync()
+        {
+            List<RECEIPT_FULL> list = DAL_Receipt.getReceipts();
+            //check connect to firebase
+            var client = ConnectFireBase.CreateFirebaseClient();
+            if (client != null)
+            {
+                //sync here
+                bool result = await FB_Receipt.updateFromFirebaseAsync(list);
+                return result;
+            }
+            else
+            {
+                MessageBox.Show("Interet have a problem ? cannot retrieve data from firebase");
+                return false;
+            }
+        }
+
+        public static async Task<bool> updateReceiptsToFirebaseAsync()
+        {
+            List<RECEIPT_FULL> list = DAL_Receipt.getReceipts();
+            //check connect to firebase
+            var client = ConnectFireBase.CreateFirebaseClient();
+            if (client != null)
+            {
+                //sync here
+                bool result = await FB_Receipt.updateToFirebaseAsync(list);
+                return result;
+            }
+            else
+            {
+                MessageBox.Show("Interet have a problem ? cannot retrieve data from firebase");
+                return false;
+            }
+        }
+
+        #endregion
+        #region Customer
+        // pull data from firebase
+        public static async Task<List<CUSTOMER>> getCustomersFromFireBase()
+        {
+            //check connect to firebase
+            var client = ConnectFireBase.CreateFirebaseClient();
+            if (client != null)
+            {
+                //get data from firebase
+                return await FB_Customer.getEntire();
+            }
+            else
+            {
+                MessageBox.Show("Interet have a problem ? cannot retrieve data from firebase");
+                return null;
+            }
+        }
+        // pull and compare 
+        public static async Task<List<CUSTOMER>> getCustomersNotSync()
+        {
+            List<CUSTOMER> list = DAL_Customer.getCustomers();
+            //check connect to firebase
+            var client = ConnectFireBase.CreateFirebaseClient();
+            if (client != null)
+            {
+                //get data from firebase
+                return await FB_Customer.getEntireNotSync(list);
+            }
+            else
+            {
+                MessageBox.Show("Interet have a problem ? cannot retrieve data from firebase");
+                return null;
+            }
+        }
+
+        // sync from sql to firebase
+        public static async Task<bool> updateCustomersFromFirebaseAsync()
+        {
+            List<CUSTOMER> list = DAL_Customer.getCustomers();
+            //check connect to firebase
+            var client = ConnectFireBase.CreateFirebaseClient();
+            if (client != null)
+            {
+                //sync here
+                bool result = await FB_Customer.updateFromFirebaseAsync(list);
+                return result;
+            }
+            else
+            {
+                MessageBox.Show("Interet have a problem ? cannot retrieve data from firebase");
+                return false;
+            }
+        }
+
+        public static async Task<bool> updateCustomersToFirebaseAsync()
+        {
+            List<CUSTOMER> list = DAL_Customer.getCustomers();
+            //check connect to firebase
+            var client = ConnectFireBase.CreateFirebaseClient();
+            if (client != null)
+            {
+                //sync here
+                bool result = await FB_Customer.updateToFirebaseAsync(list);
+                return result;
+            }
+            else
+            {
+                MessageBox.Show("Interet have a problem ? cannot retrieve data from firebase");
+                return false;
+            }
+        }
+
         #endregion
     }
 }

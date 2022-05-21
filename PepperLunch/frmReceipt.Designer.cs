@@ -37,8 +37,8 @@ namespace PepperLunch
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionCtrlE_exportExcel = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionCtrlE_exportWord = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionCtrlE_removeReceipt = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
-            this.accordionCtrlE_getDataFromFB = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_receipt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -52,7 +52,7 @@ namespace PepperLunch
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fluentDesignFormContainer1.Location = new System.Drawing.Point(254, 39);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(709, 513);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(963, 617);
             this.fluentDesignFormContainer1.TabIndex = 0;
             // 
             // gridControl_receipt
@@ -62,7 +62,7 @@ namespace PepperLunch
             this.gridControl_receipt.Location = new System.Drawing.Point(0, 0);
             this.gridControl_receipt.MainView = this.gridView1;
             this.gridControl_receipt.Name = "gridControl_receipt";
-            this.gridControl_receipt.Size = new System.Drawing.Size(709, 513);
+            this.gridControl_receipt.Size = new System.Drawing.Size(963, 617);
             this.gridControl_receipt.TabIndex = 0;
             this.gridControl_receipt.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -75,16 +75,18 @@ namespace PepperLunch
             // 
             // accordionControl1
             // 
+            this.accordionControl1.Appearance.AccordionControl.BackColor = System.Drawing.Color.White;
+            this.accordionControl1.Appearance.AccordionControl.Options.UseBackColor = true;
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement1,
             this.accordionCtrlE_exportExcel,
             this.accordionCtrlE_exportWord,
-            this.accordionCtrlE_getDataFromFB});
+            this.accordionCtrlE_removeReceipt});
             this.accordionControl1.Location = new System.Drawing.Point(0, 39);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl1.Size = new System.Drawing.Size(254, 513);
+            this.accordionControl1.Size = new System.Drawing.Size(254, 617);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -95,7 +97,9 @@ namespace PepperLunch
             this.accordionControlElement1.Appearance.Hovered.Options.UseBackColor = true;
             this.accordionControlElement1.Appearance.Hovered.Options.UseFont = true;
             this.accordionControlElement1.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.accordionControlElement1.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
             this.accordionControlElement1.Appearance.Normal.Options.UseFont = true;
+            this.accordionControlElement1.Appearance.Normal.Options.UseForeColor = true;
             this.accordionControlElement1.Appearance.Pressed.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.accordionControlElement1.Appearance.Pressed.Options.UseFont = true;
             this.accordionControlElement1.HeaderTemplate.AddRange(new DevExpress.XtraBars.Navigation.HeaderElementInfo[] {
@@ -111,6 +115,9 @@ namespace PepperLunch
             // 
             // accordionCtrlE_exportExcel
             // 
+            this.accordionCtrlE_exportExcel.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            this.accordionCtrlE_exportExcel.Appearance.Normal.Options.UseForeColor = true;
+            this.accordionCtrlE_exportExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionCtrlE_exportExcel.ImageOptions.Image")));
             this.accordionCtrlE_exportExcel.Name = "accordionCtrlE_exportExcel";
             this.accordionCtrlE_exportExcel.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionCtrlE_exportExcel.Text = "Export Receipt (Excel)";
@@ -118,37 +125,38 @@ namespace PepperLunch
             // 
             // accordionCtrlE_exportWord
             // 
+            this.accordionCtrlE_exportWord.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            this.accordionCtrlE_exportWord.Appearance.Normal.Options.UseForeColor = true;
+            this.accordionCtrlE_exportWord.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionCtrlE_exportWord.ImageOptions.Image")));
             this.accordionCtrlE_exportWord.Name = "accordionCtrlE_exportWord";
             this.accordionCtrlE_exportWord.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionCtrlE_exportWord.Text = "Export Receipt (Word)";
             this.accordionCtrlE_exportWord.Click += new System.EventHandler(this.accordionCtrlE_exportWord_Click);
+            // 
+            // accordionCtrlE_removeReceipt
+            // 
+            this.accordionCtrlE_removeReceipt.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            this.accordionCtrlE_removeReceipt.Appearance.Normal.Options.UseForeColor = true;
+            this.accordionCtrlE_removeReceipt.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionCtrlE_addReceipt.ImageOptions.Image")));
+            this.accordionCtrlE_removeReceipt.Name = "accordionCtrlE_removeReceipt";
+            this.accordionCtrlE_removeReceipt.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionCtrlE_removeReceipt.Text = "Delete Forever";
+            this.accordionCtrlE_removeReceipt.Click += new System.EventHandler(this.accordionCtrlE_removeReceipt_Click);
             // 
             // fluentDesignFormControl1
             // 
             this.fluentDesignFormControl1.FluentDesignForm = this;
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(963, 39);
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1217, 39);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
-            // 
-            // accordionCtrlE_getDataFromFB
-            // 
-            this.accordionCtrlE_getDataFromFB.HeaderTemplate.AddRange(new DevExpress.XtraBars.Navigation.HeaderElementInfo[] {
-            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Text),
-            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Image),
-            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.HeaderControl),
-            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.ContextButtons)});
-            this.accordionCtrlE_getDataFromFB.Name = "accordionCtrlE_getDataFromFB";
-            this.accordionCtrlE_getDataFromFB.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionCtrlE_getDataFromFB.Text = "Get From FB";
-            this.accordionCtrlE_getDataFromFB.Click += new System.EventHandler(this.AccordionCtrlE_getDataFromFB_Click);
             // 
             // frmReceipt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(963, 552);
+            this.ClientSize = new System.Drawing.Size(1217, 656);
             this.ControlContainer = this.fluentDesignFormContainer1;
             this.Controls.Add(this.fluentDesignFormContainer1);
             this.Controls.Add(this.accordionControl1);
@@ -177,6 +185,6 @@ namespace PepperLunch
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrlE_exportExcel;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrlE_exportWord;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrlE_getDataFromFB;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrlE_removeReceipt;
     }
 }

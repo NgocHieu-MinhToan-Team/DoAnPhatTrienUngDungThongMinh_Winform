@@ -19,7 +19,7 @@ namespace FireBase_PPL
             IFirebaseConfig config = new FirebaseConfig
             {
                 AuthSecret = "zYmLpaTpZnly0nflP3EpvVK0y53vxFXpiKR3UsG8",
-                BasePath = "https://dbpepperlunch-default-rtdb.asia-southeast1.firebasedatabase.app"
+                BasePath = "https://dbpepperlunch-default-rtdb.asia-southeast1.firebasedatabase.app/"
             };
             IFirebaseClient client;
             client = new FireSharp.FirebaseClient(config);

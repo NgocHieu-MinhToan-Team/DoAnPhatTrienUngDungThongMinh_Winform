@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConnectFireBase.cs" />
+    <Compile Include="FB_Customer.cs" />
     <Compile Include="FB_Product.cs" />
     <Compile Include="FB_Receipt.cs" />
     <Compile Include="FB_Category.cs" />
@@ -89,6 +90,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DAL_PPL\DAL_PPL.csproj">
+      <Project>{65d6863d-10cc-4f6c-8a8a-3d9641c0fae2}</Project>
+      <Name>DAL_PPL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DTO_PPL\DTO_PPL.csproj">
       <Project>{29a6dab9-7e26-4997-b0da-ba669193aaa9}</Project>
       <Name>DTO_PPL</Name>

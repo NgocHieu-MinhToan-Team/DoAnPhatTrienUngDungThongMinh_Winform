@@ -104,6 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL_Category.cs" />
+    <Compile Include="DAL_Customer.cs" />
     <Compile Include="DAL_Product.cs" />
     <Compile Include="DAL_Receipt.cs" />
     <Compile Include="DAL_Staff.cs" />

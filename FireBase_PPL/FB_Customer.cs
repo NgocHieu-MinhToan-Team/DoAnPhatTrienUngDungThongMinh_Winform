@@ -3,50 +3,49 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+
 using DTO_PPL;
 using DAL_PPL;
 using FireSharp;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
-// lib firebase 
 
 namespace FireBase_PPL
 {
-    public class FB_Receipt
+    public class FB_Customer
     {
         //get Client from  firebase
         static IFirebaseClient client = ConnectFireBase.CreateFirebaseClient();
         
-        public static async Task<RECEIPT_FULL> getOne(string rootName)
+        public static async Task<CUSTOMER> getOne(string rootName)
         {
             if (client != null)
             {
                 FirebaseResponse response = await client.GetAsync(rootName);
-                return response.ResultAs<RECEIPT_FULL>();
+                return response.ResultAs<CUSTOMER>();
             }
             return null;
         }
 
 
         // get all node on branch Category
-        private static async Task<Dictionary<string, RECEIPT_FULL>> getEntireOnBranch(string rootName)
+        private static async Task<Dictionary<string, CUSTOMER>> getEntireOnBranch(string rootName)
         {
             if (client != null)
             {
                 FirebaseResponse response = await client.GetAsync(rootName);
-                return response.ResultAs<Dictionary<string, RECEIPT_FULL>>();
+                return response.ResultAs<Dictionary<string, CUSTOMER>>();
             }
             return null;
         }
 
 
         //get list receipt
-        public static async Task<List<RECEIPT_FULL>> getEntire()
+        public static async Task<List<CUSTOMER>> getEntire()
         {
-            List<RECEIPT_FULL> listOfFirebase = new List<RECEIPT_FULL>();
-            Dictionary<string, RECEIPT_FULL> listData = await getEntireOnBranch("Database/Receipt");
+            List<CUSTOMER> listOfFirebase = new List<CUSTOMER>();
+            Dictionary<string, CUSTOMER> listData = await getEntireOnBranch("Database/Customer");
             try
             {
                 // convert from Dictionary to list 
@@ -54,7 +53,7 @@ namespace FireBase_PPL
                 {
                     foreach (var itemData in listData)
                     {
-                        RECEIPT_FULL itemOfFirebase = itemData.Value;
+                        CUSTOMER itemOfFirebase = itemData.Value;
                         listOfFirebase.Add(itemOfFirebase);
                     }
                 }
@@ -70,16 +69,15 @@ namespace FireBase_PPL
 
 
         // get receipt that was not synchronized 
-        public static async Task<List<RECEIPT_FULL>> getEntireNotSync(List<RECEIPT_FULL> listOfSql)
+        public static async Task<List<CUSTOMER>> getEntireNotSync(List<CUSTOMER> listOfSql)
         {
-            List<RECEIPT_FULL> listNotSync = new List<RECEIPT_FULL>();
-            Dictionary<string, RECEIPT_FULL> listData = await getEntireOnBranch("Database/Receipt");
+            List<CUSTOMER> listNotSync = new List<CUSTOMER>();
             try
             {
 
-                foreach (RECEIPT_FULL itemOfSql in listOfSql)
+                foreach (CUSTOMER itemOfSql in listOfSql)
                 {
-                    RECEIPT_FULL itemOfFirebase = await getOne("Database/Receipt/" + itemOfSql.ID_RECEIPT.ToString() + "/");
+                    CUSTOMER itemOfFirebase = await getOne("Database/Customer/" + itemOfSql.ID_CUSTOMER.ToString() + "/");
                     if (itemOfFirebase != null)
                     {
                         //if (itemOfFirebase.GROUP_CATEGORY != itemOfSql.GROUP_CATEGORY
@@ -106,26 +104,26 @@ namespace FireBase_PPL
 
 
 
-        //
-        public static async Task<bool> updateFromFirebaseAsync(List<RECEIPT_FULL> listOfSql)
+
+        public static async Task<bool> updateFromFirebaseAsync(List<CUSTOMER> listOfSql)
         {
 
             try
             {
                 //get all firebase
-                Dictionary<string, RECEIPT_FULL> listOfFirebase = await getEntireOnBranch("Database/Receipt");
+                Dictionary<string, CUSTOMER> listOfFirebase = await getEntireOnBranch("Database/Customer");
                 foreach (var itemOfFirebase in listOfFirebase)
                 {
-                    RECEIPT_FULL itemOfSql = listOfSql.SingleOrDefault(t => t.ID_RECEIPT == itemOfFirebase.Value.ID_RECEIPT);
-                    if(itemOfSql!=null && itemOfSql.STATE_RECEIPT != itemOfFirebase.Value.STATE_RECEIPT)
+                    CUSTOMER itemOfSql = listOfSql.SingleOrDefault(t => t.ID_CUSTOMER == itemOfFirebase.Value.ID_CUSTOMER);
+                    if (itemOfSql != null && itemOfSql.TYPE_CUSTOMER != itemOfFirebase.Value.TYPE_CUSTOMER)
                     {
                         //update if exist and state not like
-                        DAL_Receipt.updateReceipt(itemOfFirebase.Value);
+                        DAL_Customer.updateCustomer(itemOfFirebase.Value);
                     }
                     else
                     {
                         // insert 
-                        DAL_Receipt.insertReceipt(itemOfFirebase.Value);
+                        DAL_Customer.updateCustomer(itemOfFirebase.Value);
                     }
                 }
             }
@@ -139,17 +137,17 @@ namespace FireBase_PPL
 
         }
 
-        public static async Task<bool> updateToFirebaseAsync(List<RECEIPT_FULL> listOfSql)
+        public static async Task<bool> updateToFirebaseAsync(List<CUSTOMER> listOfSql)
         {
 
             try
             {
 
-                await ConnectFireBase.FirebaseDeleteData("Database/Receipt");
+                await ConnectFireBase.FirebaseDeleteData("Database/Customer");
 
-                foreach (RECEIPT_FULL itemOfSql in listOfSql)
+                foreach (CUSTOMER itemOfSql in listOfSql)
                 {
-                    await ConnectFireBase.FirebaseInsertData(itemOfSql, "Database/Receipt/" + itemOfSql.ID_RECEIPT.ToString() + "/");
+                    await ConnectFireBase.FirebaseInsertData(itemOfSql, "Database/Customer/" + itemOfSql.ID_CUSTOMER.ToString() + "/");
                 }
             }
             catch (Exception ex)
@@ -159,8 +157,7 @@ namespace FireBase_PPL
             }
 
             return true;
+
         }
-
-
     }
 }

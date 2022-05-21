@@ -444,3 +444,4 @@ E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMin
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\PepperLunch\bin\Debug\ru\DevExpress.XtraGauges.v19.2.Presets.resources.dll
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\PepperLunch\obj\Debug\PepperLunch.frmHandleFirebase.resources
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\PepperLunch\obj\Debug\PepperLunch.waitFrmLoading.resources
+E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\PepperLunch\obj\Debug\PepperLunch.frmCustomer.resources

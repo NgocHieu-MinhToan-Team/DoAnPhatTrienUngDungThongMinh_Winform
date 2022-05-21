@@ -135,6 +135,7 @@ namespace PepperLunch
             this.barBtn_customer.ItemAppearance.Hovered.BackColor = System.Drawing.Color.White;
             this.barBtn_customer.ItemAppearance.Hovered.Options.UseBackColor = true;
             this.barBtn_customer.Name = "barBtn_customer";
+            this.barBtn_customer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_customer_ItemClick);
             // 
             // barBtn_orders
             // 
@@ -144,6 +145,7 @@ namespace PepperLunch
             this.barBtn_orders.ItemAppearance.Hovered.BackColor = System.Drawing.Color.White;
             this.barBtn_orders.ItemAppearance.Hovered.Options.UseBackColor = true;
             this.barBtn_orders.Name = "barBtn_orders";
+            this.barBtn_orders.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_orders_ItemClick);
             // 
             // barBtn_signOut
             // 

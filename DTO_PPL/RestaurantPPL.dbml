@@ -1,5 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ManageRestaurant" Class="RestaurantPPLDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=MINHTOAN\SQLEXPRESS;Initial Catalog=ManageRestaurant;User ID=sa" SettingsObjectName="DTO_PPL.Properties.Settings" SettingsPropertyName="ManageRestaurantConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=MINHTOAN\SQLEXPRESS;Initial Catalog=ManageRestaurant;Persist Security Info=True;User ID=sa" SettingsObjectName="DTO_PPL.Properties.Settings" SettingsPropertyName="ManageRestaurantConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.VOUCHER" Member="VOUCHERs">
+    <Type Name="VOUCHER">
+      <Column Name="ID_VOUCHER" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="USERNAME_STAFF" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_PROMOTION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DATE_CREATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DATE_START" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DATE_END" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TYPE_REDUCTION" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TYPE_CUSTOMER" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PERCENT_REDUCTION" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AMOUNT_REDUCTION" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QUANTITY_VOUCHER" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FLAG_DEL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="VOUCHER_RECEIPT1" Member="RECEIPTs" ThisKey="ID_VOUCHER" OtherKey="ID_VOUCHER" Type="RECEIPT" />
+      <Association Name="CUSTOMER_TYPE_VOUCHER" Member="CUSTOMER_TYPE" ThisKey="TYPE_CUSTOMER" OtherKey="TYPE_CUSTOMER" Type="CUSTOMER_TYPE" IsForeignKey="true" />
+      <Association Name="PROMOTION_VOUCHER" Member="PROMOTION" ThisKey="ID_PROMOTION" OtherKey="ID_PROMOTION" Type="PROMOTION" IsForeignKey="true" />
+      <Association Name="STAFF_VOUCHER" Member="STAFF" ThisKey="USERNAME_STAFF" OtherKey="USERNAME_STAFF" Type="STAFF" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.CATEGORY" Member="CATEGORies">
     <Type Name="CATEGORY">
       <Column Name="ID_CATEGORY" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -7,22 +27,6 @@
       <Column Name="NAME_CATEGORY" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="FLAG_DEL" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="CATEGORY_PRODUCT" Member="PRODUCTs" ThisKey="ID_CATEGORY" OtherKey="ID_CATEGORY" Type="PRODUCT" />
-    </Type>
-  </Table>
-  <Table Name="dbo.VOUCHER" Member="VOUCHERs">
-    <Type Name="VOUCHER">
-      <Column Name="ID_VOUCHER" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="USERNAME_STAFF" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="DATE_CREATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="DATE_START" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="DATE_END" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="TYPE_REDUCTION" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="PERCENT_REDUCTION" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="AMOUNT_REDUCTION" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="QUANTITY_VOUCHER" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="FLAG_DEL" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="VOUCHER_RECEIPT" Member="RECEIPTs" ThisKey="ID_VOUCHER" OtherKey="ID_VOUCHER" Type="RECEIPT" />
-      <Association Name="STAFF_VOUCHER" Member="STAFF" ThisKey="USERNAME_STAFF" OtherKey="USERNAME_STAFF" Type="STAFF" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.CUSTOMER" Member="CUSTOMERs">
@@ -40,29 +44,43 @@
       <Column Name="DATE_OF_BIRTH" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="POINT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TYPE_CUSTOMER" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="CUSTOMER_RECEIPT" Member="RECEIPTs" ThisKey="ID_CUSTOMER" OtherKey="ID_CUSTOMER" Type="RECEIPT" />
+      <Association Name="CUSTOMER_RECEIPT1" Member="RECEIPTs" ThisKey="ID_CUSTOMER" OtherKey="ID_CUSTOMER" Type="RECEIPT" />
+      <Association Name="CUSTOMER_TYPE_CUSTOMER" Member="CUSTOMER_TYPE" ThisKey="TYPE_CUSTOMER" OtherKey="TYPE_CUSTOMER" Type="CUSTOMER_TYPE" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CUSTOMER_TYPE" Member="CUSTOMER_TYPEs">
+    <Type Name="CUSTOMER_TYPE">
+      <Column Name="TYPE_CUSTOMER" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NAME_TYPE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LEVEL_TYPE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="POINT_MIN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="POINT_MAX" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="POINT_RATE" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="CUSTOMER_TYPE_VOUCHER" Member="VOUCHERs" ThisKey="TYPE_CUSTOMER" OtherKey="TYPE_CUSTOMER" Type="VOUCHER" />
+      <Association Name="CUSTOMER_TYPE_CUSTOMER" Member="CUSTOMERs" ThisKey="TYPE_CUSTOMER" OtherKey="TYPE_CUSTOMER" Type="CUSTOMER" />
     </Type>
   </Table>
   <Table Name="dbo.DETAIL_IMPORT" Member="DETAIL_IMPORTs">
     <Type Name="DETAIL_IMPORT">
       <Column Name="ID_DETAIL_IOG" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="ID_IOG" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="ID_MATERIAL" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_INGREDIENT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="ID_SUPPLIER" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="PRICE" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="QUANTITY" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="IMPORT_DETAIL_IMPORT" Member="IMPORT" ThisKey="ID_IOG" OtherKey="ID_IOG" Type="IMPORT" IsForeignKey="true" />
-      <Association Name="MATERIAL_DETAIL_IMPORT" Member="MATERIAL" ThisKey="ID_MATERIAL" OtherKey="ID_MATERIAL" Type="MATERIAL" IsForeignKey="true" />
+      <Association Name="INGREDIENT_DETAIL_IMPORT" Member="INGREDIENT" ThisKey="ID_INGREDIENT" OtherKey="ID_INGREDIENT" Type="INGREDIENT" IsForeignKey="true" />
+      <Association Name="SUPPLIER_DETAIL_IMPORT" Member="SUPPLIER" ThisKey="ID_SUPPLIER" OtherKey="ID_SUPPLIER" Type="SUPPLIER" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.DETAIL_PRODUCT" Member="DETAIL_PRODUCTs">
     <Type Name="DETAIL_PRODUCT">
       <Column Name="ID_DETAIL" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="ID_PRODUCT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="ID_MATERIAL" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_INGREDIENT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="WEIGHT_DETAIL" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="FLAG_DEL" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="DETAIL_PRODUCT_MATERIAL" Member="MATERIALs" ThisKey="ID_DETAIL" OtherKey="ID_DETAIL" Type="MATERIAL" />
+      <Association Name="INGREDIENT_DETAIL_PRODUCT" Member="INGREDIENT" ThisKey="ID_INGREDIENT" OtherKey="ID_INGREDIENT" Type="INGREDIENT" IsForeignKey="true" />
       <Association Name="PRODUCT_DETAIL_PRODUCT" Member="PRODUCT" ThisKey="ID_PRODUCT" OtherKey="ID_PRODUCT" Type="PRODUCT" IsForeignKey="true" />
     </Type>
   </Table>
@@ -74,7 +92,7 @@
       <Column Name="QUANTITY" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="PRICE" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="PRODUCT_DETAIL_RECEIPT" Member="PRODUCT" ThisKey="ID_PRODUCT" OtherKey="ID_PRODUCT" Type="PRODUCT" IsForeignKey="true" />
-      <Association Name="RECEIPT_DETAIL_RECEIPT" Member="RECEIPT" ThisKey="ID_RECEIPT" OtherKey="ID_RECEIPT" Type="RECEIPT" IsForeignKey="true" />
+      <Association Name="RECEIPT1_DETAIL_RECEIPT" Member="RECEIPT" ThisKey="ID_RECEIPT" OtherKey="ID_RECEIPT" Type="RECEIPT" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.GROUP_USER" Member="GROUP_USERs">
@@ -106,15 +124,15 @@
       <Association Name="SUPPLIER_IMPORT" Member="SUPPLIER" ThisKey="ID_SUPPLIER" OtherKey="ID_SUPPLIER" Type="SUPPLIER" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.MATERIAL" Member="MATERIALs">
-    <Type Name="MATERIAL">
-      <Column Name="ID_MATERIAL" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ID_DETAIL" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="NAME_MATERIAL" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+  <Table Name="dbo.INGREDIENT" Member="INGREDIENTs">
+    <Type Name="INGREDIENT">
+      <Column Name="ID_INGREDIENT" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_SUPPLIER" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NAME_INGREDIENT" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="INVENTORY" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="FLAG_DEL" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="MATERIAL_DETAIL_IMPORT" Member="DETAIL_IMPORTs" ThisKey="ID_MATERIAL" OtherKey="ID_MATERIAL" Type="DETAIL_IMPORT" />
-      <Association Name="DETAIL_PRODUCT_MATERIAL" Member="DETAIL_PRODUCT" ThisKey="ID_DETAIL" OtherKey="ID_DETAIL" Type="DETAIL_PRODUCT" IsForeignKey="true" />
+      <Association Name="INGREDIENT_DETAIL_IMPORT" Member="DETAIL_IMPORTs" ThisKey="ID_INGREDIENT" OtherKey="ID_INGREDIENT" Type="DETAIL_IMPORT" />
+      <Association Name="INGREDIENT_DETAIL_PRODUCT" Member="DETAIL_PRODUCTs" ThisKey="ID_INGREDIENT" OtherKey="ID_INGREDIENT" Type="DETAIL_PRODUCT" />
     </Type>
   </Table>
   <Table Name="dbo.METHOD_PAY" Member="METHOD_PAYs">
@@ -125,7 +143,7 @@
       <Column Name="TYPE_METHOD" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="NAME_METHOD" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="FLAG_DEL" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="METHOD_PAY_RECEIPT" Member="RECEIPTs" ThisKey="ID_METHOD" OtherKey="ID_METHOD" Type="RECEIPT" />
+      <Association Name="METHOD_PAY_RECEIPT1" Member="RECEIPTs" ThisKey="ID_METHOD" OtherKey="ID_METHOD" Type="RECEIPT" />
       <Association Name="STAFF_METHOD_PAY" Member="STAFF" ThisKey="USERNAME_STAFF" OtherKey="USERNAME_STAFF" Type="STAFF" IsForeignKey="true" />
     </Type>
   </Table>
@@ -133,6 +151,7 @@
     <Type Name="NEW">
       <Column Name="ID_NEWS" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="ID_IMAGE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ID_PROMOTION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="DATE_CREATE" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="USERNAME_STAFF" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="TITLE" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
@@ -140,6 +159,8 @@
       <Column Name="DATE_VISIBLE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="DATE_HIDDEN" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Association Name="IMAGE_NEW_NEW" Member="IMAGE_NEW" ThisKey="ID_IMAGE" OtherKey="ID_IMAGE" Type="IMAGE_NEW" IsForeignKey="true" />
+      <Association Name="PROMOTION_NEW" Member="PROMOTION" ThisKey="ID_PROMOTION" OtherKey="ID_PROMOTION" Type="PROMOTION" IsForeignKey="true" />
+      <Association Name="STAFF_NEW" Member="STAFF" ThisKey="USERNAME_STAFF" OtherKey="USERNAME_STAFF" Type="STAFF" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.PRODUCT" Member="PRODUCTs">
@@ -156,20 +177,17 @@
       <Association Name="CATEGORY_PRODUCT" Member="CATEGORY" ThisKey="ID_CATEGORY" OtherKey="ID_CATEGORY" Type="CATEGORY" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.RECEIPT" Member="RECEIPTs">
-    <Type Name="RECEIPT">
-      <Column Name="ID_RECEIPT" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ID_VOUCHER" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="ID_CUSTOMER" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="ID_METHOD" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+  <Table Name="dbo.PROMOTION" Member="PROMOTIONs">
+    <Type Name="PROMOTION">
+      <Column Name="ID_PROMOTION" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NAME_PROMOTION" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="USERNAME_STAFF" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="DATE_CREATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="TOTAL_PRODUCT" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TOTAL_PRICE" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="POINT" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="RECEIPT_DETAIL_RECEIPT" Member="DETAIL_RECEIPTs" ThisKey="ID_RECEIPT" OtherKey="ID_RECEIPT" Type="DETAIL_RECEIPT" />
-      <Association Name="CUSTOMER_RECEIPT" Member="CUSTOMER" ThisKey="ID_CUSTOMER" OtherKey="ID_CUSTOMER" Type="CUSTOMER" IsForeignKey="true" />
-      <Association Name="METHOD_PAY_RECEIPT" Member="METHOD_PAY" ThisKey="ID_METHOD" OtherKey="ID_METHOD" Type="METHOD_PAY" IsForeignKey="true" />
-      <Association Name="VOUCHER_RECEIPT" Member="VOUCHER" ThisKey="ID_VOUCHER" OtherKey="ID_VOUCHER" Type="VOUCHER" IsForeignKey="true" />
+      <Column Name="DATE_START" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DATE_END" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="PROMOTION_VOUCHER" Member="VOUCHERs" ThisKey="ID_PROMOTION" OtherKey="ID_PROMOTION" Type="VOUCHER" />
+      <Association Name="PROMOTION_NEW" Member="NEWs" ThisKey="ID_PROMOTION" OtherKey="ID_PROMOTION" Type="NEW" />
+      <Association Name="STAFF_PROMOTION" Member="STAFF" ThisKey="USERNAME_STAFF" OtherKey="USERNAME_STAFF" Type="STAFF" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.STAFF" Member="STAFFs">
@@ -187,6 +205,8 @@
       <Association Name="STAFF_VOUCHER" Member="VOUCHERs" ThisKey="USERNAME_STAFF" OtherKey="USERNAME_STAFF" Type="VOUCHER" />
       <Association Name="STAFF_IMPORT" Member="IMPORTs" ThisKey="USERNAME_STAFF" OtherKey="USERNAME_STAFF" Type="IMPORT" />
       <Association Name="STAFF_METHOD_PAY" Member="METHOD_PAYs" ThisKey="USERNAME_STAFF" OtherKey="USERNAME_STAFF" Type="METHOD_PAY" />
+      <Association Name="STAFF_NEW" Member="NEWs" ThisKey="USERNAME_STAFF" OtherKey="USERNAME_STAFF" Type="NEW" />
+      <Association Name="STAFF_PROMOTION" Member="PROMOTIONs" ThisKey="USERNAME_STAFF" OtherKey="USERNAME_STAFF" Type="PROMOTION" />
       <Association Name="GROUP_USER_STAFF" Member="GROUP_USER" ThisKey="ID_GROUP" OtherKey="ID_GROUP" Type="GROUP_USER" IsForeignKey="true" />
     </Type>
   </Table>
@@ -197,6 +217,7 @@
       <Column Name="PHONE_SUPPLIER" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
       <Column Name="ADDRESS_SUPPLIER" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="FLAG_DEL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="SUPPLIER_DETAIL_IMPORT" Member="DETAIL_IMPORTs" ThisKey="ID_SUPPLIER" OtherKey="ID_SUPPLIER" Type="DETAIL_IMPORT" />
       <Association Name="SUPPLIER_IMPORT" Member="IMPORTs" ThisKey="ID_SUPPLIER" OtherKey="ID_SUPPLIER" Type="IMPORT" />
     </Type>
   </Table>
@@ -210,6 +231,7 @@
       <Column Name="TOTAL_PRODUCT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TOTAL_PRICE" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="POINT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="STATE_RECEIPT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="PERCENT_REDUCTION" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="AMOUNT_REDUCTION" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ADDRESS_CUSTOMER" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
@@ -219,6 +241,23 @@
       <Column Name="PHONE_CUSTOMER" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
       <Column Name="NAME_METHOD" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="TYPE_METHOD" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RECEIPT" Member="RECEIPTs">
+    <Type Name="RECEIPT">
+      <Column Name="ID_RECEIPT" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_VOUCHER" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ID_CUSTOMER" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ID_METHOD" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DATE_CREATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TOTAL_PRODUCT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TOTAL_PRICE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="POINT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="STATE_RECEIPT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="RECEIPT1_DETAIL_RECEIPT" Member="DETAIL_RECEIPTs" ThisKey="ID_RECEIPT" OtherKey="ID_RECEIPT" Type="DETAIL_RECEIPT" />
+      <Association Name="CUSTOMER_RECEIPT1" Member="CUSTOMER" ThisKey="ID_CUSTOMER" OtherKey="ID_CUSTOMER" Type="CUSTOMER" IsForeignKey="true" />
+      <Association Name="METHOD_PAY_RECEIPT1" Member="METHOD_PAY" ThisKey="ID_METHOD" OtherKey="ID_METHOD" Type="METHOD_PAY" IsForeignKey="true" />
+      <Association Name="VOUCHER_RECEIPT1" Member="VOUCHER" ThisKey="ID_VOUCHER" OtherKey="ID_VOUCHER" Type="VOUCHER" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
