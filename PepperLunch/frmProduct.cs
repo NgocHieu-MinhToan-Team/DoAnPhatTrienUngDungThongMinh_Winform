@@ -73,6 +73,34 @@ namespace PepperLunch
             gridView1.Columns["FLAG_DEL"].Visible = false;
         }
 
+        private void gridControl_Product_Click(object sender, EventArgs e)
+        {
+            int[] index = gridView1.GetSelectedRows();
+            if (index.Length > 0)
+            {
+                PRODUCT pro = (PRODUCT)gridView1.GetRow(index[0]);
+                txtNameEN.Text = pro.NAME_PRODUCT_EN;
+                txtNameVN.Text = pro.NAME_PRODUCT_VN;
+                txtPrice.Text = pro.PRICE_PRODUCT.ToString();
+                txtURL.Text = pro.IMAGE_PRODUCT;
+            }
+        }
 
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            int[] index = gridView1.GetSelectedRows();
+            string ID_cate;
+            if (index.Length > 0)
+            {
+                PRODUCT pro = (PRODUCT)gridView1.GetRow(index[0]);
+                pro.NAME_PRODUCT_EN = txtNameEN.Text;
+                pro.NAME_PRODUCT_VN = txtNameVN.Text;
+                pro.PRICE_PRODUCT = Int32.Parse(txtPrice.Text);
+                pro.IMAGE_PRODUCT = txtURL.Text;
+                BLL_Product.updateProduct(pro);
+                ID_cate = pro.ID_CATEGORY;
+                loadProductByID_Category(ID_cate);
+            }
+        }
     }
 }

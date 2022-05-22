@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DTO_PPL;
+using DAL_PPL;
 using FireSharp.Response;
 
 namespace FireBase_PPL
@@ -106,12 +107,29 @@ namespace FireBase_PPL
 
             try
             {
-
+                List<PRODUCT> listProduct = DAL_Product.getProducts();
+                // update node Cate
                 await ConnectFireBase.FirebaseDeleteData("Database/Category");
 
                 foreach (CATEGORY itemOfSql in listOfSql)
                 {
                     await ConnectFireBase.FirebaseInsertData(itemOfSql, "Database/Category/" + itemOfSql.ID_CATEGORY.ToString() + "/"); 
+                }
+
+                // update node Cate and dish
+                await ConnectFireBase.FirebaseDeleteData("Database/Category_Dish");
+
+                foreach (CATEGORY itemOfSql in listOfSql)
+                {
+                    // add node cate
+                    await ConnectFireBase.FirebaseInsertData(itemOfSql, "Database/Category_Dish/" + itemOfSql.ID_CATEGORY.ToString() + "/");
+                    // add List node product after per cate
+                    foreach(PRODUCT itemOfProduct in listProduct)
+                    {
+                        if(itemOfSql.ID_CATEGORY== itemOfProduct.ID_CATEGORY)
+                            await ConnectFireBase.FirebaseInsertData(itemOfProduct, "Database/Category_Dish/" + itemOfSql.ID_CATEGORY.ToString() + "/Dishes/"+itemOfProduct.ID_PRODUCT+"/");
+                    }
+
                 }
             }
             catch (Exception ex)
