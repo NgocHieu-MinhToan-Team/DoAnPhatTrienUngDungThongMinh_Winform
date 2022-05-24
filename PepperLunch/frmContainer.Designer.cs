@@ -42,10 +42,11 @@ namespace PepperLunch
             this.barBtn_Product = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_Category = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_SyncManual = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtn_Promotion = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage_manager = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup_Firebase = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
@@ -76,9 +77,10 @@ namespace PepperLunch
             this.barBtn_signOut,
             this.barBtn_Product,
             this.barBtn_Category,
-            this.barBtn_SyncManual});
+            this.barBtn_SyncManual,
+            this.barBtn_Promotion});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 24;
+            this.ribbon.MaxItemId = 25;
             this.ribbon.Name = "ribbon";
             this.ribbon.OptionsStubGlyphs.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ribbon.OptionsStubGlyphs.UseFont = true;
@@ -181,12 +183,20 @@ namespace PepperLunch
             this.barBtn_SyncManual.Name = "barBtn_SyncManual";
             this.barBtn_SyncManual.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_SyncManual_ItemClick);
             // 
+            // barBtn_Promotion
+            // 
+            this.barBtn_Promotion.Caption = "Promotion";
+            this.barBtn_Promotion.Id = 24;
+            this.barBtn_Promotion.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtn_Promotion.ImageOptions.SvgImage")));
+            this.barBtn_Promotion.Name = "barBtn_Promotion";
+            this.barBtn_Promotion.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_Promotion_ItemClick);
+            // 
             // ribbonPage_manager
             // 
             this.ribbonPage_manager.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
             this.ribbonPageGroup2,
-            this.ribbonPageGroup3,
+            this.ribbonPageGroup_Firebase,
             this.ribbonPageGroup4});
             this.ribbonPage_manager.Name = "ribbonPage_manager";
             this.ribbonPage_manager.Text = "Manage";
@@ -204,14 +214,15 @@ namespace PepperLunch
             // 
             this.ribbonPageGroup2.ItemLinks.Add(this.barBtn_Category);
             this.ribbonPageGroup2.ItemLinks.Add(this.barBtn_Product);
+            this.ribbonPageGroup2.ItemLinks.Add(this.barBtn_Promotion);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "Manage Menu";
             // 
-            // ribbonPageGroup3
+            // ribbonPageGroup_Firebase
             // 
-            this.ribbonPageGroup3.ItemLinks.Add(this.barBtn_SyncManual);
-            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
-            this.ribbonPageGroup3.Text = "Firebase";
+            this.ribbonPageGroup_Firebase.ItemLinks.Add(this.barBtn_SyncManual);
+            this.ribbonPageGroup_Firebase.Name = "ribbonPageGroup_Firebase";
+            this.ribbonPageGroup_Firebase.Text = "Firebase";
             // 
             // ribbonPageGroup4
             // 
@@ -277,6 +288,7 @@ namespace PepperLunch
             this.StatusBar = this.ribbonStatusBar;
             this.Text = "Management Pepper Lunch";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmContainer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).EndInit();
@@ -308,8 +320,9 @@ namespace PepperLunch
         private DevExpress.XtraBars.BarButtonItem barBtn_Category;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.PopupMenu popupMenu1;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup_Firebase;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private DevExpress.XtraBars.BarButtonItem barBtn_SyncManual;
+        private DevExpress.XtraBars.BarButtonItem barBtn_Promotion;
     }
 }

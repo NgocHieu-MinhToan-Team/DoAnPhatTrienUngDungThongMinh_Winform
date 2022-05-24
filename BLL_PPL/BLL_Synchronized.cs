@@ -103,6 +103,7 @@ namespace BLL_PPL
             }
         }
 
+
         // sync from sql to firebase
         public static async Task<bool> updateProductsToFirebaseAsync()
         {
@@ -267,6 +268,24 @@ namespace BLL_PPL
             }
         }
 
+        #endregion
+        #region News
+        public static async Task<bool> updateNewsToFirebaseAsync(string ID_PROMOTION)
+        {
+            //check connect to firebase
+            var client = ConnectFireBase.CreateFirebaseClient();
+            if (client != null)
+            {
+                //sync here
+                bool result = await FB_News.updateToFirebaseAsync(ID_PROMOTION);
+                return result;
+            }
+            else
+            {
+                MessageBox.Show("Interet have a problem ? cannot retrieve data from firebase");
+                return false;
+            }
+        }
         #endregion
     }
 }

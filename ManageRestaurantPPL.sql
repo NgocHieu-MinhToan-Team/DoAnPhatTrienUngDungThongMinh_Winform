@@ -49,8 +49,8 @@ CREATE TABLE PRODUCT
 (
 	ID_PRODUCT VARCHAR(50) NOT NULL PRIMARY KEY,
 	ID_CATEGORY VARCHAR(50) NOT NULL ,
-	NAME_PRODUCT_VN NVARCHAR(50) NOT NULL,
 	NAME_PRODUCT_EN NVARCHAR(50) NOT NULL,
+	NAME_PRODUCT_VN NVARCHAR(50) NOT NULL,
 	PRICE_PRODUCT INT,
 	IMAGE_PRODUCT VARCHAR(MAX),
 	FLAG_DEL INT
@@ -80,19 +80,19 @@ CREATE TABLE INGREDIENT
 CREATE TABLE NEWS
 (	
 	ID_NEWS VARCHAR(50) NOT NULL PRIMARY KEY,
-	ID_IMAGE VARCHAR(50),
 	ID_PROMOTION VARCHAR(50),
-	DATE_CREATE DATE NOT NULL,
 	USERNAME_STAFF VARCHAR(50) NOT NULL,
 	TITLE NVARCHAR(MAX),
 	CONTENT NVARCHAR(MAX),
 	DATE_VISIBLE DATE,
 	DATE_HIDDEN DATE,
+	FLAG_DEL int,
 )
 
 CREATE TABLE IMAGE_NEWS
 (	
 	ID_IMAGE VARCHAR(50) NOT NULL PRIMARY KEY,
+	ID_NEWS VARCHAR(50) NOT NULL ,
 	PATH_IMAGE VARCHAR(MAX) NOT NULL,
 )
 
@@ -136,6 +136,7 @@ CREATE TABLE RECEIPT
 	TOTAL_PRICE int,
 	POINT int,
 	STATE_RECEIPT INT
+
 )
 
 --CHI TIẾT HÓA ĐƠN
@@ -204,7 +205,6 @@ CREATE TABLE DETAIL_IMPORT
 	ID_DETAIL_IOG  VARCHAR(50) NOT NULL PRIMARY KEY,
 	ID_IOG VARCHAR(50) NOT NULL,
 	ID_INGREDIENT VARCHAR(50) NOT NULL,
-	ID_SUPPLIER VARCHAR(50) not null,
 	PRICE INT,
 	QUANTITY INT,
 )
@@ -218,7 +218,7 @@ CREATE TABLE PROMOTION
 	DATE_CREATE DATE,--NGAY TAO
 	DATE_START DATE,--NGAY BAT DAU CHUONG TRINH
 	DATE_END DATE,--NGAY KET THUC CHUONG TRINH
-	
+	FLAG_DEL int,
 )
 --BANG LOAI KHACH HANG
 CREATE TABLE CUSTOMER_TYPE
@@ -229,6 +229,7 @@ CREATE TABLE CUSTOMER_TYPE
 	POINT_MIN INT,--DIEM TOI THIEU CUA HANG KHACH HANG VD: THANH VIEN:0
 	POINT_MAX INT,--DIEM TOI DA CUA HANG KHACH HANGVD:THANHVIEN:100
 	POINT_RATE FLOAT,--TI LE TICH DIEM TREN HOA DON, VD: THANHVIEN:0.1=10%
+	FLAG_DEL int,
 )
 
 
@@ -246,14 +247,17 @@ ADD CONSTRAINT FK_DETAILPRO_PRO FOREIGN KEY (ID_PRODUCT) REFERENCES PRODUCT(ID_P
 ALTER TABLE DETAIL_PRODUCT
 ADD CONSTRAINT FK_DETAILPRO_INGREDIENT FOREIGN KEY (ID_INGREDIENT) REFERENCES INGREDIENT(ID_INGREDIENT)
 --NEWS
-ALTER TABLE NEWS
-ADD CONSTRAINT FK_NEWS_IMG FOREIGN KEY (ID_IMAGE) REFERENCES IMAGE_NEWS(ID_IMAGE)
 
 ALTER TABLE NEWS
 ADD CONSTRAINT FK_NEWS_PROMO FOREIGN KEY(ID_PROMOTION) REFERENCES PROMOTION(ID_PROMOTION)
 
 ALTER TABLE NEWS
 ADD CONSTRAINT FK_NEWS_STAFF FOREIGN KEY(USERNAME_STAFF) REFERENCES STAFF(USERNAME_STAFF)
+--NEWS IMAGE
+
+ALTER TABLE IMAGE_NEWS
+ADD CONSTRAINT FK_IMAGE_NEWS_NEWS FOREIGN KEY (ID_NEWS) REFERENCES NEWS(ID_NEWS)
+
 --CUSTOMER  
 ALTER TABLE CUSTOMER
 ADD CONSTRAINT FK_CUSTOMER_TYPE FOREIGN KEY(TYPE_CUSTOMER) REFERENCES CUSTOMER_TYPE(TYPE_CUSTOMER)
@@ -302,8 +306,6 @@ ADD CONSTRAINT FK_DETAILIMPORT_IOG FOREIGN KEY(ID_IOG) REFERENCES IMPORT(ID_IOG)
 
 ALTER TABLE DETAIL_IMPORT
 ADD CONSTRAINT FK_DETAILIMPORT_INGREDIENT FOREIGN KEY(ID_INGREDIENT) REFERENCES INGREDIENT(ID_INGREDIENT)
-ALTER TABLE DETAIL_IMPORT
-ADD CONSTRAINT FK_DETAILIMPORT_SUPPLIER FOREIGN KEY(ID_SUPPLIER) REFERENCES SUPPLIER(ID_SUPPLIER)
 
 -- PROMOTION
 ALTER TABLE PROMOTION
@@ -332,57 +334,57 @@ INSERT INTO CATEGORY VALUES
 --PRODUCT PREMIUM STEAK---
 INSERT INTO PRODUCT VALUES 
 --PRODUCT PREMIUM STEAK---1
-('MAMON01','IDLMON01',N'The Giant',N'Bò Mỹ Thượng Hạng',369000,'IMAGE',0),
-('MAMON02','IDLMON01',N'Ribeye Steak',N'Bò Mỹ Ribeye',299000,'IMAGE',0),
-('MAMON03','IDLMON01',N'Pepper Steak',N'Bò Úc Tiêu Đen',239000,'IMAGE',0),
-('MAMON04','IDLMON01',N'Hitokuchi Steak',N'Mông Bò Hitokuchi',369000,'IMAGE',0),
-('MAMON05','IDLMON01',N'Hamburger Eggs',N'Hamburger Với Trứng',169000,'IMAGE',0),
+('MAMON01','IDLMON01',N'The Giant',N'Bò Mỹ Thượng Hạng',369000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FPremiumSteak%2FTheGIANT.png?alt=media&token=b410306b-dfab-44f0-bb61-b465b422418d',0),
+('MAMON02','IDLMON01',N'Ribeye Steak',N'Bò Mỹ Ribeye',299000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FPremiumSteak%2FRibeyeSteak.png?alt=media&token=c491db51-73c0-429b-941d-026a3729232b',0),
+('MAMON03','IDLMON01',N'Pepper Steak',N'Bò Úc Tiêu Đen',239000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FPremiumSteak%2FPepperSteak.png?alt=media&token=155645ca-bcf2-49d5-b86f-4b8ea0d12337',0),
+('MAMON04','IDLMON01',N'Hitokuchi Steak',N'Mông Bò Hitokuchi',369000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FPremiumSteak%2FDicedCutSteak.png?alt=media&token=08b943a0-564f-462b-ab99-09ee8bc2392c',0),
+('MAMON05','IDLMON01',N'Hamburger Eggs',N'Hamburger Với Trứng',169000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FPremiumSteak%2FBeefHamburgwithEgg.png?alt=media&token=508999c4-9b23-4d86-97e3-a1d7a5d37a30',0),
 --PRODUCT PEPPER RICE----2
-('MAMON07','IDLMON02',N'Jumbo Beef Pepper Rice',N'Cơm Bò Mỹ Siêu Khủng',149000,'IMAGE',0),
-('MAMON08','IDLMON02',N'Beef Pepper Rice',N'Cơm Bò Mỹ Tiêu Đen',99000,'IMAGE',0),
-('MAMON09','IDLMON02',N'Chicken Pepper Rice',N'Cơm Gà Tiêu Đen',89000,'IMAGE',0),
-('MAMON10','IDLMON02',N'Salmon Pepper Rice',N'Cơm Cá Hồi Tiêu Đen',139000,'IMAGE',0),
-('MAMON12','IDLMON02',N'Broccoli & Mushroom Pepper Rice',N'Cơm Chay Tiêu Đen',89000,'IMAGE',0),
+('MAMON07','IDLMON02',N'Jumbo Beef Pepper Rice',N'Cơm Bò Mỹ Siêu Khủng',149000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FPepperRice%2FjumboBeefPepperRice.png?alt=media&token=f73d67e8-14d0-430d-a41f-64da66c5cc56',0),
+('MAMON08','IDLMON02',N'Beef Pepper Rice',N'Cơm Bò Mỹ Tiêu Đen',99000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FPepperRice%2FbeefPepperRice.png?alt=media&token=2a35cd1c-8c2e-4737-a44a-9e5a263cfeec',0),
+('MAMON09','IDLMON02',N'Chicken Pepper Rice',N'Cơm Gà Tiêu Đen',89000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FPepperRice%2FchickenPepperRice.png?alt=media&token=307f1f3b-39f0-43e2-84e7-8b04aa394aaf',0),
+('MAMON10','IDLMON02',N'Salmon Pepper Rice',N'Cơm Cá Hồi Tiêu Đen',139000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FPepperRice%2FsalmonRice.png?alt=media&token=7a464331-463c-4eda-b66d-2d6125a2ad6c',0),
+('MAMON12','IDLMON02',N'Broccoli & Mushroom Pepper Rice',N'Cơm Chay Tiêu Đen',89000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FPepperRice%2FbroccoliMushroonPepperRice.png?alt=media&token=f3e0ec3d-0362-4661-873d-183147993193',0),
 --PRODUCT JAPANESE CLASSICS----3
-('MAMON14','IDLMON03',N'Beef Sukiyaki',N'Bò Sốt Sukiyaki',169000,'IMAGE',0),
-('MAMON17','IDLMON03',N'Salmon Sukiyaki',N'Cá Hồi Sốt Sukiyaki',219000,'IMAGE',0),
-('MAMON18','IDLMON03',N'Teriyaki Chicken',N'Gà Sốt Teriyaki',149000,'IMAGE',0),
-('MAMON19','IDLMON03',N'Teriyaki Salmon And Saba',N'Cá Hồi Và Cá Thu Nhật Sốt Teriyaki',209000,'IMAGE',0),
+('MAMON14','IDLMON03',N'Beef Sukiyaki',N'Bò Sốt Sukiyaki',169000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FJapaneseClassic%2FbeefSukiyaki.png?alt=media&token=053b70fd-c0a2-402c-8478-41065b9bf223',0),
+('MAMON17','IDLMON03',N'Salmon Sukiyaki',N'Cá Hồi Sốt Sukiyaki',219000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FJapaneseClassic%2FsalmonSukiya.png?alt=media&token=454c183d-ac47-4d75-b6d7-b4db5543a1f4',0),
+('MAMON18','IDLMON03',N'Teriyaki Chicken',N'Gà Sốt Teriyaki',149000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FJapaneseClassic%2FTeriyakiChickenwithEgg.png?alt=media&token=45954e65-6907-419d-ae24-72858767518a',0),
+('MAMON19','IDLMON03',N'Teriyaki Salmon And Saba',N'Cá Hồi Và Cá Thu Nhật Sốt Teriyaki',209000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FJapaneseClassic%2FTeriyakiSalmonSaba.png?alt=media&token=702ad9d1-c941-4a4f-bcd6-0fe4cbd40a4e',0),
 --PRODUCT TEPPAN PASTA----4
-('MAMON20','IDLMON04',N'Beef Aglio Olio',N'Mì Ý Bò Sốt Aglio',139000,'IMAGE',0),
-('MAMON21','IDLMON04',N'Seafood Aglio Olio',N'Mì Ý Hải Sản Sốt Aglio',119000,'IMAGE',0),
-('MAMON22','IDLMON04',N'Chicken & Cheese Chicken Sausage Pasta',N'Mì Ý Gà Và Xúc Xích Phô Mai Gà',149000,'IMAGE',0),
-('MAMON23','IDLMON04',N'Seafood Creamy Cheese Pasta',N'Mì Ý Hải Sản Sốt Phô Mai Kem',139000,'IMAGE',0),
+('MAMON20','IDLMON04',N'Beef Aglio Olio',N'Mì Ý Bò Sốt Aglio',139000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FTeppanPasta%2FbeefAglioOlio.png?alt=media&token=9ccbd752-f76e-44ca-8736-d9a8e52a60db',0),
+('MAMON21','IDLMON04',N'Seafood Aglio Olio',N'Mì Ý Hải Sản Sốt Aglio',119000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FTeppanPasta%2FseafoodAglioOlio.png?alt=media&token=b44065a6-ada1-46db-92d4-a80bafb17017',0),
+('MAMON22','IDLMON04',N'Chicken & Cheese Chicken Sausage Pasta',N'Mì Ý Gà Và Xúc Xích Phô Mai Gà',149000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FTeppanPasta%2FchickenCheeseSausageTomatoPasta.png?alt=media&token=71dd0211-25cc-4bff-839c-b6e3fdd58e04',0),
+('MAMON23','IDLMON04',N'Seafood Creamy Cheese Pasta',N'Mì Ý Hải Sản Sốt Phô Mai Kem',139000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FTeppanPasta%2FsalmonPrawnCarbonara.png?alt=media&token=ee16f9ec-5eb7-4f53-a326-c0ec66a3450c',0),
 --PRODUCT CHEESY ---5
-('MAMON15','IDLMON05',N'Scallop & Prawn',N'VN_NAME',169000,'IMAGE',0),
-('MAMON24','IDLMON05',N'Beef Hamburger & Beef',N'VN_NAME',199000,'IMAGE',0),
-('MAMON25','IDLMON05',N'Scallop & Chicken',N'VN_NAME',169000,'IMAGE',0),
-('MAMON26','IDLMON05',N'Broccoli & Mushroom',N'VN_NAME',169000,'IMAGE',0),
+('MAMON15','IDLMON05',N'Scallop & Prawn',N'VN_NAME',169000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FCheesySizzlingRice%2FscallopPrawnCheeseCurryRice.png?alt=media&token=e3d09352-39a6-4d29-8f2c-e5ae6f89d228',0),
+('MAMON24','IDLMON05',N'Beef Hamburger & Beef',N'VN_NAME',199000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FCheesySizzlingRice%2FBeefHamburgCheesySizzlingRice.png?alt=media&token=60e2b730-60a1-4a34-8209-1c5104e132c8',0),
+('MAMON25','IDLMON05',N'Scallop & Chicken',N'VN_NAME',169000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FCheesySizzlingRice%2FscallopChickenCheeseCurryRice.png?alt=media&token=ce5022d1-fe69-4912-8402-714e38a7afb3',0),
+('MAMON26','IDLMON05',N'Broccoli & Mushroom',N'VN_NAME',169000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FCheesySizzlingRice%2FbroccoliMushroomCheeseCurryRice.png?alt=media&token=c19e133d-c8fa-49b8-9377-43850fe799f7',0),
 --PRODUCT SPECIAL COMBO---6
-('MAMON31','IDLMON06',N'Ultimate Meat Deluxe',N'VN_NAME',299000,'IMAGE',0),
-('MAMON32','IDLMON06',N'Beef Trio Deluxe',N'VN_NAME',249000,'IMAGE',0),
-('MAMON33','IDLMON06',N'Meat Trio Deluxe',N'VN_NAME',199000,'IMAGE',0),
-('MAMON34','IDLMON06',N'Dice Cut Beef & Chicken',N'VN_NAME',199000,'IMAGE',0),
-('MAMON35','IDLMON06',N'Seafood Trio Deluxe',N'VN_NAME',179000,'IMAGE',0) ,
-('MAMON37','IDLMON06',N'Salmon & Chicken',N'VN_NAME',189000,'IMAGE',0),
-('MAMON38','IDLMON06',N'Saba & Chicken',N'VN_NAME',89000,'IMAGE',0),
+('MAMON31','IDLMON06',N'Ultimate Meat Deluxe',N'VN_NAME',299000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FComboSpecial%2FUltimateMeatDeluxe.png?alt=media&token=10c26291-c290-4f80-aa6d-7f626bc2495a',0),
+('MAMON32','IDLMON06',N'Beef Trio Deluxe',N'VN_NAME',249000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FComboSpecial%2FBeefTrioDeluxe.png?alt=media&token=666c86ad-4042-4273-ab9b-1ce184e3de9e',0),
+('MAMON33','IDLMON06',N'Meat Trio Deluxe',N'VN_NAME',199000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FComboSpecial%2FMeatTrioDeluxe.png?alt=media&token=895f7e38-c3cc-4c17-9fa7-3a6c6ad02a64',0),
+('MAMON34','IDLMON06',N'Dice Cut Beef & Chicken',N'VN_NAME',199000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FComboSpecial%2FDicedCutSteakChicken.png?alt=media&token=e0240c71-6e3a-48bc-b8fd-d255b7bfae1e',0),
+('MAMON35','IDLMON06',N'Seafood Trio Deluxe',N'VN_NAME',179000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FComboSpecial%2FSeafoodTrioDeluxe.png?alt=media&token=4d4d3432-f532-42f3-9c00-5059565ba4b2',0) ,
+('MAMON37','IDLMON06',N'Salmon & Chicken',N'VN_NAME',189000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FComboSpecial%2FSalmonChicken.png?alt=media&token=6e85cc56-91d4-453b-8b2d-9c42a086a395',0),
+('MAMON38','IDLMON06',N'Saba & Chicken',N'VN_NAME',89000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FComboSpecial%2FSabaChicken.png?alt=media&token=da24ed9d-3f8b-47e1-83d5-01bbfddac2e1',0),
 --PRODUCT SIDE DISHES---
-('MAMON59','IDLMON07','Macaroni & Cheese ',N'Mì Ông Và Phô Mai',22000,'IMAGE',0),
-('MAMON60','IDLMON07','Seasonal Dessert',N'Món Tráng Miệng Theo Mùa',28000,'IMAGE',0),
-('MAMON61','IDLMON07','Mashed Potato',N'Khoai Tây Nghiền',28000,'IMAGE',0),
-('MAMON62','IDLMON07','Seasonal Soup',N'Súp Theo Mùa',22000,'IMAGE',0),
-('MAMON63','IDLMON07','Miso Soup',N'Súp Miso Rong Biển',25000,'IMAGE',0),
+('MAMON59','IDLMON07','Macaroni & Cheese ',N'Mì Ông Và Phô Mai',22000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/sideDish%2Fside%2Fmacaroni_chesse.png?alt=media&token=2683fb86-9e80-4357-a2fe-9bfd9ece351b',0),
+('MAMON60','IDLMON07','Seasonal Dessert',N'Món Tráng Miệng Theo Mùa',28000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/sideDish%2Fside%2Fseasonal_dessert.png?alt=media&token=838c2f66-9268-47f2-8e11-bac2a4f62c22',0),
+('MAMON61','IDLMON07','Mashed Potato',N'Khoai Tây Nghiền',28000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/sideDish%2Fside%2Fmashed_potatoes.png?alt=media&token=eda30e35-903c-49fb-82fd-17627e964ca5',0),
+('MAMON62','IDLMON07','Seasonal Soup',N'Súp Theo Mùa',22000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/sideDish%2Fside%2Fseasonal_soup.png?alt=media&token=2a7d71e8-50e3-45c9-8d25-96d4029218de',0),
+('MAMON63','IDLMON07','Miso Soup',N'Súp Miso Rong Biển',25000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/sideDish%2Fside%2Fmiso_soup.png?alt=media&token=cd5d2a54-af27-4043-b708-fc1e8b809768',0),
 --PRODUCT ICE-CREAM---
-('MAMON64','IDLMON08','Vanilla',N'Kem Vani',25000,'IMAGE',0),
-('MAMON65','IDLMON08','Chocolate',N'Kem Sô Cô La',25000,'IMAGE',0),
-('MAMON67','IDLMON08','Strawberries & Cream',N'Kem Dâu',25000,'IMAGE',0),
+('MAMON64','IDLMON08','Vanilla',N'Kem Vani',25000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/sideDish%2Fice_cream%2FkemVani.png?alt=media&token=ba941e61-6a1c-4bb4-98e6-dd7eaa963d3a',0),
+('MAMON65','IDLMON08','Chocolate',N'Kem Sô Cô La',25000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/sideDish%2Fice_cream%2FkemSocola.png?alt=media&token=03fccb1f-2bbc-4b25-be1c-f95956b225e7',0),
+('MAMON67','IDLMON08','Strawberries & Cream',N'Kem Dâu',25000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/sideDish%2Fice_cream%2FkemDau.png?alt=media&token=faf82b76-7deb-4b51-8ab2-08b6ef7b78e5',0),
 --PRODUCT DRINKS---
-('MAMON49','IDLMON09','Pepsi',N'Pepsi',20000,'IMAGE',0),
-('MAMON50','IDLMON09','Mirinda',N'Mirinda',20000,'IMAGE',0),
-('MAMON51','IDLMON09','7 Up',N'7 Up',20000,'IMAGE',0),
-('MAMON52','IDLMON09','Aquafina',N'Nước Suối',20000,'IMAGE',0),
-('MAMON53','IDLMON09','Nestle Milo',N'Sữa Milo',20000,'IMAGE',0),
-('MAMON54','IDLMON09','Hot Green Tea',N'Trà Xanh Nóng',20000,'IMAGE',0),
+('MAMON49','IDLMON09','Pepsi',N'Pepsi',20000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/sideDish%2Fdrink%2Fpepsi.png?alt=media&token=2e68e80b-01b7-410a-8a2f-51fb9fac9c2a',0),
+('MAMON50','IDLMON09','Mirinda',N'Mirinda',20000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/sideDish%2Fdrink%2Fmirinda.png?alt=media&token=9757c1bb-6480-4b57-a328-1fb582486600',0),
+('MAMON51','IDLMON09','7 Up',N'7 Up',20000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/sideDish%2Fdrink%2F7up.png?alt=media&token=b2fc721f-bf6d-4fe7-a2a7-b862039ad942',0),
+('MAMON52','IDLMON09','Aquafina',N'Nước Suối',20000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/sideDish%2Fdrink%2Faquafina.png?alt=media&token=de73165a-ce47-4d81-b272-2f0e6571e621',0),
+('MAMON53','IDLMON09','Nestle Milo',N'Sữa Milo',20000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/sideDish%2Fdrink%2FMilo.png?alt=media&token=e676dcc1-dd4d-428c-a1f8-833ad7d259fe',0),
+('MAMON54','IDLMON09','Hot Green Tea',N'Trà Xanh Nóng',20000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/sideDish%2Fdrink%2Fhotgreentea.png?alt=media&token=9f9ccf09-d010-4f8f-b775-8561c4d33919',0),
 --PRODUCT ADD-ONS---
 ('MAMON39','IDLMON10','King Oyster Mushroom',N'Nấm Sò vua',12000,'IMAGE',0),
 ('MAMON40','IDLMON10','Edamame',N'Đậu Nhật',7000,'IMAGE',0),
@@ -398,9 +400,8 @@ INSERT INTO PRODUCT VALUES
 ('MAMONBJC2','IDLMON10','Scallops',N'Sò',15000,'IMAGE',0),
 ('MAMON47','IDLMON10','Prawns',N'Tôm',30000,'IMAGE',0),
 --PRODUCT COMBOS 
-('MAMONCB01','IDLMON11','SET A',N'Combo A',30000,'IMAGE',0),
-('MAMONCB02','IDLMON11','SET B',N'Combo B',40000,'IMAGE',0)
-
+('MAMONCB01','IDLMON11','SET A',N'Combo A',30000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/sideDish%2Fcombo%2Fimg_menu_15.jpg?alt=media&token=fa1aa5ba-6e3b-42ad-ade5-6c5c27ca02d8',0),
+('MAMONCB02','IDLMON11','SET B',N'Combo B',40000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/sideDish%2Fcombo%2Fimg_menu_16.jpg?alt=media&token=74e01dc4-891b-49c9-960e-e58fc0021ef2',0)
 -- SUPPLIER 
 INSERT INTO SUPPLIER
 VALUES
@@ -672,13 +673,13 @@ VALUES
 --PROMOTION
 INSERT INTO PROMOTION
 VALUES
-('PROMOTION1','TEN PROMOTION','NV01','21-05-2022', '21-06-2022', '22-07-2022')
+('PROMOTION1','TEN PROMOTION','NV01','21-05-2022', '21-06-2022', '22-07-2022',0)
 --TYPE CUSTOMER
 INSERT INTO CUSTOMER_TYPE
 VALUES
-('TYPECUS01',N'Khách hàng thân quen',0,10,100,0.2),
-('TYPECUS02',N'Khách hàng thân quen',1,10,100,0.2),
-('TYPECUS03',N'Khách hàng thân quen',2,10,100,0.2)
+('TYPECUS01',N'Khách hàng thân quen Đồng',0,10,100,0.2,0),
+('TYPECUS02',N'Khách hàng thân quen Bạc',1,10,100,0.2,0),
+('TYPECUS03',N'Khách hàng thân quen Vàng',2,10,100,0.2,0)
 
 
 --VOUCHER
@@ -691,12 +692,12 @@ VALUES
 
 Insert into NEWS
 VALUES
-('SK01', 'IM01','PROMOTION1', '22/05/2022', 'NV01', N'Khuyến mãi', N'Khi mua một dĩa rau trộn được tặng súp và kem', '20/06/2022', '22/07/2022')
+('SK01','PROMOTION1','NV01', N'Khuyến mãi', N'Khi mua một dĩa rau trộn được tặng súp và kem', '20-06-2022', '22-07-2022',0)
 
 --IMAGE_NEWS
 Insert into IMAGE_NEWS
 values
-('IM01', 'HTTPS/URL')
+('IM01', 'SK01','HTTPS/URL')
 -- CREATE VIEWS HERE
 
 INSERT INTO CUSTOMER
@@ -721,7 +722,7 @@ VALUES
 --DETAIL_IMPORT
 INSERT INTO DETAIL_IMPORT
 VALUES
-('DETAILIOG01','IOG01','NL0001','NCC02',500000,1)
+('DETAILIOG01','IOG01','NL0001',500000,1)
 
 go
 CREATE VIEW RECEIPT_FULL AS

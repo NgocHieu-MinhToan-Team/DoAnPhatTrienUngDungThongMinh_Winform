@@ -21,7 +21,6 @@ namespace PepperLunch
     public partial class frmReceipt : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
         List<RECEIPT_FULL> listData;
-        GridView gridView;
         public frmReceipt()
         {
             InitializeComponent();
@@ -37,18 +36,20 @@ namespace PepperLunch
 
         private void accordionCtrlE_exportWord_Click(object sender, EventArgs e)
         {
-            //get id of receipt 
-            int index = gridView.FocusedRowHandle;
-            RECEIPT_FULL receipt = listData[index];
+            int[] arrRowSelected = gridView1.GetSelectedRows();
+            if (arrRowSelected != null)
+            {
+                RECEIPT item = (RECEIPT)gridView1.GetRow(arrRowSelected[0]);
+                BLL_Receipt.export_ReceiptToWord(item.ID_RECEIPT);
+            }
             // retrieve to receipt to export 
-            BLL_Receipt.export_ReceiptToWord(receipt.ID_RECEIPT);
         }
 
         private void accordionCtrlE_exportExcel_Click(object sender, EventArgs e)
         {
             string path = "Templates\\Export.xlsx";
             //Customize export options
-           gridView.OptionsPrint.PrintHeader = true;
+           gridView1.OptionsPrint.PrintHeader = true;
             XlsxExportOptionsEx advOptions = new XlsxExportOptionsEx();
             advOptions.AllowGrouping = DevExpress.Utils.DefaultBoolean.False;
             advOptions.ShowTotalSummaries = DevExpress.Utils.DefaultBoolean.False;

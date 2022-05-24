@@ -24,10 +24,13 @@ namespace PepperLunch
         {
             string username = txtusername.Text.Trim();
             string password = txtpassword.Text.Trim();
-
-            if (BLL_Staff.checkLogin(username,password))
+            STAFF staff = BLL_Staff.checkLogin(username, password);
+            if (staff!=null)
             {
+
                 frmContainer frm = new frmContainer();
+                frm.static_USERNAME_STAFF = staff.USERNAME_STAFF;
+                frm.static_ID_GROUP_USER = staff.ID_GROUP;
                 frm.Show();
                 this.Hide();
             }

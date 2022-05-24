@@ -42,7 +42,7 @@ namespace BLL_PPL
                 && GeneralMethods.isLetter(staff.SURNAME_STAFF, true)
                 && GeneralMethods.isLetter(staff.NAME_STAFF, true)
                 && GeneralMethods.isDigit(staff.NUMBER_PHONE, false)
-                && GeneralMethods.isLetter(staff.ADDRESS_STAFF, true)
+                && staff.ADDRESS_STAFF!=null
                )
             {
                 if (!staff.DATE_OF_BIRTH.HasValue) 
@@ -153,7 +153,7 @@ namespace BLL_PPL
             }
         }
 
-        public static bool checkLogin(string username,string password)
+        public static STAFF checkLogin(string username,string password)
         {
             try
             {
@@ -161,16 +161,24 @@ namespace BLL_PPL
                 {
                     List<STAFF> list = BLL_Staff.getStaffs();
                     STAFF account = list.SingleOrDefault(t => t.USERNAME_STAFF == username && t.PASSWORD_STAFF == password);
-                    if (account != null)
-                        return true;
+                return account;
                 }
-                    return false;
+                    return null;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return false;
+                return null;
             }
+        }
+
+        public static bool isAdmin(string ID_GROUP_USER)
+        {
+            string role = DAL_Staff.getGroupUsers().SingleOrDefault(t => t.ID_GROUP == ID_GROUP_USER).ROLE_USER;
+            if (role == "ADMIN")
+                return true;
+            else
+                return false;
         }
     }
 }

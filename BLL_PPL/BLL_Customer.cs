@@ -17,7 +17,12 @@ namespace BLL_PPL
             return DAL_Customer.getCustomers();
         }
 
-        public static bool deleteReceipt(CUSTOMER data)
+        public static List<CUSTOMER_TYPE> getTypeCustomers()
+        {
+            return DAL_Customer.getTypeCutomers();
+        }
+
+        public static bool deleteCustomer(CUSTOMER data)
         {
             try
             {

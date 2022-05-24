@@ -100,6 +100,7 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -111,10 +112,13 @@
     <Compile Include="API_ExportWord.cs" />
     <Compile Include="BLL_Category.cs" />
     <Compile Include="BLL_Customer.cs" />
+    <Compile Include="BLL_News.cs" />
     <Compile Include="BLL_Product.cs" />
+    <Compile Include="BLL_Promotion.cs" />
     <Compile Include="BLL_Receipt.cs" />
     <Compile Include="BLL_Staff.cs" />
     <Compile Include="BLL_Synchronized.cs" />
+    <Compile Include="BLL_Voucher.cs" />
     <Compile Include="GeneralMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
