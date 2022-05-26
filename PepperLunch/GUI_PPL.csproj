@@ -175,11 +175,23 @@
     <Compile Include="frmHandleFirebase.Designer.cs">
       <DependentUpon>frmHandleFirebase.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmRecipe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRecipe.Designer.cs">
+      <DependentUpon>frmRecipe.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPromotion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmPromotion.Designer.cs">
       <DependentUpon>frmPromotion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmIngredients.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmIngredients.Designer.cs">
+      <DependentUpon>frmIngredients.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSyncCustomer.cs">
       <SubType>Form</SubType>
@@ -237,8 +249,14 @@
     <EmbeddedResource Include="frmHandleFirebase.resx">
       <DependentUpon>frmHandleFirebase.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmRecipe.resx">
+      <DependentUpon>frmRecipe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPromotion.resx">
       <DependentUpon>frmPromotion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmIngredients.resx">
+      <DependentUpon>frmIngredients.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSyncCustomer.resx">
       <DependentUpon>frmSyncCustomer.cs</DependentUpon>
@@ -334,6 +352,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\firebaseLogo.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\you_choy_200px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Accord.3.8.2-alpha\build\Accord.targets" Condition="Exists('..\packages\Accord.3.8.2-alpha\build\Accord.targets')" />

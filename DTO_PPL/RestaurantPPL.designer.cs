@@ -267,6 +267,14 @@ namespace DTO_PPL
 				return this.GetTable<RECEIPT_FULL>();
 			}
 		}
+		
+		public System.Data.Linq.Table<RECIPE_JOIN> RECIPE_JOINs
+		{
+			get
+			{
+				return this.GetTable<RECIPE_JOIN>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CATEGORY")]
@@ -5703,6 +5711,141 @@ namespace DTO_PPL
 				if ((this._TYPE_METHOD != value))
 				{
 					this._TYPE_METHOD = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.RECIPE_JOIN")]
+	public partial class RECIPE_JOIN
+	{
+		
+		private string _ID_DETAIL;
+		
+		private string _ID_PRODUCT;
+		
+		private string _ID_INGREDIENT;
+		
+		private System.Nullable<int> _WEIGHT_DETAIL;
+		
+		private System.Nullable<int> _FLAG_DEL;
+		
+		private string _NAME_PRODUCT_EN;
+		
+		private string _NAME_INGREDIENT;
+		
+		public RECIPE_JOIN()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_DETAIL", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ID_DETAIL
+		{
+			get
+			{
+				return this._ID_DETAIL;
+			}
+			set
+			{
+				if ((this._ID_DETAIL != value))
+				{
+					this._ID_DETAIL = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PRODUCT", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ID_PRODUCT
+		{
+			get
+			{
+				return this._ID_PRODUCT;
+			}
+			set
+			{
+				if ((this._ID_PRODUCT != value))
+				{
+					this._ID_PRODUCT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_INGREDIENT", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ID_INGREDIENT
+		{
+			get
+			{
+				return this._ID_INGREDIENT;
+			}
+			set
+			{
+				if ((this._ID_INGREDIENT != value))
+				{
+					this._ID_INGREDIENT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WEIGHT_DETAIL", DbType="Int")]
+		public System.Nullable<int> WEIGHT_DETAIL
+		{
+			get
+			{
+				return this._WEIGHT_DETAIL;
+			}
+			set
+			{
+				if ((this._WEIGHT_DETAIL != value))
+				{
+					this._WEIGHT_DETAIL = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLAG_DEL", DbType="Int")]
+		public System.Nullable<int> FLAG_DEL
+		{
+			get
+			{
+				return this._FLAG_DEL;
+			}
+			set
+			{
+				if ((this._FLAG_DEL != value))
+				{
+					this._FLAG_DEL = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_PRODUCT_EN", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string NAME_PRODUCT_EN
+		{
+			get
+			{
+				return this._NAME_PRODUCT_EN;
+			}
+			set
+			{
+				if ((this._NAME_PRODUCT_EN != value))
+				{
+					this._NAME_PRODUCT_EN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_INGREDIENT", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string NAME_INGREDIENT
+		{
+			get
+			{
+				return this._NAME_INGREDIENT;
+			}
+			set
+			{
+				if ((this._NAME_INGREDIENT != value))
+				{
+					this._NAME_INGREDIENT = value;
 				}
 			}
 		}

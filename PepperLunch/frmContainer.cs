@@ -156,5 +156,15 @@ namespace PepperLunch
             }
         }
 
+        private void barBtn_Ingredient_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (!isOpenForm(typeof(frmRecipe)))
+            {
+                frmRecipe newForm = new frmRecipe();
+                //newForm.static_USERNAME_STAFF = static_USERNAME_STAFF;
+                newForm.MdiParent = this;
+                newForm.Show();
+            }
+        }
     }
 }

@@ -259,4 +259,15 @@
       <Column Name="TYPE_METHOD" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.RECIPE_JOIN" Member="RECIPE_JOINs">
+    <Type Name="RECIPE_JOIN">
+      <Column Name="ID_DETAIL" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_PRODUCT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_INGREDIENT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="WEIGHT_DETAIL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FLAG_DEL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NAME_PRODUCT_EN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NAME_INGREDIENT" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
 </Database>
