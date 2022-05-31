@@ -104,8 +104,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Customer.cs" />
-    <Compile Include="Detail.cs" />
     <Compile Include="Detail_Order.cs" />
+    <Compile Include="GeneralMethods.cs" />
     <Compile Include="METHOD.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Cart_Item.cs" />

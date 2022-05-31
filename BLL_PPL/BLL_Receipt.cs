@@ -103,6 +103,32 @@ namespace BLL_PPL
             }
         }
 
+        public static async Task<bool> updateReceiptFromFirebase()
+        {
+            try
+            {
+                return await FB_Order.updateReceiptFromFirebase();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
+        //public static bool updateDetailReceiptToSql()
+        //{
+        //    try
+        //    {
+        //        return FB_Order.updateDetailReceiptToSql();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //        return false;
+        //    }
+        //}
+
 
     }
 }

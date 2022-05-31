@@ -150,10 +150,10 @@ namespace PepperLunch
         private void frmContainer_Load(object sender, EventArgs e)
         {
             // check role user
-            if (!BLL_Staff.isAdmin(static_ID_GROUP_USER))
-            {
-                ribbonPageGroup_Firebase.Visible =  false;
-            }
+            //if (!BLL_Staff.isAdmin(static_ID_GROUP_USER))
+            //{
+            //    ribbonPageGroup_Firebase.Visible =  false;
+            //}
         }
 
         private void barBtn_Ingredient_ItemClick(object sender, ItemClickEventArgs e)

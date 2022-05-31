@@ -92,6 +92,52 @@ namespace DAL_PPL
             }
         }
 
+        public static bool insertDetailReceipt(DETAIL_RECEIPT data)
+        {
+            try
+            {
+                // convert RECEIPT_FULL to RECEIPT
+                DETAIL_RECEIPT item = new DETAIL_RECEIPT();
+                item.ID_DETAIL_RECEIPT = data.ID_DETAIL_RECEIPT;
+                item.ID_RECEIPT = data.ID_RECEIPT;
+                item.ID_PRODUCT = data.ID_PRODUCT;
+                item.PRICE = data.PRICE;
+                item.QUANTITY = data.QUANTITY;
+                db.DETAIL_RECEIPTs.InsertOnSubmit(item);
+                db.SubmitChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool insertReceipt(RECEIPT data)
+        {
+            try
+            {
+                // convert RECEIPT_FULL to RECEIPT
+                RECEIPT item = new RECEIPT();
+                item.ID_RECEIPT = data.ID_RECEIPT;
+                item.ID_VOUCHER = data.ID_VOUCHER;
+                item.ID_CUSTOMER = data.ID_CUSTOMER;
+                item.ID_METHOD = data.ID_METHOD;
+                item.DATE_CREATE = data.DATE_CREATE;
+                item.TOTAL_PRODUCT = data.TOTAL_PRODUCT;
+                item.TOTAL_PRICE = data.TOTAL_PRICE;
+                item.POINT = data.POINT;
+                item.STATE_RECEIPT = data.STATE_RECEIPT;
+                db.RECEIPTs.InsertOnSubmit(item);
+                db.SubmitChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public static bool deleteReceipt(RECEIPT_FULL data)
         {
             try

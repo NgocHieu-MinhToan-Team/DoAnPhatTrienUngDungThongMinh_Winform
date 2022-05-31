@@ -20,9 +20,9 @@ namespace PepperLunch
             InitializeComponent();
         }
 
-        private void frmCustomer_Load(object sender, EventArgs e)
+        private async void frmCustomer_Load(object sender, EventArgs e)
         {
-            loadNotSyncCustomerFromFirebase();
+            await loadNotSyncCustomerFromFirebase();
             gridControl_Customer.DataSource = BLL_Customer.getCustomers();
         }
 

@@ -8,8 +8,8 @@ namespace DTO_PPL
 {
     public class Product
     {
-        string id_CATEGORY, id_PRODUCT, image_PRODUCT, name_PRODUCT_EN, name_PRODUCT_VN;
-        long price_PRODUCT;
+        public string id_CATEGORY, id_PRODUCT, image_PRODUCT, name_PRODUCT_EN, name_PRODUCT_VN;
+        public long price_PRODUCT;
         public Product() { }
 
     }

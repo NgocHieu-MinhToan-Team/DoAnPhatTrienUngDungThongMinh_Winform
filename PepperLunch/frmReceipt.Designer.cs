@@ -31,8 +31,11 @@ namespace PepperLunch
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReceipt));
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
-            this.gridControl_receipt = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.gridControl_receiptSql = new DevExpress.XtraGrid.GridControl();
+            this.gridView_receiptSql = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridControl_receiptFB = new DevExpress.XtraGrid.GridControl();
+            this.gridView_receiptFB = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionCtrlE_exportExcel = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -41,38 +44,72 @@ namespace PepperLunch
             this.accordionCtrlE_SyncFromFirebase = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.fluentDesignFormContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl_receipt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl_receiptSql)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_receiptSql)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl_receiptFB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_receiptFB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // fluentDesignFormContainer1
             // 
-            this.fluentDesignFormContainer1.Controls.Add(this.gridControl_receipt);
+            this.fluentDesignFormContainer1.Controls.Add(this.tableLayoutPanel1);
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fluentDesignFormContainer1.Location = new System.Drawing.Point(254, 39);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
             this.fluentDesignFormContainer1.Size = new System.Drawing.Size(963, 617);
             this.fluentDesignFormContainer1.TabIndex = 0;
             // 
-            // gridControl_receipt
+            // tableLayoutPanel1
             // 
-            this.gridControl_receipt.AllowRestoreSelectionAndFocusedRow = DevExpress.Utils.DefaultBoolean.False;
-            this.gridControl_receipt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl_receipt.Location = new System.Drawing.Point(0, 0);
-            this.gridControl_receipt.MainView = this.gridView1;
-            this.gridControl_receipt.Name = "gridControl_receipt";
-            this.gridControl_receipt.Size = new System.Drawing.Size(963, 617);
-            this.gridControl_receipt.TabIndex = 0;
-            this.gridControl_receipt.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.gridControl_receiptSql, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.gridControl_receiptFB, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(963, 617);
+            this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // gridView1
+            // gridControl_receiptSql
             // 
-            this.gridView1.GridControl = this.gridControl_receipt;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsSelection.MultiSelect = true;
+            this.gridControl_receiptSql.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl_receiptSql.Location = new System.Drawing.Point(3, 311);
+            this.gridControl_receiptSql.MainView = this.gridView_receiptSql;
+            this.gridControl_receiptSql.Name = "gridControl_receiptSql";
+            this.gridControl_receiptSql.Size = new System.Drawing.Size(957, 303);
+            this.gridControl_receiptSql.TabIndex = 2;
+            this.gridControl_receiptSql.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView_receiptSql});
+            // 
+            // gridView_receiptSql
+            // 
+            this.gridView_receiptSql.GridControl = this.gridControl_receiptSql;
+            this.gridView_receiptSql.Name = "gridView_receiptSql";
+            // 
+            // gridControl_receiptFB
+            // 
+            this.gridControl_receiptFB.AllowRestoreSelectionAndFocusedRow = DevExpress.Utils.DefaultBoolean.False;
+            this.gridControl_receiptFB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl_receiptFB.Location = new System.Drawing.Point(3, 3);
+            this.gridControl_receiptFB.MainView = this.gridView_receiptFB;
+            this.gridControl_receiptFB.Name = "gridControl_receiptFB";
+            this.gridControl_receiptFB.Size = new System.Drawing.Size(957, 302);
+            this.gridControl_receiptFB.TabIndex = 0;
+            this.gridControl_receiptFB.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView_receiptFB});
+            // 
+            // gridView_receiptFB
+            // 
+            this.gridView_receiptFB.GridControl = this.gridControl_receiptFB;
+            this.gridView_receiptFB.Name = "gridView_receiptFB";
+            this.gridView_receiptFB.OptionsSelection.MultiSelect = true;
             // 
             // accordionControl1
             // 
@@ -179,8 +216,11 @@ namespace PepperLunch
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmReceipt_Load);
             this.fluentDesignFormContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl_receipt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl_receiptSql)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_receiptSql)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl_receiptFB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_receiptFB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
             this.ResumeLayout(false);
@@ -192,11 +232,14 @@ namespace PepperLunch
         private DevExpress.XtraBars.Navigation.AccordionControl accordionControl1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
         private DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl fluentDesignFormControl1;
-        private DevExpress.XtraGrid.GridControl gridControl_receipt;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.GridControl gridControl_receiptFB;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView_receiptFB;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrlE_exportExcel;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrlE_exportWord;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrlE_removeReceipt;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrlE_SyncFromFirebase;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private DevExpress.XtraGrid.GridControl gridControl_receiptSql;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView_receiptSql;
     }
 }

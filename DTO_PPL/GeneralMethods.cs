@@ -4,25 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL_PPL
+namespace DTO_PPL
 {
     public class GeneralMethods
     {
-        public static string createID(string prefix)
+        public async static Task<string> createID(string prefix)
         {
-            
-            string id = prefix+DateTime.Now.Year + DateTime.Now.Month+ DateTime.Now.Day+ DateTime.Now.Hour+ DateTime.Now.Minute+ DateTime.Now.Second+ DateTime.Now.Millisecond;
+            string id =await DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + DateTime.Now.Millisecond +DateTime.Now. ;
             return id;
         }
 
-        public static bool isLetter(string s,bool hasSpace)
+        public static bool isLetter(string s, bool hasSpace)
         {
             string str = s.Trim();
-            if (str.Length>0)
+            if (str.Length > 0)
             {
                 if (hasSpace)
                 {
-                    if(str.All(t=>char.IsLetter(t) || t==' '))
+                    if (str.All(t => char.IsLetter(t) || t == ' '))
                     {
                         return true;
                     }
@@ -69,7 +68,7 @@ namespace BLL_PPL
             }
         }
 
-        public static bool isLetterOrDigit(string s ,bool hasSpace)
+        public static bool isLetterOrDigit(string s, bool hasSpace)
         {
             string str = s.Trim();
             if (str.Length > 0)

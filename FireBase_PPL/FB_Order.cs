@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL_PPL;
 
 namespace FireBase_PPL
 {
@@ -36,94 +37,152 @@ namespace FireBase_PPL
             return null;
         }
 
-
         //get list Order
         public static async Task<List<RECEIPT>> getEntire()
         {
             List<RECEIPT> listOfReceipt = new List<RECEIPT>();
-            Dictionary<string, Dictionary<string,Detail_Order>> listData = await getEntireOnBranch("Database/Order");
+            Dictionary<string, Dictionary<string, Detail_Order>> listData = await getEntireOnBranch("Database/Order");
+            Order order = new Order();
+            order.order = await getEntireOnBranch("Database/Order");
             try
             {
                 // convert from Dictionary to list 
-                if (listData != null)
+                if (order != null)
                 {
-                    foreach (var itemData in listData)
+                    foreach (var detail_item in order.order)
                     {
-                       
-                        //Order itemOrder = itemData.Value;
-                        //Dictionary<string, Detail> detail = itemOrder.list_detail ;
-                        //foreach(var itemDetail in detail)
-                        //{
-                        //    Detail detail_order = itemDetail.Value;
-                        //    foreach(var order in detail_order.list_order)
-                        //    {
-                        //        Detail_Order dt_order = order.Value;
-                        //    }
-                            
-                        //}
-                        //RECEIPT itemReceipt = new RECEIPT();
-                        //// get id customer 
-                        //itemReceipt.ID_CUSTOMER = itemData.Key;
-                        //foreach(var itemDetailOrder in itemOrder.)
-                        //{
-                        //    itemDetailOrder.
-                        //}
-                        //itemReceipt.ID_METHOD = "";
-                        //itemReceipt.ID_RECEIPT = "";
-                        //itemReceipt.ID_VOUCHER = "";
-                        //itemReceipt.DATE_CREATE = "";
-                        //itemReceipt.TOTAL_PRODUCT = "";
-                        //itemReceipt.TOTAL_PRICE = "";
-                        //itemReceipt.POINT = "";
-                        //itemReceipt.STATE_RECEIPT = "";
-                        //listOfReceipt.Add(itemOfFirebase);
+                        Dictionary<string, Detail_Order> detail_order = detail_item.Value;
+
+
+                        foreach (var item_detail_order in detail_order)
+                        {
+                            RECEIPT itemReceipt = new RECEIPT();
+                            // get id customer 
+                            itemReceipt.ID_CUSTOMER = item_detail_order.Value.id_CUSTOMER;
+                            itemReceipt.ID_METHOD = item_detail_order.Value.id_METHOD;
+                            itemReceipt.ID_RECEIPT = item_detail_order.Key;
+                            itemReceipt.ID_VOUCHER = item_detail_order.Value.id_VOUCHER;
+                            itemReceipt.STATE_RECEIPT = item_detail_order.Value.status;
+                            itemReceipt.TOTAL_PRICE = (int?)item_detail_order.Value.total_PAYMENT;
+                            itemReceipt.DATE_CREATE = DateTime.Now;
+                            Dictionary<string, Cart_Item> list_cart = item_detail_order.Value.list_CART;
+                            int total = 0;
+                            foreach (var item_cart_item in list_cart)
+                            {
+                                total += item_cart_item.Value.soluong;
+
+                            }
+                            itemReceipt.TOTAL_PRODUCT = total;
+                            itemReceipt.POINT = (int?)item_detail_order.Value.total_PAYMENT;
+                            itemReceipt.STATE_RECEIPT = item_detail_order.Value.status;
+
+                            listOfReceipt.Add(itemReceipt);
+
+                        }
                     }
                 }
-                return null;
+                return listOfReceipt;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return null;
             }
-            return listOfReceipt;
-
         }
 
-        // get categories that was not synchronized 
-        //public static async Task<List<Order>> getEntireNotSync(List<Order> listOfSql)
-        //{
-        //    List<Order> listNotSync = new List<Order>();
-        //    Dictionary<string, Order> listData = await getEntireOnBranch("Database/Order");
-        //    try
-        //    {
+        public static async Task<bool> updateReceiptFromFirebase()
+        {
+            try
+            {
+                List<RECEIPT> list = await getEntire();
 
-        //        foreach (Order itemOfSql in listOfSql)
-        //        {
-        //            Order itemOfFirebase = await getOne("Database/Order/" + itemOfSql.ID_Order.ToString() + "/");
-        //            if (itemOfFirebase != null)
-        //            {
-        //                if (itemOfFirebase.GROUP_Order != itemOfSql.GROUP_Order
-        //                || itemOfFirebase.NAME_Order != itemOfSql.NAME_Order)
-        //                {
-        //                    listNotSync.Add(itemOfSql);
-        //                }
-        //            }
-        //            else
-        //            {
-        //                listNotSync.Add(itemOfSql);
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.Message);
-        //        return null;
-        //    }
-        //    return listNotSync;
+                List<DETAIL_RECEIPT> listAsync = await getDetailReceiptFromFirebase();
+                List<DETAIL_RECEIPT> listDetail = getListDetailReceipt_SYNC(listAsync);
+                foreach (RECEIPT item in list)
+                {
+                    // insert receipt to sql
+                    DAL_Receipt.insertReceipt(item);
+                    // update state to firebase
+                    string rootName = "Database/Order/" + item.ID_CUSTOMER + "/" + item.ID_RECEIPT + "/status";
+                    await ConnectFireBase.FirebaseInsertData(1, rootName);
 
-        //}
-        // update data on firebase 
+                }
+                // insert detail receipt sql
+                foreach (DETAIL_RECEIPT detail in listDetail)
+                {
+                    DAL_Receipt.insertDetailReceipt(detail);
+                }
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+        public static async Task<List<DETAIL_RECEIPT>> getDetailReceiptFromFirebase()
+        {
+            List<DETAIL_RECEIPT> listOfDetailReceipt = new List<DETAIL_RECEIPT>();
+            Dictionary<string, Dictionary<string, Detail_Order>> listData = await getEntireOnBranch("Database/Order");
+            Order order = new Order();
+            order.order = await getEntireOnBranch("Database/Order");
+            try
+            {
+                // convert from Dictionary to list 
+                if (order != null)
+                {
+                    foreach (var detail_item in order.order)
+                    {
+                        Dictionary<string, Detail_Order> detail_order = detail_item.Value;
+                        foreach (var item_detail_order in detail_order)
+                        {
+                            Dictionary<string, Cart_Item> list_cart = item_detail_order.Value.list_CART;
+                            foreach (var item_cart_item in list_cart)
+                            {
+                                DETAIL_RECEIPT item = new DETAIL_RECEIPT();
+                                Product product = item_cart_item.Value.product;
+                                string id = "";
+                                id = await Task.Run(() => GeneralMethods.createID("CTHD"));
+                                item.ID_DETAIL_RECEIPT = id;
+                                item.ID_RECEIPT = item_detail_order.Key;
+                                item.ID_PRODUCT = product.id_PRODUCT;
+                                item.PRICE = (int?)product.price_PRODUCT;
+                                item.QUANTITY = item_cart_item.Value.soluong;
+                                listOfDetailReceipt.Add(item);
+                            }
+
+                        }
+                    }
+                }
+                return listOfDetailReceipt;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        // genderate key sync 
+        public static List<DETAIL_RECEIPT> getListDetailReceipt_SYNC(List<DETAIL_RECEIPT> listOld)
+        {
+            List<DETAIL_RECEIPT> listNew = new List<DETAIL_RECEIPT>();
+            foreach(DETAIL_RECEIPT itemOld in listOld)
+            {
+                DETAIL_RECEIPT itemNew = new DETAIL_RECEIPT();
+                itemNew.ID_DETAIL_RECEIPT =await GeneralMethods.createID("CTHD");
+                itemNew.ID_RECEIPT = itemOld.ID_RECEIPT;
+                itemNew.ID_PRODUCT = itemOld.ID_PRODUCT;
+                itemNew.PRICE = itemOld.PRICE;
+                itemNew.QUANTITY = itemOld.QUANTITY;
+                listNew.Add(itemNew);
+            }
+            return listNew;
+        }
+
+
 
     }
 }
