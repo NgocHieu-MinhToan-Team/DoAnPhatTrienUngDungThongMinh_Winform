@@ -1151,7 +1151,7 @@ namespace DTO_PPL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PASSWORD_CUSTOMER", DbType="VarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PASSWORD_CUSTOMER", DbType="VarChar(MAX)")]
 		public string PASSWORD_CUSTOMER
 		{
 			get

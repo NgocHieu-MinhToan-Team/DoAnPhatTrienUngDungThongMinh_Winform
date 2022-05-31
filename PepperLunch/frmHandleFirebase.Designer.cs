@@ -32,15 +32,18 @@ namespace PepperLunch
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHandleFirebase));
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.tblLayout_wrapper = new System.Windows.Forms.TableLayoutPanel();
+            this.cbbPromotion = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.svgImage_food = new DevExpress.XtraEditors.SvgImageBox();
             this.btnSyncFood = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnSyncVoucher = new DevExpress.XtraEditors.SimpleButton();
             this.svgImage_News = new DevExpress.XtraEditors.SvgImageBox();
+            this.svgImageBox3 = new DevExpress.XtraEditors.SvgImageBox();
             this.btnSyncNews = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.svgImageBox3 = new DevExpress.XtraEditors.SvgImageBox();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.svgImageBox1 = new DevExpress.XtraEditors.SvgImageBox();
+            this.btnSyncMethodPay = new DevExpress.XtraEditors.SimpleButton();
             this.gridControl_dataFromFB = new DevExpress.XtraGrid.GridControl();
             this.gridView_dataFromFB = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
@@ -53,15 +56,15 @@ namespace PepperLunch
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.cbbPromotion = new System.Windows.Forms.ComboBox();
             this.fluentDesignFormContainer1.SuspendLayout();
             this.tblLayout_wrapper.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.svgImage_food)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.svgImage_News)).BeginInit();
-            this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.svgImageBox3)).BeginInit();
+            this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.svgImageBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_dataFromFB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_dataFromFB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
@@ -84,18 +87,29 @@ namespace PepperLunch
             this.tblLayout_wrapper.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tblLayout_wrapper.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tblLayout_wrapper.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tblLayout_wrapper.Controls.Add(this.tableLayoutPanel1, 0, 0);
-            this.tblLayout_wrapper.Controls.Add(this.tableLayoutPanel2, 1, 0);
-            this.tblLayout_wrapper.Controls.Add(this.tableLayoutPanel3, 2, 0);
-            this.tblLayout_wrapper.Controls.Add(this.gridControl_dataFromFB, 0, 1);
+            this.tblLayout_wrapper.Controls.Add(this.cbbPromotion, 1, 0);
+            this.tblLayout_wrapper.Controls.Add(this.tableLayoutPanel1, 0, 1);
+            this.tblLayout_wrapper.Controls.Add(this.tableLayoutPanel2, 1, 1);
+            this.tblLayout_wrapper.Controls.Add(this.tableLayoutPanel3, 2, 1);
+            this.tblLayout_wrapper.Controls.Add(this.gridControl_dataFromFB, 0, 2);
             this.tblLayout_wrapper.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblLayout_wrapper.Location = new System.Drawing.Point(0, 0);
             this.tblLayout_wrapper.Name = "tblLayout_wrapper";
-            this.tblLayout_wrapper.RowCount = 2;
+            this.tblLayout_wrapper.RowCount = 3;
+            this.tblLayout_wrapper.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tblLayout_wrapper.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.39053F));
             this.tblLayout_wrapper.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.60947F));
             this.tblLayout_wrapper.Size = new System.Drawing.Size(879, 676);
             this.tblLayout_wrapper.TabIndex = 0;
+            // 
+            // cbbPromotion
+            // 
+            this.cbbPromotion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbbPromotion.FormattingEnabled = true;
+            this.cbbPromotion.Location = new System.Drawing.Point(296, 3);
+            this.cbbPromotion.Name = "cbbPromotion";
+            this.cbbPromotion.Size = new System.Drawing.Size(287, 29);
+            this.cbbPromotion.TabIndex = 2;
             // 
             // tableLayoutPanel1
             // 
@@ -106,11 +120,11 @@ namespace PepperLunch
             this.tableLayoutPanel1.Controls.Add(this.svgImage_food, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnSyncFood, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 39);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(287, 70);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(287, 66);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // svgImage_food
@@ -119,7 +133,7 @@ namespace PepperLunch
             this.svgImage_food.Dock = System.Windows.Forms.DockStyle.Top;
             this.svgImage_food.Location = new System.Drawing.Point(3, 3);
             this.svgImage_food.Name = "svgImage_food";
-            this.svgImage_food.Size = new System.Drawing.Size(89, 64);
+            this.svgImage_food.Size = new System.Drawing.Size(89, 60);
             this.svgImage_food.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("svgImage_food.SvgImage")));
             this.svgImage_food.TabIndex = 0;
             this.svgImage_food.Text = "svgImageBox1";
@@ -130,7 +144,7 @@ namespace PepperLunch
             this.btnSyncFood.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSyncFood.Location = new System.Drawing.Point(98, 3);
             this.btnSyncFood.Name = "btnSyncFood";
-            this.btnSyncFood.Size = new System.Drawing.Size(89, 64);
+            this.btnSyncFood.Size = new System.Drawing.Size(89, 60);
             this.btnSyncFood.TabIndex = 1;
             this.btnSyncFood.Text = "Sync Food To Firebase";
             this.btnSyncFood.Click += new System.EventHandler(this.btnSyncFood_Click);
@@ -138,39 +152,61 @@ namespace PepperLunch
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnCount = 4;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 107F));
+            this.tableLayoutPanel2.Controls.Add(this.btnSyncVoucher, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.svgImage_News, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.svgImageBox3, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnSyncNews, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.cbbPromotion, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(296, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(296, 39);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(287, 70);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(287, 66);
             this.tableLayoutPanel2.TabIndex = 2;
+            // 
+            // btnSyncVoucher
+            // 
+            this.btnSyncVoucher.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSyncVoucher.Location = new System.Drawing.Point(183, 3);
+            this.btnSyncVoucher.Name = "btnSyncVoucher";
+            this.btnSyncVoucher.Size = new System.Drawing.Size(101, 60);
+            this.btnSyncVoucher.TabIndex = 1;
+            this.btnSyncVoucher.Text = "Sync Voucher";
+            this.btnSyncVoucher.Click += new System.EventHandler(this.btnSyncVoucher_Click);
             // 
             // svgImage_News
             // 
             this.svgImage_News.BackColor = System.Drawing.Color.Transparent;
-            this.svgImage_News.Dock = System.Windows.Forms.DockStyle.Top;
+            this.svgImage_News.Dock = System.Windows.Forms.DockStyle.Fill;
             this.svgImage_News.Location = new System.Drawing.Point(3, 3);
             this.svgImage_News.Name = "svgImage_News";
-            this.svgImage_News.Size = new System.Drawing.Size(89, 64);
+            this.svgImage_News.Size = new System.Drawing.Size(54, 60);
             this.svgImage_News.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("svgImage_News.SvgImage")));
             this.svgImage_News.TabIndex = 0;
             this.svgImage_News.Text = "svgImageBox2";
             this.svgImage_News.Click += new System.EventHandler(this.svgImage_News_Click);
             // 
+            // svgImageBox3
+            // 
+            this.svgImageBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.svgImageBox3.Location = new System.Drawing.Point(123, 3);
+            this.svgImageBox3.Name = "svgImageBox3";
+            this.svgImageBox3.Size = new System.Drawing.Size(54, 60);
+            this.svgImageBox3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("svgImageBox3.SvgImage")));
+            this.svgImageBox3.TabIndex = 0;
+            this.svgImageBox3.Text = "svgImageBox3";
+            // 
             // btnSyncNews
             // 
             this.btnSyncNews.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSyncNews.Location = new System.Drawing.Point(98, 3);
+            this.btnSyncNews.Location = new System.Drawing.Point(63, 3);
             this.btnSyncNews.Name = "btnSyncNews";
-            this.btnSyncNews.Size = new System.Drawing.Size(89, 64);
+            this.btnSyncNews.Size = new System.Drawing.Size(54, 60);
             this.btnSyncNews.TabIndex = 1;
             this.btnSyncNews.Text = "Sync To Firebase";
             this.btnSyncNews.Click += new System.EventHandler(this.btnSyncNews_Click);
@@ -181,42 +217,45 @@ namespace PepperLunch
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.Controls.Add(this.svgImageBox3, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.simpleButton3, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.svgImageBox1, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnSyncMethodPay, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(589, 3);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(589, 39);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(287, 70);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(287, 66);
             this.tableLayoutPanel3.TabIndex = 3;
             // 
-            // svgImageBox3
+            // svgImageBox1
             // 
-            this.svgImageBox3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.svgImageBox3.Location = new System.Drawing.Point(3, 3);
-            this.svgImageBox3.Name = "svgImageBox3";
-            this.svgImageBox3.Size = new System.Drawing.Size(89, 64);
-            this.svgImageBox3.TabIndex = 0;
-            this.svgImageBox3.Text = "svgImageBox3";
+            this.svgImageBox1.BackColor = System.Drawing.Color.Transparent;
+            this.svgImageBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.svgImageBox1.Location = new System.Drawing.Point(3, 3);
+            this.svgImageBox1.Name = "svgImageBox1";
+            this.svgImageBox1.Size = new System.Drawing.Size(89, 60);
+            this.svgImageBox1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("svgImageBox1.SvgImage")));
+            this.svgImageBox1.TabIndex = 1;
+            this.svgImageBox1.Text = "svgImageBox2";
             // 
-            // simpleButton3
+            // btnSyncMethodPay
             // 
-            this.simpleButton3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.simpleButton3.Location = new System.Drawing.Point(98, 3);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(89, 64);
-            this.simpleButton3.TabIndex = 1;
-            this.simpleButton3.Text = "Nothing";
+            this.btnSyncMethodPay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSyncMethodPay.Location = new System.Drawing.Point(98, 3);
+            this.btnSyncMethodPay.Name = "btnSyncMethodPay";
+            this.btnSyncMethodPay.Size = new System.Drawing.Size(89, 60);
+            this.btnSyncMethodPay.TabIndex = 0;
+            this.btnSyncMethodPay.Text = "Sync Method";
+            this.btnSyncMethodPay.Click += new System.EventHandler(this.btnSyncMethodPay_Click);
             // 
             // gridControl_dataFromFB
             // 
             this.tblLayout_wrapper.SetColumnSpan(this.gridControl_dataFromFB, 3);
             this.gridControl_dataFromFB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl_dataFromFB.Location = new System.Drawing.Point(3, 79);
+            this.gridControl_dataFromFB.Location = new System.Drawing.Point(3, 111);
             this.gridControl_dataFromFB.MainView = this.gridView_dataFromFB;
             this.gridControl_dataFromFB.Name = "gridControl_dataFromFB";
-            this.gridControl_dataFromFB.Size = new System.Drawing.Size(873, 594);
+            this.gridControl_dataFromFB.Size = new System.Drawing.Size(873, 562);
             this.gridControl_dataFromFB.TabIndex = 4;
             this.gridControl_dataFromFB.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_dataFromFB});
@@ -348,15 +387,6 @@ namespace PepperLunch
             this.accordionControlElement4.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement4.Text = "NEWS";
             // 
-            // cbbPromotion
-            // 
-            this.cbbPromotion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbbPromotion.FormattingEnabled = true;
-            this.cbbPromotion.Location = new System.Drawing.Point(193, 3);
-            this.cbbPromotion.Name = "cbbPromotion";
-            this.cbbPromotion.Size = new System.Drawing.Size(91, 29);
-            this.cbbPromotion.TabIndex = 2;
-            // 
             // frmHandleFirebase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -377,8 +407,9 @@ namespace PepperLunch
             ((System.ComponentModel.ISupportInitialize)(this.svgImage_food)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.svgImage_News)).EndInit();
-            this.tableLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.svgImageBox3)).EndInit();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.svgImageBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_dataFromFB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_dataFromFB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
@@ -407,10 +438,12 @@ namespace PepperLunch
         private DevExpress.XtraEditors.SimpleButton btnSyncNews;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private DevExpress.XtraEditors.SvgImageBox svgImageBox3;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraEditors.SimpleButton btnSyncVoucher;
         private DevExpress.XtraGrid.GridControl gridControl_dataFromFB;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView_dataFromFB;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement5;
         private System.Windows.Forms.ComboBox cbbPromotion;
+        private DevExpress.XtraEditors.SvgImageBox svgImageBox1;
+        private DevExpress.XtraEditors.SimpleButton btnSyncMethodPay;
     }
 }

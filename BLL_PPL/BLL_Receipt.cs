@@ -90,6 +90,19 @@ namespace BLL_PPL
             }
         }
 
+        public static async Task<List<RECEIPT>> getDataFromFirebaseAsync()
+        {
+            try
+            {
+                return await FB_Order.getEntire();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
+
 
     }
 }

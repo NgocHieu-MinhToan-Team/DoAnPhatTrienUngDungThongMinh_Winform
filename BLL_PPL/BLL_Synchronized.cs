@@ -198,7 +198,7 @@ namespace BLL_PPL
         #endregion
         #region Customer
         // pull data from firebase
-        public static async Task<List<CUSTOMER>> getCustomersFromFireBase()
+        public static async Task<List<Customer>> getCustomersFromFireBase()
         {
             //check connect to firebase
             var client = ConnectFireBase.CreateFirebaseClient();
@@ -214,15 +214,14 @@ namespace BLL_PPL
             }
         }
         // pull and compare 
-        public static async Task<List<CUSTOMER>> getCustomersNotSync()
+        public static async Task<List<Customer>> getCustomersNotSync()
         {
-            List<CUSTOMER> list = DAL_Customer.getCustomers();
             //check connect to firebase
             var client = ConnectFireBase.CreateFirebaseClient();
             if (client != null)
             {
                 //get data from firebase
-                return await FB_Customer.getEntireNotSync(list);
+                return await FB_Customer.getEntireNotSync();
             }
             else
             {
@@ -234,14 +233,19 @@ namespace BLL_PPL
         // sync from sql to firebase
         public static async Task<bool> updateCustomersFromFirebaseAsync()
         {
-            List<CUSTOMER> list = DAL_Customer.getCustomers();
             //check connect to firebase
             var client = ConnectFireBase.CreateFirebaseClient();
             if (client != null)
             {
                 //sync here
-                bool result = await FB_Customer.updateFromFirebaseAsync(list);
-                return result;
+                
+                if(await FB_Customer.updateFromFirebaseAsync())
+                    return true;
+                else
+                {
+                    MessageBox.Show("No data changed from firebase !");
+                    return false;
+                }
             }
             else
             {
@@ -278,6 +282,42 @@ namespace BLL_PPL
             {
                 //sync here
                 bool result = await FB_News.updateToFirebaseAsync(ID_PROMOTION);
+                return result;
+            }
+            else
+            {
+                MessageBox.Show("Interet have a problem ? cannot retrieve data from firebase");
+                return false;
+            }
+        }
+        #endregion
+        #region Voucher
+        public static async Task<bool> updateVoucherToFirebaseAsync(string ID_PROMOTION)
+        {
+            //check connect to firebase
+            var client = ConnectFireBase.CreateFirebaseClient();
+            if (client != null)
+            {
+                //sync here
+                bool result = await FB_Voucher.updateToFirebaseAsync(ID_PROMOTION);
+                return result;
+            }
+            else
+            {
+                MessageBox.Show("Interet have a problem ? cannot retrieve data from firebase");
+                return false;
+            }
+        }
+        #endregion
+        #region Method
+        public static async Task<bool> updateMethodToFirebaseAsync()
+        {
+            //check connect to firebase
+            var client = ConnectFireBase.CreateFirebaseClient();
+            if (client != null)
+            {
+                //sync here
+                bool result = await FB_Voucher.updateMethodToFirebaseAsync();
                 return result;
             }
             else

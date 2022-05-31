@@ -38,6 +38,7 @@ namespace PepperLunch
             this.accordionCtrlE_exportExcel = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionCtrlE_exportWord = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionCtrlE_removeReceipt = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionCtrlE_SyncFromFirebase = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.fluentDesignFormContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_receipt)).BeginInit();
@@ -82,7 +83,8 @@ namespace PepperLunch
             this.accordionControlElement1,
             this.accordionCtrlE_exportExcel,
             this.accordionCtrlE_exportWord,
-            this.accordionCtrlE_removeReceipt});
+            this.accordionCtrlE_removeReceipt,
+            this.accordionCtrlE_SyncFromFirebase});
             this.accordionControl1.Location = new System.Drawing.Point(0, 39);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
@@ -137,11 +139,20 @@ namespace PepperLunch
             // 
             this.accordionCtrlE_removeReceipt.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
             this.accordionCtrlE_removeReceipt.Appearance.Normal.Options.UseForeColor = true;
-            this.accordionCtrlE_removeReceipt.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionCtrlE_addReceipt.ImageOptions.Image")));
+            this.accordionCtrlE_removeReceipt.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionCtrlE_removeReceipt.ImageOptions.Image")));
             this.accordionCtrlE_removeReceipt.Name = "accordionCtrlE_removeReceipt";
             this.accordionCtrlE_removeReceipt.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionCtrlE_removeReceipt.Text = "Delete Forever";
             this.accordionCtrlE_removeReceipt.Click += new System.EventHandler(this.accordionCtrlE_removeReceipt_Click);
+            // 
+            // accordionCtrlE_SyncFromFirebase
+            // 
+            this.accordionCtrlE_SyncFromFirebase.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            this.accordionCtrlE_SyncFromFirebase.Appearance.Normal.Options.UseForeColor = true;
+            this.accordionCtrlE_SyncFromFirebase.Name = "accordionCtrlE_SyncFromFirebase";
+            this.accordionCtrlE_SyncFromFirebase.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionCtrlE_SyncFromFirebase.Text = "Sync From Firebase";
+            this.accordionCtrlE_SyncFromFirebase.Click += new System.EventHandler(this.accordionCtrlE_SyncFromFirebase_Click);
             // 
             // fluentDesignFormControl1
             // 
@@ -186,5 +197,6 @@ namespace PepperLunch
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrlE_exportExcel;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrlE_exportWord;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrlE_removeReceipt;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrlE_SyncFromFirebase;
     }
 }

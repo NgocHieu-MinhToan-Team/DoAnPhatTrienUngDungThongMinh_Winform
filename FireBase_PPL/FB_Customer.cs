@@ -18,44 +18,45 @@ namespace FireBase_PPL
         //get Client from  firebase
         static IFirebaseClient client = ConnectFireBase.CreateFirebaseClient();
         
-        public static async Task<CUSTOMER> getOne(string rootName)
+        public static async Task<Customer> getOne(string rootName)
         {
             if (client != null)
             {
                 FirebaseResponse response = await client.GetAsync(rootName);
-                return response.ResultAs<CUSTOMER>();
+                return response.ResultAs<Customer>();
             }
             return null;
         }
 
 
         // get all node on branch Category
-        private static async Task<Dictionary<string, CUSTOMER>> getEntireOnBranch(string rootName)
+        private static async Task<Dictionary<string, Customer>> getEntireOnBranch(string rootName)
         {
             if (client != null)
             {
                 FirebaseResponse response = await client.GetAsync(rootName);
-                return response.ResultAs<Dictionary<string, CUSTOMER>>();
+                return response.ResultAs<Dictionary<string, Customer>>();
             }
             return null;
         }
 
 
         //get list receipt
-        public static async Task<List<CUSTOMER>> getEntire()
+        public static async Task<List<Customer>> getEntire()
         {
-            List<CUSTOMER> listOfFirebase = new List<CUSTOMER>();
-            Dictionary<string, CUSTOMER> listData = await getEntireOnBranch("Database/Customer");
+            List<Customer> listOfFirebase = new List<Customer>();
+            Dictionary<string, Customer> listData = await getEntireOnBranch("Database/Customer");
             try
             {
                 // convert from Dictionary to list 
                 if (listData != null)
                 {
-                    foreach (var itemData in listData)
-                    {
-                        CUSTOMER itemOfFirebase = itemData.Value;
-                        listOfFirebase.Add(itemOfFirebase);
-                    }
+                    listOfFirebase = listData.Values.ToList();
+                    //foreach (var itemData in listData)
+                    //{
+                    //    CUSTOMER itemOfFirebase = itemData.Value;
+                    //    listOfFirebase.Add(itemOfFirebase);
+                    //}
                 }
             }
             catch (Exception ex)
@@ -69,26 +70,27 @@ namespace FireBase_PPL
 
 
         // get receipt that was not synchronized 
-        public static async Task<List<CUSTOMER>> getEntireNotSync(List<CUSTOMER> listOfSql)
+        public static async Task<List<Customer>> getEntireNotSync()
         {
-            List<CUSTOMER> listNotSync = new List<CUSTOMER>();
+            //list will return 
+            List<Customer> listNotSync = new List<Customer>();
+            List<CUSTOMER> listOfSql = DAL_Customer.getCustomers();
+            //Dictionary<string, Customer> listOfFirebase = await getEntireOnBranch("Database/Customer");
+            Dictionary<string, Customer> listOfFirebase = await getEntireOnBranch("Database/Customer");
+
             try
             {
-
-                foreach (CUSTOMER itemOfSql in listOfSql)
+                // loop through list on firebase
+                foreach (Customer itemOfFirebase in listOfFirebase.Values)
                 {
-                    CUSTOMER itemOfFirebase = await getOne("Database/Customer/" + itemOfSql.ID_CUSTOMER.ToString() + "/");
-                    if (itemOfFirebase != null)
+                    foreach (CUSTOMER itemOfSql in listOfSql)
                     {
-                        //if (itemOfFirebase.GROUP_CATEGORY != itemOfSql.GROUP_CATEGORY
-                        //|| itemOfFirebase.NAME_CATEGORY != itemOfSql.NAME_CATEGORY)
-                        //{
-                        //    listNotSync.Add(itemOfSql);
-                        //}
-                    }
-                    else
-                    {
-                        listNotSync.Add(itemOfSql);
+                        // case update 
+                        if (Customer.compareCustomer(itemOfSql, itemOfFirebase) == 2 || Customer.compareCustomer(itemOfSql, itemOfFirebase) == 1)
+                        {
+                            listNotSync.Add(itemOfFirebase);
+                            break;
+                        }
                     }
                 }
             }
@@ -101,29 +103,68 @@ namespace FireBase_PPL
 
         }
         // update data on firebase 
-
-
-
-
-        public static async Task<bool> updateFromFirebaseAsync(List<CUSTOMER> listOfSql)
+        public static async Task<bool> updateFromFirebaseAsync()
         {
-
+            //list will return 
+            List<Customer> listOfFirebase = await getEntireNotSync();
+            List<CUSTOMER> listOfSql = DAL_Customer.getCustomers();
             try
             {
-                //get all firebase
-                Dictionary<string, CUSTOMER> listOfFirebase = await getEntireOnBranch("Database/Customer");
-                foreach (var itemOfFirebase in listOfFirebase)
+                if (listOfFirebase == null)
                 {
-                    CUSTOMER itemOfSql = listOfSql.SingleOrDefault(t => t.ID_CUSTOMER == itemOfFirebase.Value.ID_CUSTOMER);
-                    if (itemOfSql != null && itemOfSql.TYPE_CUSTOMER != itemOfFirebase.Value.TYPE_CUSTOMER)
+                    return false;
+                }
+                // loop through list on firebase
+                foreach (Customer itemOfFirebase in listOfFirebase)
+                {
+                    foreach (CUSTOMER itemOfSql in listOfSql)
                     {
-                        //update if exist and state not like
-                        DAL_Customer.updateCustomer(itemOfFirebase.Value);
-                    }
-                    else
-                    {
-                        // insert 
-                        DAL_Customer.updateCustomer(itemOfFirebase.Value);
+                        // case update 
+                        if (Customer.compareCustomer(itemOfSql, itemOfFirebase) == 2)
+                        {
+                            // parse 
+                            itemOfFirebase.date_OF_BIRTH.Trim().Replace('/', '-');
+                            itemOfFirebase.date_OF_BIRTH.Replace(' ', 'T');
+                            itemOfFirebase.date_CREATE.Trim().Replace('/', '-');
+                            itemOfFirebase.date_CREATE.Replace(' ', 'T');
+                            CUSTOMER customerParse = new CUSTOMER();
+                            customerParse.SURNAME_CUSTOMER = itemOfFirebase.surname_CUSTOMER;
+                            customerParse.NAME_CUSTOMER = itemOfFirebase.name_CUSTOMER;
+                            customerParse.DATE_OF_BIRTH = DateTime.Parse(itemOfFirebase.date_OF_BIRTH);
+                            customerParse.DATE_CREATE = DateTime.Parse(itemOfFirebase.date_CREATE);
+                            customerParse.GENDER_CUSTOMER = itemOfFirebase.gender_CUSTOMER;
+                            customerParse.ADDRESS_CUSTOMER = itemOfFirebase.address_CUSTOMER;
+                            customerParse.PHONE_CUSTOMER = itemOfFirebase.phone_CUSTOMER;
+                            customerParse.PASSWORD_CUSTOMER = itemOfFirebase.password_CUSTOMER;
+                            customerParse.POINT = itemOfFirebase.point;
+                            DAL_Customer.updateCustomer(customerParse);
+                            break;
+                        }
+                        //  case new 
+                        else if (Customer.compareCustomer(itemOfSql, itemOfFirebase) == 1)
+                        {
+                            // parse 
+                            itemOfFirebase.date_OF_BIRTH.Trim().Replace('/', '-');
+                            itemOfFirebase.date_OF_BIRTH.Replace(' ', 'T');
+                            itemOfFirebase.date_CREATE.Trim().Replace('/', '-');
+                            itemOfFirebase.date_CREATE.Replace(' ', 'T');
+                            CUSTOMER customerParse = new CUSTOMER();
+                            customerParse.ID_CUSTOMER = itemOfFirebase.id_CUSTOMER;
+                            customerParse.SURNAME_CUSTOMER = itemOfFirebase.surname_CUSTOMER;
+                            customerParse.NAME_CUSTOMER = itemOfFirebase.name_CUSTOMER;
+                            customerParse.DATE_OF_BIRTH = DateTime.Parse(itemOfFirebase.date_OF_BIRTH);
+                            customerParse.DATE_CREATE = DateTime.Parse(itemOfFirebase.date_CREATE);
+                            customerParse.DATE_UPDATE = DateTime.Now;
+                            customerParse.MAIL_CUSTOMER = "NONE";
+                            customerParse.GENDER_CUSTOMER = itemOfFirebase.gender_CUSTOMER;
+                            customerParse.ADDRESS_CUSTOMER = itemOfFirebase.address_CUSTOMER;
+                            customerParse.PHONE_CUSTOMER = itemOfFirebase.phone_CUSTOMER;
+                            customerParse.PASSWORD_CUSTOMER = itemOfFirebase.password_CUSTOMER;
+                            customerParse.POINT = itemOfFirebase.point;
+                            customerParse.TYPE_CUSTOMER = "TYPECUS01";
+                            DAL_Customer.insertCustomer(customerParse);
+                            break;
+                        }
                     }
                 }
             }
@@ -132,7 +173,6 @@ namespace FireBase_PPL
                 Console.WriteLine(ex.Message);
                 return false;
             }
-
             return true;
 
         }
@@ -143,7 +183,6 @@ namespace FireBase_PPL
             try
             {
 
-                await ConnectFireBase.FirebaseDeleteData("Database/Customer");
 
                 foreach (CUSTOMER itemOfSql in listOfSql)
                 {

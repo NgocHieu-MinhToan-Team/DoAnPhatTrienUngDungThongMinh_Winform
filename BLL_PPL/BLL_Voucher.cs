@@ -19,6 +19,12 @@ namespace BLL_PPL
             return list;
         }
 
+        public static List<METHOD> getVouchers()
+        {
+            List<METHOD> list = DAL_Voucher.getMethods();
+            return list;
+        }
+
         public static bool insertVoucher(VOUCHER data)
         {
             try

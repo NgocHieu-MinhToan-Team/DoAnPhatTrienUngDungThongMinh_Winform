@@ -81,9 +81,11 @@
     <Compile Include="ConnectFireBase.cs" />
     <Compile Include="FB_Customer.cs" />
     <Compile Include="FB_News.cs" />
+    <Compile Include="FB_Order.cs" />
     <Compile Include="FB_Product.cs" />
     <Compile Include="FB_Receipt.cs" />
     <Compile Include="FB_Category.cs" />
+    <Compile Include="FB_Voucher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

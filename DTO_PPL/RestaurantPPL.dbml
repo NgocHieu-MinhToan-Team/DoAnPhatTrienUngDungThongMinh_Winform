@@ -39,7 +39,7 @@
       <Column Name="DATE_UPDATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="PHONE_CUSTOMER" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
       <Column Name="MAIL_CUSTOMER" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="PASSWORD_CUSTOMER" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PASSWORD_CUSTOMER" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="ADDRESS_CUSTOMER" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="DATE_OF_BIRTH" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="POINT" Type="System.Int32" DbType="Int" CanBeNull="true" />

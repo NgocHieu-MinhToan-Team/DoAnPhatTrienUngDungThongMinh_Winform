@@ -69,5 +69,11 @@ namespace PepperLunch
                 BLL_Receipt.deleteReceipt(itemDel);
             }
         }
+
+        private void accordionCtrlE_SyncFromFirebase_Click(object sender, EventArgs e)
+        {
+            gridView1.Columns.Clear();
+            gridControl_receipt.DataSource = BLL_Receipt.getDataFromFirebaseAsync();
+        }
     }
 }

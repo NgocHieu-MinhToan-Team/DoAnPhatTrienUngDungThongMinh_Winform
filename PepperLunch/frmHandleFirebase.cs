@@ -106,5 +106,41 @@ namespace PepperLunch
                 MessageBox.Show("Vui Lòng Chọn Promotion để cập nhật !");
             }
         }
+
+        private async void btnSyncVoucher_Click(object sender, EventArgs e)
+        {
+            if (cbbPromotion.SelectedValue != null)
+            {
+                clearDataOnGridView();
+                gridView_dataFromFB.ShowLoadingPanel();
+                var watch = System.Diagnostics.Stopwatch.StartNew();
+                //handle start
+                await BLL_Synchronized.updateVoucherToFirebaseAsync(cbbPromotion.SelectedValue.ToString());
+                //handle end
+                watch.Stop();
+                gridView_dataFromFB.HideLoadingPanel();
+                string result = watch.ElapsedMilliseconds.ToString() + " ms";
+                MessageBox.Show("Total Time Sync is : " + result);
+
+            }
+            else
+            {
+                MessageBox.Show("Vui Lòng Chọn Promotion để cập nhật !");
+            }
+        }
+
+        private async void btnSyncMethodPay_Click(object sender, EventArgs e)
+        {
+            clearDataOnGridView();
+            gridView_dataFromFB.ShowLoadingPanel();
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            //handle start
+            await BLL_Synchronized.updateMethodToFirebaseAsync();
+            //handle end
+            watch.Stop();
+            gridView_dataFromFB.HideLoadingPanel();
+            string result = watch.ElapsedMilliseconds.ToString() + " ms";
+            MessageBox.Show("Total Time Sync is : " + result);
+        }
     }
 }

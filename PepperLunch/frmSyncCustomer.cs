@@ -22,8 +22,8 @@ namespace PepperLunch
 
         private void frmSyncCustomer_Load(object sender, EventArgs e)
         {
-            loadCustomersAsync();
-            loadNotSyncCustomerAsync();
+            //loadCustomersAsync();
+            //loadNotSyncCustomerAsync();
         }
 
         private void btnSyncTo_Click(object sender, EventArgs e)
@@ -33,7 +33,7 @@ namespace PepperLunch
 
         private void btnSyncDown_Click(object sender, EventArgs e)
         {
-            syncCustomerFromFirebase();
+            //syncCustomerFromFirebase();
         }
 
         async void loadCustomersAsync()
@@ -41,7 +41,7 @@ namespace PepperLunch
             var watch = System.Diagnostics.Stopwatch.StartNew();
             gridView_sync.ShowLoadingPanel();
             //handle start
-            List<CUSTOMER> listOfFirebase = await BLL_Synchronized.getCustomersFromFireBase();
+            List<Customer> listOfFirebase = await BLL_Synchronized.getCustomersFromFireBase();
             gridControl_top.DataSource = listOfFirebase;
             //handle end
             gridView_sync.HideLoadingPanel();
@@ -54,7 +54,7 @@ namespace PepperLunch
             var watch = System.Diagnostics.Stopwatch.StartNew();
             gridView_notSync.ShowLoadingPanel();
             //handle start
-            List<CUSTOMER> listOfLocal = await BLL_Synchronized.getCustomersNotSync();
+            List<Customer> listOfLocal = await BLL_Synchronized.getCustomersNotSync();
             gridControl_bottom.DataSource = listOfLocal;
             //handle end
             gridView_notSync.HideLoadingPanel();
@@ -84,9 +84,9 @@ namespace PepperLunch
             //start measure time excute 
             var watch = System.Diagnostics.Stopwatch.StartNew();
             await BLL_Synchronized.updateCustomersToFirebaseAsync();
-            loadCustomersAsync();
+            //loadCustomersAsync();
             //start measure time excute 
-            loadNotSyncCustomerAsync();
+            //loadNotSyncCustomerAsync();
             // end measure time excute 
             watch.Stop();
             string result = watch.ElapsedMilliseconds.ToString() + " ms";

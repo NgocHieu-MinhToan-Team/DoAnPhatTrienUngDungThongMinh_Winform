@@ -51,6 +51,27 @@ namespace DAL_PPL
             return list;
         }
 
+        public static List<METHOD> getMethods()
+        {
+            var listAnonymous = from pay in db.METHOD_PAYs
+                                where pay.FLAG_DEL == 0 
+                                select new
+                                {
+                                    ID_METHOD = pay.ID_METHOD,
+                                    NAME_METHOD = pay.NAME_METHOD,
+                                };
+            List<METHOD> list = new List<METHOD>();
+            foreach (var itemAnonymous in listAnonymous)
+            {
+                METHOD item = new METHOD();
+                item.ID_METHOD = itemAnonymous.ID_METHOD;
+                item.NAME_METHOD = itemAnonymous.NAME_METHOD;
+                //item.FLAG_DEL = item.FLAG_DEL;
+                list.Add(item);
+            }
+            return list;
+        }
+
         public static bool insertVoucher(VOUCHER data)
         {
             try
