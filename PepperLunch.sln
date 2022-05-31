@@ -15,8 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modify_Control", "Modify_Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FireBase_PPL", "FireBase_PPL\FireBase_PPL.csproj", "{6AAEAF75-B32F-4EAE-8D1C-548026B8DC42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CallAPI_PPL", "CallAPI_PPL\CallAPI_PPL.csproj", "{B46BA655-DDD0-4242-9F20-B47E45F61BE5}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,10 +45,6 @@ Global
 		{6AAEAF75-B32F-4EAE-8D1C-548026B8DC42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AAEAF75-B32F-4EAE-8D1C-548026B8DC42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AAEAF75-B32F-4EAE-8D1C-548026B8DC42}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B46BA655-DDD0-4242-9F20-B47E45F61BE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B46BA655-DDD0-4242-9F20-B47E45F61BE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B46BA655-DDD0-4242-9F20-B47E45F61BE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B46BA655-DDD0-4242-9F20-B47E45F61BE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
