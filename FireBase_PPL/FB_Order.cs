@@ -64,6 +64,7 @@ namespace FireBase_PPL
                             itemReceipt.ID_VOUCHER = item_detail_order.Value.id_VOUCHER;
                             itemReceipt.STATE_RECEIPT = item_detail_order.Value.status;
                             itemReceipt.TOTAL_PRICE = (int?)item_detail_order.Value.total_PAYMENT;
+                            itemReceipt.ADDRESS_RECEIPT = item_detail_order.Value.address;
                             itemReceipt.DATE_CREATE = DateTime.Now;
                             Dictionary<string, Cart_Item> list_cart = item_detail_order.Value.list_CART;
                             int total = 0;
@@ -95,9 +96,7 @@ namespace FireBase_PPL
             try
             {
                 List<RECEIPT> list = await getEntire();
-
-                List<DETAIL_RECEIPT> listAsync = await getDetailReceiptFromFirebase();
-                List<DETAIL_RECEIPT> listDetail = getListDetailReceipt_SYNC(listAsync);
+                List<DETAIL_RECEIPT> listDetail = await getDetailReceiptFromFirebase();
                 foreach (RECEIPT item in list)
                 {
                     // insert receipt to sql
@@ -111,6 +110,30 @@ namespace FireBase_PPL
                 foreach (DETAIL_RECEIPT detail in listDetail)
                 {
                     DAL_Receipt.insertDetailReceipt(detail);
+                }
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+        public static async Task<bool> updateStatusReceipt()
+        {
+            try
+            {
+                List<RECEIPT> list = await getEntire();
+
+                List<DETAIL_RECEIPT> listDetail = await getDetailReceiptFromFirebase();
+                foreach (RECEIPT item in list)
+                {
+                    // update state to firebase
+                    string rootName = "Database/Order/" + item.ID_CUSTOMER + "/" + item.ID_RECEIPT + "/status";
+                    await ConnectFireBase.FirebaseInsertData(2, rootName);
+
                 }
                 return true;
 
@@ -144,7 +167,7 @@ namespace FireBase_PPL
                                 DETAIL_RECEIPT item = new DETAIL_RECEIPT();
                                 Product product = item_cart_item.Value.product;
                                 string id = "";
-                                id = await Task.Run(() => GeneralMethods.createID("CTHD"));
+                                id = product.id_PRODUCT + item_detail_order.Key;
                                 item.ID_DETAIL_RECEIPT = id;
                                 item.ID_RECEIPT = item_detail_order.Key;
                                 item.ID_PRODUCT = product.id_PRODUCT;
@@ -165,22 +188,22 @@ namespace FireBase_PPL
             }
         }
 
-        // genderate key sync 
-        public static List<DETAIL_RECEIPT> getListDetailReceipt_SYNC(List<DETAIL_RECEIPT> listOld)
-        {
-            List<DETAIL_RECEIPT> listNew = new List<DETAIL_RECEIPT>();
-            foreach(DETAIL_RECEIPT itemOld in listOld)
-            {
-                DETAIL_RECEIPT itemNew = new DETAIL_RECEIPT();
-                itemNew.ID_DETAIL_RECEIPT =await GeneralMethods.createID("CTHD");
-                itemNew.ID_RECEIPT = itemOld.ID_RECEIPT;
-                itemNew.ID_PRODUCT = itemOld.ID_PRODUCT;
-                itemNew.PRICE = itemOld.PRICE;
-                itemNew.QUANTITY = itemOld.QUANTITY;
-                listNew.Add(itemNew);
-            }
-            return listNew;
-        }
+        //// genderate key sync 
+        //public static List<DETAIL_RECEIPT> getListDetailReceipt_SYNC(List<DETAIL_RECEIPT> listOld)
+        //{
+        //    List<DETAIL_RECEIPT> listNew = new List<DETAIL_RECEIPT>();
+        //    foreach(DETAIL_RECEIPT itemOld in listOld)
+        //    {
+        //        DETAIL_RECEIPT itemNew = new DETAIL_RECEIPT();
+        //        itemNew.ID_DETAIL_RECEIPT = GeneralMethods.createID("CTHD");
+        //        itemNew.ID_RECEIPT = itemOld.ID_RECEIPT;
+        //        itemNew.ID_PRODUCT = itemOld.ID_PRODUCT;
+        //        itemNew.PRICE = itemOld.PRICE;
+        //        itemNew.QUANTITY = itemOld.QUANTITY;
+        //        listNew.Add(itemNew);
+        //    }
+        //    return listNew;
+        //}
 
 
 

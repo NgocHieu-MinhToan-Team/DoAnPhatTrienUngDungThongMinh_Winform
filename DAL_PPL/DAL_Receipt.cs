@@ -128,6 +128,7 @@ namespace DAL_PPL
                 item.TOTAL_PRICE = data.TOTAL_PRICE;
                 item.POINT = data.POINT;
                 item.STATE_RECEIPT = data.STATE_RECEIPT;
+                item.ADDRESS_RECEIPT = data.ADDRESS_RECEIPT;
                 db.RECEIPTs.InsertOnSubmit(item);
                 db.SubmitChanges();
                 return true;

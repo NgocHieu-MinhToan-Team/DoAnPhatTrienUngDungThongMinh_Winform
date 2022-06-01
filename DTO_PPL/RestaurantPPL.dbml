@@ -201,6 +201,7 @@
       <Column Name="TOTAL_PRICE" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="POINT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="STATE_RECEIPT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ADDRESS_RECEIPT" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Association Name="RECEIPT_DETAIL_RECEIPT" Member="DETAIL_RECEIPTs" ThisKey="ID_RECEIPT" OtherKey="ID_RECEIPT" Type="DETAIL_RECEIPT" />
       <Association Name="CUSTOMER_RECEIPT" Member="CUSTOMER" ThisKey="ID_CUSTOMER" OtherKey="ID_CUSTOMER" Type="CUSTOMER" IsForeignKey="true" />
       <Association Name="METHOD_PAY_RECEIPT" Member="METHOD_PAY" ThisKey="ID_METHOD" OtherKey="ID_METHOD" Type="METHOD_PAY" IsForeignKey="true" />
@@ -248,6 +249,7 @@
       <Column Name="TOTAL_PRICE" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="POINT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="STATE_RECEIPT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ADDRESS_RECEIPT" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="PERCENT_REDUCTION" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="AMOUNT_REDUCTION" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ADDRESS_CUSTOMER" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />

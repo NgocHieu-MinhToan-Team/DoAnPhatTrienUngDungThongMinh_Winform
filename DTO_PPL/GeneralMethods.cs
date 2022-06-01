@@ -8,9 +8,9 @@ namespace DTO_PPL
 {
     public class GeneralMethods
     {
-        public async static Task<string> createID(string prefix)
+        public  static string createID(string prefix)
         {
-            string id =await DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + DateTime.Now.Millisecond +DateTime.Now. ;
+            string id = prefix+ DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + DateTime.Now.Millisecond;
             return id;
         }
 

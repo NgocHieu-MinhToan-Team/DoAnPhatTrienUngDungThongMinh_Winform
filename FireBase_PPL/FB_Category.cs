@@ -108,17 +108,9 @@ namespace FireBase_PPL
             try
             {
                 List<PRODUCT> listProduct = DAL_Product.getProducts();
-                // update node Cate
-                await ConnectFireBase.FirebaseDeleteData("Database/Category");
-
-                foreach (CATEGORY itemOfSql in listOfSql)
-                {
-                    await ConnectFireBase.FirebaseInsertData(itemOfSql, "Database/Category/" + itemOfSql.ID_CATEGORY.ToString() + "/"); 
-                }
-
+               
                 // update node Cate and dish
                 await ConnectFireBase.FirebaseDeleteData("Database/Category_Dish");
-
                 foreach (CATEGORY itemOfSql in listOfSql)
                 {
                     // add node cate

@@ -4357,6 +4357,8 @@ namespace DTO_PPL
 		
 		private System.Nullable<int> _STATE_RECEIPT;
 		
+		private string _ADDRESS_RECEIPT;
+		
 		private EntitySet<DETAIL_RECEIPT> _DETAIL_RECEIPTs;
 		
 		private EntityRef<CUSTOMER> _CUSTOMER;
@@ -4387,6 +4389,8 @@ namespace DTO_PPL
     partial void OnPOINTChanged();
     partial void OnSTATE_RECEIPTChanging(System.Nullable<int> value);
     partial void OnSTATE_RECEIPTChanged();
+    partial void OnADDRESS_RECEIPTChanging(string value);
+    partial void OnADDRESS_RECEIPTChanged();
     #endregion
 		
 		public RECEIPT()
@@ -4586,6 +4590,26 @@ namespace DTO_PPL
 					this._STATE_RECEIPT = value;
 					this.SendPropertyChanged("STATE_RECEIPT");
 					this.OnSTATE_RECEIPTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ADDRESS_RECEIPT", DbType="NVarChar(MAX)")]
+		public string ADDRESS_RECEIPT
+		{
+			get
+			{
+				return this._ADDRESS_RECEIPT;
+			}
+			set
+			{
+				if ((this._ADDRESS_RECEIPT != value))
+				{
+					this.OnADDRESS_RECEIPTChanging(value);
+					this.SendPropertyChanging();
+					this._ADDRESS_RECEIPT = value;
+					this.SendPropertyChanged("ADDRESS_RECEIPT");
+					this.OnADDRESS_RECEIPTChanged();
 				}
 			}
 		}
@@ -5405,6 +5429,8 @@ namespace DTO_PPL
 		
 		private System.Nullable<int> _STATE_RECEIPT;
 		
+		private string _ADDRESS_RECEIPT;
+		
 		private System.Nullable<int> _PERCENT_REDUCTION;
 		
 		private System.Nullable<int> _AMOUNT_REDUCTION;
@@ -5567,6 +5593,22 @@ namespace DTO_PPL
 				if ((this._STATE_RECEIPT != value))
 				{
 					this._STATE_RECEIPT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ADDRESS_RECEIPT", DbType="NVarChar(MAX)")]
+		public string ADDRESS_RECEIPT
+		{
+			get
+			{
+				return this._ADDRESS_RECEIPT;
+			}
+			set
+			{
+				if ((this._ADDRESS_RECEIPT != value))
+				{
+					this._ADDRESS_RECEIPT = value;
 				}
 			}
 		}

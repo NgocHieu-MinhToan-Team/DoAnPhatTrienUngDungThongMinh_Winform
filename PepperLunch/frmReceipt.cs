@@ -80,8 +80,14 @@ namespace PepperLunch
         private async void accordionCtrlE_SyncFromFirebase_Click(object sender, EventArgs e)
         {
             await BLL_Receipt.updateReceiptFromFirebase();
-            loadData();
+            listData = BLL_Receipt.read_Receipt();
+            gridControl_receiptSql.DataSource = listData;
+        }
 
+        private async void accordionCtrlE_UpdateStatus_Click(object sender, EventArgs e)
+        {
+            await BLL_Receipt.updateStatusReceiptAsync();
+            MessageBox.Show("Cap Nhat Don Hang Thanh Cong");
         }
     }
 }

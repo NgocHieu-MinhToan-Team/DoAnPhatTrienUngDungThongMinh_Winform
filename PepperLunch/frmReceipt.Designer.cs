@@ -43,6 +43,7 @@ namespace PepperLunch
             this.accordionCtrlE_removeReceipt = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionCtrlE_SyncFromFirebase = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
+            this.accordionCtrlE_UpdateStatus = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormContainer1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_receiptSql)).BeginInit();
@@ -121,7 +122,8 @@ namespace PepperLunch
             this.accordionCtrlE_exportExcel,
             this.accordionCtrlE_exportWord,
             this.accordionCtrlE_removeReceipt,
-            this.accordionCtrlE_SyncFromFirebase});
+            this.accordionCtrlE_SyncFromFirebase,
+            this.accordionCtrlE_UpdateStatus});
             this.accordionControl1.Location = new System.Drawing.Point(0, 39);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
@@ -200,6 +202,17 @@ namespace PepperLunch
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             // 
+            // accordionCtrlE_UpdateStatus
+            // 
+            this.accordionCtrlE_UpdateStatus.Appearance.Hovered.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.Warning;
+            this.accordionCtrlE_UpdateStatus.Appearance.Hovered.Options.UseForeColor = true;
+            this.accordionCtrlE_UpdateStatus.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            this.accordionCtrlE_UpdateStatus.Appearance.Normal.Options.UseForeColor = true;
+            this.accordionCtrlE_UpdateStatus.Name = "accordionCtrlE_UpdateStatus";
+            this.accordionCtrlE_UpdateStatus.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionCtrlE_UpdateStatus.Text = "Update Status ";
+            this.accordionCtrlE_UpdateStatus.Click += new System.EventHandler(this.accordionCtrlE_UpdateStatus_Click);
+            // 
             // frmReceipt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -241,5 +254,6 @@ namespace PepperLunch
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private DevExpress.XtraGrid.GridControl gridControl_receiptSql;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView_receiptSql;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrlE_UpdateStatus;
     }
 }
