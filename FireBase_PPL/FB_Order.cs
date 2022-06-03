@@ -123,8 +123,7 @@ namespace FireBase_PPL
 
         public static async Task<bool> updateStatusReceipt()
         {
-            try
-            {
+            try            {
                 List<RECEIPT> list = await getEntire();
 
                 List<DETAIL_RECEIPT> listDetail = await getDetailReceiptFromFirebase();

@@ -38,5 +38,53 @@ namespace PepperLunch
                 cbbSupplier.SelectedValue = item.ID_SUPPLIER;
             }
         }
+
+        private void btnAddIngredient_Click(object sender, EventArgs e)
+        {
+            INGREDIENT ingredient = new INGREDIENT();
+            ingredient.ID_INGREDIENT = GeneralMethods.createID("NL");
+            int[] index = gridView_Ingredient.GetSelectedRows();
+            if (index != null)
+            {
+                ingredient.ID_SUPPLIER = cbbSupplier.SelectedValue.ToString();
+            }
+            ingredient.NAME_INGREDIENT = txtNameIngredient.Text;
+            ingredient.INVENTORY = 0;
+            BLL_Ingredient.add(ingredient);
+           
+            
+        }
+
+        private void btnUpdateIngredient_Click(object sender, EventArgs e)
+        {
+            INGREDIENT ingredient = new INGREDIENT();
+            int[] index = gridView_Ingredient.GetSelectedRows();
+            if (index != null)
+            {
+                INGREDIENT item = (INGREDIENT)gridView_Ingredient.GetRow(index[0]);
+                ingredient.ID_INGREDIENT = item.ID_INGREDIENT;
+                ingredient.ID_SUPPLIER = cbbSupplier.SelectedValue.ToString();
+                ingredient.INVENTORY = item.INVENTORY;
+                ingredient.NAME_INGREDIENT = txtNameIngredient.Text;
+                BLL_Ingredient.update(ingredient);
+            }
+           
+        }
+
+        private void btnRemoveIngredient_Click(object sender, EventArgs e)
+        {
+            INGREDIENT ingredient = new INGREDIENT();
+            int[] index = gridView_Ingredient.GetSelectedRows();
+            if (index != null)
+            {
+                INGREDIENT item = (INGREDIENT)gridView_Ingredient.GetRow(index[0]);
+                ingredient.ID_INGREDIENT = item.ID_INGREDIENT;
+                ingredient.ID_SUPPLIER = cbbSupplier.SelectedValue.ToString();
+                ingredient.INVENTORY = item.INVENTORY;
+                ingredient.NAME_INGREDIENT = txtNameIngredient.Text;
+                BLL_Ingredient.remove(ingredient);
+            }
+        }
+
     }
 }

@@ -147,6 +147,7 @@ namespace PepperLunch
             this.btnAddIngredient.Size = new System.Drawing.Size(101, 29);
             this.btnAddIngredient.TabIndex = 4;
             this.btnAddIngredient.Text = "Add";
+            this.btnAddIngredient.Click += new System.EventHandler(this.btnAddIngredient_Click);
             // 
             // btnUpdateIngredient
             // 
@@ -155,6 +156,7 @@ namespace PepperLunch
             this.btnUpdateIngredient.Size = new System.Drawing.Size(101, 36);
             this.btnUpdateIngredient.TabIndex = 5;
             this.btnUpdateIngredient.Text = "Update";
+            this.btnUpdateIngredient.Click += new System.EventHandler(this.btnUpdateIngredient_Click);
             // 
             // btnRemoveIngredient
             // 
@@ -163,6 +165,7 @@ namespace PepperLunch
             this.btnRemoveIngredient.Size = new System.Drawing.Size(101, 36);
             this.btnRemoveIngredient.TabIndex = 6;
             this.btnRemoveIngredient.Text = "Remove";
+            this.btnRemoveIngredient.Click += new System.EventHandler(this.btnRemoveIngredient_Click);
             // 
             // cbbSupplier
             // 

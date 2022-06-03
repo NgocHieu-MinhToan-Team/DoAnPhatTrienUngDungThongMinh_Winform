@@ -15,7 +15,8 @@ namespace PepperLunch
 {
     public partial class frmRecipe : DevExpress.XtraEditors.XtraForm
     {
-        private static string ID_PRODUCT =null,ID_INGREDIENT=null;
+        private static string ID_PRODUCT = null, ID_INGREDIENT = null;
+        public static bool isUpdate { get; set; }
         public frmRecipe()
         {
             InitializeComponent();
@@ -32,13 +33,23 @@ namespace PepperLunch
         private void btnOpenIngredient_Click(object sender, EventArgs e)
         {
             frmIngredients frm = new frmIngredients();
+            frm.FormClosed += (o, evt) =>
+            {
+                this.Close();
+                Program.frmcontainer.barBtn_Ingredient.PerformClick();
+            };
             frm.Show();
+        }
+
+        private void Frm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void cbbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             gridControl_product.DataSource = BLL_Product.getProducts().Where(t => t.ID_CATEGORY == cbbCategory.SelectedValue.ToString()).ToList<PRODUCT>();
-           for(int i=0;i< gridView_product.Columns.Count; i++)
+            for (int i = 0; i < gridView_product.Columns.Count; i++)
             {
                 gridView_product.Columns[i].Visible = false;
             }
@@ -70,7 +81,7 @@ namespace PepperLunch
             int[] arrRowSelected = gridView_Ingredient.GetSelectedRows();
             if (arrRowSelected != null)
             {
-                if(ID_PRODUCT==null || ID_INGREDIENT == null)
+                if (ID_PRODUCT == null || ID_INGREDIENT == null)
                 {
                     MessageBox.Show("Please choose product and ingredient !");
                     return;
@@ -102,8 +113,9 @@ namespace PepperLunch
             int[] arrRowSelected = gridView_detailProduct.GetSelectedRows();
             if (arrRowSelected != null)
             {
-                RECIPE_JOIN item = (RECIPE_JOIN)gridView_detailProduct.GetRow(arrRowSelected[0]);
-                DETAIL_PRODUCT itemDel = BLL_Recipe.getList().SingleOrDefault(t => t.ID_DETAIL == item.ID_DETAIL);
+                string item = gridView_detailProduct.GetRowCellValue(arrRowSelected[0], "ID_DETAIL").ToString();
+                var tmp = BLL_Recipe.getList();
+                DETAIL_PRODUCT itemDel = BLL_Recipe.getList().SingleOrDefault(t => t.ID_DETAIL == item);
                 BLL_Recipe.remove(itemDel);
                 loadRecipe(ID_PRODUCT);
             }
@@ -118,7 +130,7 @@ namespace PepperLunch
             int[] arrRowSelected = gridView_Ingredient.GetSelectedRows();
             if (arrRowSelected != null)
             {
-              
+
                 INGREDIENT item = (INGREDIENT)gridView_Ingredient.GetRow(arrRowSelected[0]);
                 ID_INGREDIENT = item.ID_INGREDIENT;
             }

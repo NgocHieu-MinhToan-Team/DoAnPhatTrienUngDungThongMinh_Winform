@@ -161,6 +161,44 @@ namespace FireBase_PPL
             return true;
         }
 
+        public static async Task<bool> updateStatusReceiptAsync()
+        {
+            try
+            {
+                return await FB_Order.updateStatusReceipt();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
+        public static async Task<List<RECEIPT>> getDataFromFirebaseAsync()
+        {
+            try
+            {
+                return await FB_Order.getEntire();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
+
+        public static async Task<bool> updateReceiptFromFirebase()
+        {
+            try
+            {
+                return await FB_Order.updateReceiptFromFirebase();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
 
     }
 }

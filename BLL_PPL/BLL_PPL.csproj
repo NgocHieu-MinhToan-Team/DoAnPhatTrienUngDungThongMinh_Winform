@@ -113,6 +113,8 @@
     <Compile Include="BLL_Category.cs" />
     <Compile Include="BLL_Customer.cs" />
     <Compile Include="BLL_Ingredient.cs" />
+    <Compile Include="BLL_IOG.cs" />
+    <Compile Include="BLL_IOGDetail.cs" />
     <Compile Include="BLL_News.cs" />
     <Compile Include="BLL_Product.cs" />
     <Compile Include="BLL_Promotion.cs" />

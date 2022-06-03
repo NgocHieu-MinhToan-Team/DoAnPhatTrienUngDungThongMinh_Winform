@@ -12,6 +12,7 @@ using System.Text;
 using System.Windows.Forms;
 using BLL_PPL;
 using DTO_PPL;
+using FireBase_PPL;
 // lib for export excel
 using DevExpress.XtraPrinting;
 using System.Diagnostics;
@@ -35,7 +36,7 @@ namespace PepperLunch
         async void loadData()
         {
             gridView_receiptFB.Columns.Clear();
-            List<RECEIPT> list = await BLL_Receipt.getDataFromFirebaseAsync();
+            List<RECEIPT> list = await FB_Receipt.getDataFromFirebaseAsync();
             gridControl_receiptFB.DataSource = list;
             listData = BLL_Receipt.read_Receipt();
             gridControl_receiptSql.DataSource = listData;
@@ -79,14 +80,14 @@ namespace PepperLunch
 
         private async void accordionCtrlE_SyncFromFirebase_Click(object sender, EventArgs e)
         {
-            await BLL_Receipt.updateReceiptFromFirebase();
+            await FB_Receipt.updateReceiptFromFirebase();
             listData = BLL_Receipt.read_Receipt();
             gridControl_receiptSql.DataSource = listData;
         }
 
         private async void accordionCtrlE_UpdateStatus_Click(object sender, EventArgs e)
         {
-            await BLL_Receipt.updateStatusReceiptAsync();
+            await FB_Receipt.updateStatusReceiptAsync();
             MessageBox.Show("Cap Nhat Don Hang Thanh Cong");
         }
     }

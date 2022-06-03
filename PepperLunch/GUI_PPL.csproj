@@ -175,6 +175,12 @@
     <Compile Include="frmHandleFirebase.Designer.cs">
       <DependentUpon>frmHandleFirebase.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImport.Designer.cs">
+      <DependentUpon>frmImport.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmRecipe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -248,6 +254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmHandleFirebase.resx">
       <DependentUpon>frmHandleFirebase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImport.resx">
+      <DependentUpon>frmImport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRecipe.resx">
       <DependentUpon>frmRecipe.cs</DependentUpon>
@@ -329,6 +338,10 @@
     <ProjectReference Include="..\DTO_PPL\DTO_PPL.csproj">
       <Project>{29a6dab9-7e26-4997-b0da-ba669193aaa9}</Project>
       <Name>DTO_PPL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FireBase_PPL\FireBase_PPL.csproj">
+      <Project>{6aaeaf75-b32f-4eae-8d1c-548026b8dc42}</Project>
+      <Name>FireBase_PPL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Modify_Control\Modify_Control.csproj">
       <Project>{d21db8c1-d6b8-4947-a463-2283d1c06aa4}</Project>

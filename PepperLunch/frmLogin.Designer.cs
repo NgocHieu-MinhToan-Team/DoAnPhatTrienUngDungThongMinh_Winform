@@ -35,7 +35,7 @@ namespace PepperLunch
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnLogin = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtpassword = new Modify_Control.EditText_Letter();
+            this.txtpassword = new Modify_Control.EditText_DigitOrLetter();
             this.groupbox1 = new System.Windows.Forms.GroupBox();
             this.txtusername = new Modify_Control.EditText_Letter();
             this.tablePanel3 = new DevExpress.Utils.Layout.TablePanel();
@@ -82,7 +82,7 @@ namespace PepperLunch
             this.panel2.Name = "panel2";
             this.tablePanel1.SetRow(this.panel2, 0);
             this.panel2.Size = new System.Drawing.Size(753, 661);
-            this.panel2.TabIndex = 1;
+            this.panel2.TabIndex = 3;
             // 
             // tblPane_title
             // 
@@ -115,21 +115,22 @@ namespace PepperLunch
             this.panel1.Name = "panel1";
             this.tblPane_title.SetRow(this.panel1, 1);
             this.panel1.Size = new System.Drawing.Size(397, 442);
-            this.panel1.TabIndex = 2;
+            this.panel1.TabIndex = 0;
             // 
             // btnLogin
             // 
             this.btnLogin.BackColor = System.Drawing.Color.DarkGoldenrod;
             this.btnLogin.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(52, 187);
+            this.btnLogin.Location = new System.Drawing.Point(52, 180);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(289, 54);
-            this.btnLogin.TabIndex = 8;
+            this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Sign In";
             this.btnLogin.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnLogin_KeyPress);
             // 
             // groupBox2
             // 
@@ -151,8 +152,6 @@ namespace PepperLunch
             this.txtpassword.Location = new System.Drawing.Point(10, 26);
             this.txtpassword.Name = "txtpassword";
             this.txtpassword.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.txtpassword.Properties.PasswordChar = '●';
-            this.txtpassword.Properties.UseSystemPasswordChar = true;
             this.txtpassword.Size = new System.Drawing.Size(269, 26);
             this.txtpassword.TabIndex = 0;
             // 
@@ -172,11 +171,13 @@ namespace PepperLunch
             // txtusername
             // 
             this.txtusername.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtusername.EnterMoveNextControl = true;
             this.txtusername.Location = new System.Drawing.Point(10, 26);
             this.txtusername.Name = "txtusername";
             this.txtusername.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.txtusername.Size = new System.Drawing.Size(269, 26);
             this.txtusername.TabIndex = 0;
+            this.txtusername.Tag = "1";
             // 
             // tablePanel3
             // 
@@ -287,7 +288,7 @@ namespace PepperLunch
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnLogin;
-        private Modify_Control.EditText_Letter txtpassword;
         private Modify_Control.EditText_Letter txtusername;
+        private Modify_Control.EditText_DigitOrLetter txtpassword;
     }
 }

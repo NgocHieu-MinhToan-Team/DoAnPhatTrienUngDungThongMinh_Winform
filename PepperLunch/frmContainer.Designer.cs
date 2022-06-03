@@ -37,7 +37,7 @@ namespace PepperLunch
             this.barBtn_receipt = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_customer = new DevExpress.XtraBars.BarButtonItem();
-            this.barBtn_orders = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtn_Import = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_signOut = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_Product = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_Category = new DevExpress.XtraBars.BarButtonItem();
@@ -74,7 +74,7 @@ namespace PepperLunch
             this.barBtn_receipt,
             this.barButtonItem2,
             this.barBtn_customer,
-            this.barBtn_orders,
+            this.barBtn_Import,
             this.barBtn_signOut,
             this.barBtn_Product,
             this.barBtn_Category,
@@ -91,7 +91,7 @@ namespace PepperLunch
             this.ribbon.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEdit1});
             this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.MacOffice;
-            this.ribbon.Size = new System.Drawing.Size(998, 186);
+            this.ribbon.Size = new System.Drawing.Size(1261, 186);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
             // barButtonItem1
@@ -141,15 +141,15 @@ namespace PepperLunch
             this.barBtn_customer.Name = "barBtn_customer";
             this.barBtn_customer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_customer_ItemClick);
             // 
-            // barBtn_orders
+            // barBtn_Import
             // 
-            this.barBtn_orders.Caption = "Orders";
-            this.barBtn_orders.Id = 17;
-            this.barBtn_orders.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtn_orders.ImageOptions.SvgImage")));
-            this.barBtn_orders.ItemAppearance.Hovered.BackColor = System.Drawing.Color.White;
-            this.barBtn_orders.ItemAppearance.Hovered.Options.UseBackColor = true;
-            this.barBtn_orders.Name = "barBtn_orders";
-            this.barBtn_orders.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_orders_ItemClick);
+            this.barBtn_Import.Caption = "Import Of Goods";
+            this.barBtn_Import.Id = 17;
+            this.barBtn_Import.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtn_Import.ImageOptions.SvgImage")));
+            this.barBtn_Import.ItemAppearance.Hovered.BackColor = System.Drawing.Color.White;
+            this.barBtn_Import.ItemAppearance.Hovered.Options.UseBackColor = true;
+            this.barBtn_Import.Name = "barBtn_Import";
+            this.barBtn_Import.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_Import_ItemClick);
             // 
             // barBtn_signOut
             // 
@@ -217,7 +217,7 @@ namespace PepperLunch
             this.ribbonPageGroup1.ItemLinks.Add(this.barBtn_staff);
             this.ribbonPageGroup1.ItemLinks.Add(this.barBtn_receipt);
             this.ribbonPageGroup1.ItemLinks.Add(this.barBtn_customer);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barBtn_orders);
+            this.ribbonPageGroup1.ItemLinks.Add(this.barBtn_Import);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Manage Restaurant";
             // 
@@ -252,10 +252,10 @@ namespace PepperLunch
             // 
             // ribbonStatusBar
             // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 582);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 635);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(998, 31);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1261, 31);
             // 
             // documentManager1
             // 
@@ -289,7 +289,7 @@ namespace PepperLunch
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayoutStore = System.Windows.Forms.ImageLayout.Stretch;
             this.BackgroundImageStore = global::PepperLunch.Properties.Resources.bg_white;
-            this.ClientSize = new System.Drawing.Size(998, 613);
+            this.ClientSize = new System.Drawing.Size(1261, 666);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
             this.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -325,7 +325,7 @@ namespace PepperLunch
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView tabbedView1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barBtn_customer;
-        private DevExpress.XtraBars.BarButtonItem barBtn_orders;
+        private DevExpress.XtraBars.BarButtonItem barBtn_Import;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem barBtn_signOut;
         private DevExpress.XtraBars.BarButtonItem barBtn_Product;
@@ -336,6 +336,6 @@ namespace PepperLunch
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private DevExpress.XtraBars.BarButtonItem barBtn_SyncManual;
         private DevExpress.XtraBars.BarButtonItem barBtn_Promotion;
-        private DevExpress.XtraBars.BarButtonItem barBtn_Ingredient;
+        public DevExpress.XtraBars.BarButtonItem barBtn_Ingredient;
     }
 }
