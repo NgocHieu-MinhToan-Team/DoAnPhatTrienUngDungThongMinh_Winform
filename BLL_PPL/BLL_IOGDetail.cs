@@ -38,6 +38,11 @@ namespace BLL_PPL
             }
         }
 
+        public static bool validateIsNumber(string text1,string text2)
+        {
+            return GeneralMethods.isDigit(text1, false) && GeneralMethods.isDigit(text2, false);
+        }
+
         public static bool delete(DETAIL_IMPORT data)
         {
             try

@@ -82,5 +82,26 @@ namespace BLL_PPL
             }
         }
 
+        public static bool updateTotalPrice(IMPORT data)
+        {
+            try
+            {
+                if (DAL_IOG.updateTotalPrice(data))
+                {
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Update Data Failed !");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
     }
 }

@@ -48,6 +48,7 @@ namespace PepperLunch
             item.TOTAL_PRICE = 0;
             item.NOTE = txtNote.Text;
             BLL_IOG.insert(item);
+            loadData();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -62,8 +63,12 @@ namespace PepperLunch
                 item.TOTAL_PRICE = item.TOTAL_PRICE;
                 item.NOTE = txtNote.Text;
                 BLL_IOG.update(item);
+                loadData();
             }
-           
+            else
+            {
+                MessageBox.Show("Please choose a record Import of goods");
+            }
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -72,12 +77,50 @@ namespace PepperLunch
             if (arrRowSelected != null)
             {
                 IMPORT item = (IMPORT)gridView_IOG.GetRow(arrRowSelected[0]);
-                item.ID_SUPPLIER = cbbSupplier.SelectedValue.ToString();
-                item.USERNAME_STAFF = username;
-                item.DATE_IOG = DateTime.Now;
-                item.TOTAL_PRICE = item.TOTAL_PRICE;
-                item.NOTE = txtNote.Text;
                 BLL_IOG.delete(item);
+                loadData();
+            }
+            else
+            {
+                MessageBox.Show("Please choose a record Import of goods");
+            }
+        }
+
+        private void btnAddDetail_Click(object sender, EventArgs e)
+        {
+            int[] arrRowSelected = gridView_IOG.GetSelectedRows();
+            if (arrRowSelected != null)
+            {
+                IMPORT item = (IMPORT)gridView_IOG.GetRow(arrRowSelected[0]);
+                frmIOGDetail newFrm = new frmIOGDetail();
+                newFrm.ID_IOG = item.ID_IOG;
+                newFrm.FormClosed += (o, evt) =>
+                {
+                    // update total price of import
+                    BLL_IOG.updateTotalPrice(item);
+                    this.Close();
+                    Program.frmcontainer.barBtn_Import.PerformClick();
+                };
+                newFrm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please choose a record Import of goods");
+            }
+           
+        }
+
+        private void gridView_IOG_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            int[] arrRowSelected = gridView_IOG.GetSelectedRows();
+            if (arrRowSelected != null)
+            {
+                IMPORT item = (IMPORT)gridView_IOG.GetRow(arrRowSelected[0]);
+                cbbSupplier.SelectedValue = item.ID_SUPPLIER;
+                dateTimePicker_dateCreate.Value = item.DATE_IOG;
+                lblTotalPrice.Text = item.TOTAL_PRICE.ToString();
+                lblTotalQuantity.Text = "Chua lam";
+                txtNote.Text = item.NOTE;
             }
         }
     }

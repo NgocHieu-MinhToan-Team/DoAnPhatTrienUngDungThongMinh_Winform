@@ -109,7 +109,6 @@ E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMin
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\bin\Debug\es\DevExpress.Pdf.v19.2.Core.resources.dll
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\bin\Debug\ja\DevExpress.Pdf.v19.2.Core.resources.dll
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\bin\Debug\ru\DevExpress.Pdf.v19.2.Core.resources.dll
-E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\obj\Debug\Modify_Control.csproj.AssemblyReference.cache
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\obj\Debug\Modify_Control.EditText_Digit.resources
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\obj\Debug\Modify_Control.EditText_DigitOrLetter.resources
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\obj\Debug\Modify_Control.EditText_Letter.resources
@@ -131,3 +130,5 @@ E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMin
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\bin\Debug\System.Net.Http.Extensions.xml
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\bin\Debug\System.Net.Http.Primitives.xml
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\obj\Debug\Modify_Control.csproj.App.config
+E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\obj\Debug\Modify_Control.Label_TextBox.resources
+E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\Modify_Control\obj\Debug\Modify_Control.csproj.AssemblyReference.cache

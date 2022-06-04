@@ -156,9 +156,9 @@ namespace PepperLunch
 
         private void barBtn_Import_ItemClick(object sender, ItemClickEventArgs e)
         {
-                frmImport newForm = new frmImport();
-                newForm.MdiParent = this;
-                newForm.Show();
+            frmImport newForm = new frmImport();
+            newForm.MdiParent = this;
+            newForm.Show();
         }
     }
 }

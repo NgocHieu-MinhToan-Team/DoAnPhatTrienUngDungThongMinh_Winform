@@ -44,7 +44,7 @@ namespace DTO_PPL
         public static bool isDigit(string s, bool hasSpace)
         {
             string str = s.Trim();
-            if (str.Length > 0)
+            if (str.Length > 0 && str!="")
             {
                 if (hasSpace)
                 {

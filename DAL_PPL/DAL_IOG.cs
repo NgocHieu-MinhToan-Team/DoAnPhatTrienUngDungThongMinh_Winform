@@ -20,6 +20,7 @@ namespace DAL_PPL
         {
             try
             {
+                data.FLAG_DEL = 0;
                 db.IMPORTs.InsertOnSubmit(data);
                 db.SubmitChanges();
                 return true;
@@ -54,6 +55,28 @@ namespace DAL_PPL
                 item.TOTAL_PRICE = data.TOTAL_PRICE;
                 item.NOTE = data.NOTE;
                 item.FLAG_DEL = 0;
+                db.SubmitChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool updateTotalPrice(IMPORT data)
+        {
+            try
+            {
+                IMPORT item = db.IMPORTs.SingleOrDefault(t => t.ID_IOG == data.ID_IOG);
+                // get detail import 
+                List<DETAIL_IMPORT> listDetail = db.DETAIL_IMPORTs.Where(t => t.ID_IOG == item.ID_IOG).ToList();
+                int? total = 0;
+                foreach(DETAIL_IMPORT i in listDetail)
+                {
+                    total += (i.QUANTITY * i.PRICE);
+                }
+                item.TOTAL_PRICE = total;
                 db.SubmitChanges();
                 return true;
             }

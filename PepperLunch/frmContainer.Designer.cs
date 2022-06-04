@@ -325,7 +325,8 @@ namespace PepperLunch
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView tabbedView1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barBtn_customer;
-        private DevExpress.XtraBars.BarButtonItem barBtn_Import;
+        // public
+        public DevExpress.XtraBars.BarButtonItem barBtn_Import;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem barBtn_signOut;
         private DevExpress.XtraBars.BarButtonItem barBtn_Product;
@@ -336,6 +337,7 @@ namespace PepperLunch
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private DevExpress.XtraBars.BarButtonItem barBtn_SyncManual;
         private DevExpress.XtraBars.BarButtonItem barBtn_Promotion;
+        // public
         public DevExpress.XtraBars.BarButtonItem barBtn_Ingredient;
     }
 }

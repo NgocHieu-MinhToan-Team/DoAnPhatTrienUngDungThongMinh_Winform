@@ -52,5 +52,11 @@ namespace PepperLunch
                 MessageBox.Show("Please enter your username & password !");
             }
         }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            this.ActiveControl = txtusername;
+            txtusername.Focus();
+        }
     }
 }
