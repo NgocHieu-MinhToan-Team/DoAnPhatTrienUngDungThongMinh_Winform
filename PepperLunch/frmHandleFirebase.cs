@@ -11,159 +11,136 @@ using DTO_PPL;
 using BLL_PPL;
 using DevExpress.XtraSplashScreen;
 using DevExpress.XtraBars.Navigation;
+using DevExpress.XtraGrid.Views.Grid;
+using System.Threading.Tasks;
 
 namespace PepperLunch
 {
     public partial class frmHandleFirebase : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
-        private string type=null;
-        // declare type 
-        private static string typeCATEGORY = "Category";
-        private static string typeDISH = "Dish";
-        private static string typeCUSTOMER = "Customer";
-        private static string typeRECEIPT = "Receipt";
+
 
         public frmHandleFirebase()
         {
             InitializeComponent();
+            cbbPromotion.DataSource = BLL_Promotion.getPromotions();
+            cbbPromotion.DisplayMember = "NAME_PROMOTION";
+            cbbPromotion.ValueMember = "ID_PROMOTION";
         }
+        #region Navigation Click
         private void frmHandleFirebase_Load(object sender, EventArgs e)
         {
-            changeObject(typeCATEGORY);
-        }
-       
-        private void accordionCtrl_Category_Click(object sender, EventArgs e)
-        {
-            changeObject(typeCATEGORY);
-            hanldeOnCategory();
-        }
-
-        private void accordionCtrlE_Dish_Click(object sender, EventArgs e)
-        {
-            changeObject(typeDISH);
+            btnSyncFood.Enabled = btnSyncNews.Enabled = false;
         }
 
         private void accordionCtrlE_Customer_Click(object sender, EventArgs e)
         {
-            changeObject(typeCUSTOMER);
-
+            frmSyncCustomer newFrm = new frmSyncCustomer();
+            newFrm.Show();
         }
 
-        private void accordionCtrlE_Receipt_Click(object sender, EventArgs e)
+        #endregion
+        void clearDataOnGridView()
         {
-            changeObject(typeRECEIPT);
-
+            gridView_dataFromFB.Columns.Clear();
         }
 
-        private void btnSyncTo_Click(object sender, EventArgs e)
+        private void accordionCtrl_SyncToFirebase_Click(object sender, EventArgs e)
         {
-            if(type == typeCATEGORY)
+            btnSyncFood.Enabled = btnSyncNews.Enabled = true;
+        }
+
+        private async void btnSyncFood_Click(object sender, EventArgs e)
+        {
+            clearDataOnGridView();
+            gridView_dataFromFB.ShowLoadingPanel();
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            //handle start
+            await BLL_Synchronized.updateCategoriesToFirebaseAsync();
+            gridControl_dataFromFB.DataSource = await BLL_Synchronized.getCategoriesNotSync();
+            //handle end
+            watch.Stop();
+            gridView_dataFromFB.HideLoadingPanel();
+            string result =  watch.ElapsedMilliseconds.ToString() + " ms";
+            MessageBox.Show("Total Time Sync is : " + result);
+        }
+
+        private async void svgImage_food_Click(object sender, EventArgs e)
+        {
+            clearDataOnGridView();
+
+            gridView_dataFromFB.ShowLoadingPanel();
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            //handle start
+            gridControl_dataFromFB.DataSource = await BLL_Synchronized.getCategoriesNotSync();
+            //handle end
+            watch.Stop();
+            gridView_dataFromFB.HideLoadingPanel();
+            string result =  watch.ElapsedMilliseconds.ToString() + " ms";
+            MessageBox.Show("Total Time Load is : " + result);
+        }
+
+        private void svgImage_News_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Chức năng này tương tự với Food nên chưa làm !");
+        }
+
+        private async void btnSyncNews_Click(object sender, EventArgs e)
+        {
+            if (cbbPromotion.SelectedValue != null)
             {
-                BLL_Synchronized.synchronizedCategoriesToFireBase();
-                hanldeOnCategory();
-                return;
-            }
-            if (type == typeDISH)
-            {
-                MessageBox.Show("" + typeDISH);
-                return;
-            }
-            if (type == typeCUSTOMER)
-            {
-                MessageBox.Show("" + typeCUSTOMER);
-                return;
-            }
-            if (type == typeRECEIPT)
-            {
-                MessageBox.Show("" + typeRECEIPT);
-                return;
+                clearDataOnGridView();
+                gridView_dataFromFB.ShowLoadingPanel();
+                var watch = System.Diagnostics.Stopwatch.StartNew();
+                //handle start
+                await BLL_Synchronized.updateNewsToFirebaseAsync(cbbPromotion.SelectedValue.ToString());
+                //handle end
+                watch.Stop();
+                gridView_dataFromFB.HideLoadingPanel();
+                string result = watch.ElapsedMilliseconds.ToString() + " ms";
+                MessageBox.Show("Total Time Sync is : " + result);
+
             }
             else
             {
-                MessageBox.Show("please choose type of object need sync");
+                MessageBox.Show("Vui Lòng Chọn Promotion để cập nhật !");
             }
-            
         }
 
-        private void btnSyncDown_Click(object sender, EventArgs e)
+        private async void btnSyncVoucher_Click(object sender, EventArgs e)
         {
-            if (type == typeCATEGORY)
+            if (cbbPromotion.SelectedValue != null)
             {
-                MessageBox.Show("Chua co chuc nang nay" + typeDISH);
-                return;
-            }
-            if (type == typeDISH)
-            {
-                MessageBox.Show("" + typeDISH);
-                return;
-            }
-            if (type == typeCUSTOMER)
-            {
-                MessageBox.Show("" + typeCUSTOMER);
-                return;
-            }
-            if (type == typeRECEIPT)
-            {
-                MessageBox.Show("" + typeRECEIPT);
-                return;
+                clearDataOnGridView();
+                gridView_dataFromFB.ShowLoadingPanel();
+                var watch = System.Diagnostics.Stopwatch.StartNew();
+                //handle start
+                await BLL_Synchronized.updateVoucherToFirebaseAsync(cbbPromotion.SelectedValue.ToString());
+                //handle end
+                watch.Stop();
+                gridView_dataFromFB.HideLoadingPanel();
+                string result = watch.ElapsedMilliseconds.ToString() + " ms";
+                MessageBox.Show("Total Time Sync is : " + result);
+
             }
             else
             {
-                MessageBox.Show("please choose type of object need sync");
+                MessageBox.Show("Vui Lòng Chọn Promotion để cập nhật !");
             }
         }
-        private void changeObject(string _type)
+
+        private async void btnSyncMethodPay_Click(object sender, EventArgs e)
         {
-            type = _type;
-            btnSyncTo.Text = "Sync " + type + " To Firebase";
-            btnSyncDown.Text = "Sync " + type + " Down To SQL ";
+            clearDataOnGridView();
+            gridView_dataFromFB.ShowLoadingPanel();
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            //handle start
+            await BLL_Synchronized.updateMethodToFirebaseAsync();
+            //handle end
+            watch.Stop();
+            gridView_dataFromFB.HideLoadingPanel();
+            string result = watch.ElapsedMilliseconds.ToString() + " ms";
+            MessageBox.Show("Total Time Sync is : " + result);
         }
-
-        private async void hanldeOnCategory()
-        {
-            // load data firebase
-            turnOffControls();
-            gridView_fromFirebase.ShowLoadingPanel();
-            var watch1 = System.Diagnostics.Stopwatch.StartNew();
-            List<CATEGORY> listOfFirebase = await BLL_Synchronized.getCategoriesFromFireBase();
-            gridControl1.DataSource = listOfFirebase;
-            watch1.Stop();
-            gridView_fromFirebase.HideLoadingPanel();
-            lblMilisecond.Text = "Time Load : " +watch1.ElapsedMilliseconds.ToString() + " ms";
-
-
-
-            // load data from sql and filter 
-            gridView_yetSync.ShowLoadingPanel();
-            var watch2 = System.Diagnostics.Stopwatch.StartNew();
-            List<CATEGORY> listOfLocal = await BLL_Synchronized.getCategoriesNotSync();
-            gridControl2.DataSource = listOfLocal;
-            watch2.Stop();
-            gridView_yetSync.HideLoadingPanel();
-            lblMilisecondeNotSync.Text ="Time Not Sync : " +watch2.ElapsedMilliseconds.ToString() + " ms";
-            turnOnControls();
-        }
-
-        private void turnOffControls()
-        {
-            foreach (AccordionControlElement element in accordionControl1.Elements)
-            {
-                element.Enabled = false;
-            }
-            btnSyncTo.Enabled = false;
-            btnSyncDown.Enabled = false;
-        }
-
-        private void turnOnControls()
-        {
-            foreach (AccordionControlElement element in accordionControl1.Elements)
-            {
-                element.Enabled = true;
-            }
-            btnSyncTo.Enabled = true;
-            btnSyncDown.Enabled = true;
-
-        }
-
     }
 }

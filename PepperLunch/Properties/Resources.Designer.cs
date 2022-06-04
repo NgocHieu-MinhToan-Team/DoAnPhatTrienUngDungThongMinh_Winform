@@ -91,6 +91,16 @@ namespace PepperLunch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage firebaseLogo {
+            get {
+                object obj = ResourceManager.GetObject("firebaseLogo", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap peper_logo {
@@ -106,6 +116,16 @@ namespace PepperLunch.Properties {
         internal static System.Drawing.Bitmap wallpaperflare_com_wallpaper__1_ {
             get {
                 object obj = ResourceManager.GetObject("wallpaperflare.com_wallpaper (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap you_choy_200px {
+            get {
+                object obj = ResourceManager.GetObject("you_choy_200px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

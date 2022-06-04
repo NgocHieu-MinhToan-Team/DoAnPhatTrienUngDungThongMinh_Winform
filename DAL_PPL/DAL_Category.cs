@@ -12,6 +12,7 @@ namespace DAL_PPL
     {
         static RestaurantPPLDataContext db = new RestaurantPPLDataContext();
         public DAL_Category() { }
+        // get data just include flag = 0 : not delete
         public static List<CATEGORY> getCategories()
         {
             var listAnonymous = from cate in db.CATEGORies
@@ -30,38 +31,17 @@ namespace DAL_PPL
                 item.ID_CATEGORY = itemAnonymous.ID_CATEGORY;
                 item.NAME_CATEGORY = itemAnonymous.NAME_CATEGORY;
                 item.GROUP_CATEGORY = itemAnonymous.GROUP_CATEGORY;
-                item.FLAG_DEL = item.FLAG_DEL;
+                //item.FLAG_DEL = item.FLAG_DEL;
                 list.Add(item);
             }
             return list;
         }
-        public static List<CATEGORY> getFullCategories()
-        {
-            var listAnonymous = from cate in db.CATEGORies
-                                select new
-                                {
-                                    ID_CATEGORY = cate.ID_CATEGORY,
-                                    NAME_CATEGORY = cate.NAME_CATEGORY,
-                                    GROUP_CATEGORY = cate.GROUP_CATEGORY,
-                                    FLAG_DEL = cate.FLAG_DEL
-                                };
-            List<CATEGORY> list = new List<CATEGORY>();
-            foreach (var itemAnonymous in listAnonymous)
-            {
-                CATEGORY item = new CATEGORY();
-                item.ID_CATEGORY = itemAnonymous.ID_CATEGORY;
-                item.NAME_CATEGORY = itemAnonymous.NAME_CATEGORY;
-                item.GROUP_CATEGORY = itemAnonymous.GROUP_CATEGORY;
-                item.FLAG_DEL = item.FLAG_DEL;
-                list.Add(item);
-            }
-            return list;
-        }
-
-        public static bool insertCategories(CATEGORY data)
+       
+        public static bool insertCategory(CATEGORY data)
         {
             try
             {
+                data.FLAG_DEL = 0;
                 db.CATEGORies.InsertOnSubmit(data);
                 db.SubmitChanges();
                 return true;
@@ -71,7 +51,7 @@ namespace DAL_PPL
                 return false;
             }
         }
-        public static bool deleteCategories(CATEGORY data)
+        public static bool deleteCategory(CATEGORY data)
         {
             try
             {
@@ -85,7 +65,7 @@ namespace DAL_PPL
                 return false;
             }
         }
-        public static bool updateCategories(CATEGORY data)
+        public static bool updateCategory(CATEGORY data)
         {
             try
             {

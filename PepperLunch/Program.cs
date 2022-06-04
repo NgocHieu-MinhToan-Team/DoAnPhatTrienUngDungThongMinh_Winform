@@ -13,12 +13,18 @@ namespace PepperLunch
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        /// '
+        /// 
+        public static frmLogin frmlogin { get; set; }
+        public static frmContainer frmcontainer  { get;set; }
         [STAThread]
+
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmContainer());
+            frmlogin = new frmLogin();
+            Application.Run(frmlogin);
         }
     }
 }

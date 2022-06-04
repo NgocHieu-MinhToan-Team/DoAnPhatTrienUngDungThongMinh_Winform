@@ -29,161 +29,241 @@ namespace PepperLunch
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHandleFirebase));
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
-            this.tableLayout_wrapper = new System.Windows.Forms.TableLayoutPanel();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView_fromFirebase = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridControl2 = new DevExpress.XtraGrid.GridControl();
-            this.gridView_yetSync = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.tableLayou_CURDofFromFirebase = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSyncTo = new DevExpress.XtraEditors.SimpleButton();
-            this.lblMilisecond = new System.Windows.Forms.Label();
-            this.tableLayout_CURDofYetSync = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSyncDown = new DevExpress.XtraEditors.SimpleButton();
+            this.tblLayout_wrapper = new System.Windows.Forms.TableLayoutPanel();
+            this.cbbPromotion = new System.Windows.Forms.ComboBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.svgImage_food = new DevExpress.XtraEditors.SvgImageBox();
+            this.btnSyncFood = new DevExpress.XtraEditors.SimpleButton();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnSyncVoucher = new DevExpress.XtraEditors.SimpleButton();
+            this.svgImage_News = new DevExpress.XtraEditors.SvgImageBox();
+            this.svgImageBox3 = new DevExpress.XtraEditors.SvgImageBox();
+            this.btnSyncNews = new DevExpress.XtraEditors.SimpleButton();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.svgImageBox1 = new DevExpress.XtraEditors.SvgImageBox();
+            this.btnSyncMethodPay = new DevExpress.XtraEditors.SimpleButton();
+            this.gridControl_dataFromFB = new DevExpress.XtraGrid.GridControl();
+            this.gridView_dataFromFB = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
-            this.accordionCtrl_Category = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionCtrlE_Dish = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement2 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionCtrl_SyncToFirebase = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionCtrlE_Customer = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionCtrlE_Receipt = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement5 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.lblMilisecondeNotSync = new System.Windows.Forms.Label();
+            this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormContainer1.SuspendLayout();
-            this.tableLayout_wrapper.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView_fromFirebase)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView_yetSync)).BeginInit();
-            this.tableLayou_CURDofFromFirebase.SuspendLayout();
-            this.tableLayout_CURDofYetSync.SuspendLayout();
+            this.tblLayout_wrapper.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.svgImage_food)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.svgImage_News)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.svgImageBox3)).BeginInit();
+            this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.svgImageBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl_dataFromFB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_dataFromFB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // fluentDesignFormContainer1
             // 
-            this.fluentDesignFormContainer1.Controls.Add(this.tableLayout_wrapper);
+            this.fluentDesignFormContainer1.Controls.Add(this.tblLayout_wrapper);
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fluentDesignFormContainer1.Location = new System.Drawing.Point(260, 39);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(907, 676);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(879, 676);
             this.fluentDesignFormContainer1.TabIndex = 0;
             // 
-            // tableLayout_wrapper
+            // tblLayout_wrapper
             // 
-            this.tableLayout_wrapper.ColumnCount = 2;
-            this.tableLayout_wrapper.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85F));
-            this.tableLayout_wrapper.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayout_wrapper.Controls.Add(this.gridControl1, 0, 0);
-            this.tableLayout_wrapper.Controls.Add(this.gridControl2, 0, 1);
-            this.tableLayout_wrapper.Controls.Add(this.tableLayou_CURDofFromFirebase, 1, 0);
-            this.tableLayout_wrapper.Controls.Add(this.tableLayout_CURDofYetSync, 1, 1);
-            this.tableLayout_wrapper.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayout_wrapper.Location = new System.Drawing.Point(0, 0);
-            this.tableLayout_wrapper.Name = "tableLayout_wrapper";
-            this.tableLayout_wrapper.RowCount = 2;
-            this.tableLayout_wrapper.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayout_wrapper.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayout_wrapper.Size = new System.Drawing.Size(907, 676);
-            this.tableLayout_wrapper.TabIndex = 0;
+            this.tblLayout_wrapper.BackColor = System.Drawing.Color.Black;
+            this.tblLayout_wrapper.ColumnCount = 3;
+            this.tblLayout_wrapper.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tblLayout_wrapper.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tblLayout_wrapper.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tblLayout_wrapper.Controls.Add(this.cbbPromotion, 1, 0);
+            this.tblLayout_wrapper.Controls.Add(this.tableLayoutPanel1, 0, 1);
+            this.tblLayout_wrapper.Controls.Add(this.tableLayoutPanel2, 1, 1);
+            this.tblLayout_wrapper.Controls.Add(this.tableLayoutPanel3, 2, 1);
+            this.tblLayout_wrapper.Controls.Add(this.gridControl_dataFromFB, 0, 2);
+            this.tblLayout_wrapper.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblLayout_wrapper.Location = new System.Drawing.Point(0, 0);
+            this.tblLayout_wrapper.Name = "tblLayout_wrapper";
+            this.tblLayout_wrapper.RowCount = 3;
+            this.tblLayout_wrapper.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tblLayout_wrapper.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.39053F));
+            this.tblLayout_wrapper.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.60947F));
+            this.tblLayout_wrapper.Size = new System.Drawing.Size(879, 676);
+            this.tblLayout_wrapper.TabIndex = 0;
             // 
-            // gridControl1
+            // cbbPromotion
             // 
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(3, 3);
-            this.gridControl1.MainView = this.gridView_fromFirebase;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(764, 332);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView_fromFirebase});
+            this.cbbPromotion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbbPromotion.FormattingEnabled = true;
+            this.cbbPromotion.Location = new System.Drawing.Point(296, 3);
+            this.cbbPromotion.Name = "cbbPromotion";
+            this.cbbPromotion.Size = new System.Drawing.Size(287, 29);
+            this.cbbPromotion.TabIndex = 2;
             // 
-            // gridView_fromFirebase
+            // tableLayoutPanel1
             // 
-            this.gridView_fromFirebase.GridControl = this.gridControl1;
-            this.gridView_fromFirebase.Name = "gridView_fromFirebase";
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.Controls.Add(this.svgImage_food, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnSyncFood, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 39);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(287, 66);
+            this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // gridControl2
+            // svgImage_food
             // 
-            this.gridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl2.Location = new System.Drawing.Point(3, 341);
-            this.gridControl2.MainView = this.gridView_yetSync;
-            this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(764, 332);
-            this.gridControl2.TabIndex = 1;
-            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView_yetSync});
+            this.svgImage_food.BackColor = System.Drawing.Color.Transparent;
+            this.svgImage_food.Dock = System.Windows.Forms.DockStyle.Top;
+            this.svgImage_food.Location = new System.Drawing.Point(3, 3);
+            this.svgImage_food.Name = "svgImage_food";
+            this.svgImage_food.Size = new System.Drawing.Size(89, 60);
+            this.svgImage_food.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("svgImage_food.SvgImage")));
+            this.svgImage_food.TabIndex = 0;
+            this.svgImage_food.Text = "svgImageBox1";
+            this.svgImage_food.Click += new System.EventHandler(this.svgImage_food_Click);
             // 
-            // gridView_yetSync
+            // btnSyncFood
             // 
-            this.gridView_yetSync.GridControl = this.gridControl2;
-            this.gridView_yetSync.Name = "gridView_yetSync";
+            this.btnSyncFood.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSyncFood.Location = new System.Drawing.Point(98, 3);
+            this.btnSyncFood.Name = "btnSyncFood";
+            this.btnSyncFood.Size = new System.Drawing.Size(89, 60);
+            this.btnSyncFood.TabIndex = 1;
+            this.btnSyncFood.Text = "Sync Food To Firebase";
+            this.btnSyncFood.Click += new System.EventHandler(this.btnSyncFood_Click);
             // 
-            // tableLayou_CURDofFromFirebase
+            // tableLayoutPanel2
             // 
-            this.tableLayou_CURDofFromFirebase.ColumnCount = 1;
-            this.tableLayou_CURDofFromFirebase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayou_CURDofFromFirebase.Controls.Add(this.lblMilisecondeNotSync, 0, 2);
-            this.tableLayou_CURDofFromFirebase.Controls.Add(this.btnSyncTo, 0, 1);
-            this.tableLayou_CURDofFromFirebase.Controls.Add(this.lblMilisecond, 0, 0);
-            this.tableLayou_CURDofFromFirebase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayou_CURDofFromFirebase.Location = new System.Drawing.Point(773, 3);
-            this.tableLayou_CURDofFromFirebase.Name = "tableLayou_CURDofFromFirebase";
-            this.tableLayou_CURDofFromFirebase.RowCount = 4;
-            this.tableLayou_CURDofFromFirebase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayou_CURDofFromFirebase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayou_CURDofFromFirebase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayou_CURDofFromFirebase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 130F));
-            this.tableLayou_CURDofFromFirebase.Size = new System.Drawing.Size(131, 332);
-            this.tableLayou_CURDofFromFirebase.TabIndex = 2;
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel2.ColumnCount = 4;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 107F));
+            this.tableLayoutPanel2.Controls.Add(this.btnSyncVoucher, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.svgImage_News, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.svgImageBox3, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnSyncNews, 1, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(296, 39);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(287, 66);
+            this.tableLayoutPanel2.TabIndex = 2;
             // 
-            // btnSyncTo
+            // btnSyncVoucher
             // 
-            this.btnSyncTo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSyncTo.Location = new System.Drawing.Point(3, 74);
-            this.btnSyncTo.Name = "btnSyncTo";
-            this.btnSyncTo.Size = new System.Drawing.Size(125, 29);
-            this.btnSyncTo.TabIndex = 0;
-            this.btnSyncTo.Text = "Sync To Firebase";
-            this.btnSyncTo.Click += new System.EventHandler(this.btnSyncTo_Click);
+            this.btnSyncVoucher.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSyncVoucher.Location = new System.Drawing.Point(183, 3);
+            this.btnSyncVoucher.Name = "btnSyncVoucher";
+            this.btnSyncVoucher.Size = new System.Drawing.Size(101, 60);
+            this.btnSyncVoucher.TabIndex = 1;
+            this.btnSyncVoucher.Text = "Sync Voucher";
+            this.btnSyncVoucher.Click += new System.EventHandler(this.btnSyncVoucher_Click);
             // 
-            // lblMilisecond
+            // svgImage_News
             // 
-            this.lblMilisecond.AutoSize = true;
-            this.lblMilisecond.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblMilisecond.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMilisecond.ForeColor = System.Drawing.Color.SeaGreen;
-            this.lblMilisecond.Location = new System.Drawing.Point(3, 0);
-            this.lblMilisecond.Name = "lblMilisecond";
-            this.lblMilisecond.Size = new System.Drawing.Size(125, 71);
-            this.lblMilisecond.TabIndex = 1;
-            this.lblMilisecond.Text = "Time Load : 0 ms";
-            this.lblMilisecond.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.svgImage_News.BackColor = System.Drawing.Color.Transparent;
+            this.svgImage_News.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.svgImage_News.Location = new System.Drawing.Point(3, 3);
+            this.svgImage_News.Name = "svgImage_News";
+            this.svgImage_News.Size = new System.Drawing.Size(54, 60);
+            this.svgImage_News.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("svgImage_News.SvgImage")));
+            this.svgImage_News.TabIndex = 0;
+            this.svgImage_News.Text = "svgImageBox2";
+            this.svgImage_News.Click += new System.EventHandler(this.svgImage_News_Click);
             // 
-            // tableLayout_CURDofYetSync
+            // svgImageBox3
             // 
-            this.tableLayout_CURDofYetSync.ColumnCount = 1;
-            this.tableLayout_CURDofYetSync.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayout_CURDofYetSync.Controls.Add(this.btnSyncDown, 0, 1);
-            this.tableLayout_CURDofYetSync.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayout_CURDofYetSync.Location = new System.Drawing.Point(773, 341);
-            this.tableLayout_CURDofYetSync.Name = "tableLayout_CURDofYetSync";
-            this.tableLayout_CURDofYetSync.RowCount = 2;
-            this.tableLayout_CURDofYetSync.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayout_CURDofYetSync.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 260F));
-            this.tableLayout_CURDofYetSync.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 230F));
-            this.tableLayout_CURDofYetSync.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayout_CURDofYetSync.Size = new System.Drawing.Size(131, 332);
-            this.tableLayout_CURDofYetSync.TabIndex = 3;
+            this.svgImageBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.svgImageBox3.Location = new System.Drawing.Point(123, 3);
+            this.svgImageBox3.Name = "svgImageBox3";
+            this.svgImageBox3.Size = new System.Drawing.Size(54, 60);
+            this.svgImageBox3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("svgImageBox3.SvgImage")));
+            this.svgImageBox3.TabIndex = 0;
+            this.svgImageBox3.Text = "svgImageBox3";
             // 
-            // btnSyncDown
+            // btnSyncNews
             // 
-            this.btnSyncDown.Location = new System.Drawing.Point(3, 75);
-            this.btnSyncDown.Name = "btnSyncDown";
-            this.btnSyncDown.Size = new System.Drawing.Size(125, 29);
-            this.btnSyncDown.TabIndex = 1;
-            this.btnSyncDown.Text = "Sync Down To SQL";
-            this.btnSyncDown.Click += new System.EventHandler(this.btnSyncDown_Click);
+            this.btnSyncNews.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSyncNews.Location = new System.Drawing.Point(63, 3);
+            this.btnSyncNews.Name = "btnSyncNews";
+            this.btnSyncNews.Size = new System.Drawing.Size(54, 60);
+            this.btnSyncNews.TabIndex = 1;
+            this.btnSyncNews.Text = "Sync To Firebase";
+            this.btnSyncNews.Click += new System.EventHandler(this.btnSyncNews_Click);
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 3;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.Controls.Add(this.svgImageBox1, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnSyncMethodPay, 1, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(589, 39);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(287, 66);
+            this.tableLayoutPanel3.TabIndex = 3;
+            // 
+            // svgImageBox1
+            // 
+            this.svgImageBox1.BackColor = System.Drawing.Color.Transparent;
+            this.svgImageBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.svgImageBox1.Location = new System.Drawing.Point(3, 3);
+            this.svgImageBox1.Name = "svgImageBox1";
+            this.svgImageBox1.Size = new System.Drawing.Size(89, 60);
+            this.svgImageBox1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("svgImageBox1.SvgImage")));
+            this.svgImageBox1.TabIndex = 1;
+            this.svgImageBox1.Text = "svgImageBox2";
+            // 
+            // btnSyncMethodPay
+            // 
+            this.btnSyncMethodPay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSyncMethodPay.Location = new System.Drawing.Point(98, 3);
+            this.btnSyncMethodPay.Name = "btnSyncMethodPay";
+            this.btnSyncMethodPay.Size = new System.Drawing.Size(89, 60);
+            this.btnSyncMethodPay.TabIndex = 0;
+            this.btnSyncMethodPay.Text = "Sync Method";
+            this.btnSyncMethodPay.Click += new System.EventHandler(this.btnSyncMethodPay_Click);
+            // 
+            // gridControl_dataFromFB
+            // 
+            this.tblLayout_wrapper.SetColumnSpan(this.gridControl_dataFromFB, 3);
+            this.gridControl_dataFromFB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl_dataFromFB.Location = new System.Drawing.Point(3, 111);
+            this.gridControl_dataFromFB.MainView = this.gridView_dataFromFB;
+            this.gridControl_dataFromFB.Name = "gridControl_dataFromFB";
+            this.gridControl_dataFromFB.Size = new System.Drawing.Size(873, 562);
+            this.gridControl_dataFromFB.TabIndex = 4;
+            this.gridControl_dataFromFB.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView_dataFromFB});
+            // 
+            // gridView_dataFromFB
+            // 
+            this.gridView_dataFromFB.GridControl = this.gridControl_dataFromFB;
+            this.gridView_dataFromFB.Name = "gridView_dataFromFB";
             // 
             // accordionControl1
             // 
@@ -191,44 +271,44 @@ namespace PepperLunch
             this.accordionControl1.Appearance.AccordionControl.Options.UseBackColor = true;
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.accordionCtrl_Category,
-            this.accordionCtrlE_Dish,
+            this.accordionControlElement2,
+            this.accordionCtrl_SyncToFirebase,
             this.accordionCtrlE_Customer,
-            this.accordionCtrlE_Receipt});
+            this.accordionCtrlE_Receipt,
+            this.accordionControlElement5});
             this.accordionControl1.Location = new System.Drawing.Point(0, 39);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
             this.accordionControl1.Size = new System.Drawing.Size(260, 676);
             this.accordionControl1.TabIndex = 1;
             // 
-            // accordionCtrl_Category
+            // accordionControlElement2
             // 
-            this.accordionCtrl_Category.Appearance.Hovered.BackColor = System.Drawing.Color.White;
-            this.accordionCtrl_Category.Appearance.Hovered.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText;
-            this.accordionCtrl_Category.Appearance.Hovered.Options.UseBackColor = true;
-            this.accordionCtrl_Category.Appearance.Hovered.Options.UseForeColor = true;
-            this.accordionCtrl_Category.Appearance.Normal.ForeColor = System.Drawing.Color.White;
-            this.accordionCtrl_Category.Appearance.Normal.Options.UseForeColor = true;
-            this.accordionCtrl_Category.Expanded = true;
-            this.accordionCtrl_Category.Height = 40;
-            this.accordionCtrl_Category.Name = "accordionCtrl_Category";
-            this.accordionCtrl_Category.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionCtrl_Category.Text = "CATEGORY";
-            this.accordionCtrl_Category.Click += new System.EventHandler(this.accordionCtrl_Category_Click);
+            this.accordionControlElement2.Appearance.Normal.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.Warning;
+            this.accordionControlElement2.Appearance.Normal.Options.UseForeColor = true;
+            this.accordionControlElement2.HeaderTemplate.AddRange(new DevExpress.XtraBars.Navigation.HeaderElementInfo[] {
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Image),
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.ContextButtons, DevExpress.XtraBars.Navigation.HeaderElementAlignment.Left),
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Text),
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.HeaderControl)});
+            this.accordionControlElement2.Height = 50;
+            this.accordionControlElement2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement2.ImageOptions.Image")));
+            this.accordionControlElement2.Name = "accordionControlElement2";
+            this.accordionControlElement2.Text = "FIREBASE";
             // 
-            // accordionCtrlE_Dish
+            // accordionCtrl_SyncToFirebase
             // 
-            this.accordionCtrlE_Dish.Appearance.Hovered.BackColor = System.Drawing.Color.White;
-            this.accordionCtrlE_Dish.Appearance.Hovered.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText;
-            this.accordionCtrlE_Dish.Appearance.Hovered.Options.UseBackColor = true;
-            this.accordionCtrlE_Dish.Appearance.Hovered.Options.UseForeColor = true;
-            this.accordionCtrlE_Dish.Appearance.Normal.ForeColor = System.Drawing.Color.White;
-            this.accordionCtrlE_Dish.Appearance.Normal.Options.UseForeColor = true;
-            this.accordionCtrlE_Dish.Height = 40;
-            this.accordionCtrlE_Dish.Name = "accordionCtrlE_Dish";
-            this.accordionCtrlE_Dish.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionCtrlE_Dish.Text = "DISH";
-            this.accordionCtrlE_Dish.Click += new System.EventHandler(this.accordionCtrlE_Dish_Click);
+            this.accordionCtrl_SyncToFirebase.Appearance.Hovered.BackColor = System.Drawing.Color.White;
+            this.accordionCtrl_SyncToFirebase.Appearance.Hovered.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText;
+            this.accordionCtrl_SyncToFirebase.Appearance.Hovered.Options.UseBackColor = true;
+            this.accordionCtrl_SyncToFirebase.Appearance.Hovered.Options.UseForeColor = true;
+            this.accordionCtrl_SyncToFirebase.Appearance.Normal.ForeColor = System.Drawing.Color.White;
+            this.accordionCtrl_SyncToFirebase.Appearance.Normal.Options.UseForeColor = true;
+            this.accordionCtrl_SyncToFirebase.Height = 40;
+            this.accordionCtrl_SyncToFirebase.Name = "accordionCtrl_SyncToFirebase";
+            this.accordionCtrl_SyncToFirebase.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionCtrl_SyncToFirebase.Text = "SYNC TO FIREBASE";
+            this.accordionCtrl_SyncToFirebase.Click += new System.EventHandler(this.accordionCtrl_SyncToFirebase_Click);
             // 
             // accordionCtrlE_Customer
             // 
@@ -256,14 +336,19 @@ namespace PepperLunch
             this.accordionCtrlE_Receipt.Name = "accordionCtrlE_Receipt";
             this.accordionCtrlE_Receipt.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionCtrlE_Receipt.Text = "RECEIPT";
-            this.accordionCtrlE_Receipt.Click += new System.EventHandler(this.accordionCtrlE_Receipt_Click);
+            // 
+            // accordionControlElement5
+            // 
+            this.accordionControlElement5.Name = "accordionControlElement5";
+            this.accordionControlElement5.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement5.Text = "Element5";
             // 
             // fluentDesignFormControl1
             // 
             this.fluentDesignFormControl1.FluentDesignForm = this;
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1167, 39);
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1139, 39);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             // 
@@ -280,24 +365,33 @@ namespace PepperLunch
             this.accordionControlElement1.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement1.Text = "Element4";
             // 
-            // lblMilisecondeNotSync
+            // accordionControlElement3
             // 
-            this.lblMilisecondeNotSync.AutoSize = true;
-            this.lblMilisecondeNotSync.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblMilisecondeNotSync.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMilisecondeNotSync.ForeColor = System.Drawing.Color.SeaGreen;
-            this.lblMilisecondeNotSync.Location = new System.Drawing.Point(3, 142);
-            this.lblMilisecondeNotSync.Name = "lblMilisecondeNotSync";
-            this.lblMilisecondeNotSync.Size = new System.Drawing.Size(125, 60);
-            this.lblMilisecondeNotSync.TabIndex = 2;
-            this.lblMilisecondeNotSync.Text = "Time Not Sync : 0 ms";
-            this.lblMilisecondeNotSync.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.accordionControlElement3.Appearance.Hovered.BackColor = System.Drawing.Color.White;
+            this.accordionControlElement3.Appearance.Hovered.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText;
+            this.accordionControlElement3.Appearance.Hovered.Options.UseBackColor = true;
+            this.accordionControlElement3.Appearance.Hovered.Options.UseForeColor = true;
+            this.accordionControlElement3.Appearance.Normal.ForeColor = System.Drawing.Color.White;
+            this.accordionControlElement3.Appearance.Normal.Options.UseForeColor = true;
+            this.accordionControlElement3.Height = 40;
+            this.accordionControlElement3.Name = "accordionControlElement3";
+            this.accordionControlElement3.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement3.Text = "RECEIPT";
+            // 
+            // accordionControlElement4
+            // 
+            this.accordionControlElement4.Appearance.Normal.ForeColor = System.Drawing.Color.White;
+            this.accordionControlElement4.Appearance.Normal.Options.UseForeColor = true;
+            this.accordionControlElement4.Height = 40;
+            this.accordionControlElement4.Name = "accordionControlElement4";
+            this.accordionControlElement4.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement4.Text = "NEWS";
             // 
             // frmHandleFirebase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1167, 715);
+            this.ClientSize = new System.Drawing.Size(1139, 715);
             this.ControlContainer = this.fluentDesignFormContainer1;
             this.Controls.Add(this.fluentDesignFormContainer1);
             this.Controls.Add(this.accordionControl1);
@@ -308,14 +402,16 @@ namespace PepperLunch
             this.Text = "frmHandleFirebase";
             this.Load += new System.EventHandler(this.frmHandleFirebase_Load);
             this.fluentDesignFormContainer1.ResumeLayout(false);
-            this.tableLayout_wrapper.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView_fromFirebase)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView_yetSync)).EndInit();
-            this.tableLayou_CURDofFromFirebase.ResumeLayout(false);
-            this.tableLayou_CURDofFromFirebase.PerformLayout();
-            this.tableLayout_CURDofYetSync.ResumeLayout(false);
+            this.tblLayout_wrapper.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.svgImage_food)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.svgImage_News)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.svgImageBox3)).EndInit();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.svgImageBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl_dataFromFB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_dataFromFB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
             this.ResumeLayout(false);
@@ -325,22 +421,29 @@ namespace PepperLunch
         #endregion
         private DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer fluentDesignFormContainer1;
         private DevExpress.XtraBars.Navigation.AccordionControl accordionControl1;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrl_Category;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrl_SyncToFirebase;
         private DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl fluentDesignFormControl1;
-        private System.Windows.Forms.TableLayoutPanel tableLayout_wrapper;
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView_fromFirebase;
-        private DevExpress.XtraGrid.GridControl gridControl2;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView_yetSync;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrlE_Dish;
+        private System.Windows.Forms.TableLayoutPanel tblLayout_wrapper;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrlE_Customer;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrlE_Receipt;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
-        private System.Windows.Forms.TableLayoutPanel tableLayou_CURDofFromFirebase;
-        private DevExpress.XtraEditors.SimpleButton btnSyncTo;
-        private DevExpress.XtraEditors.SimpleButton btnSyncDown;
-        private System.Windows.Forms.TableLayoutPanel tableLayout_CURDofYetSync;
-        private System.Windows.Forms.Label lblMilisecond;
-        private System.Windows.Forms.Label lblMilisecondeNotSync;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement2;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement3;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement4;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private DevExpress.XtraEditors.SvgImageBox svgImage_food;
+        private DevExpress.XtraEditors.SimpleButton btnSyncFood;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private DevExpress.XtraEditors.SvgImageBox svgImage_News;
+        private DevExpress.XtraEditors.SimpleButton btnSyncNews;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private DevExpress.XtraEditors.SvgImageBox svgImageBox3;
+        private DevExpress.XtraEditors.SimpleButton btnSyncVoucher;
+        private DevExpress.XtraGrid.GridControl gridControl_dataFromFB;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView_dataFromFB;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement5;
+        private System.Windows.Forms.ComboBox cbbPromotion;
+        private DevExpress.XtraEditors.SvgImageBox svgImageBox1;
+        private DevExpress.XtraEditors.SimpleButton btnSyncMethodPay;
     }
 }

@@ -104,9 +104,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL_Category.cs" />
+    <Compile Include="DAL_Customer.cs" />
+    <Compile Include="DAL_Ingredient.cs" />
+    <Compile Include="DAL_IOG.cs" />
+    <Compile Include="DAL_IOGDetail.cs" />
+    <Compile Include="DAL_News.cs" />
     <Compile Include="DAL_Product.cs" />
+    <Compile Include="DAL_Promotion.cs" />
     <Compile Include="DAL_Receipt.cs" />
+    <Compile Include="DAL_Recipe.cs" />
     <Compile Include="DAL_Staff.cs" />
+    <Compile Include="DAL_Voucher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -12,6 +12,7 @@ using System.Text;
 using System.Windows.Forms;
 using BLL_PPL;
 using DTO_PPL;
+using FireBase_PPL;
 // lib for export excel
 using DevExpress.XtraPrinting;
 using System.Diagnostics;
@@ -20,60 +21,74 @@ namespace PepperLunch
 {
     public partial class frmReceipt : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
-        List<RECEIPT> listData;
-        GridView gridView;
+        List<RECEIPT_FULL> listData;
         public frmReceipt()
         {
             InitializeComponent();
 
         }
 
-        private  void frmReceipt_Load(object sender, EventArgs e)
+        private void frmReceipt_Load(object sender, EventArgs e)
         {
-            //List<RECEIPT> list = await BLL_Receipt.getReceiptFromFirebase();
-            //gridControl_receipt.DataSource = list;
-
-            listData = BLL_Receipt.read_Receipt();
-            gridControl_receipt.DataSource = listData;
-            gridView = new GridView();
-            gridControl_receipt.MainView = gridView;
-            gridView.FocusedRowChanged += GridView_FocusedRowChanged;
+            loadData();
         }
 
-        private void GridView_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
+        async void loadData()
         {
-          
-            
+            gridView_receiptFB.Columns.Clear();
+            List<RECEIPT> list = await FB_Receipt.getDataFromFirebaseAsync();
+            gridControl_receiptFB.DataSource = list;
+            listData = BLL_Receipt.read_Receipt();
+            gridControl_receiptSql.DataSource = listData;
         }
 
         private void accordionCtrlE_exportWord_Click(object sender, EventArgs e)
         {
-            //get id of receipt 
-            int index = gridView.FocusedRowHandle;
-            RECEIPT receipt = listData[index];
+            int[] arrRowSelected = gridView_receiptFB.GetSelectedRows();
+            if (arrRowSelected != null)
+            {
+                RECEIPT item = (RECEIPT)gridView_receiptFB.GetRow(arrRowSelected[0]);
+                BLL_Receipt.export_ReceiptToWord(item.ID_RECEIPT);
+            }
             // retrieve to receipt to export 
-            BLL_Receipt.export_ReceiptToWord(receipt.ID_RECEIPT);
         }
 
         private void accordionCtrlE_exportExcel_Click(object sender, EventArgs e)
         {
             string path = "Templates\\Export.xlsx";
             //Customize export options
-           gridView.OptionsPrint.PrintHeader = true;
+           gridView_receiptFB.OptionsPrint.PrintHeader = true;
             XlsxExportOptionsEx advOptions = new XlsxExportOptionsEx();
             advOptions.AllowGrouping = DevExpress.Utils.DefaultBoolean.False;
             advOptions.ShowTotalSummaries = DevExpress.Utils.DefaultBoolean.False;
             advOptions.SheetName = "Exported from Data Grid";
 
-            gridControl_receipt.ExportToXlsx(path, advOptions);
+            gridControl_receiptFB.ExportToXlsx(path, advOptions);
             // Open the created XLSX file with the default application.
             Process.Start(path);
         }
 
-        private void AccordionCtrlE_getDataFromFB_Click(object sender, EventArgs e)
+        private void accordionCtrlE_removeReceipt_Click(object sender, EventArgs e)
         {
-            //gridControl_receipt.DataSource = BLL_Receipt.getReceiptFromFirebase();
-            BLL_Receipt.insertReceiptsToFirebase();
+            int[] index = gridView_receiptFB.GetSelectedRows();
+            if (index.Length > 0)
+            {
+                RECEIPT_FULL itemDel = (RECEIPT_FULL)gridView_receiptFB.GetRow(index[0]);
+                BLL_Receipt.deleteReceipt(itemDel);
+            }
+        }
+
+        private async void accordionCtrlE_SyncFromFirebase_Click(object sender, EventArgs e)
+        {
+            await FB_Receipt.updateReceiptFromFirebase();
+            listData = BLL_Receipt.read_Receipt();
+            gridControl_receiptSql.DataSource = listData;
+        }
+
+        private async void accordionCtrlE_UpdateStatus_Click(object sender, EventArgs e)
+        {
+            await FB_Receipt.updateStatusReceiptAsync();
+            MessageBox.Show("Cap Nhat Don Hang Thanh Cong");
         }
     }
 }

@@ -19,14 +19,14 @@ namespace FireBase_PPL
             IFirebaseConfig config = new FirebaseConfig
             {
                 AuthSecret = "zYmLpaTpZnly0nflP3EpvVK0y53vxFXpiKR3UsG8",
-                BasePath = "https://dbpepperlunch-default-rtdb.asia-southeast1.firebasedatabase.app"
+                BasePath = "https://dbpepperlunch-default-rtdb.asia-southeast1.firebasedatabase.app/"
             };
             IFirebaseClient client;
             client = new FireSharp.FirebaseClient(config);
             return client;
         }
 
-        public static async void FirebaseInsertData(CATEGORY data, string rootName)
+        public static async Task<bool> FirebaseInsertData(object data, string rootName)
         {
             IFirebaseClient client = CreateFirebaseClient();
             try
@@ -40,9 +40,9 @@ namespace FireBase_PPL
             {
                 Console.WriteLine(ex.Message);
             }
-           
+            return true;
         }
-        public static async void FirebaseDeleteData( string rootName)
+        public static async Task<bool> FirebaseDeleteData( string rootName)
         {
             IFirebaseClient client = CreateFirebaseClient();
 
@@ -50,8 +50,10 @@ namespace FireBase_PPL
             {
                 await client.DeleteAsync(rootName);
             }
+            return true;
+
         }
-        public static async void FirebaseUpdateData(object data, string rootName)
+        public static async Task<bool> FirebaseUpdateData(object data, string rootName)
         {
             IFirebaseClient client = CreateFirebaseClient();
 
@@ -59,6 +61,8 @@ namespace FireBase_PPL
             {
                 await client.UpdateAsync(rootName, data);
             }
+            return true;
+
         }
     }
 }

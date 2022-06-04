@@ -127,6 +127,12 @@
     <Compile Include="EditText_Letter.Designer.cs">
       <DependentUpon>EditText_Letter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Label_TextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Label_TextBox.Designer.cs">
+      <DependentUpon>Label_TextBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditText_Letter.resx">
       <DependentUpon>EditText_Letter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Label_TextBox.resx">
+      <DependentUpon>Label_TextBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
