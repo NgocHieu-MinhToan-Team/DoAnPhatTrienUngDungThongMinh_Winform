@@ -36,11 +36,15 @@ namespace DAL_PPL
             return list;
         }
 
+        public static List<INGREDIENT> getListByID_SUPPLIER(string ID_SUPPLIER)
+        {
+            return db.INGREDIENTs.Where(t => t.ID_SUPPLIER==ID_SUPPLIER).ToList<INGREDIENT>();
+        }
+
         public static List<SUPPLIER> getListSupplier()
         {
             return db.SUPPLIERs.Select(t => t).ToList<SUPPLIER>();
         }
-
         public static bool add(INGREDIENT data)
         {
             try

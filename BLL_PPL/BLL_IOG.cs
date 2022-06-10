@@ -16,13 +16,40 @@ namespace BLL_PPL
         {
             return DAL_IOG.getList();
         }
+
+        public static List<IMPORT> getImportsByStatus(int status)
+        {
+            if(status==0 || status == 1)
+            {
+                return DAL_IOG.getImportsByStatus(status);
+            }
+            else
+            {
+                MessageBox.Show("Having not status" + status);
+                return null;
+            }
+        }
+
+        public static List<IMPORT> getImportsByStatus(int status, string ID_SUPPLIER)
+        {
+            if (status == 0 || status == 1)
+            {
+                return DAL_IOG.getImportsByStatus(status, ID_SUPPLIER);
+            }
+            else
+            {
+                MessageBox.Show("Having not status" + status);
+                return null;
+            }
+        }
+
+
         public static bool insert(IMPORT data)
         {
             try
             {
                 if (DAL_IOG.insert(data))
                 {
-                    MessageBox.Show("Insert Data Sucessfully !");
                     return true;
                 }
                 else
@@ -50,6 +77,27 @@ namespace BLL_PPL
                 else
                 {
                     MessageBox.Show("Delete Data Failed !");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+        
+        public static bool updateNote(IMPORT data)
+        {
+            try
+            {
+                if (DAL_IOG.updateNote(data))
+                {
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Update Data Failed !");
                     return false;
                 }
             }

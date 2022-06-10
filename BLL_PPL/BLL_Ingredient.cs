@@ -18,11 +18,18 @@ namespace BLL_PPL
             List<INGREDIENT> list = DAL_Ingredient.getList();
             return list;
         }
+
+        public static List<INGREDIENT> getListByID_SUPPLIER(string ID_SUPPLIER)
+        {
+            List<INGREDIENT> list = DAL_Ingredient.getListByID_SUPPLIER(ID_SUPPLIER);
+            return list;
+        }
         public static List<SUPPLIER> getListSupplier ()
         {
             List<SUPPLIER> list = DAL_Ingredient.getListSupplier();
             return list;
         }
+
 
         public static bool add(INGREDIENT data)
         {
@@ -74,7 +81,6 @@ namespace BLL_PPL
             {
                 if (DAL_Ingredient.update(data))
                 {
-                    MessageBox.Show("Update Data Sucessfully !");
                     return true;
                 }
                 else

@@ -43,7 +43,7 @@ namespace PepperLunch
             this.barBtn_Category = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_SyncManual = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_Promotion = new DevExpress.XtraBars.BarButtonItem();
-            this.barBtn_Ingredient = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtn_Recipe = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage_manager = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -80,7 +80,7 @@ namespace PepperLunch
             this.barBtn_Category,
             this.barBtn_SyncManual,
             this.barBtn_Promotion,
-            this.barBtn_Ingredient});
+            this.barBtn_Recipe});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
             this.ribbon.MaxItemId = 26;
             this.ribbon.Name = "ribbon";
@@ -193,14 +193,13 @@ namespace PepperLunch
             this.barBtn_Promotion.Name = "barBtn_Promotion";
             this.barBtn_Promotion.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_Promotion_ItemClick);
             // 
-            // barBtn_Ingredient
+            // barBtn_Recipe
             // 
-            this.barBtn_Ingredient.Caption = "Ingredients";
-            this.barBtn_Ingredient.Id = 25;
-            this.barBtn_Ingredient.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtn_Ingredient.ImageOptions.SvgImage")));
-            this.barBtn_Ingredient.ImageOptions.SvgImageSize = new System.Drawing.Size(100, 100);
-            this.barBtn_Ingredient.Name = "barBtn_Ingredient";
-            this.barBtn_Ingredient.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_Ingredient_ItemClick);
+            this.barBtn_Recipe.Caption = "Ingredients";
+            this.barBtn_Recipe.Id = 25;
+            this.barBtn_Recipe.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtn_Recipe.ImageOptions.SvgImage")));
+            this.barBtn_Recipe.ImageOptions.SvgImageSize = new System.Drawing.Size(100, 100);
+            this.barBtn_Recipe.Name = "barBtn_Recipe";
             // 
             // ribbonPage_manager
             // 
@@ -226,7 +225,6 @@ namespace PepperLunch
             this.ribbonPageGroup2.ItemLinks.Add(this.barBtn_Category);
             this.ribbonPageGroup2.ItemLinks.Add(this.barBtn_Product);
             this.ribbonPageGroup2.ItemLinks.Add(this.barBtn_Promotion);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barBtn_Ingredient);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "Manage Menu";
             // 
@@ -338,6 +336,6 @@ namespace PepperLunch
         private DevExpress.XtraBars.BarButtonItem barBtn_SyncManual;
         private DevExpress.XtraBars.BarButtonItem barBtn_Promotion;
         // public
-        public DevExpress.XtraBars.BarButtonItem barBtn_Ingredient;
+        public DevExpress.XtraBars.BarButtonItem barBtn_Recipe;
     }
 }

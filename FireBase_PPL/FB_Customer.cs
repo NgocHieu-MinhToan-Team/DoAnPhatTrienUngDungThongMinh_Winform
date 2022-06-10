@@ -160,8 +160,8 @@ namespace FireBase_PPL
             customerParse.ID_CUSTOMER = itemOfFirebase.id_CUSTOMER;
             customerParse.SURNAME_CUSTOMER = itemOfFirebase.surname_CUSTOMER;
             customerParse.NAME_CUSTOMER = itemOfFirebase.name_CUSTOMER;
-            customerParse.DATE_OF_BIRTH = DateTime.ParseExact(itemOfFirebase.date_OF_BIRTH, format,provider);
-            customerParse.DATE_CREATE = DateTime.ParseExact(itemOfFirebase.date_CREATE, format, provider);
+            customerParse.DATE_OF_BIRTH = DateTime.Parse(itemOfFirebase.date_OF_BIRTH);
+            customerParse.DATE_CREATE = DateTime.Parse(itemOfFirebase.date_CREATE);
             customerParse.GENDER_CUSTOMER = itemOfFirebase.gender_CUSTOMER;
             customerParse.ADDRESS_CUSTOMER = itemOfFirebase.address_CUSTOMER;
             customerParse.PHONE_CUSTOMER = itemOfFirebase.phone_CUSTOMER;

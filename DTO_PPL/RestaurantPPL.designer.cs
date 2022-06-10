@@ -57,9 +57,6 @@ namespace DTO_PPL
     partial void InsertIMAGE_NEW(IMAGE_NEW instance);
     partial void UpdateIMAGE_NEW(IMAGE_NEW instance);
     partial void DeleteIMAGE_NEW(IMAGE_NEW instance);
-    partial void InsertIMPORT(IMPORT instance);
-    partial void UpdateIMPORT(IMPORT instance);
-    partial void DeleteIMPORT(IMPORT instance);
     partial void InsertINGREDIENT(INGREDIENT instance);
     partial void UpdateINGREDIENT(INGREDIENT instance);
     partial void DeleteINGREDIENT(INGREDIENT instance);
@@ -84,6 +81,9 @@ namespace DTO_PPL
     partial void InsertSUPPLIER(SUPPLIER instance);
     partial void UpdateSUPPLIER(SUPPLIER instance);
     partial void DeleteSUPPLIER(SUPPLIER instance);
+    partial void InsertIMPORT(IMPORT instance);
+    partial void UpdateIMPORT(IMPORT instance);
+    partial void DeleteIMPORT(IMPORT instance);
     #endregion
 		
 		public RestaurantPPLDataContext() : 
@@ -188,14 +188,6 @@ namespace DTO_PPL
 			}
 		}
 		
-		public System.Data.Linq.Table<IMPORT> IMPORTs
-		{
-			get
-			{
-				return this.GetTable<IMPORT>();
-			}
-		}
-		
 		public System.Data.Linq.Table<INGREDIENT> INGREDIENTs
 		{
 			get
@@ -273,6 +265,14 @@ namespace DTO_PPL
 			get
 			{
 				return this.GetTable<RECIPE_JOIN>();
+			}
+		}
+		
+		public System.Data.Linq.Table<IMPORT> IMPORTs
+		{
+			get
+			{
+				return this.GetTable<IMPORT>();
 			}
 		}
 	}
@@ -1613,9 +1613,9 @@ namespace DTO_PPL
 		
 		private System.Nullable<int> _QUANTITY;
 		
-		private EntityRef<IMPORT> _IMPORT;
-		
 		private EntityRef<INGREDIENT> _INGREDIENT;
+		
+		private EntityRef<IMPORT> _IMPORT;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1635,8 +1635,8 @@ namespace DTO_PPL
 		
 		public DETAIL_IMPORT()
 		{
-			this._IMPORT = default(EntityRef<IMPORT>);
 			this._INGREDIENT = default(EntityRef<INGREDIENT>);
+			this._IMPORT = default(EntityRef<IMPORT>);
 			OnCreated();
 		}
 		
@@ -1748,40 +1748,6 @@ namespace DTO_PPL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="IMPORT_DETAIL_IMPORT", Storage="_IMPORT", ThisKey="ID_IOG", OtherKey="ID_IOG", IsForeignKey=true)]
-		public IMPORT IMPORT
-		{
-			get
-			{
-				return this._IMPORT.Entity;
-			}
-			set
-			{
-				IMPORT previousValue = this._IMPORT.Entity;
-				if (((previousValue != value) 
-							|| (this._IMPORT.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._IMPORT.Entity = null;
-						previousValue.DETAIL_IMPORTs.Remove(this);
-					}
-					this._IMPORT.Entity = value;
-					if ((value != null))
-					{
-						value.DETAIL_IMPORTs.Add(this);
-						this._ID_IOG = value.ID_IOG;
-					}
-					else
-					{
-						this._ID_IOG = default(string);
-					}
-					this.SendPropertyChanged("IMPORT");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="INGREDIENT_DETAIL_IMPORT", Storage="_INGREDIENT", ThisKey="ID_INGREDIENT", OtherKey="ID_INGREDIENT", IsForeignKey=true)]
 		public INGREDIENT INGREDIENT
 		{
@@ -1812,6 +1778,40 @@ namespace DTO_PPL
 						this._ID_INGREDIENT = default(string);
 					}
 					this.SendPropertyChanged("INGREDIENT");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="IMPORT_DETAIL_IMPORT", Storage="_IMPORT", ThisKey="ID_IOG", OtherKey="ID_IOG", IsForeignKey=true)]
+		public IMPORT IMPORT
+		{
+			get
+			{
+				return this._IMPORT.Entity;
+			}
+			set
+			{
+				IMPORT previousValue = this._IMPORT.Entity;
+				if (((previousValue != value) 
+							|| (this._IMPORT.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._IMPORT.Entity = null;
+						previousValue.DETAIL_IMPORTs.Remove(this);
+					}
+					this._IMPORT.Entity = value;
+					if ((value != null))
+					{
+						value.DETAIL_IMPORTs.Add(this);
+						this._ID_IOG = value.ID_IOG;
+					}
+					else
+					{
+						this._ID_IOG = default(string);
+					}
+					this.SendPropertyChanged("IMPORT");
 				}
 			}
 		}
@@ -2603,322 +2603,6 @@ namespace DTO_PPL
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.IMPORT")]
-	public partial class IMPORT : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _ID_IOG;
-		
-		private string _ID_SUPPLIER;
-		
-		private string _USERNAME_STAFF;
-		
-		private System.DateTime _DATE_IOG;
-		
-		private System.Nullable<int> _TOTAL_PRICE;
-		
-		private string _NOTE;
-		
-		private System.Nullable<int> _FLAG_DEL;
-		
-		private EntitySet<DETAIL_IMPORT> _DETAIL_IMPORTs;
-		
-		private EntityRef<STAFF> _STAFF;
-		
-		private EntityRef<SUPPLIER> _SUPPLIER;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnID_IOGChanging(string value);
-    partial void OnID_IOGChanged();
-    partial void OnID_SUPPLIERChanging(string value);
-    partial void OnID_SUPPLIERChanged();
-    partial void OnUSERNAME_STAFFChanging(string value);
-    partial void OnUSERNAME_STAFFChanged();
-    partial void OnDATE_IOGChanging(System.DateTime value);
-    partial void OnDATE_IOGChanged();
-    partial void OnTOTAL_PRICEChanging(System.Nullable<int> value);
-    partial void OnTOTAL_PRICEChanged();
-    partial void OnNOTEChanging(string value);
-    partial void OnNOTEChanged();
-    partial void OnFLAG_DELChanging(System.Nullable<int> value);
-    partial void OnFLAG_DELChanged();
-    #endregion
-		
-		public IMPORT()
-		{
-			this._DETAIL_IMPORTs = new EntitySet<DETAIL_IMPORT>(new Action<DETAIL_IMPORT>(this.attach_DETAIL_IMPORTs), new Action<DETAIL_IMPORT>(this.detach_DETAIL_IMPORTs));
-			this._STAFF = default(EntityRef<STAFF>);
-			this._SUPPLIER = default(EntityRef<SUPPLIER>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_IOG", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string ID_IOG
-		{
-			get
-			{
-				return this._ID_IOG;
-			}
-			set
-			{
-				if ((this._ID_IOG != value))
-				{
-					this.OnID_IOGChanging(value);
-					this.SendPropertyChanging();
-					this._ID_IOG = value;
-					this.SendPropertyChanged("ID_IOG");
-					this.OnID_IOGChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_SUPPLIER", DbType="VarChar(50)")]
-		public string ID_SUPPLIER
-		{
-			get
-			{
-				return this._ID_SUPPLIER;
-			}
-			set
-			{
-				if ((this._ID_SUPPLIER != value))
-				{
-					if (this._SUPPLIER.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnID_SUPPLIERChanging(value);
-					this.SendPropertyChanging();
-					this._ID_SUPPLIER = value;
-					this.SendPropertyChanged("ID_SUPPLIER");
-					this.OnID_SUPPLIERChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USERNAME_STAFF", DbType="VarChar(50)")]
-		public string USERNAME_STAFF
-		{
-			get
-			{
-				return this._USERNAME_STAFF;
-			}
-			set
-			{
-				if ((this._USERNAME_STAFF != value))
-				{
-					if (this._STAFF.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUSERNAME_STAFFChanging(value);
-					this.SendPropertyChanging();
-					this._USERNAME_STAFF = value;
-					this.SendPropertyChanged("USERNAME_STAFF");
-					this.OnUSERNAME_STAFFChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_IOG", DbType="Date NOT NULL")]
-		public System.DateTime DATE_IOG
-		{
-			get
-			{
-				return this._DATE_IOG;
-			}
-			set
-			{
-				if ((this._DATE_IOG != value))
-				{
-					this.OnDATE_IOGChanging(value);
-					this.SendPropertyChanging();
-					this._DATE_IOG = value;
-					this.SendPropertyChanged("DATE_IOG");
-					this.OnDATE_IOGChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL_PRICE", DbType="Int")]
-		public System.Nullable<int> TOTAL_PRICE
-		{
-			get
-			{
-				return this._TOTAL_PRICE;
-			}
-			set
-			{
-				if ((this._TOTAL_PRICE != value))
-				{
-					this.OnTOTAL_PRICEChanging(value);
-					this.SendPropertyChanging();
-					this._TOTAL_PRICE = value;
-					this.SendPropertyChanged("TOTAL_PRICE");
-					this.OnTOTAL_PRICEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NOTE", DbType="NVarChar(MAX)")]
-		public string NOTE
-		{
-			get
-			{
-				return this._NOTE;
-			}
-			set
-			{
-				if ((this._NOTE != value))
-				{
-					this.OnNOTEChanging(value);
-					this.SendPropertyChanging();
-					this._NOTE = value;
-					this.SendPropertyChanged("NOTE");
-					this.OnNOTEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLAG_DEL", DbType="Int")]
-		public System.Nullable<int> FLAG_DEL
-		{
-			get
-			{
-				return this._FLAG_DEL;
-			}
-			set
-			{
-				if ((this._FLAG_DEL != value))
-				{
-					this.OnFLAG_DELChanging(value);
-					this.SendPropertyChanging();
-					this._FLAG_DEL = value;
-					this.SendPropertyChanged("FLAG_DEL");
-					this.OnFLAG_DELChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="IMPORT_DETAIL_IMPORT", Storage="_DETAIL_IMPORTs", ThisKey="ID_IOG", OtherKey="ID_IOG")]
-		public EntitySet<DETAIL_IMPORT> DETAIL_IMPORTs
-		{
-			get
-			{
-				return this._DETAIL_IMPORTs;
-			}
-			set
-			{
-				this._DETAIL_IMPORTs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="STAFF_IMPORT", Storage="_STAFF", ThisKey="USERNAME_STAFF", OtherKey="USERNAME_STAFF", IsForeignKey=true)]
-		public STAFF STAFF
-		{
-			get
-			{
-				return this._STAFF.Entity;
-			}
-			set
-			{
-				STAFF previousValue = this._STAFF.Entity;
-				if (((previousValue != value) 
-							|| (this._STAFF.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._STAFF.Entity = null;
-						previousValue.IMPORTs.Remove(this);
-					}
-					this._STAFF.Entity = value;
-					if ((value != null))
-					{
-						value.IMPORTs.Add(this);
-						this._USERNAME_STAFF = value.USERNAME_STAFF;
-					}
-					else
-					{
-						this._USERNAME_STAFF = default(string);
-					}
-					this.SendPropertyChanged("STAFF");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SUPPLIER_IMPORT", Storage="_SUPPLIER", ThisKey="ID_SUPPLIER", OtherKey="ID_SUPPLIER", IsForeignKey=true)]
-		public SUPPLIER SUPPLIER
-		{
-			get
-			{
-				return this._SUPPLIER.Entity;
-			}
-			set
-			{
-				SUPPLIER previousValue = this._SUPPLIER.Entity;
-				if (((previousValue != value) 
-							|| (this._SUPPLIER.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._SUPPLIER.Entity = null;
-						previousValue.IMPORTs.Remove(this);
-					}
-					this._SUPPLIER.Entity = value;
-					if ((value != null))
-					{
-						value.IMPORTs.Add(this);
-						this._ID_SUPPLIER = value.ID_SUPPLIER;
-					}
-					else
-					{
-						this._ID_SUPPLIER = default(string);
-					}
-					this.SendPropertyChanged("SUPPLIER");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_DETAIL_IMPORTs(DETAIL_IMPORT entity)
-		{
-			this.SendPropertyChanging();
-			entity.IMPORT = this;
-		}
-		
-		private void detach_DETAIL_IMPORTs(DETAIL_IMPORT entity)
-		{
-			this.SendPropertyChanging();
-			entity.IMPORT = null;
 		}
 	}
 	
@@ -4790,13 +4474,13 @@ namespace DTO_PPL
 		
 		private EntitySet<VOUCHER> _VOUCHERs;
 		
-		private EntitySet<IMPORT> _IMPORTs;
-		
 		private EntitySet<METHOD_PAY> _METHOD_PAYs;
 		
 		private EntitySet<NEW> _NEWs;
 		
 		private EntitySet<PROMOTION> _PROMOTIONs;
+		
+		private EntitySet<IMPORT> _IMPORTs;
 		
 		private EntityRef<GROUP_USER> _GROUP_USER;
 		
@@ -4829,10 +4513,10 @@ namespace DTO_PPL
 		public STAFF()
 		{
 			this._VOUCHERs = new EntitySet<VOUCHER>(new Action<VOUCHER>(this.attach_VOUCHERs), new Action<VOUCHER>(this.detach_VOUCHERs));
-			this._IMPORTs = new EntitySet<IMPORT>(new Action<IMPORT>(this.attach_IMPORTs), new Action<IMPORT>(this.detach_IMPORTs));
 			this._METHOD_PAYs = new EntitySet<METHOD_PAY>(new Action<METHOD_PAY>(this.attach_METHOD_PAYs), new Action<METHOD_PAY>(this.detach_METHOD_PAYs));
 			this._NEWs = new EntitySet<NEW>(new Action<NEW>(this.attach_NEWs), new Action<NEW>(this.detach_NEWs));
 			this._PROMOTIONs = new EntitySet<PROMOTION>(new Action<PROMOTION>(this.attach_PROMOTIONs), new Action<PROMOTION>(this.detach_PROMOTIONs));
+			this._IMPORTs = new EntitySet<IMPORT>(new Action<IMPORT>(this.attach_IMPORTs), new Action<IMPORT>(this.detach_IMPORTs));
 			this._GROUP_USER = default(EntityRef<GROUP_USER>);
 			OnCreated();
 		}
@@ -5054,19 +4738,6 @@ namespace DTO_PPL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="STAFF_IMPORT", Storage="_IMPORTs", ThisKey="USERNAME_STAFF", OtherKey="USERNAME_STAFF")]
-		public EntitySet<IMPORT> IMPORTs
-		{
-			get
-			{
-				return this._IMPORTs;
-			}
-			set
-			{
-				this._IMPORTs.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="STAFF_METHOD_PAY", Storage="_METHOD_PAYs", ThisKey="USERNAME_STAFF", OtherKey="USERNAME_STAFF")]
 		public EntitySet<METHOD_PAY> METHOD_PAYs
 		{
@@ -5103,6 +4774,19 @@ namespace DTO_PPL
 			set
 			{
 				this._PROMOTIONs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="STAFF_IMPORT", Storage="_IMPORTs", ThisKey="USERNAME_STAFF", OtherKey="USERNAME_STAFF")]
+		public EntitySet<IMPORT> IMPORTs
+		{
+			get
+			{
+				return this._IMPORTs;
+			}
+			set
+			{
+				this._IMPORTs.Assign(value);
 			}
 		}
 		
@@ -5172,18 +4856,6 @@ namespace DTO_PPL
 			entity.STAFF = null;
 		}
 		
-		private void attach_IMPORTs(IMPORT entity)
-		{
-			this.SendPropertyChanging();
-			entity.STAFF = this;
-		}
-		
-		private void detach_IMPORTs(IMPORT entity)
-		{
-			this.SendPropertyChanging();
-			entity.STAFF = null;
-		}
-		
 		private void attach_METHOD_PAYs(METHOD_PAY entity)
 		{
 			this.SendPropertyChanging();
@@ -5215,6 +4887,18 @@ namespace DTO_PPL
 		}
 		
 		private void detach_PROMOTIONs(PROMOTION entity)
+		{
+			this.SendPropertyChanging();
+			entity.STAFF = null;
+		}
+		
+		private void attach_IMPORTs(IMPORT entity)
+		{
+			this.SendPropertyChanging();
+			entity.STAFF = this;
+		}
+		
+		private void detach_IMPORTs(IMPORT entity)
 		{
 			this.SendPropertyChanging();
 			entity.STAFF = null;
@@ -5890,6 +5574,346 @@ namespace DTO_PPL
 					this._NAME_INGREDIENT = value;
 				}
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.IMPORT")]
+	public partial class IMPORT : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _ID_IOG;
+		
+		private string _ID_SUPPLIER;
+		
+		private string _USERNAME_STAFF;
+		
+		private System.DateTime _DATE_IOG;
+		
+		private System.Nullable<int> _TOTAL_PRICE;
+		
+		private string _NOTE;
+		
+		private System.Nullable<int> _FLAG_DEL;
+		
+		private System.Nullable<int> _STATE_IMPORT;
+		
+		private EntitySet<DETAIL_IMPORT> _DETAIL_IMPORTs;
+		
+		private EntityRef<STAFF> _STAFF;
+		
+		private EntityRef<SUPPLIER> _SUPPLIER;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_IOGChanging(string value);
+    partial void OnID_IOGChanged();
+    partial void OnID_SUPPLIERChanging(string value);
+    partial void OnID_SUPPLIERChanged();
+    partial void OnUSERNAME_STAFFChanging(string value);
+    partial void OnUSERNAME_STAFFChanged();
+    partial void OnDATE_IOGChanging(System.DateTime value);
+    partial void OnDATE_IOGChanged();
+    partial void OnTOTAL_PRICEChanging(System.Nullable<int> value);
+    partial void OnTOTAL_PRICEChanged();
+    partial void OnNOTEChanging(string value);
+    partial void OnNOTEChanged();
+    partial void OnFLAG_DELChanging(System.Nullable<int> value);
+    partial void OnFLAG_DELChanged();
+    partial void OnSTATE_IMPORTChanging(System.Nullable<int> value);
+    partial void OnSTATE_IMPORTChanged();
+    #endregion
+		
+		public IMPORT()
+		{
+			this._DETAIL_IMPORTs = new EntitySet<DETAIL_IMPORT>(new Action<DETAIL_IMPORT>(this.attach_DETAIL_IMPORTs), new Action<DETAIL_IMPORT>(this.detach_DETAIL_IMPORTs));
+			this._STAFF = default(EntityRef<STAFF>);
+			this._SUPPLIER = default(EntityRef<SUPPLIER>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_IOG", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string ID_IOG
+		{
+			get
+			{
+				return this._ID_IOG;
+			}
+			set
+			{
+				if ((this._ID_IOG != value))
+				{
+					this.OnID_IOGChanging(value);
+					this.SendPropertyChanging();
+					this._ID_IOG = value;
+					this.SendPropertyChanged("ID_IOG");
+					this.OnID_IOGChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_SUPPLIER", DbType="VarChar(50)")]
+		public string ID_SUPPLIER
+		{
+			get
+			{
+				return this._ID_SUPPLIER;
+			}
+			set
+			{
+				if ((this._ID_SUPPLIER != value))
+				{
+					if (this._SUPPLIER.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_SUPPLIERChanging(value);
+					this.SendPropertyChanging();
+					this._ID_SUPPLIER = value;
+					this.SendPropertyChanged("ID_SUPPLIER");
+					this.OnID_SUPPLIERChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USERNAME_STAFF", DbType="VarChar(50)")]
+		public string USERNAME_STAFF
+		{
+			get
+			{
+				return this._USERNAME_STAFF;
+			}
+			set
+			{
+				if ((this._USERNAME_STAFF != value))
+				{
+					if (this._STAFF.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUSERNAME_STAFFChanging(value);
+					this.SendPropertyChanging();
+					this._USERNAME_STAFF = value;
+					this.SendPropertyChanged("USERNAME_STAFF");
+					this.OnUSERNAME_STAFFChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_IOG", DbType="Date NOT NULL")]
+		public System.DateTime DATE_IOG
+		{
+			get
+			{
+				return this._DATE_IOG;
+			}
+			set
+			{
+				if ((this._DATE_IOG != value))
+				{
+					this.OnDATE_IOGChanging(value);
+					this.SendPropertyChanging();
+					this._DATE_IOG = value;
+					this.SendPropertyChanged("DATE_IOG");
+					this.OnDATE_IOGChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL_PRICE", DbType="Int")]
+		public System.Nullable<int> TOTAL_PRICE
+		{
+			get
+			{
+				return this._TOTAL_PRICE;
+			}
+			set
+			{
+				if ((this._TOTAL_PRICE != value))
+				{
+					this.OnTOTAL_PRICEChanging(value);
+					this.SendPropertyChanging();
+					this._TOTAL_PRICE = value;
+					this.SendPropertyChanged("TOTAL_PRICE");
+					this.OnTOTAL_PRICEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NOTE", DbType="NVarChar(MAX)")]
+		public string NOTE
+		{
+			get
+			{
+				return this._NOTE;
+			}
+			set
+			{
+				if ((this._NOTE != value))
+				{
+					this.OnNOTEChanging(value);
+					this.SendPropertyChanging();
+					this._NOTE = value;
+					this.SendPropertyChanged("NOTE");
+					this.OnNOTEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLAG_DEL", DbType="Int")]
+		public System.Nullable<int> FLAG_DEL
+		{
+			get
+			{
+				return this._FLAG_DEL;
+			}
+			set
+			{
+				if ((this._FLAG_DEL != value))
+				{
+					this.OnFLAG_DELChanging(value);
+					this.SendPropertyChanging();
+					this._FLAG_DEL = value;
+					this.SendPropertyChanged("FLAG_DEL");
+					this.OnFLAG_DELChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_IMPORT", DbType="Int")]
+		public System.Nullable<int> STATE_IMPORT
+		{
+			get
+			{
+				return this._STATE_IMPORT;
+			}
+			set
+			{
+				if ((this._STATE_IMPORT != value))
+				{
+					this.OnSTATE_IMPORTChanging(value);
+					this.SendPropertyChanging();
+					this._STATE_IMPORT = value;
+					this.SendPropertyChanged("STATE_IMPORT");
+					this.OnSTATE_IMPORTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="IMPORT_DETAIL_IMPORT", Storage="_DETAIL_IMPORTs", ThisKey="ID_IOG", OtherKey="ID_IOG")]
+		public EntitySet<DETAIL_IMPORT> DETAIL_IMPORTs
+		{
+			get
+			{
+				return this._DETAIL_IMPORTs;
+			}
+			set
+			{
+				this._DETAIL_IMPORTs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="STAFF_IMPORT", Storage="_STAFF", ThisKey="USERNAME_STAFF", OtherKey="USERNAME_STAFF", IsForeignKey=true)]
+		public STAFF STAFF
+		{
+			get
+			{
+				return this._STAFF.Entity;
+			}
+			set
+			{
+				STAFF previousValue = this._STAFF.Entity;
+				if (((previousValue != value) 
+							|| (this._STAFF.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._STAFF.Entity = null;
+						previousValue.IMPORTs.Remove(this);
+					}
+					this._STAFF.Entity = value;
+					if ((value != null))
+					{
+						value.IMPORTs.Add(this);
+						this._USERNAME_STAFF = value.USERNAME_STAFF;
+					}
+					else
+					{
+						this._USERNAME_STAFF = default(string);
+					}
+					this.SendPropertyChanged("STAFF");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SUPPLIER_IMPORT", Storage="_SUPPLIER", ThisKey="ID_SUPPLIER", OtherKey="ID_SUPPLIER", IsForeignKey=true)]
+		public SUPPLIER SUPPLIER
+		{
+			get
+			{
+				return this._SUPPLIER.Entity;
+			}
+			set
+			{
+				SUPPLIER previousValue = this._SUPPLIER.Entity;
+				if (((previousValue != value) 
+							|| (this._SUPPLIER.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._SUPPLIER.Entity = null;
+						previousValue.IMPORTs.Remove(this);
+					}
+					this._SUPPLIER.Entity = value;
+					if ((value != null))
+					{
+						value.IMPORTs.Add(this);
+						this._ID_SUPPLIER = value.ID_SUPPLIER;
+					}
+					else
+					{
+						this._ID_SUPPLIER = default(string);
+					}
+					this.SendPropertyChanged("SUPPLIER");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_DETAIL_IMPORTs(DETAIL_IMPORT entity)
+		{
+			this.SendPropertyChanging();
+			entity.IMPORT = this;
+		}
+		
+		private void detach_DETAIL_IMPORTs(DETAIL_IMPORT entity)
+		{
+			this.SendPropertyChanging();
+			entity.IMPORT = null;
 		}
 	}
 }

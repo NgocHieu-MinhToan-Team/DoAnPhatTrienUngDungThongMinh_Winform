@@ -70,7 +70,6 @@ namespace PepperLunch
         private void loadProductByID_Category(string ID_Category)
         {
             gridControl_Product.DataSource = BLL_Product.getProducts().Where(t => t.ID_CATEGORY == ID_Category).ToList<PRODUCT>();
-            gridView1.Columns["FLAG_DEL"].Visible = false;
         }
 
         private void gridControl_Product_Click(object sender, EventArgs e)
@@ -101,6 +100,30 @@ namespace PepperLunch
                 ID_cate = pro.ID_CATEGORY;
                 loadProductByID_Category(ID_cate);
             }
+        }
+
+        private void repositoryItemButtonEdit_Del_Click(object sender, EventArgs e)
+        {
+            int[] index = gridView1.GetSelectedRows();
+            if (index.Length > 0)
+            {
+                PRODUCT pro = (PRODUCT)gridView1.GetRow(index[0]);
+                BLL_Product.deleteProduct(pro);
+                loadProductByID_Category(pro.ID_CATEGORY);
+            }
+        }
+
+        private void repositoryItemButtonEdit_ShowRecipe_Click(object sender, EventArgs e)
+        {
+            int[] index = gridView1.GetSelectedRows();
+            if (index.Length > 0)
+            {
+                PRODUCT pro = (PRODUCT)gridView1.GetRow(index[0]);
+                frmRecipe frm = new frmRecipe();
+                frmRecipe.ID_PRODUCT = pro.ID_PRODUCT;
+                frm.ShowDialog();
+            }
+           
         }
     }
 }

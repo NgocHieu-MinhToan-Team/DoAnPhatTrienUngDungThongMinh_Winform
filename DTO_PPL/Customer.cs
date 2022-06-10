@@ -33,7 +33,7 @@ namespace DTO_PPL
                     // check change of customer
                     if (CUSTOMER_SQL.SURNAME_CUSTOMER == CUSTOMER_FB.surname_CUSTOMER &&
                        CUSTOMER_SQL.NAME_CUSTOMER == CUSTOMER_FB.name_CUSTOMER &&
-                       CUSTOMER_SQL.DATE_OF_BIRTH == DateTime.Parse(CUSTOMER_FB.date_OF_BIRTH)&&
+                       CUSTOMER_SQL.DATE_OF_BIRTH == DateTime.Parse(CUSTOMER_FB.date_OF_BIRTH) &&
                        CUSTOMER_SQL.DATE_CREATE == DateTime.Parse(CUSTOMER_FB.date_CREATE) &&
                        CUSTOMER_SQL.GENDER_CUSTOMER == CUSTOMER_FB.gender_CUSTOMER &&
                        CUSTOMER_SQL.ADDRESS_CUSTOMER == CUSTOMER_FB.address_CUSTOMER &&

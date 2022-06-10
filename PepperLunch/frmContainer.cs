@@ -147,12 +147,12 @@ namespace PepperLunch
             }
         }
 
-        private void barBtn_Ingredient_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            frmRecipe newForm = new frmRecipe();
-            newForm.MdiParent = this;
-            newForm.Show();
-        }
+        //private void barBtn_Ingredient_ItemClick(object sender, ItemClickEventArgs e)
+        //{
+        //    frmRecipe newForm = new frmRecipe();
+        //    newForm.MdiParent = this;
+        //    newForm.Show();
+        //}
 
         private void barBtn_Import_ItemClick(object sender, ItemClickEventArgs e)
         {

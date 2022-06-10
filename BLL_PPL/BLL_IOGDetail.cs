@@ -11,16 +11,17 @@ namespace BLL_PPL
 {
     public class BLL_IOGDetail
     {
+        DAL_IOGDetail bll_iogDetail = new DAL_IOGDetail();
         public BLL_IOGDetail() { }
-        public static List<DETAIL_IMPORT> getList(string ID_IOG)
+        public  List<DETAIL_IMPORT> getList(string ID_IOG)
         {
-            return DAL_IOGDetail.getListByID(ID_IOG);
+            return bll_iogDetail.getListByID(ID_IOG);
         }
-        public static bool insert(DETAIL_IMPORT data)
+        public  bool insert(DETAIL_IMPORT data)
         {
             try
             {
-                if (DAL_IOGDetail.insert(data))
+                if (bll_iogDetail.insert(data))
                 {
                     MessageBox.Show("Insert Data Sucessfully !");
                     return true;
@@ -38,16 +39,16 @@ namespace BLL_PPL
             }
         }
 
-        public static bool validateIsNumber(string text1,string text2)
+        public  bool validateIsNumber(string text1)
         {
-            return GeneralMethods.isDigit(text1, false) && GeneralMethods.isDigit(text2, false);
+            return GeneralMethods.isDigit(text1, false);
         }
 
-        public static bool delete(DETAIL_IMPORT data)
+        public  bool delete(DETAIL_IMPORT data)
         {
             try
             {
-                if (DAL_IOGDetail.delete(data))
+                if (bll_iogDetail.delete(data))
                 {
                     MessageBox.Show("Delete Data Sucessfully !");
                     return true;
@@ -65,11 +66,11 @@ namespace BLL_PPL
             }
         }
 
-        public static bool update(DETAIL_IMPORT data)
+        public  bool update(DETAIL_IMPORT data)
         {
             try
             {
-                if (DAL_IOGDetail.update(data))
+                if (bll_iogDetail.update(data))
                 {
                     MessageBox.Show("Update Data Sucessfully !");
                     return true;

@@ -29,6 +29,7 @@ namespace PepperLunch
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmIngredients));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.gridControl_Ingredient = new DevExpress.XtraGrid.GridControl();
@@ -51,6 +52,7 @@ namespace PepperLunch
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.InfoText;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
@@ -58,6 +60,7 @@ namespace PepperLunch
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
@@ -68,9 +71,12 @@ namespace PepperLunch
             // 
             this.groupBox1.Controls.Add(this.gridControl_Ingredient);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.FloralWhite;
+            this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(529, 446);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(12);
+            this.groupBox1.Size = new System.Drawing.Size(509, 432);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingredients";
@@ -78,10 +84,10 @@ namespace PepperLunch
             // gridControl_Ingredient
             // 
             this.gridControl_Ingredient.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl_Ingredient.Location = new System.Drawing.Point(3, 24);
+            this.gridControl_Ingredient.Location = new System.Drawing.Point(12, 34);
             this.gridControl_Ingredient.MainView = this.gridView_Ingredient;
             this.gridControl_Ingredient.Name = "gridControl_Ingredient";
-            this.gridControl_Ingredient.Size = new System.Drawing.Size(523, 419);
+            this.gridControl_Ingredient.Size = new System.Drawing.Size(485, 386);
             this.gridControl_Ingredient.TabIndex = 0;
             this.gridControl_Ingredient.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_Ingredient});
@@ -96,9 +102,9 @@ namespace PepperLunch
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 3;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.20236F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.13163F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.46955F));
             this.tableLayoutPanel3.Controls.Add(this.labelControl1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.labelControl2, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.txtNameIngredient, 1, 1);
@@ -107,62 +113,89 @@ namespace PepperLunch
             this.tableLayoutPanel3.Controls.Add(this.btnRemoveIngredient, 2, 2);
             this.tableLayoutPanel3.Controls.Add(this.cbbSupplier, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 455);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(13, 451);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.10714F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.89286F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 76F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(529, 189);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(509, 183);
             this.tableLayoutPanel3.TabIndex = 5;
             // 
             // labelControl1
             // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.FloralWhite;
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Appearance.Options.UseForeColor = true;
+            this.labelControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelControl1.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
             this.labelControl1.Location = new System.Drawing.Point(3, 3);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(59, 21);
+            this.labelControl1.Size = new System.Drawing.Size(71, 21);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Supplier";
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(3, 58);
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.FloralWhite;
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Appearance.Options.UseForeColor = true;
+            this.labelControl2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelControl2.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
+            this.labelControl2.Location = new System.Drawing.Point(3, 55);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(124, 21);
+            this.labelControl2.Size = new System.Drawing.Size(145, 21);
             this.labelControl2.TabIndex = 1;
             this.labelControl2.Text = "Name Ingredient";
             // 
             // txtNameIngredient
             // 
             this.txtNameIngredient.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNameIngredient.Location = new System.Drawing.Point(214, 58);
+            this.txtNameIngredient.Location = new System.Drawing.Point(172, 55);
             this.txtNameIngredient.Name = "txtNameIngredient";
-            this.txtNameIngredient.Size = new System.Drawing.Size(205, 28);
+            this.txtNameIngredient.Size = new System.Drawing.Size(183, 28);
             this.txtNameIngredient.TabIndex = 3;
             // 
             // btnAddIngredient
             // 
-            this.btnAddIngredient.Location = new System.Drawing.Point(425, 3);
+            this.btnAddIngredient.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddIngredient.Appearance.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btnAddIngredient.Appearance.Options.UseFont = true;
+            this.btnAddIngredient.Appearance.Options.UseForeColor = true;
+            this.btnAddIngredient.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAddIngredient.Location = new System.Drawing.Point(361, 3);
             this.btnAddIngredient.Name = "btnAddIngredient";
-            this.btnAddIngredient.Size = new System.Drawing.Size(101, 29);
+            this.btnAddIngredient.Size = new System.Drawing.Size(145, 31);
             this.btnAddIngredient.TabIndex = 4;
             this.btnAddIngredient.Text = "Add";
             this.btnAddIngredient.Click += new System.EventHandler(this.btnAddIngredient_Click);
             // 
             // btnUpdateIngredient
             // 
-            this.btnUpdateIngredient.Location = new System.Drawing.Point(425, 58);
+            this.btnUpdateIngredient.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateIngredient.Appearance.ForeColor = System.Drawing.Color.DarkGoldenrod;
+            this.btnUpdateIngredient.Appearance.Options.UseFont = true;
+            this.btnUpdateIngredient.Appearance.Options.UseForeColor = true;
+            this.btnUpdateIngredient.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnUpdateIngredient.Location = new System.Drawing.Point(361, 55);
             this.btnUpdateIngredient.Name = "btnUpdateIngredient";
-            this.btnUpdateIngredient.Size = new System.Drawing.Size(101, 36);
+            this.btnUpdateIngredient.Size = new System.Drawing.Size(145, 32);
             this.btnUpdateIngredient.TabIndex = 5;
             this.btnUpdateIngredient.Text = "Update";
             this.btnUpdateIngredient.Click += new System.EventHandler(this.btnUpdateIngredient_Click);
             // 
             // btnRemoveIngredient
             // 
-            this.btnRemoveIngredient.Location = new System.Drawing.Point(425, 115);
+            this.btnRemoveIngredient.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveIngredient.Appearance.ForeColor = System.Drawing.Color.Brown;
+            this.btnRemoveIngredient.Appearance.Options.UseFont = true;
+            this.btnRemoveIngredient.Appearance.Options.UseForeColor = true;
+            this.btnRemoveIngredient.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRemoveIngredient.Location = new System.Drawing.Point(361, 109);
             this.btnRemoveIngredient.Name = "btnRemoveIngredient";
-            this.btnRemoveIngredient.Size = new System.Drawing.Size(101, 36);
+            this.btnRemoveIngredient.Size = new System.Drawing.Size(145, 32);
             this.btnRemoveIngredient.TabIndex = 6;
             this.btnRemoveIngredient.Text = "Remove";
             this.btnRemoveIngredient.Click += new System.EventHandler(this.btnRemoveIngredient_Click);
@@ -171,9 +204,9 @@ namespace PepperLunch
             // 
             this.cbbSupplier.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbbSupplier.FormattingEnabled = true;
-            this.cbbSupplier.Location = new System.Drawing.Point(214, 3);
+            this.cbbSupplier.Location = new System.Drawing.Point(172, 3);
             this.cbbSupplier.Name = "cbbSupplier";
-            this.cbbSupplier.Size = new System.Drawing.Size(205, 29);
+            this.cbbSupplier.Size = new System.Drawing.Size(183, 29);
             this.cbbSupplier.TabIndex = 7;
             // 
             // frmIngredients
@@ -182,8 +215,9 @@ namespace PepperLunch
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(535, 647);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.IconOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("frmIngredients.IconOptions.SvgImage")));
             this.Name = "frmIngredients";
-            this.Text = "frmRecipe";
+            this.Text = "Ingredients";
             this.Load += new System.EventHandler(this.frmIngredients_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
