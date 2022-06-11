@@ -42,8 +42,8 @@ namespace PepperLunch
             STAFF staff = BLL_Staff.checkLogin(username, password);
             if (staff != null)
             {
-                Program.frmcontainer = new frmContainer();
                 staff_global = staff;
+                Program.frmcontainer = new frmContainer();
                 Program.frmcontainer.Show();
                 Hide();
             }

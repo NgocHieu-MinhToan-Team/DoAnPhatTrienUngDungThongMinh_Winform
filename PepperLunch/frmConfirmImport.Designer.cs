@@ -29,17 +29,17 @@ namespace PepperLunch
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConfirmImport));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
             this.tableLayoutPanel_Main = new System.Windows.Forms.TableLayoutPanel();
             this.gridControl_IOGDetail = new DevExpress.XtraGrid.GridControl();
             this.gridView_IOGDetail = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -129,8 +129,8 @@ namespace PepperLunch
             // 
             // gridColumn1
             // 
-            this.gridColumn1.Caption = "ID_INGREDIENT";
-            this.gridColumn1.FieldName = "ID_INGREDIENT";
+            this.gridColumn1.Caption = "NAME INGREDIENT";
+            this.gridColumn1.FieldName = "NAME_INGREDIENT";
             this.gridColumn1.MinWidth = 25;
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsColumn.AllowEdit = false;
@@ -144,6 +144,7 @@ namespace PepperLunch
             this.PRICE.FieldName = "PRICE";
             this.PRICE.MinWidth = 25;
             this.PRICE.Name = "PRICE";
+            this.PRICE.OptionsColumn.AllowEdit = false;
             this.PRICE.Visible = true;
             this.PRICE.VisibleIndex = 2;
             this.PRICE.Width = 94;
@@ -154,6 +155,7 @@ namespace PepperLunch
             this.COUNT.FieldName = "QUANTITY";
             this.COUNT.MinWidth = 25;
             this.COUNT.Name = "COUNT";
+            this.COUNT.OptionsColumn.AllowEdit = false;
             this.COUNT.Visible = true;
             this.COUNT.VisibleIndex = 3;
             this.COUNT.Width = 94;
@@ -170,9 +172,9 @@ namespace PepperLunch
             // 
             // repositoryItemButtonEdit_Confirm
             // 
-            editorButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions1.SvgImage")));
+            editorButtonImageOptions3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions3.SvgImage")));
             this.repositoryItemButtonEdit_Confirm.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Correct", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Correct", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButtonEdit_Confirm.HideSelection = false;
             this.repositoryItemButtonEdit_Confirm.Name = "repositoryItemButtonEdit_Confirm";
             this.repositoryItemButtonEdit_Confirm.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
@@ -191,9 +193,9 @@ namespace PepperLunch
             // repositoryItemButtonEdit_Incorrect
             // 
             this.repositoryItemButtonEdit_Incorrect.AutoHeight = false;
-            editorButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions2.SvgImage")));
+            editorButtonImageOptions4.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions4.SvgImage")));
             this.repositoryItemButtonEdit_Incorrect.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButtonEdit_Incorrect.Name = "repositoryItemButtonEdit_Incorrect";
             this.repositoryItemButtonEdit_Incorrect.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repositoryItemButtonEdit_Incorrect.Click += new System.EventHandler(this.repositoryItemButtonEdit_Incorrect_Click);
@@ -275,7 +277,7 @@ namespace PepperLunch
             this.Name = "frmConfirmImport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Confirm Import Of Goods";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmConfirmImport_FormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmConfirmImport_FormClosing);
             this.Load += new System.EventHandler(this.frmConfirmImport_Load);
             this.tableLayoutPanel_Main.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_IOGDetail)).EndInit();

@@ -268,6 +268,14 @@ namespace DTO_PPL
 			}
 		}
 		
+		public System.Data.Linq.Table<IOGDETAIL_JOIN> IOGDETAIL_JOINs
+		{
+			get
+			{
+				return this.GetTable<IOGDETAIL_JOIN>();
+			}
+		}
+		
 		public System.Data.Linq.Table<IMPORT> IMPORTs
 		{
 			get
@@ -5577,6 +5585,123 @@ namespace DTO_PPL
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.IOGDETAIL_JOIN")]
+	public partial class IOGDETAIL_JOIN
+	{
+		
+		private string _ID_DETAIL_IOG;
+		
+		private string _ID_IOG;
+		
+		private string _ID_INGREDIENT;
+		
+		private System.Nullable<int> _PRICE;
+		
+		private System.Nullable<int> _QUANTITY;
+		
+		private string _NAME_INGREDIENT;
+		
+		public IOGDETAIL_JOIN()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_DETAIL_IOG", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ID_DETAIL_IOG
+		{
+			get
+			{
+				return this._ID_DETAIL_IOG;
+			}
+			set
+			{
+				if ((this._ID_DETAIL_IOG != value))
+				{
+					this._ID_DETAIL_IOG = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_IOG", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ID_IOG
+		{
+			get
+			{
+				return this._ID_IOG;
+			}
+			set
+			{
+				if ((this._ID_IOG != value))
+				{
+					this._ID_IOG = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_INGREDIENT", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ID_INGREDIENT
+		{
+			get
+			{
+				return this._ID_INGREDIENT;
+			}
+			set
+			{
+				if ((this._ID_INGREDIENT != value))
+				{
+					this._ID_INGREDIENT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRICE", DbType="Int")]
+		public System.Nullable<int> PRICE
+		{
+			get
+			{
+				return this._PRICE;
+			}
+			set
+			{
+				if ((this._PRICE != value))
+				{
+					this._PRICE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QUANTITY", DbType="Int")]
+		public System.Nullable<int> QUANTITY
+		{
+			get
+			{
+				return this._QUANTITY;
+			}
+			set
+			{
+				if ((this._QUANTITY != value))
+				{
+					this._QUANTITY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_INGREDIENT", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string NAME_INGREDIENT
+		{
+			get
+			{
+				return this._NAME_INGREDIENT;
+			}
+			set
+			{
+				if ((this._NAME_INGREDIENT != value))
+				{
+					this._NAME_INGREDIENT = value;
+				}
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.IMPORT")]
 	public partial class IMPORT : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -5598,6 +5723,8 @@ namespace DTO_PPL
 		private System.Nullable<int> _FLAG_DEL;
 		
 		private System.Nullable<int> _STATE_IMPORT;
+		
+		private System.Nullable<System.DateTime> _DATE_DELIVERY;
 		
 		private EntitySet<DETAIL_IMPORT> _DETAIL_IMPORTs;
 		
@@ -5625,6 +5752,8 @@ namespace DTO_PPL
     partial void OnFLAG_DELChanged();
     partial void OnSTATE_IMPORTChanging(System.Nullable<int> value);
     partial void OnSTATE_IMPORTChanged();
+    partial void OnDATE_DELIVERYChanging(System.Nullable<System.DateTime> value);
+    partial void OnDATE_DELIVERYChanged();
     #endregion
 		
 		public IMPORT()
@@ -5799,6 +5928,26 @@ namespace DTO_PPL
 					this._STATE_IMPORT = value;
 					this.SendPropertyChanged("STATE_IMPORT");
 					this.OnSTATE_IMPORTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_DELIVERY", DbType="Date")]
+		public System.Nullable<System.DateTime> DATE_DELIVERY
+		{
+			get
+			{
+				return this._DATE_DELIVERY;
+			}
+			set
+			{
+				if ((this._DATE_DELIVERY != value))
+				{
+					this.OnDATE_DELIVERYChanging(value);
+					this.SendPropertyChanging();
+					this._DATE_DELIVERY = value;
+					this.SendPropertyChanged("DATE_DELIVERY");
+					this.OnDATE_DELIVERYChanged();
 				}
 			}
 		}

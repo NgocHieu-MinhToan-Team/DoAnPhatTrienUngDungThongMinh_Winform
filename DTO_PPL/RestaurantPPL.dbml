@@ -258,6 +258,16 @@
       <Column Name="NAME_INGREDIENT" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.IOGDETAIL_JOIN" Member="IOGDETAIL_JOINs">
+    <Type Name="IOGDETAIL_JOIN">
+      <Column Name="ID_DETAIL_IOG" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_IOG" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_INGREDIENT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PRICE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QUANTITY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NAME_INGREDIENT" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Table Name="dbo.IMPORT" Member="IMPORTs">
     <Type Name="IMPORT">
       <Column Name="ID_IOG" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -268,6 +278,7 @@
       <Column Name="NOTE" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="FLAG_DEL" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="STATE_IMPORT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DATE_DELIVERY" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Association Name="IMPORT_DETAIL_IMPORT" Member="DETAIL_IMPORTs" ThisKey="ID_IOG" OtherKey="ID_IOG" Type="DETAIL_IMPORT" />
       <Association Name="STAFF_IMPORT" Member="STAFF" ThisKey="USERNAME_STAFF" OtherKey="USERNAME_STAFF" Type="STAFF" IsForeignKey="true" />
       <Association Name="SUPPLIER_IMPORT" Member="SUPPLIER" ThisKey="ID_SUPPLIER" OtherKey="ID_SUPPLIER" Type="SUPPLIER" IsForeignKey="true" />

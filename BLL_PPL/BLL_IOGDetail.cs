@@ -17,6 +17,12 @@ namespace BLL_PPL
         {
             return bll_iogDetail.getListByID(ID_IOG);
         }
+
+        public List<IOGDETAIL_JOIN> getListJoinByID(string ID_IOG)
+        {
+            return bll_iogDetail.getListJoinByID(ID_IOG);
+        }
+
         public  bool insert(DETAIL_IMPORT data)
         {
             try

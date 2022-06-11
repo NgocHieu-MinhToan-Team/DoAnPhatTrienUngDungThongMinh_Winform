@@ -103,6 +103,7 @@ namespace DAL_PPL
                     total += (i.QUANTITY * i.PRICE);
                 }
                 item.TOTAL_PRICE = total;
+                item.DATE_DELIVERY = DateTime.Now;
                 db.SubmitChanges();
                 return true;
             }

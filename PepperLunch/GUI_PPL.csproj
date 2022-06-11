@@ -193,17 +193,23 @@
     <Compile Include="frmIOGDetail.Designer.cs">
       <DependentUpon>frmIOGDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmManagePromotion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManagePromotion.Designer.cs">
+      <DependentUpon>frmManagePromotion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNews.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNews.Designer.cs">
+      <DependentUpon>frmNews.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmRecipe.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmRecipe.Designer.cs">
       <DependentUpon>frmRecipe.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmPromotion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmPromotion.Designer.cs">
-      <DependentUpon>frmPromotion.cs</DependentUpon>
     </Compile>
     <Compile Include="frmIngredients.cs">
       <SubType>Form</SubType>
@@ -276,11 +282,14 @@
     <EmbeddedResource Include="frmIOGDetail.resx">
       <DependentUpon>frmIOGDetail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmManagePromotion.resx">
+      <DependentUpon>frmManagePromotion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNews.resx">
+      <DependentUpon>frmNews.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmRecipe.resx">
       <DependentUpon>frmRecipe.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmPromotion.resx">
-      <DependentUpon>frmPromotion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmIngredients.resx">
       <DependentUpon>frmIngredients.cs</DependentUpon>

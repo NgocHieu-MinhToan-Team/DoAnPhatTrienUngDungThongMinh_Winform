@@ -41,7 +41,6 @@ namespace PepperLunch
             this.gridView_Ingredient = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.INGREDIENT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnOpenIngredient = new DevExpress.XtraEditors.SimpleButton();
-            this.txtWeight = new Modify_Control.EditText_Digit();
             this.btnRemove = new DevExpress.XtraEditors.SimpleButton();
             this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutMain.SuspendLayout();
@@ -49,7 +48,6 @@ namespace PepperLunch
             ((System.ComponentModel.ISupportInitialize)(this.gridView_detailProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Ingredient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Ingredient)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtWeight.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutMain
@@ -63,7 +61,6 @@ namespace PepperLunch
             this.tableLayoutMain.Controls.Add(this.gridControl_detailProduct, 0, 0);
             this.tableLayoutMain.Controls.Add(this.gridControl_Ingredient, 2, 0);
             this.tableLayoutMain.Controls.Add(this.btnOpenIngredient, 3, 0);
-            this.tableLayoutMain.Controls.Add(this.txtWeight, 3, 1);
             this.tableLayoutMain.Controls.Add(this.btnRemove, 1, 2);
             this.tableLayoutMain.Controls.Add(this.btnAdd, 1, 1);
             this.tableLayoutMain.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -186,14 +183,6 @@ namespace PepperLunch
             this.btnOpenIngredient.TabIndex = 2;
             this.btnOpenIngredient.Click += new System.EventHandler(this.btnOpenIngredient_Click);
             // 
-            // txtWeight
-            // 
-            this.txtWeight.Location = new System.Drawing.Point(1252, 214);
-            this.txtWeight.Name = "txtWeight";
-            this.txtWeight.Properties.Name = "fProperties";
-            this.txtWeight.Size = new System.Drawing.Size(60, 28);
-            this.txtWeight.TabIndex = 4;
-            // 
             // btnRemove
             // 
             this.btnRemove.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
@@ -234,7 +223,6 @@ namespace PepperLunch
             ((System.ComponentModel.ISupportInitialize)(this.gridView_detailProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Ingredient)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Ingredient)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtWeight.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -248,7 +236,6 @@ namespace PepperLunch
         private DevExpress.XtraGrid.Views.Grid.GridView gridView_Ingredient;
         private DevExpress.XtraEditors.SimpleButton btnOpenIngredient;
         private DevExpress.XtraEditors.SimpleButton btnAdd;
-        private Modify_Control.EditText_Digit txtWeight;
         private DevExpress.XtraEditors.SimpleButton btnRemove;
         private DevExpress.XtraGrid.Columns.GridColumn ID_RECIPE;
         private DevExpress.XtraGrid.Columns.GridColumn NAME_EN;

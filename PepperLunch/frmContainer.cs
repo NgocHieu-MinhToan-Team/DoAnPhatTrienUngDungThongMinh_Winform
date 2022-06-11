@@ -15,8 +15,8 @@ namespace PepperLunch
 {
     public partial class frmContainer : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        public string static_USERNAME_STAFF { get; set; }
         public string static_ID_GROUP_USER { get; set; }
+        private static string static_USERNAME_STAFF = Program.frmlogin.staff_global.USERNAME_STAFF;
         public frmContainer()
         {
             InitializeComponent();
@@ -128,9 +128,9 @@ namespace PepperLunch
         private void barBtn_Promotion_ItemClick(object sender, ItemClickEventArgs e)
         {
             // if form is not opened
-            if (!isOpenForm(typeof(frmPromotion)))
+            if (!isOpenForm(typeof(frmManagePromotion)))
             {
-                frmPromotion newForm = new frmPromotion();
+                frmManagePromotion newForm = new frmManagePromotion();
                 newForm.static_USERNAME_STAFF = static_USERNAME_STAFF;
                 newForm.MdiParent = this;
                 newForm.Show();
@@ -158,6 +158,12 @@ namespace PepperLunch
         {
             frmImport newForm = new frmImport();
             newForm.MdiParent = this;
+            newForm.Show();
+        }
+
+        private void barBtn_Ingredients_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frmIngredients newForm = new frmIngredients();
             newForm.Show();
         }
     }

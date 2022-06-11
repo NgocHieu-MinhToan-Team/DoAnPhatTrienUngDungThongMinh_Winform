@@ -109,7 +109,7 @@ namespace PepperLunch
             this.COUNT});
             this.gridView_IOGDetail.GridControl = this.gridControl_IOGDetail;
             this.gridView_IOGDetail.Name = "gridView_IOGDetail";
-            this.gridView_IOGDetail.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView_IOGDetail_CellValueChanged);
+            this.gridView_IOGDetail.ValidatingEditor += new DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventHandler(this.gridView_IOGDetail_ValidatingEditor);
             // 
             // ID_DETAIL_IOG
             // 
@@ -124,8 +124,8 @@ namespace PepperLunch
             // 
             // gridColumn1
             // 
-            this.gridColumn1.Caption = "ID_INGREDIENT";
-            this.gridColumn1.FieldName = "ID_INGREDIENT";
+            this.gridColumn1.Caption = "NAME INGREDIENT";
+            this.gridColumn1.FieldName = "NAME_INGREDIENT";
             this.gridColumn1.MinWidth = 25;
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsColumn.AllowEdit = false;

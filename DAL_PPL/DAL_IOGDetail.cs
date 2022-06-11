@@ -16,6 +16,11 @@ namespace DAL_PPL
             return db.DETAIL_IMPORTs.Where(t => t.ID_IOG==ID_IOG).ToList();
         }
 
+        public List<IOGDETAIL_JOIN> getListJoinByID(string ID_IOG)
+        {
+            return db.IOGDETAIL_JOINs.Where(t => t.ID_IOG == ID_IOG).ToList();
+        }
+
 
 
         public  bool insert(DETAIL_IMPORT data)

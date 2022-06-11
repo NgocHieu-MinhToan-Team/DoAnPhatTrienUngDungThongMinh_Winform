@@ -11,6 +11,7 @@ using BLL_PPL;
 using DTO_PPL;
 using DevExpress.XtraBars.Navigation;
 using System.Windows.Forms;
+using DevExpress.XtraGrid.Columns;
 
 namespace PepperLunch
 {
@@ -30,12 +31,13 @@ namespace PepperLunch
         private void frmImport_Load(object sender, EventArgs e)
         {
             loadCbbSupplier();
+            loadOrderingImport();
             loadHistoryImport();
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            DialogResult resultDialog = MessageBox.Show("Are you certain create a IOG from Supplier :" +cbbSupplier.SelectedValue.ToString(),"Confirm Handle", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Question);
+            DialogResult resultDialog = XtraMessageBox.Show("Are you certain create a IOG from Supplier :" +cbbSupplier.SelectedValue.ToString(),"Confirm Handle", MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Question);
             if (resultDialog == DialogResult.Cancel)
             {
                 return;
@@ -45,33 +47,18 @@ namespace PepperLunch
             item.ID_IOG = GeneralMethods.createID("NH");
             item.ID_SUPPLIER = cbbSupplier.SelectedValue.ToString();
             item.USERNAME_STAFF = username;
-            item.DATE_IOG = DateTime.Now;
+            item.DATE_IOG = dateTimePicker_dateCreate.Value;
             item.TOTAL_PRICE = 0;
             item.NOTE =txtNote.Text;
             item.STATE_IMPORT = 0;
             BLL_IOG.insert(item);
-            loadDataOnTabs();
+            loadOrderingImport();
             // create detail Import
             frmIOGDetail newFrm = new frmIOGDetail();
             newFrm.ID_IOG = item.ID_IOG;
             newFrm.ID_SUPPLIER = cbbSupplier.SelectedValue.ToString();
-            newFrm.note = item.NOTE;
             newFrm.FormClosed += (o, evt) =>
             {
-                // update total price of import
-                BLL_IOG.updateTotalPrice(item);
-                // update INVENTORY in INGREDIENTS
-                if (item.STATE_IMPORT == TAB_ORDERING)
-                {
-                    foreach (DETAIL_IMPORT detail in bll_iogDetail.getList(item.ID_IOG))
-                    {
-                        INGREDIENT updateItem = BLL_Ingredient.getList().SingleOrDefault(t => t.ID_INGREDIENT == detail.ID_INGREDIENT);
-                        updateItem.INVENTORY += detail.QUANTITY;
-                        BLL_Ingredient.update(updateItem);
-                    }
-                    item.STATE_IMPORT = 1;
-                    BLL_IOG.update(item);
-                }
                 this.Close();
                 Program.frmcontainer.barBtn_Import.PerformClick();
             };
@@ -80,10 +67,10 @@ namespace PepperLunch
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            int[] arrRowSelected = gridView_OrderingImport.GetSelectedRows();
+            int[] arrRowSelected = gridView_history.GetSelectedRows();
             if (arrRowSelected != null)
             {
-                IMPORT item = (IMPORT)gridView_OrderingImport.GetRow(arrRowSelected[0]);
+                IMPORT item = (IMPORT)gridView_history.GetRow(arrRowSelected[0]);
                 item.ID_SUPPLIER = cbbSupplier.SelectedValue.ToString();
                 item.USERNAME_STAFF = username;
                 item.DATE_IOG = DateTime.Now;
@@ -91,7 +78,7 @@ namespace PepperLunch
                 item.NOTE ="";
                 item.STATE_IMPORT = 0;
                 BLL_IOG.update(item);
-                loadDataOnTabs();
+                loadOrderingImport();
             }
             else
             {
@@ -102,10 +89,10 @@ namespace PepperLunch
 
         private void gridView_IOG_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
-            int[] arrRowSelected = gridView_OrderingImport.GetSelectedRows();
+            int[] arrRowSelected = gridView_history.GetSelectedRows();
             if (arrRowSelected != null)
             {
-                IMPORT item = (IMPORT)gridView_OrderingImport.GetRow(arrRowSelected[0]);
+                IMPORT item = (IMPORT)gridView_history.GetRow(arrRowSelected[0]);
                 cbbSupplier.SelectedValue = item.ID_SUPPLIER;
                 dateTimePicker_dateCreate.Value = item.DATE_IOG;
                 int countQuantity = (int)bll_iogDetail.getList(item.ID_IOG).Sum(t => t.QUANTITY);
@@ -119,43 +106,23 @@ namespace PepperLunch
             cbbSupplier.DisplayMember = "NAME_SUPPLIER";
             cbbSupplier.ValueMember = "ID_SUPPLIER";
         }
-        private void tabPaneImport_SelectedPageChanged(object sender, DevExpress.XtraBars.Navigation.SelectedPageChangedEventArgs e)
-        {
-            loadDataOnTabs();
-        }
-
-        void loadDataOnTabs()
-        {
-            if (tabPaneImport.SelectedPageIndex == TAB_HISTORY)
-            {
-                loadHistoryImport();
-            }
-            if (tabPaneImport.SelectedPageIndex == TAB_ORDERING)
-            {
-                loadOrderingImport();
-            }
-        }
-
-        private void gridControl_historyImport_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         void loadHistoryImport()
         {
-            gridControl_historyImport.DataSource = BLL_IOG.getImportsByStatus(TAB_HISTORY);
+            gridControl_history.DataSource = BLL_IOG.getImportsByStatus(TAB_HISTORY);
         }
         void loadOrderingImport()
         {
-            gridControl_OrderingImport.DataSource = BLL_IOG.getImportsByStatus(TAB_ORDERING);
+            gridControl_orders.DataSource = BLL_IOG.getImportsByStatus(TAB_ORDERING);
         }
 
         private void repositoryItemButtonEdit_detele_Click(object sender, EventArgs e)
         {
-            int[] arrRowSelected = gridView_OrderingImport.GetSelectedRows();
+            int[] arrRowSelected = gridView_history.GetSelectedRows();
             if (arrRowSelected != null)
             {
-                IMPORT item = (IMPORT)gridView_OrderingImport.GetRow(arrRowSelected[0]);
+                IMPORT item = (IMPORT)gridView_history.GetRow(arrRowSelected[0]);
                 BLL_IOG.delete(item);
                 loadOrderingImport();
             }
@@ -168,16 +135,33 @@ namespace PepperLunch
         private void cbbSupplier_SelectedValueChanged(object sender, EventArgs e)
         {
             // delete import
-            gridControl_historyImport.DataSource = BLL_IOG.getImportsByStatus(TAB_ORDERING, cbbSupplier.SelectedValue.ToString());
+            gridControl_orders.DataSource = BLL_IOG.getImportsByStatus(TAB_ORDERING, cbbSupplier.SelectedValue.ToString());
         }
-
-        private void repositoryItemButtonEdit_detail_Click(object sender, EventArgs e)
+        private void repositoryItemButtonEdit_UpdateIOG_Click(object sender, EventArgs e)
         {
-            // see detail of import 
-            int[] arrRowSelected = gridView_historyImport.GetSelectedRows();
+            int[] arrRowSelected = gridView_orders.GetSelectedRows();
             if (arrRowSelected != null)
             {
-                IMPORT item = (IMPORT)gridView_historyImport.GetRow(arrRowSelected[0]);
+                IMPORT item = (IMPORT)gridView_orders.GetRow(arrRowSelected[0]);
+                frmIOGDetail frm = new frmIOGDetail();
+                frm.FormClosed += (o, evt) =>
+                {
+                    this.Close();
+                    Program.frmcontainer.barBtn_Import.PerformClick();
+                };
+                frm.ID_IOG = item.ID_IOG;
+                frm.ID_SUPPLIER = item.ID_SUPPLIER;
+                frm.ShowDialog();
+            }
+        }
+
+        private void repositoryItemButtonEdit_confirm_Click(object sender, EventArgs e)
+        {
+            //confirm of import
+            int[] arrRowSelected = gridView_orders.GetSelectedRows();
+            if (arrRowSelected != null)
+            {
+                IMPORT item = (IMPORT)gridView_orders.GetRow(arrRowSelected[0]);
                 frmConfirmImport frm = new frmConfirmImport();
                 frm.FormClosed += (o, evt) =>
                 {
@@ -185,11 +169,9 @@ namespace PepperLunch
                     BLL_IOG.updateTotalPrice(item);
                     Program.frmcontainer.barBtn_Import.PerformClick();
                 };
-               frm.ID_IOG = item.ID_IOG;
+                frm.ID_IOG = item.ID_IOG;
                 frm.ShowDialog();
-
             }
-           
         }
     }
 }
