@@ -86,5 +86,40 @@ namespace PepperLunch
             }
         }
 
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            int[] index = gridView_Ingredient.GetSelectedRows();
+            if (index != null)
+            {
+                INGREDIENT rowData = (INGREDIENT)gridView_Ingredient.GetRow(index[0]);
+                DialogResult resultDialog = XtraMessageBox.Show("Are you certain create a IOG from Supplier :" + rowData.ID_SUPPLIER.ToString(), "Confirm Handle", MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Question);
+                if (resultDialog == DialogResult.Cancel)
+                {
+                    return;
+                }
+                // create Import
+                IMPORT item = new IMPORT();
+                item.ID_IOG = GeneralMethods.createID("NH");
+                item.ID_SUPPLIER = rowData.ID_SUPPLIER;
+                item.USERNAME_STAFF = Program.frmlogin.staff_global.USERNAME_STAFF;
+                item.DATE_IOG = DateTime.Now;
+                item.TOTAL_PRICE = 0;
+                item.NOTE = "";
+                item.STATE_IMPORT = 0;
+                BLL_IOG.insert(item);
+                // create detail Import
+                frmIOGDetail newFrm = new frmIOGDetail();
+                newFrm.ID_IOG = item.ID_IOG;
+                newFrm.ID_SUPPLIER = cbbSupplier.SelectedValue.ToString();
+                newFrm.FormClosed += (o, evt) =>
+                {
+                    this.Close();
+                    Program.frmcontainer.barBtn_Import.PerformClick();
+                };
+                newFrm.Show();
+            }
+
+            
+        }
     }
 }

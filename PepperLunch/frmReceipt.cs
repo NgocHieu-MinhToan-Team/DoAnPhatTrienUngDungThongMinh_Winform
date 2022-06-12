@@ -16,11 +16,18 @@ using FireBase_PPL;
 // lib for export excel
 using DevExpress.XtraPrinting;
 using System.Diagnostics;
+using DevExpress.XtraSplashScreen;
+using DevExpress.XtraEditors;
 
 namespace PepperLunch
 {
     public partial class frmReceipt : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
+        private const int CONFIRM = 1;
+        private const int COMPLETE = 2;
+        private const int CANCEL = 3;
+
+
         List<RECEIPT_FULL> listData;
         public frmReceipt()
         {
@@ -35,11 +42,18 @@ namespace PepperLunch
 
         async void loadData()
         {
-            gridView_receiptFB.Columns.Clear();
-            List<RECEIPT> list = await FB_Receipt.getDataFromFirebaseAsync();
+            accordionControl1.Enabled = false;
+            gridView_receiptFB.ShowLoadingPanel();
+            gridView_receiptSql.ShowLoadingPanel();
+
+            List<RECEIPT> list = await FB_Receipt.getEntireNotSync();
             gridControl_receiptFB.DataSource = list;
-            listData = BLL_Receipt.read_Receipt();
-            gridControl_receiptSql.DataSource = listData;
+            gridControl_receiptSql.DataSource = BLL_Receipt.getList();
+
+            gridView_receiptFB.HideLoadingPanel();
+            gridView_receiptSql.HideLoadingPanel();
+            accordionControl1.Enabled = true;
+
         }
 
         private void accordionCtrlE_exportWord_Click(object sender, EventArgs e)
@@ -68,27 +82,83 @@ namespace PepperLunch
             Process.Start(path);
         }
 
-        private void accordionCtrlE_removeReceipt_Click(object sender, EventArgs e)
-        {
-            int[] index = gridView_receiptFB.GetSelectedRows();
-            if (index.Length > 0)
-            {
-                RECEIPT_FULL itemDel = (RECEIPT_FULL)gridView_receiptFB.GetRow(index[0]);
-                BLL_Receipt.deleteReceipt(itemDel);
-            }
-        }
 
         private async void accordionCtrlE_SyncFromFirebase_Click(object sender, EventArgs e)
         {
-            await FB_Receipt.updateReceiptFromFirebase();
-            listData = BLL_Receipt.read_Receipt();
-            gridControl_receiptSql.DataSource = listData;
+            
+            SplashScreenManager.ShowForm(typeof(waitFrmLoading));
+            accordionControl1.Enabled = false;
+           
+            if (await FB_Receipt.updateEntireReceiptFromFirebase(CONFIRM))
+            {
+                XtraMessageBox.Show("Tất Cả Đơn Hàng Đã Được thêm Vào SQL");
+                loadData();
+            }
+            else
+            {
+                XtraMessageBox.Show("Nguyên Liệu Không Đủ");
+            }
+            //await FB_Receipt.updateDetailReceiptFromFirebase();
+            accordionControl1.Enabled = true;
+            SplashScreenManager.CloseForm();
         }
 
-        private async void accordionCtrlE_UpdateStatus_Click(object sender, EventArgs e)
+        private async void repositoryItemButtonEdit_confirm_Click(object sender, EventArgs e)
         {
-            await FB_Receipt.updateStatusReceiptAsync();
-            MessageBox.Show("Cap Nhat Don Hang Thanh Cong");
+            int[] index = gridView_receiptFB.GetSelectedRows();
+            if (index != null)
+            {
+                RECEIPT item = (RECEIPT)gridView_receiptFB.GetRow(index[0]);
+                SplashScreenManager.ShowForm(typeof(waitFrmLoading));
+                accordionControl1.Enabled = false;
+
+                if (await FB_Receipt.updateReceiptFromFirebase(item,CONFIRM))
+                {
+                    XtraMessageBox.Show("Tất Cả Đơn Hàng Đã Được thêm Vào SQL");
+                    loadData();
+                }
+                else
+                {
+                    // update status Cancel Order 
+                    DialogResult rs =  XtraMessageBox.Show("Đơn Hàng "+item.ID_RECEIPT+" của Khách hàng có ID :"+item.ID_CUSTOMER+"Đang Không Đủ Nguyên Liệu" +" ,Chọn Yes : Hủy Đơn Hàng -- No : Quay Lại ","Confifm",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                    if (rs == DialogResult.Yes)
+                    {
+                        await FB_Receipt.updateStatusReceipt(item, CANCEL);
+                        XtraMessageBox.Show("Đơn Hàng Bị Hủy , Đang Phản Hồi Đến Khách Hàng");
+                    }
+                }
+                //await FB_Receipt.updateDetailReceiptFromFirebase();
+                accordionControl1.Enabled = true;
+                SplashScreenManager.CloseForm();
+              
+
+            }
+
         }
+
+        private async void repositoryItemButtonEdit_response_Click(object sender, EventArgs e)
+        {
+            int[] index = gridView_receiptSql.GetSelectedRows();
+            if (index != null)
+            {
+                RECEIPT item = (RECEIPT)gridView_receiptSql.GetRow(index[0]);
+                await FB_Receipt.updateStatusReceipt(item,COMPLETE);
+                XtraMessageBox.Show("Đơn Hàng Đã Xong , Chuyển Sang Trạng Thái Vận Chuyển");
+                loadData();
+            }
+        }
+
+        private void repositoryItemButtonEdit_seemore_Click(object sender, EventArgs e)
+        {
+            int[] index = gridView_receiptSql.GetSelectedRows();
+            if (index != null)
+            {
+                RECEIPT item = (RECEIPT)gridView_receiptSql.GetRow(index[0]);
+                frmDetailReceipt frm = new frmDetailReceipt();
+                frm.ID = item.ID_RECEIPT;
+                frm.ShowDialog();
+            }
+        }
+
     }
 }

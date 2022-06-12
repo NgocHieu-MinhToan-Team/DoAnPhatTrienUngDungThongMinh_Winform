@@ -224,29 +224,6 @@
       <Association Name="SUPPLIER_IMPORT" Member="IMPORTs" ThisKey="ID_SUPPLIER" OtherKey="ID_SUPPLIER" Type="IMPORT" />
     </Type>
   </Table>
-  <Table Name="dbo.RECEIPT_FULL" Member="RECEIPT_FULLs">
-    <Type Name="RECEIPT_FULL">
-      <Column Name="ID_RECEIPT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="ID_VOUCHER" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="ID_CUSTOMER" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="ID_METHOD" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="DATE_CREATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="TOTAL_PRODUCT" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TOTAL_PRICE" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="POINT" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="STATE_RECEIPT" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ADDRESS_RECEIPT" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="PERCENT_REDUCTION" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="AMOUNT_REDUCTION" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ADDRESS_CUSTOMER" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="MAIL_CUSTOMER" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="NAME_CUSTOMER" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="SURNAME_CUSTOMER" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="PHONE_CUSTOMER" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
-      <Column Name="NAME_METHOD" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="TYPE_METHOD" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
   <Table Name="dbo.RECIPE_JOIN" Member="RECIPE_JOINs">
     <Type Name="RECIPE_JOIN">
       <Column Name="ID_DETAIL" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
@@ -282,6 +259,29 @@
       <Association Name="IMPORT_DETAIL_IMPORT" Member="DETAIL_IMPORTs" ThisKey="ID_IOG" OtherKey="ID_IOG" Type="DETAIL_IMPORT" />
       <Association Name="STAFF_IMPORT" Member="STAFF" ThisKey="USERNAME_STAFF" OtherKey="USERNAME_STAFF" Type="STAFF" IsForeignKey="true" />
       <Association Name="SUPPLIER_IMPORT" Member="SUPPLIER" ThisKey="ID_SUPPLIER" OtherKey="ID_SUPPLIER" Type="SUPPLIER" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RECEIPT_FULL" Member="RECEIPT_FULLs">
+    <Type Name="RECEIPT_FULL">
+      <Column Name="ID_RECEIPT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_VOUCHER" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ID_CUSTOMER" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ID_METHOD" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DATE_CREATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TOTAL_PRODUCT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TOTAL_PRICE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="POINT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="STATE_RECEIPT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ADDRESS_RECEIPT" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PERCENT_REDUCTION" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AMOUNT_REDUCTION" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ADDRESS_CUSTOMER" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MAIL_CUSTOMER" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="NAME_CUSTOMER" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SURNAME_CUSTOMER" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PHONE_CUSTOMER" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Column Name="NAME_METHOD" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TYPE_METHOD" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>

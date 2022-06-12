@@ -90,5 +90,21 @@ namespace DAL_PPL
                 return false;
             }
         }
+
+        public static bool update(string ID_INGREDIENT,int weight)
+        {
+            try
+            {
+                INGREDIENT itemUpdate = db.INGREDIENTs.SingleOrDefault(t => t.ID_INGREDIENT == ID_INGREDIENT);
+                itemUpdate.INVENTORY = itemUpdate.INVENTORY-weight;
+                itemUpdate.FLAG_DEL = 0;
+                db.SubmitChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

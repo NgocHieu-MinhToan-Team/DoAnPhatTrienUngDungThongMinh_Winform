@@ -34,6 +34,10 @@ namespace PepperLunch
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.gridControl_Ingredient = new DevExpress.XtraGrid.GridControl();
             this.gridView_Ingredient = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -42,10 +46,7 @@ namespace PepperLunch
             this.btnUpdateIngredient = new DevExpress.XtraEditors.SimpleButton();
             this.btnRemoveIngredient = new DevExpress.XtraEditors.SimpleButton();
             this.cbbSupplier = new System.Windows.Forms.ComboBox();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnImport = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Ingredient)).BeginInit();
@@ -109,6 +110,46 @@ namespace PepperLunch
             this.gridView_Ingredient.OptionsFind.AlwaysVisible = true;
             this.gridView_Ingredient.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView_Ingredient_RowClick);
             // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "ID INGREDIENT";
+            this.gridColumn1.FieldName = "ID_INGREDIENT";
+            this.gridColumn1.MinWidth = 25;
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 1;
+            this.gridColumn1.Width = 94;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "ID SUPPLIER";
+            this.gridColumn2.FieldName = "ID_SUPPLIER";
+            this.gridColumn2.MinWidth = 25;
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 0;
+            this.gridColumn2.Width = 94;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "NAME INGREDIENT";
+            this.gridColumn3.FieldName = "NAME_INGREDIENT";
+            this.gridColumn3.MinWidth = 25;
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.Width = 94;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "INVENTORY";
+            this.gridColumn4.FieldName = "INVENTORY";
+            this.gridColumn4.MinWidth = 25;
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.Width = 94;
+            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 3;
@@ -122,6 +163,7 @@ namespace PepperLunch
             this.tableLayoutPanel3.Controls.Add(this.btnUpdateIngredient, 2, 1);
             this.tableLayoutPanel3.Controls.Add(this.btnRemoveIngredient, 2, 2);
             this.tableLayoutPanel3.Controls.Add(this.cbbSupplier, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnImport, 1, 2);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(10, 468);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0, 20, 0, 0);
@@ -220,45 +262,14 @@ namespace PepperLunch
             this.cbbSupplier.Size = new System.Drawing.Size(346, 29);
             this.cbbSupplier.TabIndex = 7;
             // 
-            // gridColumn1
+            // btnImport
             // 
-            this.gridColumn1.Caption = "ID INGREDIENT";
-            this.gridColumn1.FieldName = "ID_INGREDIENT";
-            this.gridColumn1.MinWidth = 25;
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 1;
-            this.gridColumn1.Width = 94;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "ID SUPPLIER";
-            this.gridColumn2.FieldName = "ID_SUPPLIER";
-            this.gridColumn2.MinWidth = 25;
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 0;
-            this.gridColumn2.Width = 94;
-            // 
-            // gridColumn3
-            // 
-            this.gridColumn3.Caption = "NAME INGREDIENT";
-            this.gridColumn3.FieldName = "NAME_INGREDIENT";
-            this.gridColumn3.MinWidth = 25;
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 94;
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.Caption = "INVENTORY";
-            this.gridColumn4.FieldName = "INVENTORY";
-            this.gridColumn4.MinWidth = 25;
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 3;
-            this.gridColumn4.Width = 94;
+            this.btnImport.Location = new System.Drawing.Point(245, 115);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(210, 32);
+            this.btnImport.TabIndex = 8;
+            this.btnImport.Text = "Import Quick";
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // frmIngredients
             // 
@@ -300,5 +311,6 @@ namespace PepperLunch
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraEditors.SimpleButton btnImport;
     }
 }

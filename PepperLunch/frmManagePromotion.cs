@@ -107,21 +107,29 @@ namespace PepperLunch
         }
         private void btnAddVoucher_Click(object sender, EventArgs e)
         {
-            VOUCHER vou = new VOUCHER();
-            vou.ID_VOUCHER = GeneralMethods.createID("VOUCHER");
-            vou.ID_PROMOTION = cbbPromotion.SelectedValue.ToString(); 
-            vou.USERNAME_STAFF = static_USERNAME_STAFF;
-            vou.DATE_CREATE = DateTime.Today;
-            vou.DATE_START = dateVoucher_dayStart.Value;
-            vou.DATE_END = dateVoucher_dayEnd.Value;
-            vou.TYPE_REDUCTION = txtTypeReducion.Text;
-            vou.TYPE_CUSTOMER = cbbVoucher_typeCustomer.SelectedValue.ToString();
-            vou.PERCENT_REDUCTION = int.Parse(txtPercentReducion.Text);
-            vou.AMOUNT_REDUCTION = int.Parse(txtAmountReduction.Text);
-            vou.QUANTITY_VOUCHER = int.Parse(txtVoucherQuantity.Text);
-            BLL_Voucher.insertVoucher(vou);
-            //reload table
-            loadVoucher(static_ID_PROMOTION);
+            try
+            {
+                VOUCHER vou = new VOUCHER();
+                vou.ID_VOUCHER = GeneralMethods.createID("VOUCHER");
+                vou.ID_PROMOTION = cbbPromotion.SelectedValue.ToString();
+                vou.USERNAME_STAFF = static_USERNAME_STAFF;
+                vou.DATE_CREATE = DateTime.Today;
+                vou.DATE_START = dateVoucher_dayStart.Value;
+                vou.DATE_END = dateVoucher_dayEnd.Value;
+                vou.TYPE_REDUCTION = txtTypeReducion.Text;
+                vou.TYPE_CUSTOMER = cbbVoucher_typeCustomer.SelectedValue.ToString();
+                vou.PERCENT_REDUCTION = int.Parse(txtPercentReducion.Text);
+                vou.AMOUNT_REDUCTION = int.Parse(txtAmountReduction.Text);
+                vou.QUANTITY_VOUCHER = int.Parse(txtVoucherQuantity.Text);
+                BLL_Voucher.insertVoucher(vou);
+                //reload table
+                loadVoucher(static_ID_PROMOTION);
+            }
+            catch
+            {
+                XtraMessageBox.Show("Please enter fully infomation");
+            }
+            
         }
 
         private void btnUpdateVoucher_Click(object sender, EventArgs e)

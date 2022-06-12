@@ -252,14 +252,6 @@ namespace DTO_PPL
 			}
 		}
 		
-		public System.Data.Linq.Table<RECEIPT_FULL> RECEIPT_FULLs
-		{
-			get
-			{
-				return this.GetTable<RECEIPT_FULL>();
-			}
-		}
-		
 		public System.Data.Linq.Table<RECIPE_JOIN> RECIPE_JOINs
 		{
 			get
@@ -281,6 +273,14 @@ namespace DTO_PPL
 			get
 			{
 				return this.GetTable<IMPORT>();
+			}
+		}
+		
+		public System.Data.Linq.Table<RECEIPT_FULL> RECEIPT_FULLs
+		{
+			get
+			{
+				return this.GetTable<RECEIPT_FULL>();
 			}
 		}
 	}
@@ -5099,357 +5099,6 @@ namespace DTO_PPL
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.RECEIPT_FULL")]
-	public partial class RECEIPT_FULL
-	{
-		
-		private string _ID_RECEIPT;
-		
-		private string _ID_VOUCHER;
-		
-		private string _ID_CUSTOMER;
-		
-		private string _ID_METHOD;
-		
-		private System.Nullable<System.DateTime> _DATE_CREATE;
-		
-		private System.Nullable<int> _TOTAL_PRODUCT;
-		
-		private System.Nullable<int> _TOTAL_PRICE;
-		
-		private System.Nullable<int> _POINT;
-		
-		private System.Nullable<int> _STATE_RECEIPT;
-		
-		private string _ADDRESS_RECEIPT;
-		
-		private System.Nullable<int> _PERCENT_REDUCTION;
-		
-		private System.Nullable<int> _AMOUNT_REDUCTION;
-		
-		private string _ADDRESS_CUSTOMER;
-		
-		private string _MAIL_CUSTOMER;
-		
-		private string _NAME_CUSTOMER;
-		
-		private string _SURNAME_CUSTOMER;
-		
-		private string _PHONE_CUSTOMER;
-		
-		private string _NAME_METHOD;
-		
-		private string _TYPE_METHOD;
-		
-		public RECEIPT_FULL()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_RECEIPT", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string ID_RECEIPT
-		{
-			get
-			{
-				return this._ID_RECEIPT;
-			}
-			set
-			{
-				if ((this._ID_RECEIPT != value))
-				{
-					this._ID_RECEIPT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_VOUCHER", DbType="VarChar(50)")]
-		public string ID_VOUCHER
-		{
-			get
-			{
-				return this._ID_VOUCHER;
-			}
-			set
-			{
-				if ((this._ID_VOUCHER != value))
-				{
-					this._ID_VOUCHER = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CUSTOMER", DbType="VarChar(50)")]
-		public string ID_CUSTOMER
-		{
-			get
-			{
-				return this._ID_CUSTOMER;
-			}
-			set
-			{
-				if ((this._ID_CUSTOMER != value))
-				{
-					this._ID_CUSTOMER = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_METHOD", DbType="VarChar(50)")]
-		public string ID_METHOD
-		{
-			get
-			{
-				return this._ID_METHOD;
-			}
-			set
-			{
-				if ((this._ID_METHOD != value))
-				{
-					this._ID_METHOD = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_CREATE", DbType="Date")]
-		public System.Nullable<System.DateTime> DATE_CREATE
-		{
-			get
-			{
-				return this._DATE_CREATE;
-			}
-			set
-			{
-				if ((this._DATE_CREATE != value))
-				{
-					this._DATE_CREATE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL_PRODUCT", DbType="Int")]
-		public System.Nullable<int> TOTAL_PRODUCT
-		{
-			get
-			{
-				return this._TOTAL_PRODUCT;
-			}
-			set
-			{
-				if ((this._TOTAL_PRODUCT != value))
-				{
-					this._TOTAL_PRODUCT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL_PRICE", DbType="Int")]
-		public System.Nullable<int> TOTAL_PRICE
-		{
-			get
-			{
-				return this._TOTAL_PRICE;
-			}
-			set
-			{
-				if ((this._TOTAL_PRICE != value))
-				{
-					this._TOTAL_PRICE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POINT", DbType="Int")]
-		public System.Nullable<int> POINT
-		{
-			get
-			{
-				return this._POINT;
-			}
-			set
-			{
-				if ((this._POINT != value))
-				{
-					this._POINT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_RECEIPT", DbType="Int")]
-		public System.Nullable<int> STATE_RECEIPT
-		{
-			get
-			{
-				return this._STATE_RECEIPT;
-			}
-			set
-			{
-				if ((this._STATE_RECEIPT != value))
-				{
-					this._STATE_RECEIPT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ADDRESS_RECEIPT", DbType="NVarChar(MAX)")]
-		public string ADDRESS_RECEIPT
-		{
-			get
-			{
-				return this._ADDRESS_RECEIPT;
-			}
-			set
-			{
-				if ((this._ADDRESS_RECEIPT != value))
-				{
-					this._ADDRESS_RECEIPT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PERCENT_REDUCTION", DbType="Int")]
-		public System.Nullable<int> PERCENT_REDUCTION
-		{
-			get
-			{
-				return this._PERCENT_REDUCTION;
-			}
-			set
-			{
-				if ((this._PERCENT_REDUCTION != value))
-				{
-					this._PERCENT_REDUCTION = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AMOUNT_REDUCTION", DbType="Int")]
-		public System.Nullable<int> AMOUNT_REDUCTION
-		{
-			get
-			{
-				return this._AMOUNT_REDUCTION;
-			}
-			set
-			{
-				if ((this._AMOUNT_REDUCTION != value))
-				{
-					this._AMOUNT_REDUCTION = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ADDRESS_CUSTOMER", DbType="NVarChar(MAX)")]
-		public string ADDRESS_CUSTOMER
-		{
-			get
-			{
-				return this._ADDRESS_CUSTOMER;
-			}
-			set
-			{
-				if ((this._ADDRESS_CUSTOMER != value))
-				{
-					this._ADDRESS_CUSTOMER = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAIL_CUSTOMER", DbType="VarChar(MAX)")]
-		public string MAIL_CUSTOMER
-		{
-			get
-			{
-				return this._MAIL_CUSTOMER;
-			}
-			set
-			{
-				if ((this._MAIL_CUSTOMER != value))
-				{
-					this._MAIL_CUSTOMER = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_CUSTOMER", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string NAME_CUSTOMER
-		{
-			get
-			{
-				return this._NAME_CUSTOMER;
-			}
-			set
-			{
-				if ((this._NAME_CUSTOMER != value))
-				{
-					this._NAME_CUSTOMER = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SURNAME_CUSTOMER", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string SURNAME_CUSTOMER
-		{
-			get
-			{
-				return this._SURNAME_CUSTOMER;
-			}
-			set
-			{
-				if ((this._SURNAME_CUSTOMER != value))
-				{
-					this._SURNAME_CUSTOMER = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PHONE_CUSTOMER", DbType="VarChar(11)")]
-		public string PHONE_CUSTOMER
-		{
-			get
-			{
-				return this._PHONE_CUSTOMER;
-			}
-			set
-			{
-				if ((this._PHONE_CUSTOMER != value))
-				{
-					this._PHONE_CUSTOMER = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_METHOD", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string NAME_METHOD
-		{
-			get
-			{
-				return this._NAME_METHOD;
-			}
-			set
-			{
-				if ((this._NAME_METHOD != value))
-				{
-					this._NAME_METHOD = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TYPE_METHOD", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string TYPE_METHOD
-		{
-			get
-			{
-				return this._TYPE_METHOD;
-			}
-			set
-			{
-				if ((this._TYPE_METHOD != value))
-				{
-					this._TYPE_METHOD = value;
-				}
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.RECIPE_JOIN")]
 	public partial class RECIPE_JOIN
 	{
@@ -6063,6 +5712,357 @@ namespace DTO_PPL
 		{
 			this.SendPropertyChanging();
 			entity.IMPORT = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.RECEIPT_FULL")]
+	public partial class RECEIPT_FULL
+	{
+		
+		private string _ID_RECEIPT;
+		
+		private string _ID_VOUCHER;
+		
+		private string _ID_CUSTOMER;
+		
+		private string _ID_METHOD;
+		
+		private System.Nullable<System.DateTime> _DATE_CREATE;
+		
+		private System.Nullable<int> _TOTAL_PRODUCT;
+		
+		private System.Nullable<int> _TOTAL_PRICE;
+		
+		private System.Nullable<int> _POINT;
+		
+		private System.Nullable<int> _STATE_RECEIPT;
+		
+		private string _ADDRESS_RECEIPT;
+		
+		private System.Nullable<int> _PERCENT_REDUCTION;
+		
+		private System.Nullable<int> _AMOUNT_REDUCTION;
+		
+		private string _ADDRESS_CUSTOMER;
+		
+		private string _MAIL_CUSTOMER;
+		
+		private string _NAME_CUSTOMER;
+		
+		private string _SURNAME_CUSTOMER;
+		
+		private string _PHONE_CUSTOMER;
+		
+		private string _NAME_METHOD;
+		
+		private string _TYPE_METHOD;
+		
+		public RECEIPT_FULL()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_RECEIPT", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ID_RECEIPT
+		{
+			get
+			{
+				return this._ID_RECEIPT;
+			}
+			set
+			{
+				if ((this._ID_RECEIPT != value))
+				{
+					this._ID_RECEIPT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_VOUCHER", DbType="VarChar(50)")]
+		public string ID_VOUCHER
+		{
+			get
+			{
+				return this._ID_VOUCHER;
+			}
+			set
+			{
+				if ((this._ID_VOUCHER != value))
+				{
+					this._ID_VOUCHER = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CUSTOMER", DbType="VarChar(50)")]
+		public string ID_CUSTOMER
+		{
+			get
+			{
+				return this._ID_CUSTOMER;
+			}
+			set
+			{
+				if ((this._ID_CUSTOMER != value))
+				{
+					this._ID_CUSTOMER = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_METHOD", DbType="VarChar(50)")]
+		public string ID_METHOD
+		{
+			get
+			{
+				return this._ID_METHOD;
+			}
+			set
+			{
+				if ((this._ID_METHOD != value))
+				{
+					this._ID_METHOD = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_CREATE", DbType="Date")]
+		public System.Nullable<System.DateTime> DATE_CREATE
+		{
+			get
+			{
+				return this._DATE_CREATE;
+			}
+			set
+			{
+				if ((this._DATE_CREATE != value))
+				{
+					this._DATE_CREATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL_PRODUCT", DbType="Int")]
+		public System.Nullable<int> TOTAL_PRODUCT
+		{
+			get
+			{
+				return this._TOTAL_PRODUCT;
+			}
+			set
+			{
+				if ((this._TOTAL_PRODUCT != value))
+				{
+					this._TOTAL_PRODUCT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL_PRICE", DbType="Int")]
+		public System.Nullable<int> TOTAL_PRICE
+		{
+			get
+			{
+				return this._TOTAL_PRICE;
+			}
+			set
+			{
+				if ((this._TOTAL_PRICE != value))
+				{
+					this._TOTAL_PRICE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POINT", DbType="Int")]
+		public System.Nullable<int> POINT
+		{
+			get
+			{
+				return this._POINT;
+			}
+			set
+			{
+				if ((this._POINT != value))
+				{
+					this._POINT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_RECEIPT", DbType="Int")]
+		public System.Nullable<int> STATE_RECEIPT
+		{
+			get
+			{
+				return this._STATE_RECEIPT;
+			}
+			set
+			{
+				if ((this._STATE_RECEIPT != value))
+				{
+					this._STATE_RECEIPT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ADDRESS_RECEIPT", DbType="NVarChar(MAX)")]
+		public string ADDRESS_RECEIPT
+		{
+			get
+			{
+				return this._ADDRESS_RECEIPT;
+			}
+			set
+			{
+				if ((this._ADDRESS_RECEIPT != value))
+				{
+					this._ADDRESS_RECEIPT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PERCENT_REDUCTION", DbType="Int")]
+		public System.Nullable<int> PERCENT_REDUCTION
+		{
+			get
+			{
+				return this._PERCENT_REDUCTION;
+			}
+			set
+			{
+				if ((this._PERCENT_REDUCTION != value))
+				{
+					this._PERCENT_REDUCTION = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AMOUNT_REDUCTION", DbType="Int")]
+		public System.Nullable<int> AMOUNT_REDUCTION
+		{
+			get
+			{
+				return this._AMOUNT_REDUCTION;
+			}
+			set
+			{
+				if ((this._AMOUNT_REDUCTION != value))
+				{
+					this._AMOUNT_REDUCTION = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ADDRESS_CUSTOMER", DbType="NVarChar(MAX)")]
+		public string ADDRESS_CUSTOMER
+		{
+			get
+			{
+				return this._ADDRESS_CUSTOMER;
+			}
+			set
+			{
+				if ((this._ADDRESS_CUSTOMER != value))
+				{
+					this._ADDRESS_CUSTOMER = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAIL_CUSTOMER", DbType="VarChar(MAX)")]
+		public string MAIL_CUSTOMER
+		{
+			get
+			{
+				return this._MAIL_CUSTOMER;
+			}
+			set
+			{
+				if ((this._MAIL_CUSTOMER != value))
+				{
+					this._MAIL_CUSTOMER = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_CUSTOMER", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string NAME_CUSTOMER
+		{
+			get
+			{
+				return this._NAME_CUSTOMER;
+			}
+			set
+			{
+				if ((this._NAME_CUSTOMER != value))
+				{
+					this._NAME_CUSTOMER = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SURNAME_CUSTOMER", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string SURNAME_CUSTOMER
+		{
+			get
+			{
+				return this._SURNAME_CUSTOMER;
+			}
+			set
+			{
+				if ((this._SURNAME_CUSTOMER != value))
+				{
+					this._SURNAME_CUSTOMER = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PHONE_CUSTOMER", DbType="VarChar(11)")]
+		public string PHONE_CUSTOMER
+		{
+			get
+			{
+				return this._PHONE_CUSTOMER;
+			}
+			set
+			{
+				if ((this._PHONE_CUSTOMER != value))
+				{
+					this._PHONE_CUSTOMER = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_METHOD", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string NAME_METHOD
+		{
+			get
+			{
+				return this._NAME_METHOD;
+			}
+			set
+			{
+				if ((this._NAME_METHOD != value))
+				{
+					this._NAME_METHOD = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TYPE_METHOD", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string TYPE_METHOD
+		{
+			get
+			{
+				return this._TYPE_METHOD;
+			}
+			set
+			{
+				if ((this._TYPE_METHOD != value))
+				{
+					this._TYPE_METHOD = value;
+				}
+			}
 		}
 	}
 }
