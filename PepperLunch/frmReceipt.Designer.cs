@@ -29,66 +29,444 @@ namespace PepperLunch
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, null, true, true);
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReceipt));
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions5 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject17 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions6 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject21 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject22 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject23 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject24 = new DevExpress.Utils.SerializableAppearanceObject();
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
-            this.gridControl_receipt = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.gridControl_receiptFB = new DevExpress.XtraGrid.GridControl();
+            this.gridView_receiptFB = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemButtonEdit_confirm = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.gridControl_receiptSql = new DevExpress.XtraGrid.GridControl();
+            this.gridView_receiptSql = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemButtonEdit_response = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemButtonEdit_seemore = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionCtrlE_exportExcel = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionCtrlE_exportWord = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionCtrlE_removeReceipt = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionCtrlE_SyncFromFirebase = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.fluentDesignFormContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl_receipt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl_receiptFB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_receiptFB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_confirm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl_receiptSql)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_receiptSql)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_response)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_seemore)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
             // 
+            // splashScreenManager1
+            // 
+            splashScreenManager1.ClosingDelay = 500;
+            // 
             // fluentDesignFormContainer1
             // 
-            this.fluentDesignFormContainer1.Controls.Add(this.gridControl_receipt);
+            this.fluentDesignFormContainer1.Controls.Add(this.tableLayoutPanel1);
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(254, 39);
+            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(371, 39);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(963, 617);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(846, 748);
             this.fluentDesignFormContainer1.TabIndex = 0;
             // 
-            // gridControl_receipt
+            // tableLayoutPanel1
             // 
-            this.gridControl_receipt.AllowRestoreSelectionAndFocusedRow = DevExpress.Utils.DefaultBoolean.False;
-            this.gridControl_receipt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl_receipt.Location = new System.Drawing.Point(0, 0);
-            this.gridControl_receipt.MainView = this.gridView1;
-            this.gridControl_receipt.Name = "gridControl_receipt";
-            this.gridControl_receipt.Size = new System.Drawing.Size(963, 617);
-            this.gridControl_receipt.TabIndex = 0;
-            this.gridControl_receipt.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.gridControl_receiptFB, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.gridControl_receiptSql, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(846, 748);
+            this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // gridView1
+            // gridControl_receiptFB
             // 
-            this.gridView1.GridControl = this.gridControl_receipt;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsSelection.MultiSelect = true;
+            this.gridControl_receiptFB.AllowRestoreSelectionAndFocusedRow = DevExpress.Utils.DefaultBoolean.False;
+            this.gridControl_receiptFB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl_receiptFB.Location = new System.Drawing.Point(3, 3);
+            this.gridControl_receiptFB.MainView = this.gridView_receiptFB;
+            this.gridControl_receiptFB.Name = "gridControl_receiptFB";
+            this.gridControl_receiptFB.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemButtonEdit_confirm});
+            this.gridControl_receiptFB.Size = new System.Drawing.Size(840, 368);
+            this.gridControl_receiptFB.TabIndex = 0;
+            this.gridControl_receiptFB.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView_receiptFB});
+            // 
+            // gridView_receiptFB
+            // 
+            this.gridView_receiptFB.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3,
+            this.gridColumn4,
+            this.gridColumn5,
+            this.gridColumn6,
+            this.gridColumn7,
+            this.gridColumn8,
+            this.gridColumn9,
+            this.gridColumn10,
+            this.gridColumn11});
+            this.gridView_receiptFB.GridControl = this.gridControl_receiptFB;
+            this.gridView_receiptFB.Name = "gridView_receiptFB";
+            this.gridView_receiptFB.OptionsSelection.MultiSelect = true;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "ID RECEIPT";
+            this.gridColumn1.FieldName = "ID_RECEIPT";
+            this.gridColumn1.MinWidth = 25;
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.Width = 94;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "ID_VOUCHER";
+            this.gridColumn2.FieldName = "ID_VOUCHER";
+            this.gridColumn2.MinWidth = 25;
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.Width = 94;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "ID_CUSTOMER";
+            this.gridColumn3.FieldName = "ID_CUSTOMER";
+            this.gridColumn3.MinWidth = 25;
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.Width = 94;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "ID_METHOD";
+            this.gridColumn4.FieldName = "ID_METHOD";
+            this.gridColumn4.MinWidth = 25;
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.Width = 94;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "DATE_CREATE";
+            this.gridColumn5.FieldName = "DATE_CREATE";
+            this.gridColumn5.MinWidth = 25;
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 4;
+            this.gridColumn5.Width = 94;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "TOTAL_PRODUCT";
+            this.gridColumn6.FieldName = "TOTAL_PRODUCT";
+            this.gridColumn6.MinWidth = 25;
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 5;
+            this.gridColumn6.Width = 94;
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "TOTAL_PRICE";
+            this.gridColumn7.FieldName = "TOTAL_PRICE";
+            this.gridColumn7.MinWidth = 25;
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 6;
+            this.gridColumn7.Width = 94;
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "POINT";
+            this.gridColumn8.FieldName = "POINT";
+            this.gridColumn8.MinWidth = 25;
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 7;
+            this.gridColumn8.Width = 94;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "STATE_RECEIPT";
+            this.gridColumn9.FieldName = "STATE_RECEIPT";
+            this.gridColumn9.MinWidth = 25;
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 8;
+            this.gridColumn9.Width = 94;
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.Caption = "ADDRESS_RECEIPT";
+            this.gridColumn10.FieldName = "ADDRESS_RECEIPT";
+            this.gridColumn10.MinWidth = 25;
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 9;
+            this.gridColumn10.Width = 94;
+            // 
+            // gridColumn11
+            // 
+            this.gridColumn11.Caption = "Confirm";
+            this.gridColumn11.ColumnEdit = this.repositoryItemButtonEdit_confirm;
+            this.gridColumn11.MinWidth = 25;
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
+            this.gridColumn11.Visible = true;
+            this.gridColumn11.VisibleIndex = 10;
+            this.gridColumn11.Width = 94;
+            // 
+            // repositoryItemButtonEdit_confirm
+            // 
+            this.repositoryItemButtonEdit_confirm.AutoHeight = false;
+            editorButtonImageOptions4.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions4.SvgImage")));
+            this.repositoryItemButtonEdit_confirm.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Confirm", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.repositoryItemButtonEdit_confirm.Name = "repositoryItemButtonEdit_confirm";
+            this.repositoryItemButtonEdit_confirm.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.repositoryItemButtonEdit_confirm.Click += new System.EventHandler(this.repositoryItemButtonEdit_confirm_Click);
+            // 
+            // gridControl_receiptSql
+            // 
+            this.gridControl_receiptSql.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl_receiptSql.Location = new System.Drawing.Point(3, 377);
+            this.gridControl_receiptSql.MainView = this.gridView_receiptSql;
+            this.gridControl_receiptSql.Name = "gridControl_receiptSql";
+            this.gridControl_receiptSql.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemButtonEdit_response,
+            this.repositoryItemButtonEdit_seemore});
+            this.gridControl_receiptSql.Size = new System.Drawing.Size(840, 368);
+            this.gridControl_receiptSql.TabIndex = 1;
+            this.gridControl_receiptSql.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView_receiptSql});
+            // 
+            // gridView_receiptSql
+            // 
+            this.gridView_receiptSql.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn12,
+            this.gridColumn13,
+            this.gridColumn14,
+            this.gridColumn15,
+            this.gridColumn16,
+            this.gridColumn17,
+            this.gridColumn18,
+            this.gridColumn19,
+            this.gridColumn20,
+            this.gridColumn21,
+            this.gridColumn22,
+            this.gridColumn23});
+            this.gridView_receiptSql.GridControl = this.gridControl_receiptSql;
+            this.gridView_receiptSql.Name = "gridView_receiptSql";
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "ID_RECEIPT";
+            this.gridColumn12.FieldName = "ID_RECEIPT";
+            this.gridColumn12.MinWidth = 25;
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 0;
+            this.gridColumn12.Width = 94;
+            // 
+            // gridColumn13
+            // 
+            this.gridColumn13.Caption = "ID_VOUCHER";
+            this.gridColumn13.FieldName = "ID_VOUCHER";
+            this.gridColumn13.MinWidth = 25;
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.Visible = true;
+            this.gridColumn13.VisibleIndex = 1;
+            this.gridColumn13.Width = 94;
+            // 
+            // gridColumn14
+            // 
+            this.gridColumn14.Caption = "ID_CUSTOMER";
+            this.gridColumn14.FieldName = "ID_CUSTOMER";
+            this.gridColumn14.MinWidth = 25;
+            this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.Visible = true;
+            this.gridColumn14.VisibleIndex = 2;
+            this.gridColumn14.Width = 94;
+            // 
+            // gridColumn15
+            // 
+            this.gridColumn15.Caption = "ID_METHOD";
+            this.gridColumn15.FieldName = "ID_METHOD";
+            this.gridColumn15.MinWidth = 25;
+            this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.Visible = true;
+            this.gridColumn15.VisibleIndex = 3;
+            this.gridColumn15.Width = 94;
+            // 
+            // gridColumn16
+            // 
+            this.gridColumn16.Caption = "DATE_CREATE";
+            this.gridColumn16.FieldName = "DATE_CREATE";
+            this.gridColumn16.MinWidth = 25;
+            this.gridColumn16.Name = "gridColumn16";
+            this.gridColumn16.Visible = true;
+            this.gridColumn16.VisibleIndex = 4;
+            this.gridColumn16.Width = 94;
+            // 
+            // gridColumn17
+            // 
+            this.gridColumn17.Caption = "TOTAL_PRODUCT";
+            this.gridColumn17.FieldName = "TOTAL_PRODUCT";
+            this.gridColumn17.MinWidth = 25;
+            this.gridColumn17.Name = "gridColumn17";
+            this.gridColumn17.Visible = true;
+            this.gridColumn17.VisibleIndex = 5;
+            this.gridColumn17.Width = 94;
+            // 
+            // gridColumn18
+            // 
+            this.gridColumn18.Caption = "TOTAL_PRICE";
+            this.gridColumn18.FieldName = "TOTAL_PRICE";
+            this.gridColumn18.MinWidth = 25;
+            this.gridColumn18.Name = "gridColumn18";
+            this.gridColumn18.Visible = true;
+            this.gridColumn18.VisibleIndex = 6;
+            this.gridColumn18.Width = 94;
+            // 
+            // gridColumn19
+            // 
+            this.gridColumn19.Caption = "POINT";
+            this.gridColumn19.FieldName = "POINT";
+            this.gridColumn19.MinWidth = 25;
+            this.gridColumn19.Name = "gridColumn19";
+            this.gridColumn19.Visible = true;
+            this.gridColumn19.VisibleIndex = 7;
+            this.gridColumn19.Width = 94;
+            // 
+            // gridColumn20
+            // 
+            this.gridColumn20.Caption = "STATE_RECEIPT";
+            this.gridColumn20.FieldName = "STATE_RECEIPT";
+            this.gridColumn20.MinWidth = 25;
+            this.gridColumn20.Name = "gridColumn20";
+            this.gridColumn20.Visible = true;
+            this.gridColumn20.VisibleIndex = 8;
+            this.gridColumn20.Width = 94;
+            // 
+            // gridColumn21
+            // 
+            this.gridColumn21.Caption = "ADDRESS_RECEIPT";
+            this.gridColumn21.FieldName = "ADDRESS_RECEIPT";
+            this.gridColumn21.MinWidth = 25;
+            this.gridColumn21.Name = "gridColumn21";
+            this.gridColumn21.Visible = true;
+            this.gridColumn21.VisibleIndex = 9;
+            this.gridColumn21.Width = 94;
+            // 
+            // gridColumn22
+            // 
+            this.gridColumn22.Caption = "Response";
+            this.gridColumn22.ColumnEdit = this.repositoryItemButtonEdit_response;
+            this.gridColumn22.MinWidth = 25;
+            this.gridColumn22.Name = "gridColumn22";
+            this.gridColumn22.Visible = true;
+            this.gridColumn22.VisibleIndex = 10;
+            this.gridColumn22.Width = 94;
+            // 
+            // repositoryItemButtonEdit_response
+            // 
+            this.repositoryItemButtonEdit_response.AutoHeight = false;
+            editorButtonImageOptions5.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions5.SvgImage")));
+            this.repositoryItemButtonEdit_response.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Response", -1, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.repositoryItemButtonEdit_response.Name = "repositoryItemButtonEdit_response";
+            this.repositoryItemButtonEdit_response.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.repositoryItemButtonEdit_response.Click += new System.EventHandler(this.repositoryItemButtonEdit_response_Click);
+            // 
+            // gridColumn23
+            // 
+            this.gridColumn23.Caption = "See More";
+            this.gridColumn23.ColumnEdit = this.repositoryItemButtonEdit_seemore;
+            this.gridColumn23.MinWidth = 25;
+            this.gridColumn23.Name = "gridColumn23";
+            this.gridColumn23.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
+            this.gridColumn23.Visible = true;
+            this.gridColumn23.VisibleIndex = 11;
+            this.gridColumn23.Width = 94;
+            // 
+            // repositoryItemButtonEdit_seemore
+            // 
+            this.repositoryItemButtonEdit_seemore.AutoHeight = false;
+            editorButtonImageOptions6.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions6.SvgImage")));
+            this.repositoryItemButtonEdit_seemore.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "See More", -1, true, true, false, editorButtonImageOptions6, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject21, serializableAppearanceObject22, serializableAppearanceObject23, serializableAppearanceObject24, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.repositoryItemButtonEdit_seemore.Name = "repositoryItemButtonEdit_seemore";
+            this.repositoryItemButtonEdit_seemore.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.repositoryItemButtonEdit_seemore.Click += new System.EventHandler(this.repositoryItemButtonEdit_seemore_Click);
             // 
             // accordionControl1
             // 
-            this.accordionControl1.Appearance.AccordionControl.BackColor = System.Drawing.Color.White;
+            this.accordionControl1.Appearance.AccordionControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.accordionControl1.Appearance.AccordionControl.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.accordionControl1.Appearance.AccordionControl.Options.UseBackColor = true;
+            this.accordionControl1.Appearance.AccordionControl.Options.UseFont = true;
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement1,
             this.accordionCtrlE_exportExcel,
             this.accordionCtrlE_exportWord,
-            this.accordionCtrlE_removeReceipt,
             this.accordionCtrlE_SyncFromFirebase});
             this.accordionControl1.Location = new System.Drawing.Point(0, 39);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl1.Size = new System.Drawing.Size(254, 617);
+            this.accordionControl1.Size = new System.Drawing.Size(371, 748);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -99,7 +477,7 @@ namespace PepperLunch
             this.accordionControlElement1.Appearance.Hovered.Options.UseBackColor = true;
             this.accordionControlElement1.Appearance.Hovered.Options.UseFont = true;
             this.accordionControlElement1.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.accordionControlElement1.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            this.accordionControlElement1.Appearance.Normal.ForeColor = System.Drawing.Color.White;
             this.accordionControlElement1.Appearance.Normal.Options.UseFont = true;
             this.accordionControlElement1.Appearance.Normal.Options.UseForeColor = true;
             this.accordionControlElement1.Appearance.Pressed.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -117,8 +495,11 @@ namespace PepperLunch
             // 
             // accordionCtrlE_exportExcel
             // 
-            this.accordionCtrlE_exportExcel.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            this.accordionCtrlE_exportExcel.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.accordionCtrlE_exportExcel.Appearance.Normal.ForeColor = System.Drawing.Color.FloralWhite;
+            this.accordionCtrlE_exportExcel.Appearance.Normal.Options.UseFont = true;
             this.accordionCtrlE_exportExcel.Appearance.Normal.Options.UseForeColor = true;
+            this.accordionCtrlE_exportExcel.Height = 40;
             this.accordionCtrlE_exportExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionCtrlE_exportExcel.ImageOptions.Image")));
             this.accordionCtrlE_exportExcel.Name = "accordionCtrlE_exportExcel";
             this.accordionCtrlE_exportExcel.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
@@ -127,31 +508,28 @@ namespace PepperLunch
             // 
             // accordionCtrlE_exportWord
             // 
-            this.accordionCtrlE_exportWord.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            this.accordionCtrlE_exportWord.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.accordionCtrlE_exportWord.Appearance.Normal.ForeColor = System.Drawing.Color.FloralWhite;
+            this.accordionCtrlE_exportWord.Appearance.Normal.Options.UseFont = true;
             this.accordionCtrlE_exportWord.Appearance.Normal.Options.UseForeColor = true;
+            this.accordionCtrlE_exportWord.Height = 40;
             this.accordionCtrlE_exportWord.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionCtrlE_exportWord.ImageOptions.Image")));
             this.accordionCtrlE_exportWord.Name = "accordionCtrlE_exportWord";
             this.accordionCtrlE_exportWord.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionCtrlE_exportWord.Text = "Export Receipt (Word)";
             this.accordionCtrlE_exportWord.Click += new System.EventHandler(this.accordionCtrlE_exportWord_Click);
             // 
-            // accordionCtrlE_removeReceipt
-            // 
-            this.accordionCtrlE_removeReceipt.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
-            this.accordionCtrlE_removeReceipt.Appearance.Normal.Options.UseForeColor = true;
-            this.accordionCtrlE_removeReceipt.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionCtrlE_removeReceipt.ImageOptions.Image")));
-            this.accordionCtrlE_removeReceipt.Name = "accordionCtrlE_removeReceipt";
-            this.accordionCtrlE_removeReceipt.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionCtrlE_removeReceipt.Text = "Delete Forever";
-            this.accordionCtrlE_removeReceipt.Click += new System.EventHandler(this.accordionCtrlE_removeReceipt_Click);
-            // 
             // accordionCtrlE_SyncFromFirebase
             // 
-            this.accordionCtrlE_SyncFromFirebase.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            this.accordionCtrlE_SyncFromFirebase.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.accordionCtrlE_SyncFromFirebase.Appearance.Normal.ForeColor = System.Drawing.Color.FloralWhite;
+            this.accordionCtrlE_SyncFromFirebase.Appearance.Normal.Options.UseFont = true;
             this.accordionCtrlE_SyncFromFirebase.Appearance.Normal.Options.UseForeColor = true;
+            this.accordionCtrlE_SyncFromFirebase.Height = 40;
+            this.accordionCtrlE_SyncFromFirebase.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionCtrlE_SyncFromFirebase.ImageOptions.Image")));
             this.accordionCtrlE_SyncFromFirebase.Name = "accordionCtrlE_SyncFromFirebase";
             this.accordionCtrlE_SyncFromFirebase.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionCtrlE_SyncFromFirebase.Text = "Sync From Firebase";
+            this.accordionCtrlE_SyncFromFirebase.Text = "Confirm All";
             this.accordionCtrlE_SyncFromFirebase.Click += new System.EventHandler(this.accordionCtrlE_SyncFromFirebase_Click);
             // 
             // fluentDesignFormControl1
@@ -167,7 +545,7 @@ namespace PepperLunch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1217, 656);
+            this.ClientSize = new System.Drawing.Size(1217, 787);
             this.ControlContainer = this.fluentDesignFormContainer1;
             this.Controls.Add(this.fluentDesignFormContainer1);
             this.Controls.Add(this.accordionControl1);
@@ -179,8 +557,14 @@ namespace PepperLunch
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmReceipt_Load);
             this.fluentDesignFormContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl_receipt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl_receiptFB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_receiptFB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_confirm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl_receiptSql)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_receiptSql)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_response)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_seemore)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
             this.ResumeLayout(false);
@@ -192,11 +576,39 @@ namespace PepperLunch
         private DevExpress.XtraBars.Navigation.AccordionControl accordionControl1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
         private DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl fluentDesignFormControl1;
-        private DevExpress.XtraGrid.GridControl gridControl_receipt;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.GridControl gridControl_receiptFB;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView_receiptFB;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrlE_exportExcel;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrlE_exportWord;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrlE_removeReceipt;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrlE_SyncFromFirebase;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit_confirm;
+        private DevExpress.XtraGrid.GridControl gridControl_receiptSql;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView_receiptSql;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn19;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn20;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn21;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit_response;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit_seemore;
     }
 }

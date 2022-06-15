@@ -9,7 +9,7 @@ namespace DTO_PPL
 {
     public class Order
     {
-        public Dictionary<string, Detail> list_detail;
+        public Dictionary<string, Dictionary<string, Detail_Order>> order;
         public Order() { }
     }
 }

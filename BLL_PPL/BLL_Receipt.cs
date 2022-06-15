@@ -21,7 +21,17 @@ namespace BLL_PPL
         {
 
         }
-        //lay data tu sql
+        public static List<RECEIPT> getList()
+        {
+            return DAL_Receipt.getList();
+        }
+
+        public static List<DETAIL_RECEIPT> getDetailReceiptList(string ID)
+        {
+            return DAL_Receipt.getDetailReceiptList(ID);
+        }
+
+        //lay data join tu sql
         public static List<RECEIPT_FULL> read_Receipt()
         {
             return DAL_Receipt.getReceipts();
@@ -89,20 +99,5 @@ namespace BLL_PPL
                 return false;
             }
         }
-
-        public static async Task<List<RECEIPT>> getDataFromFirebaseAsync()
-        {
-            try
-            {
-                return await FB_Order.getEntire();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return null;
-            }
-        }
-
-
     }
 }

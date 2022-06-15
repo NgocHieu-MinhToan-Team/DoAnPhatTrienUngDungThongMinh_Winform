@@ -15,8 +15,8 @@ namespace PepperLunch
 {
     public partial class frmContainer : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        public string static_USERNAME_STAFF { get; set; }
         public string static_ID_GROUP_USER { get; set; }
+        private static string static_USERNAME_STAFF = Program.frmlogin.staff_global.USERNAME_STAFF;
         public frmContainer()
         {
             InitializeComponent();
@@ -115,32 +115,22 @@ namespace PepperLunch
         private void barBtn_customer_ItemClick(object sender, ItemClickEventArgs e)
         {
             // if form is not opened
-            if (!isOpenForm(typeof(frmCustomer)))
-            {
-                frmCustomer newForm = new frmCustomer();
-                //newForm.USERNAME_STAFF = static_USERNAME_STAFF;
-                newForm.MdiParent = this;
-                newForm.Show();
-            }
+           
+            frmCustomer newForm = new frmCustomer();
+            //newForm.USERNAME_STAFF = static_USERNAME_STAFF;
+            newForm.MdiParent = this;
+            newForm.Show();
         }
 
-        private void barBtn_orders_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            //if (!isOpenForm(typeof(frmOrders)))
-            //{
-            //    frmOrders newForm = new frmOrders();
-            //    //newForm.USERNAME_STAFF = static_USERNAME_STAFF;
-            //    newForm.MdiParent = this;
-            //    newForm.Show();
-            //}
-        }
+        
+
 
         private void barBtn_Promotion_ItemClick(object sender, ItemClickEventArgs e)
         {
             // if form is not opened
-            if (!isOpenForm(typeof(frmPromotion)))
+            if (!isOpenForm(typeof(frmManagePromotion)))
             {
-                frmPromotion newForm = new frmPromotion();
+                frmManagePromotion newForm = new frmManagePromotion();
                 newForm.static_USERNAME_STAFF = static_USERNAME_STAFF;
                 newForm.MdiParent = this;
                 newForm.Show();
@@ -149,22 +139,32 @@ namespace PepperLunch
 
         private void frmContainer_Load(object sender, EventArgs e)
         {
+            string group_id = Program.frmlogin.staff_global.ID_GROUP;
             // check role user
-            if (!BLL_Staff.isAdmin(static_ID_GROUP_USER))
+            if (!BLL_Staff.isAdmin(group_id))
             {
-                ribbonPageGroup_Firebase.Visible =  false;
+                ribbonPageGroup_Firebase.Visible = false;
             }
         }
 
-        private void barBtn_Ingredient_ItemClick(object sender, ItemClickEventArgs e)
+        //private void barBtn_Ingredient_ItemClick(object sender, ItemClickEventArgs e)
+        //{
+        //    frmRecipe newForm = new frmRecipe();
+        //    newForm.MdiParent = this;
+        //    newForm.Show();
+        //}
+
+        private void barBtn_Import_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (!isOpenForm(typeof(frmRecipe)))
-            {
-                frmRecipe newForm = new frmRecipe();
-                //newForm.static_USERNAME_STAFF = static_USERNAME_STAFF;
-                newForm.MdiParent = this;
-                newForm.Show();
-            }
+            frmImport newForm = new frmImport();
+            newForm.MdiParent = this;
+            newForm.Show();
+        }
+
+        private void barBtn_Ingredients_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frmIngredients newForm = new frmIngredients();
+            newForm.Show();
         }
     }
 }

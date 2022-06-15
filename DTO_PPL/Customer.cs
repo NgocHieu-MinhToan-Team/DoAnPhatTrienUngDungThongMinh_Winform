@@ -18,40 +18,48 @@ namespace DTO_PPL
         public int point;
         public Customer() { }
 
-        public static int compareCustomer(CUSTOMER CUSTOMER_SQL,Customer CUSTOMER_FB)
+        public static bool isEqual(CUSTOMER CUSTOMER_SQL,Customer CUSTOMER_FB)
         {
-            if(CUSTOMER_SQL!=null && CUSTOMER_FB != null)
+            try
             {
+                // parse 
+                CUSTOMER_FB.date_OF_BIRTH.Trim().Replace('/', '-');
+                CUSTOMER_FB.date_OF_BIRTH.Replace(' ', 'T');
+                CUSTOMER_FB.date_CREATE.Trim().Replace('/', '-');
+                CUSTOMER_FB.date_CREATE.Replace(' ', 'T');
                 // case : Customer update infomation 
-                if(CUSTOMER_SQL.ID_CUSTOMER == CUSTOMER_FB.id_CUSTOMER)
+                if (CUSTOMER_SQL.ID_CUSTOMER == CUSTOMER_FB.id_CUSTOMER)
                 {
                     // check change of customer
                     if (CUSTOMER_SQL.SURNAME_CUSTOMER == CUSTOMER_FB.surname_CUSTOMER &&
-                       CUSTOMER_SQL.NAME_CUSTOMER == CUSTOMER_FB.name_CUSTOMER &&
-                       CUSTOMER_SQL.DATE_OF_BIRTH.ToString() == CUSTOMER_FB.date_OF_BIRTH &&
-                       CUSTOMER_SQL.DATE_CREATE.ToString() == CUSTOMER_FB.date_CREATE &&
-                       CUSTOMER_SQL.GENDER_CUSTOMER == CUSTOMER_FB.gender_CUSTOMER &&
-                       CUSTOMER_SQL.ADDRESS_CUSTOMER == CUSTOMER_FB.address_CUSTOMER &&
-                       CUSTOMER_SQL.PHONE_CUSTOMER == CUSTOMER_FB.phone_CUSTOMER &&
-                       CUSTOMER_SQL.PASSWORD_CUSTOMER == CUSTOMER_FB.password_CUSTOMER &&
-                       CUSTOMER_SQL.POINT == CUSTOMER_FB.point)
+                        CUSTOMER_SQL.NAME_CUSTOMER == CUSTOMER_FB.name_CUSTOMER &&
+                        CUSTOMER_SQL.DATE_OF_BIRTH.Value.Date == DateTime.Parse(CUSTOMER_FB.date_OF_BIRTH).Date &&
+                        CUSTOMER_SQL.DATE_CREATE.Value.Date == DateTime.Parse(CUSTOMER_FB.date_CREATE).Date &&
+                        CUSTOMER_SQL.GENDER_CUSTOMER == CUSTOMER_FB.gender_CUSTOMER &&
+                        CUSTOMER_SQL.ADDRESS_CUSTOMER == CUSTOMER_FB.address_CUSTOMER &&
+                        CUSTOMER_SQL.PHONE_CUSTOMER == CUSTOMER_FB.phone_CUSTOMER &&
+                        CUSTOMER_SQL.PASSWORD_CUSTOMER == CUSTOMER_FB.password_CUSTOMER &&
+                        CUSTOMER_SQL.POINT == CUSTOMER_FB.point)
                     {
                         // no change
-                        return 0;
+                        return true;
                     }
                     else
                     {
                         // update 
-                        return 2;
+                        return false;
                     }
                 }
-                // new 
                 else
                 {
-                    return 1;
+                    return false;
                 }
             }
-            return -1;
+            catch 
+            {
+                Console.WriteLine("input  null");
+                return false;
+            }
         }
 
         public static List<CUSTOMER> parseList(List<Customer> listOld)
@@ -64,6 +72,7 @@ namespace DTO_PPL
                 old.date_CREATE.Trim().Replace('/', '-');
                 old.date_CREATE.Replace(' ', 'T');
                 CUSTOMER customerParse = new CUSTOMER();
+                customerParse.ID_CUSTOMER = old.id_CUSTOMER;
                 customerParse.SURNAME_CUSTOMER = old.surname_CUSTOMER;
                 customerParse.NAME_CUSTOMER = old.name_CUSTOMER;
                 customerParse.DATE_OF_BIRTH = DateTime.Parse(old.date_OF_BIRTH);

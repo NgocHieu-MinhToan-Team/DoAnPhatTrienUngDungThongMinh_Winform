@@ -16,81 +16,104 @@ namespace FireBase_PPL
 {
     public class FB_Receipt
     {
-        //get Client from  firebase
+        public FB_Receipt() { }
+
+        //get state connect firebase
         static IFirebaseClient client = ConnectFireBase.CreateFirebaseClient();
-        
-        public static async Task<RECEIPT_FULL> getOne(string rootName)
+
+        //get one Order
+        public static async Task<Order> getOne(string rootName)
         {
             if (client != null)
             {
                 FirebaseResponse response = await client.GetAsync(rootName);
-                return response.ResultAs<RECEIPT_FULL>();
+                return response.ResultAs<Order>();
             }
             return null;
         }
 
-
-        // get all node on branch Category
-        private static async Task<Dictionary<string, RECEIPT_FULL>> getEntireOnBranch(string rootName)
+        // get all node on branch Order
+        private static async Task<Dictionary<string, Dictionary<string, Detail_Order>>> getEntireOnBranch(string rootName)
         {
             if (client != null)
             {
                 FirebaseResponse response = await client.GetAsync(rootName);
-                return response.ResultAs<Dictionary<string, RECEIPT_FULL>>();
+                return response.ResultAs<Dictionary<string, Dictionary<string, Detail_Order>>>();
             }
             return null;
         }
 
-
-        //get list receipt
-        public static async Task<List<RECEIPT_FULL>> getEntire()
+        //get list Order
+        public static async Task<List<RECEIPT>> getEntire()
         {
-            List<RECEIPT_FULL> listOfFirebase = new List<RECEIPT_FULL>();
-            Dictionary<string, RECEIPT_FULL> listData = await getEntireOnBranch("Database/Receipt");
+            List<RECEIPT> listOfReceipt = new List<RECEIPT>();
+            Dictionary<string, Dictionary<string, Detail_Order>> listData = await getEntireOnBranch("Database/Order");
+            Order order = new Order();
+            order.order = await getEntireOnBranch("Database/Order");
             try
             {
                 // convert from Dictionary to list 
-                if (listData != null)
+                if (order != null)
                 {
-                    foreach (var itemData in listData)
+                    foreach (var detail_item in order.order)
                     {
-                        RECEIPT_FULL itemOfFirebase = itemData.Value;
-                        listOfFirebase.Add(itemOfFirebase);
+                        Dictionary<string, Detail_Order> detail_order = detail_item.Value;
+
+
+                        foreach (var item_detail_order in detail_order)
+                        {
+                            RECEIPT itemReceipt = new RECEIPT();
+                            // get id customer 
+                            itemReceipt.ID_CUSTOMER = item_detail_order.Value.id_CUSTOMER;
+                            itemReceipt.ID_METHOD = item_detail_order.Value.id_METHOD;
+                            itemReceipt.ID_RECEIPT = item_detail_order.Key;
+                            itemReceipt.ID_VOUCHER = item_detail_order.Value.id_VOUCHER;
+                            itemReceipt.STATE_RECEIPT = item_detail_order.Value.status;
+                            itemReceipt.TOTAL_PRICE = (int?)item_detail_order.Value.total_PAYMENT;
+                            itemReceipt.ADDRESS_RECEIPT = item_detail_order.Value.address;
+                            itemReceipt.DATE_CREATE = DateTime.Now;
+                            Dictionary<string, Cart_Item> list_cart = item_detail_order.Value.list_CART;
+                            int total = 0;
+                            foreach (var item_cart_item in list_cart)
+                            {
+                                total += item_cart_item.Value.soluong;
+
+                            }
+                            itemReceipt.TOTAL_PRODUCT = total;
+                            itemReceipt.POINT = (int?)item_detail_order.Value.total_PAYMENT;
+                            itemReceipt.STATE_RECEIPT = item_detail_order.Value.status;
+
+                            listOfReceipt.Add(itemReceipt);
+
+                        }
                     }
                 }
+                return listOfReceipt;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return null;
             }
-            return listOfFirebase;
-
         }
 
-
-        // get receipt that was not synchronized 
-        public static async Task<List<RECEIPT_FULL>> getEntireNotSync(List<RECEIPT_FULL> listOfSql)
+        public static async Task<List<RECEIPT>> getEntireNotSync()
         {
-            List<RECEIPT_FULL> listNotSync = new List<RECEIPT_FULL>();
-            Dictionary<string, RECEIPT_FULL> listData = await getEntireOnBranch("Database/Receipt");
+            // list new 
+            List<RECEIPT> listNotSync = new List<RECEIPT>();
+            List<RECEIPT> listOfFirebase = await getEntire();// get entire fb
+            List<RECEIPT> listOfSql = DAL_Receipt.getList();// get entire sql
             try
             {
-
-                foreach (RECEIPT_FULL itemOfSql in listOfSql)
+                // loop through list on firebase
+                foreach (RECEIPT itemOfFirebase in listOfFirebase)
                 {
-                    RECEIPT_FULL itemOfFirebase = await getOne("Database/Receipt/" + itemOfSql.ID_RECEIPT.ToString() + "/");
-                    if (itemOfFirebase != null)
+                    // check exits 
+                    RECEIPT isExist = listOfSql.SingleOrDefault(t => t.ID_RECEIPT == itemOfFirebase.ID_RECEIPT);
+                    // if not exist => add to list
+                    if (isExist == null && itemOfFirebase.STATE_RECEIPT==0)
                     {
-                        //if (itemOfFirebase.GROUP_CATEGORY != itemOfSql.GROUP_CATEGORY
-                        //|| itemOfFirebase.NAME_CATEGORY != itemOfSql.NAME_CATEGORY)
-                        //{
-                        //    listNotSync.Add(itemOfSql);
-                        //}
-                    }
-                    else
-                    {
-                        listNotSync.Add(itemOfSql);
+                        listNotSync.Add(itemOfFirebase);
                     }
                 }
             }
@@ -102,65 +125,255 @@ namespace FireBase_PPL
             return listNotSync;
 
         }
-        // update data on firebase 
-
-
-
-        //
-        public static async Task<bool> updateFromFirebaseAsync(List<RECEIPT_FULL> listOfSql)
+        public static bool isEqual(RECEIPT SQL, RECEIPT FB)
         {
-
             try
             {
-                //get all firebase
-                Dictionary<string, RECEIPT_FULL> listOfFirebase = await getEntireOnBranch("Database/Receipt");
-                foreach (var itemOfFirebase in listOfFirebase)
+                // parse 
+                FB.DATE_CREATE.ToString().Trim().Replace('/', '-');
+                FB.DATE_CREATE.ToString().Replace(' ', 'T');
+                // case : Customer update infomation 
+                if (SQL.ID_RECEIPT == FB.ID_RECEIPT)
                 {
-                    RECEIPT_FULL itemOfSql = listOfSql.SingleOrDefault(t => t.ID_RECEIPT == itemOfFirebase.Value.ID_RECEIPT);
-                    if(itemOfSql!=null && itemOfSql.STATE_RECEIPT != itemOfFirebase.Value.STATE_RECEIPT)
+                    // check change of customer
+                    if (SQL.ID_VOUCHER == FB.ID_VOUCHER &&
+                        SQL.ID_CUSTOMER == FB.ID_CUSTOMER &&
+                        SQL.DATE_CREATE.Value.Date == DateTime.Parse(FB.DATE_CREATE.ToString()).Date &&
+                        SQL.ID_METHOD == FB.ID_METHOD &&
+                        SQL.TOTAL_PRODUCT == FB.TOTAL_PRODUCT &&
+                        SQL.TOTAL_PRICE == FB.TOTAL_PRICE &&
+                        SQL.POINT == FB.POINT &&
+                        SQL.ADDRESS_RECEIPT == FB.ADDRESS_RECEIPT &&
+                        SQL.STATE_RECEIPT == FB.STATE_RECEIPT)
                     {
-                        //update if exist and state not like
-                        DAL_Receipt.updateReceipt(itemOfFirebase.Value);
+                        // no change
+                        return true;
                     }
                     else
                     {
-                        // insert 
-                        DAL_Receipt.insertReceipt(itemOfFirebase.Value);
+                        // update 
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                Console.WriteLine("input  null");
+                return false;
+            }
+        }
+
+        public static async Task<bool> updateEntireReceiptFromFirebase(int status)
+        {
+            try
+            {
+                List<RECEIPT> list = await getEntireNotSync();
+                if (list.Count == 0)
+                {
+                    return false;
+                }
+                // insert receipt
+                foreach (RECEIPT item in list)
+                {
+                    if (!await updateReceiptFromFirebase(item, status))
+                    {
+                        return false;
+                    }
+                }
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+        public static async Task<bool> updateReceiptFromFirebase(RECEIPT receipt,int status)
+        {
+            try
+            {
+                if (!await checkInventory(receipt))
+                {
+                    return false;
+                }
+                else
+                {
+                    await updateInventory(receipt);
+                }
+                // get all detail 
+                List<DETAIL_RECEIPT> listAllDetail = await getDetailReceiptFromFirebase();
+                // insert receipt
+                    // if not  exist in sql
+                if (!isExistReceipt(receipt))
+                {
+                    // insert receipt to sql
+                    DAL_Receipt.insertReceipt(receipt);
+                    // insert detail receipt by idReceipt  to sql
+                    List<DETAIL_RECEIPT> listDetail = listAllDetail.Where(t => t.ID_RECEIPT == receipt.ID_RECEIPT).ToList();
+                    foreach (DETAIL_RECEIPT detail in listDetail)
+                    {
+                        DAL_Receipt.insertDetailReceipt(detail);
+                    }
+                    // update state to firebase
+                    await updateStatusReceipt(receipt, status);
+                }
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+        private static async Task<bool> checkInventory(RECEIPT receipt)
+        {
+            List<DETAIL_RECEIPT> listAllDetail = await getDetailReceiptFromFirebase();
+            List<DETAIL_RECEIPT> listDetail = listAllDetail.Where(t => t.ID_RECEIPT == receipt.ID_RECEIPT).ToList();
+            foreach(DETAIL_RECEIPT item in listDetail)
+            {
+
+                // get list recipe 
+                foreach(DETAIL_PRODUCT recipe in DAL_Recipe.getList(item.ID_PRODUCT))
+                {
+                    // get inventory by Id food
+                    int inventory = (int)DAL_Ingredient.getList().SingleOrDefault(t => t.ID_INGREDIENT == recipe.ID_INGREDIENT).INVENTORY;
+                    // 
+                    int curentWeight = (int)(recipe.WEIGHT_DETAIL * item.QUANTITY);
+                    // curentWeight exceeded inventory
+                    if (inventory <= curentWeight)
+                    {
+                        return false;
                     }
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return false;
-            }
-
             return true;
-
         }
 
-        public static async Task<bool> updateToFirebaseAsync(List<RECEIPT_FULL> listOfSql)
+        private static async Task<bool> updateInventory(RECEIPT receipt)
         {
-
-            try
+            List<DETAIL_RECEIPT> listAllDetail = await getDetailReceiptFromFirebase();
+            List<DETAIL_RECEIPT> listDetail = listAllDetail.Where(t => t.ID_RECEIPT == receipt.ID_RECEIPT).ToList();
+            foreach (DETAIL_RECEIPT item in listDetail)
             {
 
-                await ConnectFireBase.FirebaseDeleteData("Database/Receipt");
-
-                foreach (RECEIPT_FULL itemOfSql in listOfSql)
+                // get list recipe 
+                foreach (DETAIL_PRODUCT recipe in DAL_Recipe.getList(item.ID_PRODUCT))
                 {
-                    await ConnectFireBase.FirebaseInsertData(itemOfSql, "Database/Receipt/" + itemOfSql.ID_RECEIPT.ToString() + "/");
+                    // get inventory by Id food
+                    int inventory = (int)DAL_Ingredient.getList().SingleOrDefault(t => t.ID_INGREDIENT == recipe.ID_INGREDIENT).INVENTORY;
+                    // 
+                    int curentWeight = (int)(recipe.WEIGHT_DETAIL * item.QUANTITY);
+                    // curentWeight exceeded inventory
+                    if (inventory <= curentWeight)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        // update inventory
+                        DAL_Ingredient.update(recipe.ID_INGREDIENT, curentWeight);
+                    }
                 }
             }
+            return true;
+        }
+
+
+        public static async Task<bool> updateStatusReceipt(RECEIPT receipt,int status)
+        {
+            try
+            {
+                // update state to firebase
+                string rootName = "Database/Order/" + receipt.ID_CUSTOMER + "/" + receipt.ID_RECEIPT + "/status";
+                await ConnectFireBase.FirebaseInsertData(status, rootName);
+                return true;
+
+            }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return false;
             }
-
-            return true;
         }
 
+        // detail receipt
+        public static async Task<bool> updateDetailReceiptFromFirebase()
+        {
+            try
+            {
+                List<DETAIL_RECEIPT> listDetail = await getDetailReceiptFromFirebase();
+                // insert detail receipt sql
+                foreach (DETAIL_RECEIPT detail in listDetail)
+                {
+                    DAL_Receipt.insertDetailReceipt(detail);
+                }
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+        public static async Task<List<DETAIL_RECEIPT>> getDetailReceiptFromFirebase()
+        {
+            List<DETAIL_RECEIPT> listOfDetailReceipt = new List<DETAIL_RECEIPT>();
+            Dictionary<string, Dictionary<string, Detail_Order>> listData = await getEntireOnBranch("Database/Order");
+            Order order = new Order();
+            order.order = await getEntireOnBranch("Database/Order");
+            try
+            {
+                // convert from Dictionary to list 
+                if (order != null)
+                {
+                    foreach (var detail_item in order.order)
+                    {
+                        Dictionary<string, Detail_Order> detail_order = detail_item.Value;
+                        foreach (var item_detail_order in detail_order)
+                        {
+                            Dictionary<string, Cart_Item> list_cart = item_detail_order.Value.list_CART;
+                            foreach (var item_cart_item in list_cart)
+                            {
+                                DETAIL_RECEIPT item = new DETAIL_RECEIPT();
+                                Product product = item_cart_item.Value.product;
+                                string id = "";
+                                id = product.id_PRODUCT + item_detail_order.Key;
+                                item.ID_DETAIL_RECEIPT = id;
+                                item.ID_RECEIPT = item_detail_order.Key;
+                                item.ID_PRODUCT = product.id_PRODUCT;
+                                item.PRICE = (int?)product.price_PRODUCT;
+                                item.QUANTITY = item_cart_item.Value.soluong;
+                                listOfDetailReceipt.Add(item);
+                            }
+
+                        }
+                    }
+                }
+                return listOfDetailReceipt;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        // check exist
+        public static bool isExistReceipt(RECEIPT obj)
+        {
+            bool rs = DAL_Receipt.getList().Any(t => t.ID_RECEIPT == obj.ID_RECEIPT);
+            return rs;
+        }
 
     }
 }

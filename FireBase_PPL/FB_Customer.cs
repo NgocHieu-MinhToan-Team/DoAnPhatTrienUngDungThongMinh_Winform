@@ -10,6 +10,7 @@ using FireSharp;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
+using System.Globalization;
 
 namespace FireBase_PPL
 {
@@ -17,7 +18,7 @@ namespace FireBase_PPL
     {
         //get Client from  firebase
         static IFirebaseClient client = ConnectFireBase.CreateFirebaseClient();
-        
+       
         public static async Task<Customer> getOne(string rootName)
         {
             if (client != null)
@@ -83,14 +84,20 @@ namespace FireBase_PPL
                 // loop through list on firebase
                 foreach (Customer itemOfFirebase in listOfFirebase.Values)
                 {
-                    foreach (CUSTOMER itemOfSql in listOfSql)
+                    // check exits 
+                    CUSTOMER isExist = listOfSql.SingleOrDefault(t => t.ID_CUSTOMER == itemOfFirebase.id_CUSTOMER);
+                    // case exist = true
+                    if (isExist != null)
                     {
-                        // case update 
-                        if (Customer.compareCustomer(itemOfSql, itemOfFirebase) == 2 || Customer.compareCustomer(itemOfSql, itemOfFirebase) == 1)
+                        // if there is difference => add to list
+                        if (Customer.isEqual(isExist, itemOfFirebase) == false)
                         {
                             listNotSync.Add(itemOfFirebase);
-                            break;
                         }
+                    }
+                    else
+                    { // if not exist => add to list
+                        listNotSync.Add(itemOfFirebase);
                     }
                 }
             }
@@ -117,54 +124,25 @@ namespace FireBase_PPL
                 // loop through list on firebase
                 foreach (Customer itemOfFirebase in listOfFirebase)
                 {
-                    foreach (CUSTOMER itemOfSql in listOfSql)
+                    // check exits 
+                    CUSTOMER isExist = listOfSql.SingleOrDefault(t => t.ID_CUSTOMER == itemOfFirebase.id_CUSTOMER);
+                    // case exist = true
+                    if (isExist!=null)
                     {
+                        bool rs = isExist.Equals(itemOfFirebase);
+                        //int rs = Customer.compareCustomer(isExist, itemOfFirebase);
                         // case update 
-                        if (Customer.compareCustomer(itemOfSql, itemOfFirebase) == 2)
+                        if (rs==false)
                         {
-                            // parse 
-                            itemOfFirebase.date_OF_BIRTH.Trim().Replace('/', '-');
-                            itemOfFirebase.date_OF_BIRTH.Replace(' ', 'T');
-                            itemOfFirebase.date_CREATE.Trim().Replace('/', '-');
-                            itemOfFirebase.date_CREATE.Replace(' ', 'T');
-                            CUSTOMER customerParse = new CUSTOMER();
-                            customerParse.SURNAME_CUSTOMER = itemOfFirebase.surname_CUSTOMER;
-                            customerParse.NAME_CUSTOMER = itemOfFirebase.name_CUSTOMER;
-                            customerParse.DATE_OF_BIRTH = DateTime.Parse(itemOfFirebase.date_OF_BIRTH);
-                            customerParse.DATE_CREATE = DateTime.Parse(itemOfFirebase.date_CREATE);
-                            customerParse.GENDER_CUSTOMER = itemOfFirebase.gender_CUSTOMER;
-                            customerParse.ADDRESS_CUSTOMER = itemOfFirebase.address_CUSTOMER;
-                            customerParse.PHONE_CUSTOMER = itemOfFirebase.phone_CUSTOMER;
-                            customerParse.PASSWORD_CUSTOMER = itemOfFirebase.password_CUSTOMER;
-                            customerParse.POINT = itemOfFirebase.point;
+                            CUSTOMER customerParse = assign(isExist, itemOfFirebase);
                             DAL_Customer.updateCustomer(customerParse);
-                            break;
                         }
-                        //  case new 
-                        else if (Customer.compareCustomer(itemOfSql, itemOfFirebase) == 1)
-                        {
-                            // parse 
-                            itemOfFirebase.date_OF_BIRTH.Trim().Replace('/', '-');
-                            itemOfFirebase.date_OF_BIRTH.Replace(' ', 'T');
-                            itemOfFirebase.date_CREATE.Trim().Replace('/', '-');
-                            itemOfFirebase.date_CREATE.Replace(' ', 'T');
-                            CUSTOMER customerParse = new CUSTOMER();
-                            customerParse.ID_CUSTOMER = itemOfFirebase.id_CUSTOMER;
-                            customerParse.SURNAME_CUSTOMER = itemOfFirebase.surname_CUSTOMER;
-                            customerParse.NAME_CUSTOMER = itemOfFirebase.name_CUSTOMER;
-                            customerParse.DATE_OF_BIRTH = DateTime.Parse(itemOfFirebase.date_OF_BIRTH);
-                            customerParse.DATE_CREATE = DateTime.Parse(itemOfFirebase.date_CREATE);
-                            customerParse.DATE_UPDATE = DateTime.Now;
-                            customerParse.MAIL_CUSTOMER = "NONE";
-                            customerParse.GENDER_CUSTOMER = itemOfFirebase.gender_CUSTOMER;
-                            customerParse.ADDRESS_CUSTOMER = itemOfFirebase.address_CUSTOMER;
-                            customerParse.PHONE_CUSTOMER = itemOfFirebase.phone_CUSTOMER;
-                            customerParse.PASSWORD_CUSTOMER = itemOfFirebase.password_CUSTOMER;
-                            customerParse.POINT = itemOfFirebase.point;
-                            customerParse.TYPE_CUSTOMER = "TYPECUS01";
-                            DAL_Customer.insertCustomer(customerParse);
-                            break;
-                        }
+                    }
+                    else
+                    {
+                        // add new customer
+                        CUSTOMER customerParse = assign(isExist, itemOfFirebase);
+                        DAL_Customer.insertCustomer(customerParse);
                     }
                 }
             }
@@ -175,6 +153,29 @@ namespace FireBase_PPL
             }
             return true;
 
+        }
+
+        static CUSTOMER assign(CUSTOMER itemOfSql,Customer itemOfFirebase)
+        {
+            // parse 
+            itemOfFirebase.date_OF_BIRTH.Trim().Replace('/', '-');
+            itemOfFirebase.date_OF_BIRTH.Replace(' ', 'T');
+            itemOfFirebase.date_CREATE.Trim().Replace('/', '-');
+            itemOfFirebase.date_CREATE.Replace(' ', 'T');
+            CUSTOMER customerParse = new CUSTOMER();
+            customerParse.ID_CUSTOMER = itemOfFirebase.id_CUSTOMER;
+            customerParse.SURNAME_CUSTOMER = itemOfFirebase.surname_CUSTOMER;
+            customerParse.NAME_CUSTOMER = itemOfFirebase.name_CUSTOMER;
+            customerParse.DATE_OF_BIRTH = DateTime.Parse(itemOfFirebase.date_OF_BIRTH);
+            customerParse.DATE_CREATE = DateTime.Parse(itemOfFirebase.date_CREATE);
+            customerParse.GENDER_CUSTOMER = itemOfFirebase.gender_CUSTOMER;
+            customerParse.ADDRESS_CUSTOMER = itemOfFirebase.address_CUSTOMER;
+            customerParse.PHONE_CUSTOMER = itemOfFirebase.phone_CUSTOMER;
+            customerParse.PASSWORD_CUSTOMER = itemOfFirebase.password_CUSTOMER;
+            customerParse.POINT = itemOfFirebase.point;
+            customerParse.MAIL_CUSTOMER = "NONE";
+            customerParse.TYPE_CUSTOMER = "TYPECUS01";
+            return customerParse;
         }
 
         public static async Task<bool> updateToFirebaseAsync(List<CUSTOMER> listOfSql)

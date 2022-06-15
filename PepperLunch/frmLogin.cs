@@ -19,20 +19,33 @@ namespace PepperLunch
         {
             InitializeComponent();
         }
+        public STAFF staff_global { get; set; }
+        public frmContainer formContainer;
 
         private void btnLogin_Click(object sender, EventArgs e)
+        {
+            handleLogin();
+        }
+
+        private void btnLogin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                handleLogin();
+            }
+        }
+
+        void handleLogin()
         {
             string username = txtusername.Text.Trim();
             string password = txtpassword.Text.Trim();
             STAFF staff = BLL_Staff.checkLogin(username, password);
-            if (staff!=null)
+            if (staff != null)
             {
-
-                frmContainer frm = new frmContainer();
-                frm.static_USERNAME_STAFF = staff.USERNAME_STAFF;
-                frm.static_ID_GROUP_USER = staff.ID_GROUP;
-                frm.Show();
-                this.Hide();
+                staff_global = staff;
+                Program.frmcontainer = new frmContainer();
+                Program.frmcontainer.Show();
+                Hide();
             }
             else
             {
@@ -40,7 +53,10 @@ namespace PepperLunch
             }
         }
 
-
-
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            this.ActiveControl = txtusername;
+            txtusername.Focus();
+        }
     }
 }

@@ -36,11 +36,15 @@ namespace DAL_PPL
             return list;
         }
 
+        public static List<INGREDIENT> getListByID_SUPPLIER(string ID_SUPPLIER)
+        {
+            return db.INGREDIENTs.Where(t => t.ID_SUPPLIER==ID_SUPPLIER).ToList<INGREDIENT>();
+        }
+
         public static List<SUPPLIER> getListSupplier()
         {
             return db.SUPPLIERs.Select(t => t).ToList<SUPPLIER>();
         }
-
         public static bool add(INGREDIENT data)
         {
             try
@@ -77,6 +81,22 @@ namespace DAL_PPL
                 itemUpdate.ID_SUPPLIER = data.ID_SUPPLIER;
                 itemUpdate.NAME_INGREDIENT = data.NAME_INGREDIENT;
                 itemUpdate.INVENTORY = data.INVENTORY;
+                itemUpdate.FLAG_DEL = 0;
+                db.SubmitChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool update(string ID_INGREDIENT,int weight)
+        {
+            try
+            {
+                INGREDIENT itemUpdate = db.INGREDIENTs.SingleOrDefault(t => t.ID_INGREDIENT == ID_INGREDIENT);
+                itemUpdate.INVENTORY = itemUpdate.INVENTORY-weight;
                 itemUpdate.FLAG_DEL = 0;
                 db.SubmitChanges();
                 return true;
