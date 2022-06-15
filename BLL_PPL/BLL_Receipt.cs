@@ -25,6 +25,26 @@ namespace BLL_PPL
         {
             return DAL_Receipt.getList();
         }
+        public static List<FPGrowth_Item> getListForFPGrowth()
+        {
+            List<RECEIPT> listSrc = DAL_Receipt.getListForFPGrowth();
+
+            List<FPGrowth_Item> listFPG = new List<FPGrowth_Item>();
+            foreach(RECEIPT itemSrc in listSrc)
+            {
+                List<DETAIL_RECEIPT> listSrcDetail = DAL_Receipt.getDetailReceiptList(itemSrc.ID_RECEIPT);
+                FPGrowth_Item itemFPG = new FPGrowth_Item();
+                string note = "";
+                foreach(DETAIL_RECEIPT itemSrcDetail in listSrcDetail)
+                {
+                    note += itemSrcDetail.ID_PRODUCT + ",";
+                }
+                itemFPG.id_receipt = itemSrc.ID_RECEIPT;
+                itemFPG.detail = note.Remove(note.Length - 1, 1);
+                listFPG.Add(itemFPG);
+            }
+            return listFPG;
+        }
 
         public static List<DETAIL_RECEIPT> getDetailReceiptList(string ID)
         {
@@ -36,7 +56,15 @@ namespace BLL_PPL
         {
             return DAL_Receipt.getReceipts();
         }
+        public static bool insertReceipt(RECEIPT data)
+        {
+            return DAL_Receipt.insertReceipt(data);
+        }
 
+        public static bool insertDetailReceipt(DETAIL_RECEIPT data)
+        {
+            return DAL_Receipt.insertDetailReceipt(data);
+        }
         public static void export_ReceiptToWord(string id_receipt)
         {
             List< RECEIPT_FULL> listData= DAL_Receipt.readReceiptToExport();

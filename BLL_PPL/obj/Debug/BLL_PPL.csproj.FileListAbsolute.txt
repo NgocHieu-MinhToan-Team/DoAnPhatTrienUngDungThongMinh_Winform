@@ -228,3 +228,5 @@ E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMin
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\BLL_PPL\bin\Debug\System.Net.Http.Extensions.xml
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\BLL_PPL\bin\Debug\System.Net.Http.Primitives.xml
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\BLL_PPL\obj\Debug\BLL_PPL.csproj.App.config
+E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\BLL_PPL\bin\Debug\FP__Growth.dll
+E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\BLL_PPL\bin\Debug\FP__Growth.pdb

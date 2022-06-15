@@ -213,7 +213,7 @@ namespace FireBase_PPL
                 if (!isExistReceipt(receipt))
                 {
                     // insert receipt to sql
-                    DAL_Receipt.insertReceipt(receipt);
+                    DAL_Receipt.insertReceipt(receipt,status);
                     // insert detail receipt by idReceipt  to sql
                     List<DETAIL_RECEIPT> listDetail = listAllDetail.Where(t => t.ID_RECEIPT == receipt.ID_RECEIPT).ToList();
                     foreach (DETAIL_RECEIPT detail in listDetail)
@@ -294,6 +294,8 @@ namespace FireBase_PPL
                 // update state to firebase
                 string rootName = "Database/Order/" + receipt.ID_CUSTOMER + "/" + receipt.ID_RECEIPT + "/status";
                 await ConnectFireBase.FirebaseInsertData(status, rootName);
+                // update state to sql
+                DAL_Receipt.updateStateReceipt(receipt.ID_RECEIPT,status);
                 return true;
 
             }

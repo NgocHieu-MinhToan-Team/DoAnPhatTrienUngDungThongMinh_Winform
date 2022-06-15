@@ -112,6 +112,7 @@
     <Compile Include="API_ExportWord.cs" />
     <Compile Include="BLL_Category.cs" />
     <Compile Include="BLL_Customer.cs" />
+    <Compile Include="BLL_FPGrowth.cs" />
     <Compile Include="BLL_Ingredient.cs" />
     <Compile Include="BLL_IOG.cs" />
     <Compile Include="BLL_IOGDetail.cs" />
@@ -138,12 +139,18 @@
       <Project>{6aaeaf75-b32f-4eae-8d1c-548026b8dc42}</Project>
       <Name>FireBase_PPL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FP__Growth\FP_Growth.csproj">
+      <Project>{bbe74367-9bf7-4e24-a5da-eaedb77b119a}</Project>
+      <Name>FP_Growth</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Accord.3.8.2-alpha\build\Accord.targets" Condition="Exists('..\packages\Accord.3.8.2-alpha\build\Accord.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
