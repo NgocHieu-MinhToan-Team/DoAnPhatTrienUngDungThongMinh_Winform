@@ -84,14 +84,20 @@ namespace FireBase_PPL
                 // loop through list on firebase
                 foreach (Customer itemOfFirebase in listOfFirebase.Values)
                 {
-                    foreach (CUSTOMER itemOfSql in listOfSql)
+                    // check exits 
+                    CUSTOMER isExist = listOfSql.SingleOrDefault(t => t.ID_CUSTOMER == itemOfFirebase.id_CUSTOMER);
+                    // case exist = true
+                    if (isExist != null)
                     {
-                        // case update 
-                        if (Customer.compareCustomer(itemOfSql, itemOfFirebase) == 2 || Customer.compareCustomer(itemOfSql, itemOfFirebase) == 1)
+                        // if there is difference => add to list
+                        if (Customer.isEqual(isExist, itemOfFirebase) == false)
                         {
                             listNotSync.Add(itemOfFirebase);
-                            break;
                         }
+                    }
+                    else
+                    { // if not exist => add to list
+                        listNotSync.Add(itemOfFirebase);
                     }
                 }
             }
@@ -118,22 +124,25 @@ namespace FireBase_PPL
                 // loop through list on firebase
                 foreach (Customer itemOfFirebase in listOfFirebase)
                 {
-                    foreach (CUSTOMER itemOfSql in listOfSql)
+                    // check exits 
+                    CUSTOMER isExist = listOfSql.SingleOrDefault(t => t.ID_CUSTOMER == itemOfFirebase.id_CUSTOMER);
+                    // case exist = true
+                    if (isExist!=null)
                     {
+                        bool rs = isExist.Equals(itemOfFirebase);
+                        //int rs = Customer.compareCustomer(isExist, itemOfFirebase);
                         // case update 
-                        if (Customer.compareCustomer(itemOfSql, itemOfFirebase) == 2)
+                        if (rs==false)
                         {
-                            CUSTOMER customerParse= assign(itemOfSql, itemOfFirebase);
+                            CUSTOMER customerParse = assign(isExist, itemOfFirebase);
                             DAL_Customer.updateCustomer(customerParse);
-                            break;
                         }
-                        //  case new 
-                        else if (Customer.compareCustomer(itemOfSql, itemOfFirebase) == 1)
-                        {
-                            CUSTOMER customerParse = assign(itemOfSql, itemOfFirebase);
-                            DAL_Customer.insertCustomer(customerParse);
-                            break;
-                        }
+                    }
+                    else
+                    {
+                        // add new customer
+                        CUSTOMER customerParse = assign(isExist, itemOfFirebase);
+                        DAL_Customer.insertCustomer(customerParse);
                     }
                 }
             }
@@ -153,15 +162,12 @@ namespace FireBase_PPL
             itemOfFirebase.date_OF_BIRTH.Replace(' ', 'T');
             itemOfFirebase.date_CREATE.Trim().Replace('/', '-');
             itemOfFirebase.date_CREATE.Replace(' ', 'T');
-            string format = "dd/MM/yyyy HH:mm:ss";
-            CultureInfo provider = CultureInfo.InvariantCulture;
-
             CUSTOMER customerParse = new CUSTOMER();
             customerParse.ID_CUSTOMER = itemOfFirebase.id_CUSTOMER;
             customerParse.SURNAME_CUSTOMER = itemOfFirebase.surname_CUSTOMER;
             customerParse.NAME_CUSTOMER = itemOfFirebase.name_CUSTOMER;
-            customerParse.DATE_OF_BIRTH = DateTime.ParseExact(itemOfFirebase.date_OF_BIRTH, format,provider);
-            customerParse.DATE_CREATE = DateTime.ParseExact(itemOfFirebase.date_CREATE, format, provider);
+            customerParse.DATE_OF_BIRTH = DateTime.Parse(itemOfFirebase.date_OF_BIRTH);
+            customerParse.DATE_CREATE = DateTime.Parse(itemOfFirebase.date_CREATE);
             customerParse.GENDER_CUSTOMER = itemOfFirebase.gender_CUSTOMER;
             customerParse.ADDRESS_CUSTOMER = itemOfFirebase.address_CUSTOMER;
             customerParse.PHONE_CUSTOMER = itemOfFirebase.phone_CUSTOMER;

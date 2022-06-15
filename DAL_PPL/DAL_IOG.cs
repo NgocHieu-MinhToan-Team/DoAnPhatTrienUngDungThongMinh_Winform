@@ -16,6 +16,17 @@ namespace DAL_PPL
             return db.IMPORTs.Where(t=>t.FLAG_DEL==0).ToList();
         }
 
+        public static List<IMPORT> getImportsByStatus(int status)
+        {
+            return db.IMPORTs.Where(t => t.FLAG_DEL == 0 && t.STATE_IMPORT == status).ToList();
+        }
+
+        public static List<IMPORT> getImportsByStatus(int status, string ID_SUPPLIER)
+        {
+            return db.IMPORTs.Where(t => t.FLAG_DEL == 0 && t.STATE_IMPORT == status && t.ID_SUPPLIER==ID_SUPPLIER).ToList();
+        }
+       
+
         public static bool insert(IMPORT data)
         {
             try
@@ -64,6 +75,21 @@ namespace DAL_PPL
             }
         }
 
+        public static bool updateNote(IMPORT data)
+        {
+            try
+            {
+                IMPORT item = db.IMPORTs.SingleOrDefault(t => t.ID_IOG == data.ID_IOG);
+                item.NOTE = data.NOTE;
+                db.SubmitChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public static bool updateTotalPrice(IMPORT data)
         {
             try
@@ -77,6 +103,7 @@ namespace DAL_PPL
                     total += (i.QUANTITY * i.PRICE);
                 }
                 item.TOTAL_PRICE = total;
+                item.DATE_DELIVERY = DateTime.Now;
                 db.SubmitChanges();
                 return true;
             }

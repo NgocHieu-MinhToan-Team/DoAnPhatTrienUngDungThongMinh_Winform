@@ -11,14 +11,14 @@ namespace BLL_PPL
 {
     public class BLL_Recipe
     {
-        public static List<DETAIL_PRODUCT> getList()
+        public static List<DETAIL_PRODUCT> getList(string ID_PRODUCT)
         {
-            return DAL_Recipe.getList();
+            return DAL_Recipe.getList(ID_PRODUCT);
         }
 
-        public static List<RECIPE_JOIN> getRecipeJoin()
+        public static List<RECIPE_JOIN> getRecipeJoin(string ID_PRODUCT)
         {
-            List<RECIPE_JOIN> list =DAL_Recipe.getRecipeJoin();
+            List<RECIPE_JOIN> list =DAL_Recipe.getRecipeJoin(ID_PRODUCT);
             return list;
         }
 

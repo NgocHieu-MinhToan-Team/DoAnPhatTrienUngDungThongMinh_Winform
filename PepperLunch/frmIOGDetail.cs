@@ -15,7 +15,9 @@ namespace PepperLunch
 {
     public partial class frmIOGDetail : DevExpress.XtraEditors.XtraForm
     {
+        BLL_IOGDetail bll_iogDetail = new BLL_IOGDetail();
         public string ID_IOG { get; set; }
+        public string ID_SUPPLIER { get; set; }
         public frmIOGDetail()
         {
             InitializeComponent();
@@ -28,50 +30,79 @@ namespace PepperLunch
 
         void loadData()
         {
-            gridControl_IOGDetail.DataSource = BLL_IOGDetail.getList(ID_IOG);
-            gridView_IOGDetail.Columns["IMPORT"].Visible = gridView_IOGDetail.Columns["INGREDIENT"].Visible = false;
-            gridControl_Ingredient.DataSource = BLL_Ingredient.getList();
+            List<IOGDETAIL_JOIN> listIOGDETAIL = bll_iogDetail.getListJoinByID(ID_IOG);
+            // filter 
+            List<INGREDIENT> listIngredient = BLL_Ingredient.getListByID_SUPPLIER(ID_SUPPLIER);
+            foreach (IOGDETAIL_JOIN item in listIOGDETAIL)
+            {
+                INGREDIENT itemDel = listIngredient.SingleOrDefault(t => t.ID_INGREDIENT == item.ID_INGREDIENT);
+                listIngredient.Remove(itemDel);
+            }
+            gridControl_Ingredient.DataSource = listIngredient;
+            gridControl_IOGDetail.DataSource = listIOGDETAIL;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             int[] arrRowSelected = gridView_Ingredient.GetSelectedRows();
-            if (arrRowSelected != null)
+            if (arrRowSelected.Length > 0)
             {
                 INGREDIENT item = (INGREDIENT)gridView_Ingredient.GetRow(arrRowSelected[0]);
                 DETAIL_IMPORT newDetail = new DETAIL_IMPORT();
                 newDetail.ID_DETAIL_IOG = GeneralMethods.createID("DETAILIOG");
                 newDetail.ID_IOG = ID_IOG;
                 newDetail.ID_INGREDIENT = item.ID_INGREDIENT;
-                if(!BLL_IOGDetail.validateIsNumber(txtPrice.Text, txtCount.Text))
-                {
-                    MessageBox.Show("Please Enter Count and Price for " + item.NAME_INGREDIENT);
-                    return;
-                }
-                newDetail.PRICE = Int32.Parse(txtPrice.Text);
-                newDetail.QUANTITY = Int32.Parse(txtCount.Text);
-                BLL_IOGDetail.insert(newDetail);
+                newDetail.PRICE = 0;
+                newDetail.QUANTITY = 1;
+                bll_iogDetail.insert(newDetail);
                 loadData();
-                clearTextBox();
             }
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
             int[] arrRowSelected = gridView_IOGDetail.GetSelectedRows();
-            if (arrRowSelected != null)
+            if (arrRowSelected.Length >0 )
             {
                 DETAIL_IMPORT item = (DETAIL_IMPORT)gridView_IOGDetail.GetRow(arrRowSelected[0]);
-                BLL_IOGDetail.delete(item);
+                bll_iogDetail.delete(item);
                 loadData();
-                clearTextBox();
             }
         }
 
-        void clearTextBox()
+        private void gridView_IOGDetail_ValidatingEditor(object sender, DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventArgs e)
         {
-            txtCount.Text = "";
-            txtPrice.Text = "";
+            // update so luong
+            int w = 0;
+            try
+            {
+                w = Int32.Parse(e.Value.ToString());
+            }
+            catch
+            {
+                XtraMessageBox.Show("It must be number!");
+                // set old value
+                e.Value = 0;
+                return;
+            }
+            if (w <= 0)
+            {
+                XtraMessageBox.Show("Quantity at least 1");
+                // set default value
+                e.Value = 1;
+            }
+            else
+            {
+                int[] arrRowSelected = gridView_IOGDetail.GetSelectedRows();
+                if (arrRowSelected.Length > 0)
+                {
+                    IOGDETAIL_JOIN item = (IOGDETAIL_JOIN)gridView_IOGDetail.GetRow(arrRowSelected[0]);
+                    DETAIL_IMPORT itemUpdate = bll_iogDetail.getList(ID_IOG).SingleOrDefault(t => t.ID_DETAIL_IOG == item.ID_DETAIL_IOG);
+                    itemUpdate.QUANTITY = w;
+                    bll_iogDetail.update(itemUpdate);
+                    loadData();
+                }
+            }
         }
     }
 }

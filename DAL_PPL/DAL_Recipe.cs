@@ -12,33 +12,14 @@ namespace DAL_PPL
         static RestaurantPPLDataContext db = new RestaurantPPLDataContext();
         public DAL_Recipe() { }
         // get data just include flag = 0 : not delete
-        public static List<DETAIL_PRODUCT> getList()
+        public static List<DETAIL_PRODUCT> getList(string ID_PRODUCT)
         {
-            var listAnonymous = from recipe in db.DETAIL_PRODUCTs
-                                where recipe.FLAG_DEL == 0
-                                select new
-                                {
-                                    ID_DETAIL = recipe.ID_DETAIL,
-                                    ID_PRODUCT = recipe.ID_PRODUCT,
-                                    ID_INGREDIENT = recipe.ID_INGREDIENT,
-                                    WEIGHT_DETAIL = recipe.WEIGHT_DETAIL,
-                                };
-            List<DETAIL_PRODUCT> list = new List<DETAIL_PRODUCT>();
-            foreach (var itemAnonymous in listAnonymous)
-            {
-                DETAIL_PRODUCT item = new DETAIL_PRODUCT();
-                item.ID_DETAIL = itemAnonymous.ID_DETAIL;
-                item.ID_PRODUCT = itemAnonymous.ID_PRODUCT;
-                item.ID_INGREDIENT = itemAnonymous.ID_INGREDIENT;
-                item.WEIGHT_DETAIL = itemAnonymous.WEIGHT_DETAIL;
-                list.Add(item);
-            }
-            return list;
+            return db.DETAIL_PRODUCTs.Where(t=>t.FLAG_DEL==0 && t.ID_PRODUCT==ID_PRODUCT).ToList();
         }
 
-        public static List<RECIPE_JOIN> getRecipeJoin()
+        public static List<RECIPE_JOIN> getRecipeJoin(string ID_PRODUCT)
         {
-            List<RECIPE_JOIN> list = db.RECIPE_JOINs.Select(t=>t).ToList<RECIPE_JOIN>();
+            List<RECIPE_JOIN> list = db.RECIPE_JOINs.Where(t => t.FLAG_DEL == 0 && t.ID_PRODUCT == ID_PRODUCT).ToList();
             return list;
         }
 

@@ -44,8 +44,10 @@ namespace Modify_Control
             // 
             // EditText_Digit
             // 
-            this.Size = new System.Drawing.Size(350, 22);
+            this.Size = new System.Drawing.Size(350, 28);
             this.EditValueChanged += new System.EventHandler(this.EditText_Digit_EditValueChanged);
+            this.TextChanged += new System.EventHandler(this.EditText_Digit_TextChanged);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EditText_Digit_KeyPress);
             this.Leave += new System.EventHandler(this.EditText_Digit_Leave);
             ((System.ComponentModel.ISupportInitialize)(this.fProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider_Digit)).EndInit();
@@ -58,5 +60,6 @@ namespace Modify_Control
 
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider_Digit;
         private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit fProperties;
     }
 }

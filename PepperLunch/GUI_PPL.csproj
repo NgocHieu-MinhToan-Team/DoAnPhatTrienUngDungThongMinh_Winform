@@ -157,6 +157,12 @@
     <Compile Include="frmCategory.Designer.cs">
       <DependentUpon>frmCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmConfirmImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConfirmImport.Designer.cs">
+      <DependentUpon>frmConfirmImport.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmContainer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +174,12 @@
     </Compile>
     <Compile Include="frmCustomer.Designer.cs">
       <DependentUpon>frmCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDetailReceipt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDetailReceipt.Designer.cs">
+      <DependentUpon>frmDetailReceipt.cs</DependentUpon>
     </Compile>
     <Compile Include="frmHandleFirebase.cs">
       <SubType>Form</SubType>
@@ -187,17 +199,23 @@
     <Compile Include="frmIOGDetail.Designer.cs">
       <DependentUpon>frmIOGDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmManagePromotion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManagePromotion.Designer.cs">
+      <DependentUpon>frmManagePromotion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNews.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNews.Designer.cs">
+      <DependentUpon>frmNews.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmRecipe.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmRecipe.Designer.cs">
       <DependentUpon>frmRecipe.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmPromotion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmPromotion.Designer.cs">
-      <DependentUpon>frmPromotion.cs</DependentUpon>
     </Compile>
     <Compile Include="frmIngredients.cs">
       <SubType>Form</SubType>
@@ -210,12 +228,6 @@
     </Compile>
     <Compile Include="frmSyncCustomer.Designer.cs">
       <DependentUpon>frmSyncCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmSyncReceipt.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmSyncReceipt.Designer.cs">
-      <DependentUpon>frmSyncReceipt.cs</DependentUpon>
     </Compile>
     <Compile Include="waitFrmLoading.cs">
       <SubType>Form</SubType>
@@ -252,11 +264,17 @@
     <EmbeddedResource Include="frmCategory.resx">
       <DependentUpon>frmCategory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmConfirmImport.resx">
+      <DependentUpon>frmConfirmImport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmContainer.resx">
       <DependentUpon>frmContainer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCustomer.resx">
       <DependentUpon>frmCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDetailReceipt.resx">
+      <DependentUpon>frmDetailReceipt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmHandleFirebase.resx">
       <DependentUpon>frmHandleFirebase.cs</DependentUpon>
@@ -267,20 +285,20 @@
     <EmbeddedResource Include="frmIOGDetail.resx">
       <DependentUpon>frmIOGDetail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmManagePromotion.resx">
+      <DependentUpon>frmManagePromotion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNews.resx">
+      <DependentUpon>frmNews.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmRecipe.resx">
       <DependentUpon>frmRecipe.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmPromotion.resx">
-      <DependentUpon>frmPromotion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmIngredients.resx">
       <DependentUpon>frmIngredients.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSyncCustomer.resx">
       <DependentUpon>frmSyncCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmSyncReceipt.resx">
-      <DependentUpon>frmSyncReceipt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="waitFrmLoading.resx">
       <DependentUpon>waitFrmLoading.cs</DependentUpon>

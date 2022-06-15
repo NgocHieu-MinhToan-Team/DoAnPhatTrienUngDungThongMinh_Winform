@@ -11,7 +11,15 @@ namespace DAL_PPL
     {
         static RestaurantPPLDataContext db = new RestaurantPPLDataContext();
         public DAL_Receipt(){ }
+        public static List<RECEIPT> getList()
+        {
+            return db.RECEIPTs.Select(t => t).ToList();
+        }
 
+        public static List<DETAIL_RECEIPT> getDetailReceiptList(string ID)
+        {
+            return db.DETAIL_RECEIPTs.Where(t => t.ID_RECEIPT==ID).ToList();
+        }
         public static List<RECEIPT_FULL> getReceipts()
         {
             var listAnonymous = from receipt in db.RECEIPT_FULLs
@@ -96,7 +104,6 @@ namespace DAL_PPL
         {
             try
             {
-                // convert RECEIPT_FULL to RECEIPT
                 DETAIL_RECEIPT item = new DETAIL_RECEIPT();
                 item.ID_DETAIL_RECEIPT = data.ID_DETAIL_RECEIPT;
                 item.ID_RECEIPT = data.ID_RECEIPT;
@@ -107,8 +114,9 @@ namespace DAL_PPL
                 db.SubmitChanges();
                 return true;
             }
-            catch
+            catch(Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return false;
             }
         }

@@ -30,8 +30,6 @@ namespace PepperLunch
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
-            this.tablePanel1 = new DevExpress.Utils.Layout.TablePanel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.tblPane_title = new DevExpress.Utils.Layout.TablePanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -43,8 +41,6 @@ namespace PepperLunch
             this.tablePanel3 = new DevExpress.Utils.Layout.TablePanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.tablePanel1)).BeginInit();
-            this.tablePanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tblPane_title)).BeginInit();
             this.tblPane_title.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -56,52 +52,21 @@ namespace PepperLunch
             this.tablePanel3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tablePanel1
-            // 
-            this.tablePanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tablePanel1.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.tablePanel1.Appearance.Options.UseBackColor = true;
-            this.tablePanel1.Columns.AddRange(new DevExpress.Utils.Layout.TablePanelColumn[] {
-            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 35F),
-            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 65F)});
-            this.tablePanel1.Controls.Add(this.panel2);
-            this.tablePanel1.Controls.Add(this.tblPane_title);
-            this.tablePanel1.Location = new System.Drawing.Point(0, 0);
-            this.tablePanel1.Name = "tablePanel1";
-            this.tablePanel1.Rows.AddRange(new DevExpress.Utils.Layout.TablePanelRow[] {
-            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 26F)});
-            this.tablePanel1.Size = new System.Drawing.Size(1168, 667);
-            this.tablePanel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.BackgroundImage = global::PepperLunch.Properties.Resources.bg_dangnhap;
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tablePanel1.SetColumn(this.panel2, 1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(412, 3);
-            this.panel2.Name = "panel2";
-            this.tablePanel1.SetRow(this.panel2, 0);
-            this.panel2.Size = new System.Drawing.Size(753, 661);
-            this.panel2.TabIndex = 3;
-            // 
             // tblPane_title
             // 
             this.tblPane_title.Appearance.BackColor = System.Drawing.Color.White;
             this.tblPane_title.Appearance.Options.UseBackColor = true;
-            this.tablePanel1.SetColumn(this.tblPane_title, 0);
             this.tblPane_title.Columns.AddRange(new DevExpress.Utils.Layout.TablePanelColumn[] {
             new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 50F)});
             this.tblPane_title.Controls.Add(this.panel1);
             this.tblPane_title.Controls.Add(this.tablePanel3);
             this.tblPane_title.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblPane_title.Location = new System.Drawing.Point(3, 3);
+            this.tblPane_title.Location = new System.Drawing.Point(0, 0);
             this.tblPane_title.Name = "tblPane_title";
-            this.tablePanel1.SetRow(this.tblPane_title, 0);
             this.tblPane_title.Rows.AddRange(new DevExpress.Utils.Layout.TablePanelRow[] {
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 178.8004F),
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 26F)});
-            this.tblPane_title.Size = new System.Drawing.Size(403, 661);
+            this.tblPane_title.Size = new System.Drawing.Size(405, 667);
             this.tblPane_title.TabIndex = 0;
             // 
             // panel1
@@ -116,7 +81,7 @@ namespace PepperLunch
             this.panel1.Location = new System.Drawing.Point(3, 182);
             this.panel1.Name = "panel1";
             this.tblPane_title.SetRow(this.panel1, 1);
-            this.panel1.Size = new System.Drawing.Size(397, 476);
+            this.panel1.Size = new System.Drawing.Size(399, 482);
             this.panel1.TabIndex = 0;
             // 
             // btnLogin
@@ -211,7 +176,7 @@ namespace PepperLunch
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 14.19F),
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 47.48F),
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 19.05F)});
-            this.tablePanel3.Size = new System.Drawing.Size(397, 173);
+            this.tablePanel3.Size = new System.Drawing.Size(399, 173);
             this.tablePanel3.TabIndex = 1;
             // 
             // panel3
@@ -219,10 +184,10 @@ namespace PepperLunch
             this.panel3.BackgroundImage = global::PepperLunch.Properties.Resources.peper_logo;
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.tablePanel3.SetColumn(this.panel3, 1);
-            this.panel3.Location = new System.Drawing.Point(135, 33);
+            this.panel3.Location = new System.Drawing.Point(136, 33);
             this.panel3.Name = "panel3";
             this.tablePanel3.SetRow(this.panel3, 1);
-            this.panel3.Size = new System.Drawing.Size(126, 96);
+            this.panel3.Size = new System.Drawing.Size(127, 96);
             this.panel3.TabIndex = 7;
             // 
             // label3
@@ -235,7 +200,7 @@ namespace PepperLunch
             this.label3.Location = new System.Drawing.Point(3, 0);
             this.label3.Name = "label3";
             this.tablePanel3.SetRow(this.label3, 0);
-            this.label3.Size = new System.Drawing.Size(391, 30);
+            this.label3.Size = new System.Drawing.Size(393, 30);
             this.label3.TabIndex = 6;
             this.label3.Text = " (ペッパーランチ Peppaa-ranchi)";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -250,8 +215,8 @@ namespace PepperLunch
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayoutStore = System.Windows.Forms.ImageLayout.Tile;
             this.BackgroundImageStore = global::PepperLunch.Properties.Resources.bg_white;
-            this.ClientSize = new System.Drawing.Size(1168, 667);
-            this.Controls.Add(this.tablePanel1);
+            this.ClientSize = new System.Drawing.Size(405, 667);
+            this.Controls.Add(this.tblPane_title);
             this.Font = new System.Drawing.Font("Cascadia Code", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.IconOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("frmLogin.IconOptions.SvgImage")));
@@ -260,8 +225,6 @@ namespace PepperLunch
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sign In";
             this.Load += new System.EventHandler(this.frmLogin_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.tablePanel1)).EndInit();
-            this.tablePanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tblPane_title)).EndInit();
             this.tblPane_title.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -278,8 +241,6 @@ namespace PepperLunch
         }
 
         #endregion
-
-        private DevExpress.Utils.Layout.TablePanel tablePanel1;
         private DevExpress.Utils.Layout.TablePanel tblPane_title;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupbox1;
@@ -288,7 +249,6 @@ namespace PepperLunch
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnLogin;
         private Modify_Control.EditText_Letter txtusername;
         private Modify_Control.EditText_DigitOrLetter txtpassword;
