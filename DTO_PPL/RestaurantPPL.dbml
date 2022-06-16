@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ManageRestaurant" Class="RestaurantPPLDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=MINHTOAN\SQLEXPRESS;Initial Catalog=ManageRestaurant;Persist Security Info=True;User ID=sa" SettingsObjectName="DTO_PPL.Properties.Settings" SettingsPropertyName="ManageRestaurantConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=NGCHIUTRNC995;Initial Catalog=ManageRestaurant;Integrated Security=True" SettingsObjectName="DTO_PPL.Properties.Settings" SettingsPropertyName="ManageRestaurantConnectionString2" Provider="System.Data.SqlClient" />
   <Table Name="dbo.CATEGORY" Member="CATEGORies">
     <Type Name="CATEGORY">
       <Column Name="ID_CATEGORY" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -68,8 +68,8 @@
       <Column Name="ID_INGREDIENT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="PRICE" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="QUANTITY" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="INGREDIENT_DETAIL_IMPORT" Member="INGREDIENT" ThisKey="ID_INGREDIENT" OtherKey="ID_INGREDIENT" Type="INGREDIENT" IsForeignKey="true" />
       <Association Name="IMPORT_DETAIL_IMPORT" Member="IMPORT" ThisKey="ID_IOG" OtherKey="ID_IOG" Type="IMPORT" IsForeignKey="true" />
+      <Association Name="INGREDIENT_DETAIL_IMPORT" Member="INGREDIENT" ThisKey="ID_INGREDIENT" OtherKey="ID_INGREDIENT" Type="INGREDIENT" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.DETAIL_PRODUCT" Member="DETAIL_PRODUCTs">
@@ -108,6 +108,22 @@
       <Column Name="ID_NEWS" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="PATH_IMAGE" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
       <Association Name="NEW_IMAGE_NEW" Member="NEW" ThisKey="ID_NEWS" OtherKey="ID_NEWS" Type="NEW" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IMPORT" Member="IMPORTs">
+    <Type Name="IMPORT">
+      <Column Name="ID_IOG" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_SUPPLIER" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="USERNAME_STAFF" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DATE_IOG" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="DATE_DELIVERY" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TOTAL_PRICE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NOTE" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="STATE_IMPORT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FLAG_DEL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="IMPORT_DETAIL_IMPORT" Member="DETAIL_IMPORTs" ThisKey="ID_IOG" OtherKey="ID_IOG" Type="DETAIL_IMPORT" />
+      <Association Name="STAFF_IMPORT" Member="STAFF" ThisKey="USERNAME_STAFF" OtherKey="USERNAME_STAFF" Type="STAFF" IsForeignKey="true" />
+      <Association Name="SUPPLIER_IMPORT" Member="SUPPLIER" ThisKey="ID_SUPPLIER" OtherKey="ID_SUPPLIER" Type="SUPPLIER" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.INGREDIENT" Member="INGREDIENTs">
@@ -207,10 +223,10 @@
       <Column Name="NUMBER_PHONE" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
       <Column Name="FLAG_DEL" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="STAFF_VOUCHER" Member="VOUCHERs" ThisKey="USERNAME_STAFF" OtherKey="USERNAME_STAFF" Type="VOUCHER" />
+      <Association Name="STAFF_IMPORT" Member="IMPORTs" ThisKey="USERNAME_STAFF" OtherKey="USERNAME_STAFF" Type="IMPORT" />
       <Association Name="STAFF_METHOD_PAY" Member="METHOD_PAYs" ThisKey="USERNAME_STAFF" OtherKey="USERNAME_STAFF" Type="METHOD_PAY" />
       <Association Name="STAFF_NEW" Member="NEWs" ThisKey="USERNAME_STAFF" OtherKey="USERNAME_STAFF" Type="NEW" />
       <Association Name="STAFF_PROMOTION" Member="PROMOTIONs" ThisKey="USERNAME_STAFF" OtherKey="USERNAME_STAFF" Type="PROMOTION" />
-      <Association Name="STAFF_IMPORT" Member="IMPORTs" ThisKey="USERNAME_STAFF" OtherKey="USERNAME_STAFF" Type="IMPORT" />
       <Association Name="GROUP_USER_STAFF" Member="GROUP_USER" ThisKey="ID_GROUP" OtherKey="ID_GROUP" Type="GROUP_USER" IsForeignKey="true" />
     </Type>
   </Table>
@@ -224,17 +240,6 @@
       <Association Name="SUPPLIER_IMPORT" Member="IMPORTs" ThisKey="ID_SUPPLIER" OtherKey="ID_SUPPLIER" Type="IMPORT" />
     </Type>
   </Table>
-  <Table Name="dbo.RECIPE_JOIN" Member="RECIPE_JOINs">
-    <Type Name="RECIPE_JOIN">
-      <Column Name="ID_DETAIL" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="ID_PRODUCT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="ID_INGREDIENT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="WEIGHT_DETAIL" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="FLAG_DEL" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NAME_PRODUCT_EN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="NAME_INGREDIENT" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
   <Table Name="dbo.IOGDETAIL_JOIN" Member="IOGDETAIL_JOINs">
     <Type Name="IOGDETAIL_JOIN">
       <Column Name="ID_DETAIL_IOG" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
@@ -245,20 +250,15 @@
       <Column Name="NAME_INGREDIENT" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.IMPORT" Member="IMPORTs">
-    <Type Name="IMPORT">
-      <Column Name="ID_IOG" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ID_SUPPLIER" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="USERNAME_STAFF" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="DATE_IOG" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="TOTAL_PRICE" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NOTE" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+  <Table Name="dbo.RECIPE_JOIN" Member="RECIPE_JOINs">
+    <Type Name="RECIPE_JOIN">
+      <Column Name="ID_DETAIL" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_PRODUCT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_INGREDIENT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="WEIGHT_DETAIL" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="FLAG_DEL" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="STATE_IMPORT" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DATE_DELIVERY" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Association Name="IMPORT_DETAIL_IMPORT" Member="DETAIL_IMPORTs" ThisKey="ID_IOG" OtherKey="ID_IOG" Type="DETAIL_IMPORT" />
-      <Association Name="STAFF_IMPORT" Member="STAFF" ThisKey="USERNAME_STAFF" OtherKey="USERNAME_STAFF" Type="STAFF" IsForeignKey="true" />
-      <Association Name="SUPPLIER_IMPORT" Member="SUPPLIER" ThisKey="ID_SUPPLIER" OtherKey="ID_SUPPLIER" Type="SUPPLIER" IsForeignKey="true" />
+      <Column Name="NAME_PRODUCT_EN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NAME_INGREDIENT" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.RECEIPT_FULL" Member="RECEIPT_FULLs">
