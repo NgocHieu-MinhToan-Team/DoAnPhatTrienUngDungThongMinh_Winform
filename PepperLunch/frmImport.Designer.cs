@@ -98,6 +98,7 @@ namespace PepperLunch
             // 
             // tableLayoutPanel_Main
             // 
+            this.tableLayoutPanel_Main.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel_Main.ColumnCount = 1;
             this.tableLayoutPanel_Main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 84.2635F));
             this.tableLayoutPanel_Main.Controls.Add(this.tableLayoutPanel_left, 0, 0);
@@ -581,7 +582,7 @@ namespace PepperLunch
             // 
             // frmImport
             // 
-            this.Appearance.BackColor = System.Drawing.SystemColors.WindowText;
+            this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(27)))), ((int)(((byte)(16)))));
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

@@ -123,7 +123,7 @@ namespace PepperLunch
             if (arrRowSelected != null)
             {
                 IMPORT item = (IMPORT)gridView_history.GetRow(arrRowSelected[0]);
-                BLL_IOG.delete(item);
+                BLL_IOG.delete(item.ID_IOG);
                 loadOrderingImport();
             }
             else

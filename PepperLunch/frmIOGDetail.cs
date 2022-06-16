@@ -64,8 +64,8 @@ namespace PepperLunch
             int[] arrRowSelected = gridView_IOGDetail.GetSelectedRows();
             if (arrRowSelected.Length >0 )
             {
-                DETAIL_IMPORT item = (DETAIL_IMPORT)gridView_IOGDetail.GetRow(arrRowSelected[0]);
-                bll_iogDetail.delete(item);
+                IOGDETAIL_JOIN item = (IOGDETAIL_JOIN)gridView_IOGDetail.GetRow(arrRowSelected[0]);
+                bll_iogDetail.delete(item.ID_DETAIL_IOG);
                 loadData();
             }
         }
@@ -102,6 +102,15 @@ namespace PepperLunch
                     bll_iogDetail.update(itemUpdate);
                     loadData();
                 }
+            }
+        }
+
+        private void frmIOGDetail_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            List<DETAIL_IMPORT> list = bll_iogDetail.getList(ID_IOG);
+            if (list.Count == 0)
+            {
+                BLL_IOG.delete(ID_IOG);
             }
         }
     }

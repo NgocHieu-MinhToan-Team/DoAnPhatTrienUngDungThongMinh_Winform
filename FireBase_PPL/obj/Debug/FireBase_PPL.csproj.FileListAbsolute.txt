@@ -52,3 +52,5 @@ E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMin
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\Debug\DAL_PPL.dll
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\Debug\DAL_PPL.pdb
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\Debug\DAL_PPL.dll.config
+E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\Debug\FP__Growth.dll
+E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\Debug\FP__Growth.pdb

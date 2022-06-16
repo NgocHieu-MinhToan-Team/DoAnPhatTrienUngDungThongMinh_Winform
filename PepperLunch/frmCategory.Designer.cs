@@ -39,13 +39,13 @@ namespace PepperLunch
             this.label1 = new System.Windows.Forms.Label();
             this.cbbGroupCate = new System.Windows.Forms.ComboBox();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
+            this.accordionContentContainer1 = new DevExpress.XtraBars.Navigation.AccordionContentContainer();
+            this.tableLayoutPanel_input = new System.Windows.Forms.TableLayoutPanel();
             this.accordionCtrlEGroup = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionCtrlE_AddCate = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionCtrlE_RemoveCate = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionCtrlE_UpdateCate = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
-            this.accordionContentContainer1 = new DevExpress.XtraBars.Navigation.AccordionContentContainer();
-            this.tableLayoutPanel_input = new System.Windows.Forms.TableLayoutPanel();
             this.fluentDesignFormContainer1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Category)).BeginInit();
@@ -53,9 +53,9 @@ namespace PepperLunch
             ((System.ComponentModel.ISupportInitialize)(this.txtNameCate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             this.accordionControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.accordionContentContainer1.SuspendLayout();
             this.tableLayoutPanel_input.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // fluentDesignFormContainer1
@@ -85,10 +85,10 @@ namespace PepperLunch
             // gridControl_Category
             // 
             this.gridControl_Category.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl_Category.Location = new System.Drawing.Point(43, 51);
+            this.gridControl_Category.Location = new System.Drawing.Point(43, 52);
             this.gridControl_Category.MainView = this.gridView_Category;
             this.gridControl_Category.Name = "gridControl_Category";
-            this.gridControl_Category.Size = new System.Drawing.Size(590, 451);
+            this.gridControl_Category.Size = new System.Drawing.Size(590, 450);
             this.gridControl_Category.TabIndex = 0;
             this.gridControl_Category.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_Category});
@@ -141,7 +141,7 @@ namespace PepperLunch
             // 
             // accordionControl1
             // 
-            this.accordionControl1.Appearance.AccordionControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.accordionControl1.Appearance.AccordionControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(27)))), ((int)(((byte)(16)))));
             this.accordionControl1.Appearance.AccordionControl.Options.UseBackColor = true;
             this.accordionControl1.Controls.Add(this.accordionContentContainer1);
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -155,6 +155,33 @@ namespace PepperLunch
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
             this.accordionControl1.Size = new System.Drawing.Size(307, 545);
             this.accordionControl1.TabIndex = 1;
+            // 
+            // accordionContentContainer1
+            // 
+            this.accordionContentContainer1.Controls.Add(this.tableLayoutPanel_input);
+            this.accordionContentContainer1.Name = "accordionContentContainer1";
+            this.accordionContentContainer1.Size = new System.Drawing.Size(284, 144);
+            this.accordionContentContainer1.TabIndex = 1;
+            // 
+            // tableLayoutPanel_input
+            // 
+            this.tableLayoutPanel_input.ColumnCount = 1;
+            this.tableLayoutPanel_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel_input.Controls.Add(this.label2, 0, 0);
+            this.tableLayoutPanel_input.Controls.Add(this.label1, 0, 2);
+            this.tableLayoutPanel_input.Controls.Add(this.cbbGroupCate, 0, 1);
+            this.tableLayoutPanel_input.Controls.Add(this.txtNameCate, 0, 3);
+            this.tableLayoutPanel_input.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel_input.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel_input.Name = "tableLayoutPanel_input";
+            this.tableLayoutPanel_input.Padding = new System.Windows.Forms.Padding(12, 4, 12, 4);
+            this.tableLayoutPanel_input.RowCount = 4;
+            this.tableLayoutPanel_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel_input.Size = new System.Drawing.Size(284, 144);
+            this.tableLayoutPanel_input.TabIndex = 0;
             // 
             // accordionCtrlEGroup
             // 
@@ -231,33 +258,6 @@ namespace PepperLunch
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             // 
-            // accordionContentContainer1
-            // 
-            this.accordionContentContainer1.Controls.Add(this.tableLayoutPanel_input);
-            this.accordionContentContainer1.Name = "accordionContentContainer1";
-            this.accordionContentContainer1.Size = new System.Drawing.Size(284, 144);
-            this.accordionContentContainer1.TabIndex = 1;
-            // 
-            // tableLayoutPanel_input
-            // 
-            this.tableLayoutPanel_input.ColumnCount = 1;
-            this.tableLayoutPanel_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel_input.Controls.Add(this.label2, 0, 0);
-            this.tableLayoutPanel_input.Controls.Add(this.label1, 0, 2);
-            this.tableLayoutPanel_input.Controls.Add(this.cbbGroupCate, 0, 1);
-            this.tableLayoutPanel_input.Controls.Add(this.txtNameCate, 0, 3);
-            this.tableLayoutPanel_input.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel_input.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel_input.Name = "tableLayoutPanel_input";
-            this.tableLayoutPanel_input.Padding = new System.Windows.Forms.Padding(12, 4, 12, 4);
-            this.tableLayoutPanel_input.RowCount = 4;
-            this.tableLayoutPanel_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel_input.Size = new System.Drawing.Size(284, 144);
-            this.tableLayoutPanel_input.TabIndex = 0;
-            // 
             // frmCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -279,10 +279,10 @@ namespace PepperLunch
             ((System.ComponentModel.ISupportInitialize)(this.txtNameCate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
             this.accordionControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
             this.accordionContentContainer1.ResumeLayout(false);
             this.tableLayoutPanel_input.ResumeLayout(false);
             this.tableLayoutPanel_input.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
             this.ResumeLayout(false);
 
         }

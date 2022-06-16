@@ -41,7 +41,7 @@ namespace PepperLunch
         private void gridView_IOGDetail_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
 
-        }
+        } 
 
         private void updateInventory(string ID_IOG)
         {
@@ -54,29 +54,12 @@ namespace PepperLunch
         }
 
 
-        private void repositoryItemButtonEdit_Confirm_Click(object sender, EventArgs e)
-        {
-            txtQuantity.Visible = false;
-        }
-
         private void btnConfirm_Click_1(object sender, EventArgs e)
         {
-
-            if(txtQuantity.Visible == false)
+            if (!GeneralMethods.isDigit(txtQuantity.Text, false) || !GeneralMethods.isDigit(txtPrice.Text, false))
             {
-                if (!GeneralMethods.isDigit(txtPrice.Text, false))
-                {
-                    XtraMessageBox.Show("Not be Null and must be number");
-                    return;
-                }
-            }
-            else
-            {
-                if (!GeneralMethods.isDigit(txtQuantity.Text, false) || !GeneralMethods.isDigit(txtPrice.Text, false))
-                {
-                    XtraMessageBox.Show("Not be Null and must be number");
-                    return;
-                }
+                XtraMessageBox.Show("Not be Null and must be number");
+                return;
             }
            
             IMPORT imp = BLL_IOG.getList().SingleOrDefault(t => t.ID_IOG == ID_IOG);
@@ -86,46 +69,42 @@ namespace PepperLunch
             {
                  IOGDETAIL_JOIN datafromRow = (IOGDETAIL_JOIN)gridView_IOGDetail.GetRow(arrRowSelected[0]);
                 DETAIL_IMPORT item = bll_iogDetail.getList(ID_IOG).SingleOrDefault(t => t.ID_DETAIL_IOG == datafromRow.ID_DETAIL_IOG);
-                // update only price
-                if (txtQuantity.Visible == false)
+                try
                 {
-                    item.PRICE =Int32.Parse(txtPrice.Text);
-                    bll_iogDetail.update(item);
+                    int qty =Int32.Parse(txtQuantity.Text);
+                    int price = Int32.Parse(txtPrice.Text);
+                    if (qty > 0 && price > 0)
+                    {
+
+                        int number = (int)(item.QUANTITY - Int32.Parse(txtQuantity.Text));
+                        if (number < 0)
+                        {
+                            XtraMessageBox.Show("just need enter enough");
+                            return;
+                        }
+                        if(number>0)
+                        {
+                            note += "{ " + item.ID_INGREDIENT + " Thiếu " + Math.Abs(number).ToString() + " }, ";
+                            //if not enough , will be update quantity
+                            item.QUANTITY = qty;
+                        }
+                        item.PRICE = price;
+                        bll_iogDetail.update(item);
+
+                        IMPORT import = new IMPORT();
+                        import.ID_IOG = ID_IOG;
+                        import.NOTE = note;
+                        BLL_IOG.updateNote(import);
+                    }
+                    gridView_IOGDetail.DeleteRow(arrRowSelected[0]);
+                    clearText();
                 }
-                else
+                catch
                 {
-
-                    int number = (int)(item.QUANTITY - Int32.Parse(txtQuantity.Text));
-
-                    if (number > 0)
-                    {
-                        note += "{ " + item.ID_INGREDIENT + " Thiếu " + Math.Abs(number).ToString() + " }, ";
-                    }
-                    //redundant / thừa
-                    if (number < 0)
-                    {
-                        note += "{ " + item.ID_INGREDIENT + " Thừa " + Math.Abs(number).ToString() + " }, ";
-                    }
-                    item.PRICE = Int32.Parse(txtPrice.Text);
-                    item.QUANTITY = Int32.Parse(txtQuantity.Text);
-                    bll_iogDetail.update(item);
-
-                    IMPORT import = new IMPORT();
-                    import.ID_IOG = ID_IOG;
-                    import.NOTE = note;
-                    BLL_IOG.updateNote(import);
+                    XtraMessageBox.Show("It Must be number type Interger");
+                    return;
                 }
-               
-                gridView_IOGDetail.DeleteRow(arrRowSelected[0]);
-                clearText();
-
             }
-        }
-
-        private void repositoryItemButtonEdit_Incorrect_Click(object sender, EventArgs e)
-        {
-            txtQuantity.Visible = true;
-            clearText();
         }
 
         private void frmConfirmImport_FormClosing(object sender, FormClosingEventArgs e)
@@ -167,6 +146,11 @@ namespace PepperLunch
         void clearText()
         {
             txtQuantity.Text= txtPrice.Text = "";
+        }
+
+        private void gridControl_IOGDetail_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

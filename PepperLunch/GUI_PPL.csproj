@@ -340,7 +340,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Templates\Export.doc" />
     <None Include="Templates\Export.xlsx" />
   </ItemGroup>
   <ItemGroup>

@@ -83,7 +83,7 @@ namespace PepperLunch
             // 
             // tblLayout_News
             // 
-            this.tblLayout_News.BackColor = System.Drawing.Color.Black;
+            this.tblLayout_News.BackColor = System.Drawing.Color.Transparent;
             this.tblLayout_News.ColumnCount = 5;
             this.tblLayout_News.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tblLayout_News.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -236,7 +236,7 @@ namespace PepperLunch
             // 
             // tblLayout_NewsImage
             // 
-            this.tblLayout_NewsImage.BackColor = System.Drawing.Color.Black;
+            this.tblLayout_NewsImage.BackColor = System.Drawing.Color.Transparent;
             this.tblLayout_NewsImage.ColumnCount = 2;
             this.tblLayout_NewsImage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tblLayout_NewsImage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -315,6 +315,8 @@ namespace PepperLunch
             // 
             // frmNews
             // 
+            this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(27)))), ((int)(((byte)(16)))));
+            this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1175, 653);

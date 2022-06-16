@@ -95,6 +95,29 @@ namespace DTO_PPL
             }
         }
 
+        public static bool isNumberTypeDouble(string s)
+        {
+            string str = s.Trim();
+            if (str.Length > 0)
+            {
+                foreach (char c in str)
+                {
+                    if (char.IsDigit(c) || c == ',')
+                    {
 
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                return false;
+            }
+            return true;
+
+        }
     }
 }

@@ -11,11 +11,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using FireBase_PPL;
 
 namespace PepperLunch
 {
     public partial class frmFPGrowth : DevExpress.XtraEditors.XtraForm
     {
+       
         public frmFPGrowth()
         {
             InitializeComponent();
@@ -64,9 +66,37 @@ namespace PepperLunch
             gridControl_top.DataSource = list;
         }
 
-        private void btnLoadDataToFirebase_Click(object sender, EventArgs e)
+        private async void btnLoadDataToFirebase_Click(object sender, EventArgs e)
         {
-            InsertDataToSql();
+            // create data to SQL
+            //InsertDataToSql();
+            try
+            {
+                double minsup = double.Parse(txtMinsup.Text);
+                double confidence = double.Parse(txtConfidence.Text);
+                int numberRecord = int.Parse(txtNumberRecord.Text);
+                if (GeneralMethods.isNumberTypeDouble(minsup.ToString()) &&
+                    GeneralMethods.isNumberTypeDouble(confidence.ToString()) &&
+                    GeneralMethods.isDigit(numberRecord.ToString(),false))
+                {
+                    // update FPGrowth to firebase  
+                    List<FPGrowth_Item> list = BLL_FPGrowth.getResult(minsup, confidence);
+                    if(await FB_FPGrowth.pushToFirebaseAsync(minsup,confidence, numberRecord))
+                        XtraMessageBox.Show("Upload Success!");
+                    else
+                    {
+                        XtraMessageBox.Show("error on firebase!");
+                    }
+                }
+                else
+                {
+                    XtraMessageBox.Show("Must be > 0");
+                }
+            }
+            catch
+            {
+                XtraMessageBox.Show("Please Enter a Number (int,float,doule) !");
+            }
         }
 
         void InsertDataToSql()

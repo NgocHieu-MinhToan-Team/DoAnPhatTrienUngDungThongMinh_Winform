@@ -39,6 +39,8 @@ namespace PepperLunch
         {
             string username = txtusername.Text.Trim();
             string password = txtpassword.Text.Trim();
+            //string username = "toan";
+            //string password ="123";
             STAFF staff = BLL_Staff.checkLogin(username, password);
             if (staff != null)
             {

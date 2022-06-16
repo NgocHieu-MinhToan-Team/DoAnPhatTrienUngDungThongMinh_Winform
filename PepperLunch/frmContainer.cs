@@ -146,6 +146,13 @@ namespace PepperLunch
                 ribbonPageGroup_Firebase.Visible = false;
                 ribbonPageGroup_AI.Visible = false;
             }
+
+            if (!isOpenForm(typeof(frmFPGrowth)))
+            {
+                frmFPGrowth newForm = new frmFPGrowth();
+                newForm.MdiParent = this;
+                newForm.Show();
+            }
         }
 
         //private void barBtn_Ingredient_ItemClick(object sender, ItemClickEventArgs e)

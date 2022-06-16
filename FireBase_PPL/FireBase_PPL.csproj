@@ -80,6 +80,7 @@
   <ItemGroup>
     <Compile Include="ConnectFireBase.cs" />
     <Compile Include="FB_Customer.cs" />
+    <Compile Include="FB_FPGrowth.cs" />
     <Compile Include="FB_News.cs" />
     <Compile Include="FB_Product.cs" />
     <Compile Include="FB_Receipt.cs" />
@@ -99,6 +100,10 @@
     <ProjectReference Include="..\DTO_PPL\DTO_PPL.csproj">
       <Project>{29a6dab9-7e26-4997-b0da-ba669193aaa9}</Project>
       <Name>DTO_PPL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FP__Growth\FP_Growth.csproj">
+      <Project>{BBE74367-9BF7-4E24-A5DA-EAEDB77B119A}</Project>
+      <Name>FP_Growth</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

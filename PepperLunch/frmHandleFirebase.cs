@@ -142,5 +142,6 @@ namespace PepperLunch
             string result = watch.ElapsedMilliseconds.ToString() + " ms";
             MessageBox.Show("Total Time Sync is : " + result);
         }
+
     }
 }

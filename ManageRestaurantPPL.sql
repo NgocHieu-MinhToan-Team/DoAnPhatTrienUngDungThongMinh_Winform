@@ -4,10 +4,10 @@ use ManageRestaurant
 go
 
 
-USE MASTER 
-GO
-DROP DATABASE ManageRestaurant
-GO
+--USE MASTER 
+--GO
+--DROP DATABASE ManageRestaurant
+--GO
 
 
 
@@ -388,19 +388,19 @@ INSERT INTO PRODUCT VALUES
 ('MAMON53','IDLMON09','Nestle Milo',N'Sữa Milo',20000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/sideDish%2Fdrink%2FMilo.png?alt=media&token=e676dcc1-dd4d-428c-a1f8-833ad7d259fe',0),
 ('MAMON54','IDLMON09','Hot Green Tea',N'Trà Xanh Nóng',20000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/sideDish%2Fdrink%2Fhotgreentea.png?alt=media&token=9f9ccf09-d010-4f8f-b775-8561c4d33919',0),
 --PRODUCT ADD-ONS---
-('MAMON39','IDLMON10','King Oyster Mushroom',N'Nấm Sò vua',12000,'IMAGE',0),
-('MAMON40','IDLMON10','Edamame',N'Đậu Nhật',7000,'IMAGE',0),
-('MAMON41','IDLMON10','Cabbage',N'Bắp Cải',30000,'IMAGE',0),
-('MAMON42','IDLMON10','Broccoli',N'Bông Cải Xanh',30000,'IMAGE',0),
-('MAMON43','IDLMON10','Sweet Corn',N'Bắp ngọt',5000,'IMAGE',0),
-('MAMON44','IDLMON10','Okra',N'Đậu Bắp',15000,'IMAGE',0),
-('MAMON45','IDLMON10','Egg',N'Trứng Gà',20000,'IMAGE',0),
-('MAMON46','IDLMON10','Beef',N'Bò',30000,'IMAGE',0),
-('MAMONBPS1','IDLMON10','Chicken',N'Gà',12000,'IMAGE',0),
-('MAMONBPS2','IDLMON10','Cheese Chicken Sausage',N'Súc Xích Gà Phô Mai',12000,'IMAGE',0),
-('MAMONBJC1','IDLMON10','Salmon',N'Cá Hồi',10000,'IMAGE',0),
-('MAMONBJC2','IDLMON10','Scallops',N'Sò',15000,'IMAGE',0),
-('MAMON47','IDLMON10','Prawns',N'Tôm',30000,'IMAGE',0),
+--('MAMON39','IDLMON10','King Oyster Mushroom',N'Nấm Sò vua',12000,'IMAGE',0),
+--('MAMON40','IDLMON10','Edamame',N'Đậu Nhật',7000,'IMAGE',0),
+--('MAMON41','IDLMON10','Cabbage',N'Bắp Cải',30000,'IMAGE',0),
+--('MAMON42','IDLMON10','Broccoli',N'Bông Cải Xanh',30000,'IMAGE',0),
+--('MAMON43','IDLMON10','Sweet Corn',N'Bắp ngọt',5000,'IMAGE',0),
+--('MAMON44','IDLMON10','Okra',N'Đậu Bắp',15000,'IMAGE',0),
+--('MAMON45','IDLMON10','Egg',N'Trứng Gà',20000,'IMAGE',0),
+--('MAMON46','IDLMON10','Beef',N'Bò',30000,'IMAGE',0),
+--('MAMONBPS1','IDLMON10','Chicken',N'Gà',12000,'IMAGE',0),
+--('MAMONBPS2','IDLMON10','Cheese Chicken Sausage',N'Súc Xích Gà Phô Mai',12000,'IMAGE',0),
+--('MAMONBJC1','IDLMON10','Salmon',N'Cá Hồi',10000,'IMAGE',0),
+--('MAMONBJC2','IDLMON10','Scallops',N'Sò',15000,'IMAGE',0),
+--('MAMON47','IDLMON10','Prawns',N'Tôm',30000,'IMAGE',0),
 --PRODUCT COMBOS 
 ('MAMONCB01','IDLMON11','SET A',N'Combo A',30000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/sideDish%2Fcombo%2Fimg_menu_15.jpg?alt=media&token=fa1aa5ba-6e3b-42ad-ade5-6c5c27ca02d8',0),
 ('MAMONCB02','IDLMON11','SET B',N'Combo B',40000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/sideDish%2Fcombo%2Fimg_menu_16.jpg?alt=media&token=74e01dc4-891b-49c9-960e-e58fc0021ef2',0)
@@ -737,6 +737,12 @@ CUSTOMER AS CUS ,METHOD_PAY AS MT
 WHERE RC.ID_CUSTOMER=CUS.ID_CUSTOMER
 AND RC.ID_METHOD = MT.ID_METHOD
 
+
+go
+CREATE VIEW DETAILRECEIPT_JOIN AS 
+SELECT D.*,P.NAME_PRODUCT_VN ,P.NAME_PRODUCT_EN
+FROM DETAIL_RECEIPT D, PRODUCT P
+WHERE D.ID_PRODUCT=P.ID_PRODUCT
 
 go
 CREATE VIEW RECIPE_JOIN AS

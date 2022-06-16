@@ -36,11 +36,11 @@ namespace DAL_PPL
                 return false;
             }
         }
-        public  bool delete(DETAIL_IMPORT data)
+        public  bool delete(string ID)
         {
             try
             {
-                DETAIL_IMPORT itemDelete = db.DETAIL_IMPORTs.SingleOrDefault(t => t.ID_DETAIL_IOG == data.ID_DETAIL_IOG);
+                DETAIL_IMPORT itemDelete = db.DETAIL_IMPORTs.SingleOrDefault(t => t.ID_DETAIL_IOG == ID);
                 db.DETAIL_IMPORTs.DeleteOnSubmit(itemDelete);
                 db.SubmitChanges();
                 return true;

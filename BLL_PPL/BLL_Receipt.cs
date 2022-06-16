@@ -52,10 +52,6 @@ namespace BLL_PPL
         }
 
         //lay data join tu sql
-        public static List<RECEIPT_FULL> read_Receipt()
-        {
-            return DAL_Receipt.getReceipts();
-        }
         public static bool insertReceipt(RECEIPT data)
         {
             return DAL_Receipt.insertReceipt(data);
@@ -67,7 +63,7 @@ namespace BLL_PPL
         }
         public static void export_ReceiptToWord(string id_receipt)
         {
-            List< RECEIPT_FULL> listData= DAL_Receipt.readReceiptToExport();
+            List< RECEIPT_FULL> listData= DAL_Receipt.getReceiptsJoin(id_receipt);
             RECEIPT_FULL data = listData.FirstOrDefault(t => t.ID_RECEIPT == id_receipt);
             var homNay = DateTime.Now;
             //Bước 1: Nạp file mẫu
@@ -86,17 +82,20 @@ namespace BLL_PPL
             baoCao.MailMerge.Execute(new[] { "method_pay" }, new[] { data.NAME_METHOD });
 
             //Bước 3: Điền thông tin lên bảng
-            //Table bangThongTinGiaDinh = baoCao.GetChild(NodeType.Table, 1, true) as Table;//Lấy bảng thứ 2 trong file mẫu
-            //int hangHienTai = 1;
-            //bangThongTinGiaDinh.InsertRows(hangHienTai, hangHienTai, 3);
-            //for (int i = 1; i <= 4; i++)
-            //{
-            //    bangThongTinGiaDinh.PutValue(hangHienTai, 0, i.ToString());//Cột STT
-            //    bangThongTinGiaDinh.PutValue(hangHienTai, 1, "Nguyễn Văn A");//Cột Họ và tên
-            //    bangThongTinGiaDinh.PutValue(hangHienTai, 2, "Bố đẻ");//Cột quan hệ
-            //    bangThongTinGiaDinh.PutValue(hangHienTai, 3, "0123456789");//Cột Số điện thoại
-            //    hangHienTai++;
-            //}
+
+            // get list detail receipt
+            List<DETAILRECEIPT_JOIN> listDetail = DAL_Receipt.getDetailReceiptsJoin(id_receipt);
+            Table bangThongTinGiaDinh = baoCao.GetChild(NodeType.Table, 0, true) as Table;//Lấy bảng thứ 2 trong file mẫu
+            int hangHienTai = 1;
+            bangThongTinGiaDinh.InsertRows(hangHienTai, hangHienTai, 2);
+            for (int i = 1; i <= listDetail.Count; i++)
+            {
+                //bangThongTinGiaDinh.PutValue(hangHienTai, 0, i.ToString());//Cột STT
+                bangThongTinGiaDinh.PutValue(hangHienTai, 0, listDetail[i-1].QUANTITY.ToString());// so luong
+                bangThongTinGiaDinh.PutValue(hangHienTai, 1, listDetail[i-1].NAME_PRODUCT_VN);//ten mon
+                bangThongTinGiaDinh.PutValue(hangHienTai, 2, listDetail[i-1].PRICE.ToString());// don gia
+                hangHienTai++;
+            }
 
             //Bước 4: Lưu và mở file
             baoCao.SaveAndOpenFile("Report.doc");

@@ -65,13 +65,12 @@ namespace BLL_PPL
             }
         }
 
-        public static bool delete(IMPORT data)
+        public static bool delete(string ID)
         {
             try
             {
-                if (DAL_IOG.delete(data))
+                if (DAL_IOG.delete(ID))
                 {
-                    MessageBox.Show("Delete Data Sucessfully !");
                     return true;
                 }
                 else

@@ -50,13 +50,12 @@ namespace BLL_PPL
             return GeneralMethods.isDigit(text1, false);
         }
 
-        public  bool delete(DETAIL_IMPORT data)
+        public  bool delete(string ID)
         {
             try
             {
-                if (bll_iogDetail.delete(data))
+                if (bll_iogDetail.delete(ID))
                 {
-                    MessageBox.Show("Delete Data Sucessfully !");
                     return true;
                 }
                 else

@@ -284,4 +284,15 @@
       <Column Name="TYPE_METHOD" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.DETAILRECEIPT_JOIN" Member="DETAILRECEIPT_JOINs">
+    <Type Name="DETAILRECEIPT_JOIN">
+      <Column Name="ID_DETAIL_RECEIPT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_RECEIPT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_PRODUCT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="QUANTITY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PRICE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NAME_PRODUCT_VN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NAME_PRODUCT_EN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
 </Database>
