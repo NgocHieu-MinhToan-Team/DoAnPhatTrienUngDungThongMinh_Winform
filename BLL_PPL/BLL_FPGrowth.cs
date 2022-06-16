@@ -14,5 +14,6 @@ namespace BLL_PPL
             return TrainModel.Load(minsup, conf);
         }
 
+
     }
 }

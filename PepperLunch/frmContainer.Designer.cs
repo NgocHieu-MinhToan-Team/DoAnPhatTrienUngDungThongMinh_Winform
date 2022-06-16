@@ -45,19 +45,19 @@ namespace PepperLunch
             this.barBtn_Promotion = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_Recipe = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_Ingredients = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtn_FPGrowth = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage_manager = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup_Firebase = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup_AI = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.ribbonPageGroup_AI = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barBtn_FPGrowth = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
@@ -87,6 +87,7 @@ namespace PepperLunch
             this.barBtn_Ingredients,
             this.barBtn_FPGrowth});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
+            this.ribbon.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ribbon.MaxItemId = 28;
             this.ribbon.Name = "ribbon";
             this.ribbon.OptionsStubGlyphs.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -214,6 +215,14 @@ namespace PepperLunch
             this.barBtn_Ingredients.Name = "barBtn_Ingredients";
             this.barBtn_Ingredients.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_Ingredients_ItemClick);
             // 
+            // barBtn_FPGrowth
+            // 
+            this.barBtn_FPGrowth.Caption = "FPGrowth";
+            this.barBtn_FPGrowth.Id = 27;
+            this.barBtn_FPGrowth.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtn_FPGrowth.ImageOptions.SvgImage")));
+            this.barBtn_FPGrowth.Name = "barBtn_FPGrowth";
+            this.barBtn_FPGrowth.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_FPGrowth_ItemClick);
+            // 
             // ribbonPage_manager
             // 
             this.ribbonPage_manager.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -256,6 +265,12 @@ namespace PepperLunch
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             this.ribbonPageGroup4.Text = "System";
             // 
+            // ribbonPageGroup_AI
+            // 
+            this.ribbonPageGroup_AI.ItemLinks.Add(this.barBtn_FPGrowth);
+            this.ribbonPageGroup_AI.Name = "ribbonPageGroup_AI";
+            this.ribbonPageGroup_AI.Text = "AI";
+            // 
             // repositoryItemButtonEdit1
             // 
             this.repositoryItemButtonEdit1.AutoHeight = false;
@@ -266,6 +281,7 @@ namespace PepperLunch
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 635);
+            this.ribbonStatusBar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
             this.ribbonStatusBar.Size = new System.Drawing.Size(1261, 31);
@@ -293,23 +309,9 @@ namespace PepperLunch
             this.popupMenu1.Name = "popupMenu1";
             this.popupMenu1.Ribbon = this.ribbon;
             // 
-            // ribbonPageGroup_AI
-            // 
-            this.ribbonPageGroup_AI.ItemLinks.Add(this.barBtn_FPGrowth);
-            this.ribbonPageGroup_AI.Name = "ribbonPageGroup_AI";
-            this.ribbonPageGroup_AI.Text = "AI";
-            // 
-            // barBtn_FPGrowth
-            // 
-            this.barBtn_FPGrowth.Caption = "FPGrowth";
-            this.barBtn_FPGrowth.Id = 27;
-            this.barBtn_FPGrowth.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem4.ImageOptions.SvgImage")));
-            this.barBtn_FPGrowth.Name = "barBtn_FPGrowth";
-            this.barBtn_FPGrowth.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_FPGrowth_ItemClick);
-            // 
             // frmContainer
             // 
-            this.Appearance.BackColor = System.Drawing.Color.DimGray;
+            this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(27)))), ((int)(((byte)(16)))));
             this.Appearance.Options.UseBackColor = true;
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
@@ -322,6 +324,7 @@ namespace PepperLunch
             this.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IconOptions.Image = global::PepperLunch.Properties.Resources.peper_logo;
             this.IsMdiContainer = true;
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "frmContainer";
             this.Ribbon = this.ribbon;
             this.StatusBar = this.ribbonStatusBar;

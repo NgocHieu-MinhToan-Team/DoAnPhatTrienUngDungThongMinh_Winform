@@ -29,17 +29,6 @@ namespace PepperLunch
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConfirmImport));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
             this.tableLayoutPanel_Main = new System.Windows.Forms.TableLayoutPanel();
             this.gridControl_IOGDetail = new DevExpress.XtraGrid.GridControl();
             this.gridView_IOGDetail = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -47,10 +36,6 @@ namespace PepperLunch
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.PRICE = new DevExpress.XtraGrid.Columns.GridColumn();
             this.COUNT = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemButtonEdit_Confirm = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemButtonEdit_Incorrect = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -61,8 +46,6 @@ namespace PepperLunch
             this.tableLayoutPanel_Main.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_IOGDetail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_IOGDetail)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_Confirm)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_Incorrect)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -72,7 +55,7 @@ namespace PepperLunch
             // 
             // tableLayoutPanel_Main
             // 
-            this.tableLayoutPanel_Main.BackColor = System.Drawing.SystemColors.ControlText;
+            this.tableLayoutPanel_Main.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel_Main.ColumnCount = 2;
             this.tableLayoutPanel_Main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.12676F));
             this.tableLayoutPanel_Main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.87324F));
@@ -93,13 +76,11 @@ namespace PepperLunch
             this.gridControl_IOGDetail.Location = new System.Drawing.Point(23, 23);
             this.gridControl_IOGDetail.MainView = this.gridView_IOGDetail;
             this.gridControl_IOGDetail.Name = "gridControl_IOGDetail";
-            this.gridControl_IOGDetail.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemButtonEdit_Confirm,
-            this.repositoryItemButtonEdit_Incorrect});
             this.gridControl_IOGDetail.Size = new System.Drawing.Size(705, 531);
             this.gridControl_IOGDetail.TabIndex = 1;
             this.gridControl_IOGDetail.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_IOGDetail});
+            this.gridControl_IOGDetail.Click += new System.EventHandler(this.gridControl_IOGDetail_Click);
             // 
             // gridView_IOGDetail
             // 
@@ -107,11 +88,10 @@ namespace PepperLunch
             this.ID_DETAIL_IOG,
             this.gridColumn1,
             this.PRICE,
-            this.COUNT,
-            this.gridColumn2,
-            this.gridColumn3});
+            this.COUNT});
             this.gridView_IOGDetail.GridControl = this.gridControl_IOGDetail;
             this.gridView_IOGDetail.Name = "gridView_IOGDetail";
+            this.gridView_IOGDetail.OptionsBehavior.Editable = false;
             this.gridView_IOGDetail.OptionsFind.AlwaysVisible = true;
             this.gridView_IOGDetail.RowHeight = 40;
             this.gridView_IOGDetail.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView_IOGDetail_RowClick);
@@ -159,46 +139,6 @@ namespace PepperLunch
             this.COUNT.Visible = true;
             this.COUNT.VisibleIndex = 3;
             this.COUNT.Width = 94;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.ColumnEdit = this.repositoryItemButtonEdit_Confirm;
-            this.gridColumn2.MinWidth = 25;
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 4;
-            this.gridColumn2.Width = 94;
-            // 
-            // repositoryItemButtonEdit_Confirm
-            // 
-            editorButtonImageOptions3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions3.SvgImage")));
-            this.repositoryItemButtonEdit_Confirm.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Correct", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.repositoryItemButtonEdit_Confirm.HideSelection = false;
-            this.repositoryItemButtonEdit_Confirm.Name = "repositoryItemButtonEdit_Confirm";
-            this.repositoryItemButtonEdit_Confirm.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
-            this.repositoryItemButtonEdit_Confirm.Click += new System.EventHandler(this.repositoryItemButtonEdit_Confirm_Click);
-            // 
-            // gridColumn3
-            // 
-            this.gridColumn3.ColumnEdit = this.repositoryItemButtonEdit_Incorrect;
-            this.gridColumn3.MinWidth = 25;
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedRow;
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 5;
-            this.gridColumn3.Width = 94;
-            // 
-            // repositoryItemButtonEdit_Incorrect
-            // 
-            this.repositoryItemButtonEdit_Incorrect.AutoHeight = false;
-            editorButtonImageOptions4.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions4.SvgImage")));
-            this.repositoryItemButtonEdit_Incorrect.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.repositoryItemButtonEdit_Incorrect.Name = "repositoryItemButtonEdit_Incorrect";
-            this.repositoryItemButtonEdit_Incorrect.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
-            this.repositoryItemButtonEdit_Incorrect.Click += new System.EventHandler(this.repositoryItemButtonEdit_Incorrect_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -270,6 +210,8 @@ namespace PepperLunch
             // 
             // frmConfirmImport
             // 
+            this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(27)))), ((int)(((byte)(16)))));
+            this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1040, 577);
@@ -282,8 +224,6 @@ namespace PepperLunch
             this.tableLayoutPanel_Main.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_IOGDetail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_IOGDetail)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_Confirm)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_Incorrect)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
@@ -303,13 +243,9 @@ namespace PepperLunch
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn PRICE;
         private DevExpress.XtraGrid.Columns.GridColumn COUNT;
-        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit_Confirm;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private DevExpress.XtraEditors.SimpleButton btnConfirm;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private Modify_Control.EditText_Digit txtQuantity;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit_Incorrect;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private Modify_Control.EditText_Digit txtPrice;

@@ -49,9 +49,6 @@ namespace PepperLunch
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement2 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionCtrl_SyncToFirebase = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionCtrlE_Customer = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionCtrlE_Receipt = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElement5 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -272,10 +269,7 @@ namespace PepperLunch
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement2,
-            this.accordionCtrl_SyncToFirebase,
-            this.accordionCtrlE_Customer,
-            this.accordionCtrlE_Receipt,
-            this.accordionControlElement5});
+            this.accordionCtrl_SyncToFirebase});
             this.accordionControl1.Location = new System.Drawing.Point(0, 39);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
@@ -309,39 +303,6 @@ namespace PepperLunch
             this.accordionCtrl_SyncToFirebase.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionCtrl_SyncToFirebase.Text = "SYNC TO FIREBASE";
             this.accordionCtrl_SyncToFirebase.Click += new System.EventHandler(this.accordionCtrl_SyncToFirebase_Click);
-            // 
-            // accordionCtrlE_Customer
-            // 
-            this.accordionCtrlE_Customer.Appearance.Hovered.BackColor = System.Drawing.Color.White;
-            this.accordionCtrlE_Customer.Appearance.Hovered.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText;
-            this.accordionCtrlE_Customer.Appearance.Hovered.Options.UseBackColor = true;
-            this.accordionCtrlE_Customer.Appearance.Hovered.Options.UseForeColor = true;
-            this.accordionCtrlE_Customer.Appearance.Normal.ForeColor = System.Drawing.Color.White;
-            this.accordionCtrlE_Customer.Appearance.Normal.Options.UseForeColor = true;
-            this.accordionCtrlE_Customer.Height = 40;
-            this.accordionCtrlE_Customer.Name = "accordionCtrlE_Customer";
-            this.accordionCtrlE_Customer.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionCtrlE_Customer.Text = "CUSTOMER";
-            this.accordionCtrlE_Customer.Click += new System.EventHandler(this.accordionCtrlE_Customer_Click);
-            // 
-            // accordionCtrlE_Receipt
-            // 
-            this.accordionCtrlE_Receipt.Appearance.Hovered.BackColor = System.Drawing.Color.White;
-            this.accordionCtrlE_Receipt.Appearance.Hovered.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText;
-            this.accordionCtrlE_Receipt.Appearance.Hovered.Options.UseBackColor = true;
-            this.accordionCtrlE_Receipt.Appearance.Hovered.Options.UseForeColor = true;
-            this.accordionCtrlE_Receipt.Appearance.Normal.ForeColor = System.Drawing.Color.White;
-            this.accordionCtrlE_Receipt.Appearance.Normal.Options.UseForeColor = true;
-            this.accordionCtrlE_Receipt.Height = 40;
-            this.accordionCtrlE_Receipt.Name = "accordionCtrlE_Receipt";
-            this.accordionCtrlE_Receipt.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionCtrlE_Receipt.Text = "RECEIPT";
-            // 
-            // accordionControlElement5
-            // 
-            this.accordionControlElement5.Name = "accordionControlElement5";
-            this.accordionControlElement5.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement5.Text = "Element5";
             // 
             // fluentDesignFormControl1
             // 
@@ -424,8 +385,6 @@ namespace PepperLunch
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrl_SyncToFirebase;
         private DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl fluentDesignFormControl1;
         private System.Windows.Forms.TableLayoutPanel tblLayout_wrapper;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrlE_Customer;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrlE_Receipt;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement2;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement3;
@@ -441,7 +400,6 @@ namespace PepperLunch
         private DevExpress.XtraEditors.SimpleButton btnSyncVoucher;
         private DevExpress.XtraGrid.GridControl gridControl_dataFromFB;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView_dataFromFB;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement5;
         private System.Windows.Forms.ComboBox cbbPromotion;
         private DevExpress.XtraEditors.SvgImageBox svgImageBox1;
         private DevExpress.XtraEditors.SimpleButton btnSyncMethodPay;

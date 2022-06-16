@@ -29,7 +29,6 @@ namespace PepperLunch
         private const int CANCEL = 4;
 
 
-        List<RECEIPT_FULL> listData;
         public frmReceipt()
         {
             InitializeComponent();
@@ -59,10 +58,11 @@ namespace PepperLunch
 
         private void accordionCtrlE_exportWord_Click(object sender, EventArgs e)
         {
-            int[] arrRowSelected = gridView_receiptFB.GetSelectedRows();
+            // export from from sql
+            int[] arrRowSelected = gridView_receiptSql.GetSelectedRows();
             if (arrRowSelected != null)
             {
-                RECEIPT item = (RECEIPT)gridView_receiptFB.GetRow(arrRowSelected[0]);
+                RECEIPT item = (RECEIPT)gridView_receiptSql.GetRow(arrRowSelected[0]);
                 BLL_Receipt.export_ReceiptToWord(item.ID_RECEIPT);
             }
             // retrieve to receipt to export 
@@ -72,7 +72,7 @@ namespace PepperLunch
         {
             string path = "Templates\\Export.xlsx";
             //Customize export options
-           gridView_receiptFB.OptionsPrint.PrintHeader = true;
+           gridView_receiptSql.OptionsPrint.PrintHeader = true;
             XlsxExportOptionsEx advOptions = new XlsxExportOptionsEx();
             advOptions.AllowGrouping = DevExpress.Utils.DefaultBoolean.False;
             advOptions.ShowTotalSummaries = DevExpress.Utils.DefaultBoolean.False;

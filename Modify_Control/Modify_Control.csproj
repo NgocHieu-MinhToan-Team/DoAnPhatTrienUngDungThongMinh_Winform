@@ -127,6 +127,12 @@
     <Compile Include="EditText_Letter.Designer.cs">
       <DependentUpon>EditText_Letter.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditText_typeDouble.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EditText_typeDouble.Designer.cs">
+      <DependentUpon>EditText_typeDouble.cs</DependentUpon>
+    </Compile>
     <Compile Include="Label_TextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>

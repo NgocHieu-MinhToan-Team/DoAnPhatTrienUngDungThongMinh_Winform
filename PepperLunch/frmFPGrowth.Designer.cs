@@ -38,6 +38,8 @@ namespace PepperLunch
             this.gridView_notSync = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.tableLayoutPanel_mid = new System.Windows.Forms.TableLayoutPanel();
+            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.txtNumberRecord = new DevExpress.XtraEditors.TextEdit();
             this.btnTrain = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.txtMinsup = new DevExpress.XtraEditors.TextEdit();
@@ -49,6 +51,9 @@ namespace PepperLunch
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_bottom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_notSync)).BeginInit();
             this.tableLayoutPanel_mid.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
+            this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNumberRecord.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMinsup.Properties)).BeginInit();
@@ -78,8 +83,8 @@ namespace PepperLunch
             this.tblLayout_Main.Name = "tblLayout_Main";
             this.tblLayout_Main.RowCount = 3;
             this.tblLayout_Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.17241F));
-            this.tblLayout_Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 79.09216F));
-            this.tblLayout_Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.86658F));
+            this.tblLayout_Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80.05502F));
+            this.tblLayout_Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.903714F));
             this.tblLayout_Main.Size = new System.Drawing.Size(1030, 727);
             this.tblLayout_Main.TabIndex = 5;
             // 
@@ -90,7 +95,7 @@ namespace PepperLunch
             this.btnGetDataFromSQL.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnGetDataFromSQL.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnGetDataFromSQL.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnGetDataFromSQL.ImageOptions.SvgImage")));
-            this.btnGetDataFromSQL.Location = new System.Drawing.Point(3, 650);
+            this.btnGetDataFromSQL.Location = new System.Drawing.Point(3, 657);
             this.btnGetDataFromSQL.Name = "btnGetDataFromSQL";
             this.btnGetDataFromSQL.Size = new System.Drawing.Size(406, 60);
             this.btnGetDataFromSQL.TabIndex = 0;
@@ -99,7 +104,7 @@ namespace PepperLunch
             // 
             // labelControl1
             // 
-            this.labelControl1.Appearance.BackColor = System.Drawing.Color.Black;
+            this.labelControl1.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.White;
             this.labelControl1.Appearance.Options.UseBackColor = true;
@@ -121,7 +126,7 @@ namespace PepperLunch
             this.btnLoadDataToFirebase.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnLoadDataToFirebase.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnLoadDataToFirebase.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnLoadDataToFirebase.ImageOptions.SvgImage")));
-            this.btnLoadDataToFirebase.Location = new System.Drawing.Point(621, 650);
+            this.btnLoadDataToFirebase.Location = new System.Drawing.Point(621, 657);
             this.btnLoadDataToFirebase.Name = "btnLoadDataToFirebase";
             this.btnLoadDataToFirebase.Size = new System.Drawing.Size(406, 60);
             this.btnLoadDataToFirebase.TabIndex = 1;
@@ -134,7 +139,7 @@ namespace PepperLunch
             this.gridControl_bottom.Location = new System.Drawing.Point(621, 76);
             this.gridControl_bottom.MainView = this.gridView_notSync;
             this.gridControl_bottom.Name = "gridControl_bottom";
-            this.gridControl_bottom.Size = new System.Drawing.Size(406, 568);
+            this.gridControl_bottom.Size = new System.Drawing.Size(406, 575);
             this.gridControl_bottom.TabIndex = 1;
             this.gridControl_bottom.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_notSync});
@@ -146,7 +151,7 @@ namespace PepperLunch
             // 
             // labelControl2
             // 
-            this.labelControl2.Appearance.BackColor = System.Drawing.Color.Black;
+            this.labelControl2.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.White;
             this.labelControl2.Appearance.Options.UseBackColor = true;
@@ -166,6 +171,7 @@ namespace PepperLunch
             // 
             this.tableLayoutPanel_mid.ColumnCount = 1;
             this.tableLayoutPanel_mid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel_mid.Controls.Add(this.groupControl3, 0, 3);
             this.tableLayoutPanel_mid.Controls.Add(this.btnTrain, 0, 2);
             this.tableLayoutPanel_mid.Controls.Add(this.groupControl1, 0, 1);
             this.tableLayoutPanel_mid.Controls.Add(this.groupControl2, 0, 0);
@@ -173,12 +179,31 @@ namespace PepperLunch
             this.tableLayoutPanel_mid.Location = new System.Drawing.Point(415, 76);
             this.tableLayoutPanel_mid.Name = "tableLayoutPanel_mid";
             this.tableLayoutPanel_mid.Padding = new System.Windows.Forms.Padding(20);
-            this.tableLayoutPanel_mid.RowCount = 3;
-            this.tableLayoutPanel_mid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel_mid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel_mid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel_mid.Size = new System.Drawing.Size(200, 568);
+            this.tableLayoutPanel_mid.RowCount = 4;
+            this.tableLayoutPanel_mid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel_mid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel_mid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel_mid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel_mid.Size = new System.Drawing.Size(200, 575);
             this.tableLayoutPanel_mid.TabIndex = 6;
+            // 
+            // groupControl3
+            // 
+            this.groupControl3.Controls.Add(this.txtNumberRecord);
+            this.groupControl3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupControl3.Location = new System.Drawing.Point(23, 422);
+            this.groupControl3.Name = "groupControl3";
+            this.groupControl3.Size = new System.Drawing.Size(154, 63);
+            this.groupControl3.TabIndex = 6;
+            this.groupControl3.Text = "Number Record ";
+            // 
+            // txtNumberRecord
+            // 
+            this.txtNumberRecord.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtNumberRecord.Location = new System.Drawing.Point(2, 28);
+            this.txtNumberRecord.Name = "txtNumberRecord";
+            this.txtNumberRecord.Size = new System.Drawing.Size(150, 28);
+            this.txtNumberRecord.TabIndex = 0;
             // 
             // btnTrain
             // 
@@ -186,7 +211,7 @@ namespace PepperLunch
             this.btnTrain.Appearance.Options.UseFont = true;
             this.btnTrain.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnTrain.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnTrain.ImageOptions.SvgImage")));
-            this.btnTrain.Location = new System.Drawing.Point(23, 233);
+            this.btnTrain.Location = new System.Drawing.Point(23, 289);
             this.btnTrain.Name = "btnTrain";
             this.btnTrain.Size = new System.Drawing.Size(154, 60);
             this.btnTrain.TabIndex = 3;
@@ -197,9 +222,9 @@ namespace PepperLunch
             // 
             this.groupControl1.Controls.Add(this.txtMinsup);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControl1.Location = new System.Drawing.Point(23, 128);
+            this.groupControl1.Location = new System.Drawing.Point(23, 156);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(154, 58);
+            this.groupControl1.Size = new System.Drawing.Size(154, 63);
             this.groupControl1.TabIndex = 4;
             this.groupControl1.Text = "Min Sup Input";
             // 
@@ -217,7 +242,7 @@ namespace PepperLunch
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl2.Location = new System.Drawing.Point(23, 23);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(154, 55);
+            this.groupControl2.Size = new System.Drawing.Size(154, 61);
             this.groupControl2.TabIndex = 5;
             this.groupControl2.Text = "Confidence Input";
             // 
@@ -235,7 +260,7 @@ namespace PepperLunch
             this.gridControl_top.Location = new System.Drawing.Point(3, 76);
             this.gridControl_top.MainView = this.gridView_sync;
             this.gridControl_top.Name = "gridControl_top";
-            this.gridControl_top.Size = new System.Drawing.Size(406, 568);
+            this.gridControl_top.Size = new System.Drawing.Size(406, 575);
             this.gridControl_top.TabIndex = 0;
             this.gridControl_top.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_sync});
@@ -247,7 +272,7 @@ namespace PepperLunch
             // 
             // frmFPGrowth
             // 
-            this.Appearance.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(27)))), ((int)(((byte)(16)))));
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -261,6 +286,9 @@ namespace PepperLunch
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_bottom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_notSync)).EndInit();
             this.tableLayoutPanel_mid.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
+            this.groupControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtNumberRecord.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtMinsup.Properties)).EndInit();
@@ -290,5 +318,7 @@ namespace PepperLunch
         private DevExpress.XtraEditors.TextEdit txtMinsup;
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private DevExpress.XtraEditors.TextEdit txtConfidence;
+        private DevExpress.XtraEditors.GroupControl groupControl3;
+        private DevExpress.XtraEditors.TextEdit txtNumberRecord;
     }
 }

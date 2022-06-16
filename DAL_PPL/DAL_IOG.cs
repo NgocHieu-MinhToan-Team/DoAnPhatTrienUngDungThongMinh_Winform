@@ -41,11 +41,11 @@ namespace DAL_PPL
                 return false;
             }
         }
-        public static bool delete(IMPORT data)
+        public static bool delete(string ID)
         {
             try
             {
-                IMPORT itemDelete = db.IMPORTs.SingleOrDefault(t => t.ID_IOG == data.ID_IOG);
+                IMPORT itemDelete = db.IMPORTs.SingleOrDefault(t => t.ID_IOG == ID);
                 itemDelete.FLAG_DEL = 1;
                 db.SubmitChanges();
                 return true;
