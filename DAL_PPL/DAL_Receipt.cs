@@ -15,6 +15,11 @@ namespace DAL_PPL
         {
             return db.RECEIPTs.Select(t => t).ToList();
         }
+        
+        public static List<RECEIPT> getListForFPGrowth()
+        {
+            return db.RECEIPTs.Where(t => t.STATE_RECEIPT==3).ToList();
+        }
 
         public static List<DETAIL_RECEIPT> getDetailReceiptList(string ID)
         {
@@ -100,6 +105,31 @@ namespace DAL_PPL
             }
         }
 
+        public static bool insertReceipt(RECEIPT data)
+        {
+            try
+            {
+                RECEIPT item = new RECEIPT();
+                item.ID_RECEIPT = data.ID_RECEIPT;
+                item.ID_VOUCHER = data.ID_VOUCHER;
+                item.ID_CUSTOMER = data.ID_CUSTOMER;
+                item.ID_METHOD = data.ID_METHOD;
+                item.DATE_CREATE = data.DATE_CREATE;
+                item.TOTAL_PRODUCT = data.TOTAL_PRODUCT;
+                item.TOTAL_PRICE = data.TOTAL_PRICE;
+                item.POINT = data.POINT;
+                item.STATE_RECEIPT = data.STATE_RECEIPT;
+                db.RECEIPTs.InsertOnSubmit(item);
+                db.SubmitChanges();
+                return true;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
         public static bool insertDetailReceipt(DETAIL_RECEIPT data)
         {
             try
@@ -121,7 +151,7 @@ namespace DAL_PPL
             }
         }
 
-        public static bool insertReceipt(RECEIPT data)
+        public static bool insertReceipt(RECEIPT data,int STATUS)
         {
             try
             {
@@ -135,7 +165,7 @@ namespace DAL_PPL
                 item.TOTAL_PRODUCT = data.TOTAL_PRODUCT;
                 item.TOTAL_PRICE = data.TOTAL_PRICE;
                 item.POINT = data.POINT;
-                item.STATE_RECEIPT = data.STATE_RECEIPT;
+                item.STATE_RECEIPT = STATUS;
                 item.ADDRESS_RECEIPT = data.ADDRESS_RECEIPT;
                 db.RECEIPTs.InsertOnSubmit(item);
                 db.SubmitChanges();
@@ -174,6 +204,21 @@ namespace DAL_PPL
                 item.TOTAL_PRICE = data.TOTAL_PRICE;
                 item.POINT = data.POINT;
                 item.STATE_RECEIPT = data.STATE_RECEIPT;
+                db.SubmitChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool updateStateReceipt(string ID_RECEIPT,int status)
+        {
+            try
+            {
+                RECEIPT item = db.RECEIPTs.SingleOrDefault(t => t.ID_RECEIPT == ID_RECEIPT);
+                item.STATE_RECEIPT = status;
                 db.SubmitChanges();
                 return true;
             }

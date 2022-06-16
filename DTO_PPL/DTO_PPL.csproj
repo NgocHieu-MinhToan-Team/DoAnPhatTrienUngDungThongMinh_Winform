@@ -105,6 +105,7 @@
   <ItemGroup>
     <Compile Include="Customer.cs" />
     <Compile Include="Detail_Order.cs" />
+    <Compile Include="FPGrowth_Item.cs" />
     <Compile Include="GeneralMethods.cs" />
     <Compile Include="METHOD.cs" />
     <Compile Include="Order.cs" />

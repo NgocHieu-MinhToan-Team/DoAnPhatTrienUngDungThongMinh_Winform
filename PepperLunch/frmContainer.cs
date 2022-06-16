@@ -144,6 +144,7 @@ namespace PepperLunch
             if (!BLL_Staff.isAdmin(group_id))
             {
                 ribbonPageGroup_Firebase.Visible = false;
+                ribbonPageGroup_AI.Visible = false;
             }
         }
 
@@ -165,6 +166,17 @@ namespace PepperLunch
         {
             frmIngredients newForm = new frmIngredients();
             newForm.Show();
+        }
+
+        private void barBtn_FPGrowth_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            // if form is not opened
+            if (!isOpenForm(typeof(frmFPGrowth)))
+            {
+                frmFPGrowth newForm = new frmFPGrowth();
+                newForm.MdiParent = this;
+                newForm.Show();
+            }
         }
     }
 }

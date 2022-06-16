@@ -35,7 +35,7 @@ namespace PepperLunch
 
         private void accordionCtrlE_Customer_Click(object sender, EventArgs e)
         {
-            frmSyncCustomer newFrm = new frmSyncCustomer();
+            frmFPGrowth newFrm = new frmFPGrowth();
             newFrm.Show();
         }
 

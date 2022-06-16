@@ -24,8 +24,9 @@ namespace PepperLunch
     public partial class frmReceipt : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
         private const int CONFIRM = 1;
-        private const int COMPLETE = 2;
-        private const int CANCEL = 3;
+        private const int DELIVERY = 2;
+        private const int COMPLETE = 3;
+        private const int CANCEL = 4;
 
 
         List<RECEIPT_FULL> listData;
@@ -114,7 +115,7 @@ namespace PepperLunch
 
                 if (await FB_Receipt.updateReceiptFromFirebase(item,CONFIRM))
                 {
-                    XtraMessageBox.Show("Tất Cả Đơn Hàng Đã Được thêm Vào SQL");
+                    XtraMessageBox.Show("Đơn Hàng"+item.CUSTOMER+" Đã Được thêm Vào SQL");
                     loadData();
                 }
                 else
@@ -142,9 +143,16 @@ namespace PepperLunch
             if (index != null)
             {
                 RECEIPT item = (RECEIPT)gridView_receiptSql.GetRow(index[0]);
-                await FB_Receipt.updateStatusReceipt(item,COMPLETE);
-                XtraMessageBox.Show("Đơn Hàng Đã Xong , Chuyển Sang Trạng Thái Vận Chuyển");
-                loadData();
+                if(item.STATE_RECEIPT == CONFIRM)
+                {
+                    await FB_Receipt.updateStatusReceipt(item, DELIVERY);
+                
+                    XtraMessageBox.Show("Đơn Hàng Đã Xong , Chuyển Sang Trạng Thái Vận Chuyển");
+                    loadData();
+                    return;
+                }
+                repositoryItemButtonEdit_response.ReadOnly = true;
+                return;
             }
         }
 
@@ -160,5 +168,22 @@ namespace PepperLunch
             }
         }
 
+        private async void repositoryItemButtonEdit_CompleteOrder_Click(object sender, EventArgs e)
+        {
+            int[] index = gridView_receiptSql.GetSelectedRows();
+            if (index != null)
+            {
+                RECEIPT item = (RECEIPT)gridView_receiptSql.GetRow(index[0]);
+                if (item.STATE_RECEIPT == DELIVERY)
+                {
+                    await FB_Receipt.updateStatusReceipt(item, COMPLETE);
+                    XtraMessageBox.Show("Hoàn Tất Giao Hàng");
+                    loadData();
+                    return;
+                }
+                repositoryItemButtonEdit_CompleteOrder.ReadOnly = true;
+                return;
+            }
+        }
     }
 }

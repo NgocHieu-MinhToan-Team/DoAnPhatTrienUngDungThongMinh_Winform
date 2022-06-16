@@ -30,22 +30,27 @@ namespace PepperLunch
         private void InitializeComponent()
         {
             DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, null, true, true);
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReceipt));
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions5 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject17 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions6 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject21 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject22 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject23 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject24 = new DevExpress.Utils.SerializableAppearanceObject();
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.gridControl_receiptFB = new DevExpress.XtraGrid.GridControl();
@@ -78,6 +83,8 @@ namespace PepperLunch
             this.repositoryItemButtonEdit_response = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit_seemore = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemButtonEdit_CompleteOrder = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionCtrlE_exportExcel = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -93,6 +100,7 @@ namespace PepperLunch
             ((System.ComponentModel.ISupportInitialize)(this.gridView_receiptSql)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_response)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_seemore)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_CompleteOrder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
@@ -271,9 +279,9 @@ namespace PepperLunch
             // repositoryItemButtonEdit_confirm
             // 
             this.repositoryItemButtonEdit_confirm.AutoHeight = false;
-            editorButtonImageOptions4.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions4.SvgImage")));
+            editorButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions1.SvgImage")));
             this.repositoryItemButtonEdit_confirm.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Confirm", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Confirm", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButtonEdit_confirm.Name = "repositoryItemButtonEdit_confirm";
             this.repositoryItemButtonEdit_confirm.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repositoryItemButtonEdit_confirm.Click += new System.EventHandler(this.repositoryItemButtonEdit_confirm_Click);
@@ -286,7 +294,8 @@ namespace PepperLunch
             this.gridControl_receiptSql.Name = "gridControl_receiptSql";
             this.gridControl_receiptSql.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEdit_response,
-            this.repositoryItemButtonEdit_seemore});
+            this.repositoryItemButtonEdit_seemore,
+            this.repositoryItemButtonEdit_CompleteOrder});
             this.gridControl_receiptSql.Size = new System.Drawing.Size(840, 368);
             this.gridControl_receiptSql.TabIndex = 1;
             this.gridControl_receiptSql.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -306,7 +315,8 @@ namespace PepperLunch
             this.gridColumn20,
             this.gridColumn21,
             this.gridColumn22,
-            this.gridColumn23});
+            this.gridColumn23,
+            this.gridColumn24});
             this.gridView_receiptSql.GridControl = this.gridControl_receiptSql;
             this.gridView_receiptSql.Name = "gridView_receiptSql";
             // 
@@ -316,6 +326,7 @@ namespace PepperLunch
             this.gridColumn12.FieldName = "ID_RECEIPT";
             this.gridColumn12.MinWidth = 25;
             this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.OptionsColumn.AllowEdit = false;
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 0;
             this.gridColumn12.Width = 94;
@@ -326,6 +337,7 @@ namespace PepperLunch
             this.gridColumn13.FieldName = "ID_VOUCHER";
             this.gridColumn13.MinWidth = 25;
             this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.OptionsColumn.AllowEdit = false;
             this.gridColumn13.Visible = true;
             this.gridColumn13.VisibleIndex = 1;
             this.gridColumn13.Width = 94;
@@ -336,6 +348,7 @@ namespace PepperLunch
             this.gridColumn14.FieldName = "ID_CUSTOMER";
             this.gridColumn14.MinWidth = 25;
             this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.OptionsColumn.AllowEdit = false;
             this.gridColumn14.Visible = true;
             this.gridColumn14.VisibleIndex = 2;
             this.gridColumn14.Width = 94;
@@ -346,6 +359,7 @@ namespace PepperLunch
             this.gridColumn15.FieldName = "ID_METHOD";
             this.gridColumn15.MinWidth = 25;
             this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.OptionsColumn.AllowEdit = false;
             this.gridColumn15.Visible = true;
             this.gridColumn15.VisibleIndex = 3;
             this.gridColumn15.Width = 94;
@@ -356,6 +370,7 @@ namespace PepperLunch
             this.gridColumn16.FieldName = "DATE_CREATE";
             this.gridColumn16.MinWidth = 25;
             this.gridColumn16.Name = "gridColumn16";
+            this.gridColumn16.OptionsColumn.AllowEdit = false;
             this.gridColumn16.Visible = true;
             this.gridColumn16.VisibleIndex = 4;
             this.gridColumn16.Width = 94;
@@ -366,6 +381,7 @@ namespace PepperLunch
             this.gridColumn17.FieldName = "TOTAL_PRODUCT";
             this.gridColumn17.MinWidth = 25;
             this.gridColumn17.Name = "gridColumn17";
+            this.gridColumn17.OptionsColumn.AllowEdit = false;
             this.gridColumn17.Visible = true;
             this.gridColumn17.VisibleIndex = 5;
             this.gridColumn17.Width = 94;
@@ -376,6 +392,7 @@ namespace PepperLunch
             this.gridColumn18.FieldName = "TOTAL_PRICE";
             this.gridColumn18.MinWidth = 25;
             this.gridColumn18.Name = "gridColumn18";
+            this.gridColumn18.OptionsColumn.AllowEdit = false;
             this.gridColumn18.Visible = true;
             this.gridColumn18.VisibleIndex = 6;
             this.gridColumn18.Width = 94;
@@ -386,6 +403,7 @@ namespace PepperLunch
             this.gridColumn19.FieldName = "POINT";
             this.gridColumn19.MinWidth = 25;
             this.gridColumn19.Name = "gridColumn19";
+            this.gridColumn19.OptionsColumn.AllowEdit = false;
             this.gridColumn19.Visible = true;
             this.gridColumn19.VisibleIndex = 7;
             this.gridColumn19.Width = 94;
@@ -396,6 +414,7 @@ namespace PepperLunch
             this.gridColumn20.FieldName = "STATE_RECEIPT";
             this.gridColumn20.MinWidth = 25;
             this.gridColumn20.Name = "gridColumn20";
+            this.gridColumn20.OptionsColumn.AllowEdit = false;
             this.gridColumn20.Visible = true;
             this.gridColumn20.VisibleIndex = 8;
             this.gridColumn20.Width = 94;
@@ -406,6 +425,7 @@ namespace PepperLunch
             this.gridColumn21.FieldName = "ADDRESS_RECEIPT";
             this.gridColumn21.MinWidth = 25;
             this.gridColumn21.Name = "gridColumn21";
+            this.gridColumn21.OptionsColumn.AllowEdit = false;
             this.gridColumn21.Visible = true;
             this.gridColumn21.VisibleIndex = 9;
             this.gridColumn21.Width = 94;
@@ -423,9 +443,9 @@ namespace PepperLunch
             // repositoryItemButtonEdit_response
             // 
             this.repositoryItemButtonEdit_response.AutoHeight = false;
-            editorButtonImageOptions5.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions5.SvgImage")));
+            editorButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions2.SvgImage")));
             this.repositoryItemButtonEdit_response.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Response", -1, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Response", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButtonEdit_response.Name = "repositoryItemButtonEdit_response";
             this.repositoryItemButtonEdit_response.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repositoryItemButtonEdit_response.Click += new System.EventHandler(this.repositoryItemButtonEdit_response_Click);
@@ -444,12 +464,33 @@ namespace PepperLunch
             // repositoryItemButtonEdit_seemore
             // 
             this.repositoryItemButtonEdit_seemore.AutoHeight = false;
-            editorButtonImageOptions6.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions6.SvgImage")));
+            editorButtonImageOptions3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions3.SvgImage")));
             this.repositoryItemButtonEdit_seemore.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "See More", -1, true, true, false, editorButtonImageOptions6, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject21, serializableAppearanceObject22, serializableAppearanceObject23, serializableAppearanceObject24, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "See More", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButtonEdit_seemore.Name = "repositoryItemButtonEdit_seemore";
             this.repositoryItemButtonEdit_seemore.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repositoryItemButtonEdit_seemore.Click += new System.EventHandler(this.repositoryItemButtonEdit_seemore_Click);
+            // 
+            // gridColumn24
+            // 
+            this.gridColumn24.Caption = "Complete";
+            this.gridColumn24.ColumnEdit = this.repositoryItemButtonEdit_CompleteOrder;
+            this.gridColumn24.MinWidth = 25;
+            this.gridColumn24.Name = "gridColumn24";
+            this.gridColumn24.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
+            this.gridColumn24.Visible = true;
+            this.gridColumn24.VisibleIndex = 12;
+            this.gridColumn24.Width = 94;
+            // 
+            // repositoryItemButtonEdit_CompleteOrder
+            // 
+            this.repositoryItemButtonEdit_CompleteOrder.AutoHeight = false;
+            editorButtonImageOptions4.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions4.SvgImage")));
+            this.repositoryItemButtonEdit_CompleteOrder.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.repositoryItemButtonEdit_CompleteOrder.Name = "repositoryItemButtonEdit_CompleteOrder";
+            this.repositoryItemButtonEdit_CompleteOrder.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.repositoryItemButtonEdit_CompleteOrder.Click += new System.EventHandler(this.repositoryItemButtonEdit_CompleteOrder_Click);
             // 
             // accordionControl1
             // 
@@ -565,6 +606,7 @@ namespace PepperLunch
             ((System.ComponentModel.ISupportInitialize)(this.gridView_receiptSql)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_response)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_seemore)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_CompleteOrder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
             this.ResumeLayout(false);
@@ -610,5 +652,7 @@ namespace PepperLunch
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit_response;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit_seemore;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn24;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit_CompleteOrder;
     }
 }
