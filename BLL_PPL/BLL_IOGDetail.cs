@@ -29,7 +29,6 @@ namespace BLL_PPL
             {
                 if (bll_iogDetail.insert(data))
                 {
-                    MessageBox.Show("Insert Data Sucessfully !");
                     return true;
                 }
                 else
@@ -78,6 +77,27 @@ namespace BLL_PPL
                 if (bll_iogDetail.update(data))
                 {
                     MessageBox.Show("Update Data Sucessfully !");
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Update Data Failed !");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
+        public bool update(IOGDETAIL_JOIN data)
+        {
+            try
+            {
+                if (bll_iogDetail.update(data))
+                {
                     return true;
                 }
                 else

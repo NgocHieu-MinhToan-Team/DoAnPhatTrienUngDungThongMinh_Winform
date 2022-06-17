@@ -19,7 +19,7 @@ namespace PepperLunch
         {
             InitializeComponent();
         }
-        public STAFF staff_global { get; set; }
+        public  STAFF staff_global { get; set; }
         public frmContainer formContainer;
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -46,6 +46,7 @@ namespace PepperLunch
             {
                 staff_global = staff;
                 Program.frmcontainer = new frmContainer();
+                Program.frmcontainer.static_ID_GROUP_USER = staff_global.ID_GROUP;
                 Program.frmcontainer.Show();
                 Hide();
             }

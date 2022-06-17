@@ -72,6 +72,7 @@ namespace PepperLunch
         private void barBtn_signOut_ItemClick_1(object sender, ItemClickEventArgs e)
         {
             frmLogin frm = new frmLogin();
+            Program.frmlogin.staff_global = null;
             frm.Show();
             this.Hide();
         }
@@ -82,7 +83,6 @@ namespace PepperLunch
             if (!isOpenForm(typeof(frmProduct)))
             {
                 frmProduct newForm = new frmProduct();
-                //newForm.USERNAME_STAFF = static_USERNAME_STAFF;
                 newForm.MdiParent = this;
                 newForm.Show();
             }
@@ -94,7 +94,6 @@ namespace PepperLunch
             if (!isOpenForm(typeof(frmCategory)))
             {
                 frmCategory newForm = new frmCategory();
-                //newForm.USERNAME_STAFF = static_USERNAME_STAFF;
                 newForm.MdiParent = this;
                 newForm.Show();
             }
@@ -105,7 +104,6 @@ namespace PepperLunch
             if (!isOpenForm(typeof(frmHandleFirebase)))
             {
                 frmHandleFirebase newForm = new frmHandleFirebase();
-                //newForm.USERNAME_STAFF = static_USERNAME_STAFF;
                 newForm.MdiParent = this;
                 newForm.Show();
             }
@@ -115,11 +113,13 @@ namespace PepperLunch
         private void barBtn_customer_ItemClick(object sender, ItemClickEventArgs e)
         {
             // if form is not opened
-           
-            frmCustomer newForm = new frmCustomer();
-            //newForm.USERNAME_STAFF = static_USERNAME_STAFF;
-            newForm.MdiParent = this;
-            newForm.Show();
+            if (!isOpenForm(typeof(frmCustomer)))
+            {
+                frmCustomer newForm = new frmCustomer();
+                newForm.MdiParent = this;
+                newForm.Show();
+            }
+         
         }
 
         
@@ -139,19 +139,28 @@ namespace PepperLunch
 
         private void frmContainer_Load(object sender, EventArgs e)
         {
-            string group_id = Program.frmlogin.staff_global.ID_GROUP;
-            // check role user
-            if (!BLL_Staff.isAdmin(group_id))
+            string group_id = static_ID_GROUP_USER;
+         
+            // if id_group is manager
+            if (group_id == "QL")
+            {
+            }
+            // if id_group is full time staff
+            else if (group_id == "FT")
             {
                 ribbonPageGroup_Firebase.Visible = false;
                 ribbonPageGroup_AI.Visible = false;
+                ribbonPageGroup_menu.Visible = false;
+                barBtn_staff.Visibility = BarItemVisibility.Never;
             }
-
-            if (!isOpenForm(typeof(frmFPGrowth)))
+            // if id_group is part time staff
+            else
             {
-                frmFPGrowth newForm = new frmFPGrowth();
-                newForm.MdiParent = this;
-                newForm.Show();
+                ribbonPageGroup_Firebase.Visible = false;
+                ribbonPageGroup_AI.Visible = false;
+                ribbonPageGroup_menu.Visible = false;
+                barBtn_staff.Visibility = BarItemVisibility.Never;
+                barBtn_Import.Visibility= BarItemVisibility.Never;
             }
         }
 
@@ -164,9 +173,14 @@ namespace PepperLunch
 
         private void barBtn_Import_ItemClick(object sender, ItemClickEventArgs e)
         {
-            frmImport newForm = new frmImport();
-            newForm.MdiParent = this;
-            newForm.Show();
+            if (!isOpenForm(typeof(frmImport)))
+            {
+                frmImport newForm = new frmImport();
+                frmImport.username = static_USERNAME_STAFF;
+                newForm.MdiParent = this;
+                newForm.Show();
+            }
+          
         }
 
         private void barBtn_Ingredients_ItemClick(object sender, ItemClickEventArgs e)

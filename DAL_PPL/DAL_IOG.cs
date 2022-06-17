@@ -46,7 +46,7 @@ namespace DAL_PPL
             try
             {
                 IMPORT itemDelete = db.IMPORTs.SingleOrDefault(t => t.ID_IOG == ID);
-                itemDelete.FLAG_DEL = 1;
+                db.IMPORTs.DeleteOnSubmit(itemDelete);
                 db.SubmitChanges();
                 return true;
             }

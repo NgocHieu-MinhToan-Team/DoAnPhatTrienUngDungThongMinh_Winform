@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace DTO_PPL
 {
-    public class GeneralMethods
+    public static class GeneralMethods
     {
+        public static List<T> GetClone<T>(this List<T> source)
+        {
+            return source.GetRange(0, source.Count);
+        }
         public  static string createID(string prefix)
         {
             string id = prefix+ DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + DateTime.Now.Millisecond;

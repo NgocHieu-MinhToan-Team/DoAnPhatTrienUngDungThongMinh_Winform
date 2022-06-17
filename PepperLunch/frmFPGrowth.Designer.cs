@@ -34,34 +34,35 @@ namespace PepperLunch
             this.btnGetDataFromSQL = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.btnLoadDataToFirebase = new DevExpress.XtraEditors.SimpleButton();
-            this.gridControl_bottom = new DevExpress.XtraGrid.GridControl();
-            this.gridView_notSync = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridControl_train = new DevExpress.XtraGrid.GridControl();
+            this.gridView_train = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.tableLayoutPanel_mid = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
-            this.txtNumberRecord = new DevExpress.XtraEditors.TextEdit();
+            this.txtNumberRecord = new Modify_Control.EditText_Digit();
             this.btnTrain = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.txtMinsup = new DevExpress.XtraEditors.TextEdit();
+            this.comboBoxEdit_minSup = new DevExpress.XtraEditors.ComboBoxEdit();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.txtConfidence = new DevExpress.XtraEditors.TextEdit();
-            this.gridControl_top = new DevExpress.XtraGrid.GridControl();
-            this.gridView_sync = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.comboBoxEdit_confidence = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.gridControl_sql = new DevExpress.XtraGrid.GridControl();
+            this.gridView_sql = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.btnCreateData = new DevExpress.XtraEditors.SimpleButton();
             this.tblLayout_Main.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl_bottom)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView_notSync)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl_train)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_train)).BeginInit();
             this.tableLayoutPanel_mid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumberRecord.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMinsup.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit_minSup.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtConfidence.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl_top)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView_sync)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit_confidence.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl_sql)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_sql)).BeginInit();
             this.SuspendLayout();
             // 
             // tblLayout_Main
@@ -74,10 +75,11 @@ namespace PepperLunch
             this.tblLayout_Main.Controls.Add(this.btnGetDataFromSQL, 0, 2);
             this.tblLayout_Main.Controls.Add(this.labelControl1, 0, 0);
             this.tblLayout_Main.Controls.Add(this.btnLoadDataToFirebase, 2, 2);
-            this.tblLayout_Main.Controls.Add(this.gridControl_bottom, 2, 1);
+            this.tblLayout_Main.Controls.Add(this.gridControl_train, 2, 1);
             this.tblLayout_Main.Controls.Add(this.labelControl2, 2, 0);
             this.tblLayout_Main.Controls.Add(this.tableLayoutPanel_mid, 1, 1);
-            this.tblLayout_Main.Controls.Add(this.gridControl_top, 0, 1);
+            this.tblLayout_Main.Controls.Add(this.gridControl_sql, 0, 1);
+            this.tblLayout_Main.Controls.Add(this.btnCreateData, 1, 0);
             this.tblLayout_Main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblLayout_Main.Location = new System.Drawing.Point(0, 0);
             this.tblLayout_Main.Name = "tblLayout_Main";
@@ -133,21 +135,21 @@ namespace PepperLunch
             this.btnLoadDataToFirebase.Text = "Push To Firebase";
             this.btnLoadDataToFirebase.Click += new System.EventHandler(this.btnLoadDataToFirebase_Click);
             // 
-            // gridControl_bottom
+            // gridControl_train
             // 
-            this.gridControl_bottom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl_bottom.Location = new System.Drawing.Point(621, 76);
-            this.gridControl_bottom.MainView = this.gridView_notSync;
-            this.gridControl_bottom.Name = "gridControl_bottom";
-            this.gridControl_bottom.Size = new System.Drawing.Size(406, 575);
-            this.gridControl_bottom.TabIndex = 1;
-            this.gridControl_bottom.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView_notSync});
+            this.gridControl_train.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl_train.Location = new System.Drawing.Point(621, 76);
+            this.gridControl_train.MainView = this.gridView_train;
+            this.gridControl_train.Name = "gridControl_train";
+            this.gridControl_train.Size = new System.Drawing.Size(406, 575);
+            this.gridControl_train.TabIndex = 1;
+            this.gridControl_train.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView_train});
             // 
-            // gridView_notSync
+            // gridView_train
             // 
-            this.gridView_notSync.GridControl = this.gridControl_bottom;
-            this.gridView_notSync.Name = "gridView_notSync";
+            this.gridView_train.GridControl = this.gridControl_train;
+            this.gridView_train.Name = "gridView_train";
             // 
             // labelControl2
             // 
@@ -220,7 +222,7 @@ namespace PepperLunch
             // 
             // groupControl1
             // 
-            this.groupControl1.Controls.Add(this.txtMinsup);
+            this.groupControl1.Controls.Add(this.comboBoxEdit_minSup);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl1.Location = new System.Drawing.Point(23, 156);
             this.groupControl1.Name = "groupControl1";
@@ -228,17 +230,31 @@ namespace PepperLunch
             this.groupControl1.TabIndex = 4;
             this.groupControl1.Text = "Min Sup Input";
             // 
-            // txtMinsup
+            // comboBoxEdit_minSup
             // 
-            this.txtMinsup.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtMinsup.Location = new System.Drawing.Point(2, 28);
-            this.txtMinsup.Name = "txtMinsup";
-            this.txtMinsup.Size = new System.Drawing.Size(150, 28);
-            this.txtMinsup.TabIndex = 0;
+            this.comboBoxEdit_minSup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxEdit_minSup.Location = new System.Drawing.Point(2, 28);
+            this.comboBoxEdit_minSup.Name = "comboBoxEdit_minSup";
+            this.comboBoxEdit_minSup.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEdit_minSup.Properties.Items.AddRange(new object[] {
+            "0",
+            "0,1",
+            "0,2",
+            "0,3",
+            "0,4",
+            "0,5",
+            "0,6",
+            "0,7",
+            "0,8",
+            "0,9",
+            "1"});
+            this.comboBoxEdit_minSup.Size = new System.Drawing.Size(150, 28);
+            this.comboBoxEdit_minSup.TabIndex = 0;
             // 
             // groupControl2
             // 
-            this.groupControl2.Controls.Add(this.txtConfidence);
+            this.groupControl2.Controls.Add(this.comboBoxEdit_confidence);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl2.Location = new System.Drawing.Point(23, 23);
             this.groupControl2.Name = "groupControl2";
@@ -246,29 +262,54 @@ namespace PepperLunch
             this.groupControl2.TabIndex = 5;
             this.groupControl2.Text = "Confidence Input";
             // 
-            // txtConfidence
+            // comboBoxEdit_confidence
             // 
-            this.txtConfidence.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtConfidence.Location = new System.Drawing.Point(2, 28);
-            this.txtConfidence.Name = "txtConfidence";
-            this.txtConfidence.Size = new System.Drawing.Size(150, 28);
-            this.txtConfidence.TabIndex = 1;
+            this.comboBoxEdit_confidence.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxEdit_confidence.Location = new System.Drawing.Point(2, 28);
+            this.comboBoxEdit_confidence.Name = "comboBoxEdit_confidence";
+            this.comboBoxEdit_confidence.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEdit_confidence.Properties.Items.AddRange(new object[] {
+            "0",
+            "0,1",
+            "0,2",
+            "0,3",
+            "0,4",
+            "0,5",
+            "0,6",
+            "0,7",
+            "0,8",
+            "0,9",
+            "1"});
+            this.comboBoxEdit_confidence.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.comboBoxEdit_confidence.Size = new System.Drawing.Size(150, 28);
+            this.comboBoxEdit_confidence.TabIndex = 2;
             // 
-            // gridControl_top
+            // gridControl_sql
             // 
-            this.gridControl_top.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl_top.Location = new System.Drawing.Point(3, 76);
-            this.gridControl_top.MainView = this.gridView_sync;
-            this.gridControl_top.Name = "gridControl_top";
-            this.gridControl_top.Size = new System.Drawing.Size(406, 575);
-            this.gridControl_top.TabIndex = 0;
-            this.gridControl_top.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView_sync});
+            this.gridControl_sql.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl_sql.Location = new System.Drawing.Point(3, 76);
+            this.gridControl_sql.MainView = this.gridView_sql;
+            this.gridControl_sql.Name = "gridControl_sql";
+            this.gridControl_sql.Size = new System.Drawing.Size(406, 575);
+            this.gridControl_sql.TabIndex = 0;
+            this.gridControl_sql.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView_sql});
             // 
-            // gridView_sync
+            // gridView_sql
             // 
-            this.gridView_sync.GridControl = this.gridControl_top;
-            this.gridView_sync.Name = "gridView_sync";
+            this.gridView_sql.GridControl = this.gridControl_sql;
+            this.gridView_sql.Name = "gridView_sql";
+            // 
+            // btnCreateData
+            // 
+            this.btnCreateData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCreateData.Location = new System.Drawing.Point(415, 3);
+            this.btnCreateData.Name = "btnCreateData";
+            this.btnCreateData.Size = new System.Drawing.Size(200, 67);
+            this.btnCreateData.TabIndex = 7;
+            this.btnCreateData.Text = "Create Data Train";
+            this.btnCreateData.Click += new System.EventHandler(this.btnCreateData_Click);
             // 
             // frmFPGrowth
             // 
@@ -283,20 +324,20 @@ namespace PepperLunch
             this.Load += new System.EventHandler(this.frmSyncCustomer_Load);
             this.tblLayout_Main.ResumeLayout(false);
             this.tblLayout_Main.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl_bottom)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView_notSync)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl_train)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_train)).EndInit();
             this.tableLayoutPanel_mid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtNumberRecord.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtMinsup.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit_minSup.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtConfidence.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl_top)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView_sync)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit_confidence.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl_sql)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_sql)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -304,21 +345,22 @@ namespace PepperLunch
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tblLayout_Main;
-        private DevExpress.XtraGrid.GridControl gridControl_top;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView_sync;
+        private DevExpress.XtraGrid.GridControl gridControl_sql;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView_sql;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SimpleButton btnLoadDataToFirebase;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.SimpleButton btnGetDataFromSQL;
-        private DevExpress.XtraGrid.GridControl gridControl_bottom;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView_notSync;
+        private DevExpress.XtraGrid.GridControl gridControl_train;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView_train;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel_mid;
         private DevExpress.XtraEditors.SimpleButton btnTrain;
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.TextEdit txtMinsup;
         private DevExpress.XtraEditors.GroupControl groupControl2;
-        private DevExpress.XtraEditors.TextEdit txtConfidence;
         private DevExpress.XtraEditors.GroupControl groupControl3;
-        private DevExpress.XtraEditors.TextEdit txtNumberRecord;
+        private Modify_Control.EditText_Digit txtNumberRecord;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit_minSup;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit_confidence;
+        private DevExpress.XtraEditors.SimpleButton btnCreateData;
     }
 }

@@ -29,6 +29,7 @@ namespace PepperLunch
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomer));
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.gridControl_Customer = new DevExpress.XtraGrid.GridControl();
@@ -36,7 +37,6 @@ namespace PepperLunch
             this.gridControl_fromFirebase = new DevExpress.XtraGrid.GridControl();
             this.gridView_Firebase = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
-            this.accordionCtrlE_removeCustomer = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionCtrlE_GetCustomerFromFirebase = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.fluentDesignFormContainer1.SuspendLayout();
@@ -113,22 +113,12 @@ namespace PepperLunch
             this.accordionControl1.Appearance.AccordionControl.Options.UseBackColor = true;
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.accordionCtrlE_removeCustomer,
             this.accordionCtrlE_GetCustomerFromFirebase});
             this.accordionControl1.Location = new System.Drawing.Point(0, 39);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
             this.accordionControl1.Size = new System.Drawing.Size(254, 646);
             this.accordionControl1.TabIndex = 1;
-            // 
-            // accordionCtrlE_removeCustomer
-            // 
-            this.accordionCtrlE_removeCustomer.Appearance.Normal.ForeColor = System.Drawing.Color.White;
-            this.accordionCtrlE_removeCustomer.Appearance.Normal.Options.UseForeColor = true;
-            this.accordionCtrlE_removeCustomer.Height = 40;
-            this.accordionCtrlE_removeCustomer.Name = "accordionCtrlE_removeCustomer";
-            this.accordionCtrlE_removeCustomer.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionCtrlE_removeCustomer.Text = "Remove ";
             // 
             // accordionCtrlE_GetCustomerFromFirebase
             // 
@@ -137,6 +127,7 @@ namespace PepperLunch
             this.accordionCtrlE_GetCustomerFromFirebase.Appearance.Normal.ForeColor = System.Drawing.Color.White;
             this.accordionCtrlE_GetCustomerFromFirebase.Appearance.Normal.Options.UseForeColor = true;
             this.accordionCtrlE_GetCustomerFromFirebase.Height = 40;
+            this.accordionCtrlE_GetCustomerFromFirebase.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionCtrlE_GetCustomerFromFirebase.ImageOptions.Image")));
             this.accordionCtrlE_GetCustomerFromFirebase.Name = "accordionCtrlE_GetCustomerFromFirebase";
             this.accordionCtrlE_GetCustomerFromFirebase.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionCtrlE_GetCustomerFromFirebase.Text = "Sync From Firebase";
@@ -163,7 +154,7 @@ namespace PepperLunch
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
             this.Name = "frmCustomer";
             this.NavigationControl = this.accordionControl1;
-            this.Text = "frmCustomer";
+            this.Text = "Customer";
             this.Load += new System.EventHandler(this.frmCustomer_Load);
             this.fluentDesignFormContainer1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -180,7 +171,6 @@ namespace PepperLunch
         #endregion
         private DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer fluentDesignFormContainer1;
         private DevExpress.XtraBars.Navigation.AccordionControl accordionControl1;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrlE_removeCustomer;
         private DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl fluentDesignFormControl1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrlE_GetCustomerFromFirebase;
         private DevExpress.XtraGrid.GridControl gridControl_Customer;

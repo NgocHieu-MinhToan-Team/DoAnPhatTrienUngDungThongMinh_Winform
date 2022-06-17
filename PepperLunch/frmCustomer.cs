@@ -35,16 +35,16 @@ namespace PepperLunch
         {
             clearDataGrid();
             //start measure time excute 
-            var watch = System.Diagnostics.Stopwatch.StartNew();
+            //var watch = System.Diagnostics.Stopwatch.StartNew();
             await BLL_Synchronized.updateCustomersFromFirebaseAsync();
             //start measure time excute 
             await loadNotSyncCustomerFromFirebase();
             gridControl_Customer.DataSource = BLL_Customer.getCustomers();
 
             // end measure time excute 
-            watch.Stop();
-            string result = watch.ElapsedMilliseconds.ToString() + " ms";
-            MessageBox.Show("Total Time is : " + result);
+            //watch.Stop();
+            //string result = watch.ElapsedMilliseconds.ToString() + " ms";
+            //MessageBox.Show("Total Time is : " + result);
         }
 
         //async void loadCustomersFromFirebase()

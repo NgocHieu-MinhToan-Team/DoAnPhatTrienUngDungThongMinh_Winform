@@ -125,8 +125,9 @@ namespace DAL_PPL
                 db.SubmitChanges();
                 return true;
             }
-            catch
+            catch(Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return false;
             }
         }

@@ -55,12 +55,12 @@ namespace DAL_PPL
                 return false;
             }
         }
-        public static bool deleteProduct(PRODUCT data)
+        public static bool deleteProduct(string id)
         {
             try
             {
-                PRODUCT itemDelete = db.PRODUCTs.SingleOrDefault(t => t.ID_PRODUCT == data.ID_PRODUCT);
-                itemDelete.FLAG_DEL = 1;
+                PRODUCT itemDelete = db.PRODUCTs.SingleOrDefault(t => t.ID_PRODUCT ==id);
+                db.PRODUCTs.DeleteOnSubmit(itemDelete);
                 db.SubmitChanges();
                 return true;
             }

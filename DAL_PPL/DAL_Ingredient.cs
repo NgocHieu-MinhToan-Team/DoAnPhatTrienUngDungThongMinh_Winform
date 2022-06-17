@@ -45,6 +45,9 @@ namespace DAL_PPL
         {
             return db.SUPPLIERs.Select(t => t).ToList<SUPPLIER>();
         }
+
+     
+
         public static bool add(INGREDIENT data)
         {
             try

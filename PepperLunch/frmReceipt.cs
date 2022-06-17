@@ -1,4 +1,4 @@
-﻿using DevExpress.XtraBars;
+﻿ using DevExpress.XtraBars;
 using System;
 using System.Collections.Generic;
 using DevExpress.XtraGrid.Views.Base;
@@ -18,6 +18,7 @@ using DevExpress.XtraPrinting;
 using System.Diagnostics;
 using DevExpress.XtraSplashScreen;
 using DevExpress.XtraEditors;
+using System.Threading.Tasks;
 
 namespace PepperLunch
 {
@@ -42,6 +43,13 @@ namespace PepperLunch
 
         async void loadData()
         {
+            // check customer not sync
+            List<Customer> listOfLocal = await BLL_Synchronized.getCustomersNotSync();
+            if (listOfLocal.Count>0)
+            {
+                XtraMessageBox.Show("Có Khách Hàng Mới Vui Lòng Đồng bộ Khách hàng mới trước khi đồng bộ hóa đơn !");
+            }
+
             accordionControl1.Enabled = false;
             gridView_receiptFB.ShowLoadingPanel();
             gridView_receiptSql.ShowLoadingPanel();
@@ -78,7 +86,7 @@ namespace PepperLunch
             advOptions.ShowTotalSummaries = DevExpress.Utils.DefaultBoolean.False;
             advOptions.SheetName = "Exported from Data Grid";
 
-            gridControl_receiptFB.ExportToXlsx(path, advOptions);
+            gridControl_receiptSql.ExportToXlsx(path, advOptions);
             // Open the created XLSX file with the default application.
             Process.Start(path);
         }
@@ -86,9 +94,21 @@ namespace PepperLunch
 
         private async void accordionCtrlE_SyncFromFirebase_Click(object sender, EventArgs e)
         {
-            
+            if (!await checkCustomerNotSyncAsync())
+            {
+                return;
+            }
+
             SplashScreenManager.ShowForm(typeof(waitFrmLoading));
             accordionControl1.Enabled = false;
+            List<RECEIPT> listNotSync = await FB_Receipt.getEntireNotSync();
+            if (listNotSync.Count == 0)
+            {
+                XtraMessageBox.Show("Chưa có đơn hàng mới !");
+                accordionControl1.Enabled = true;
+                SplashScreenManager.CloseForm();
+                return;
+            }
            
             if (await FB_Receipt.updateEntireReceiptFromFirebase(CONFIRM))
             {
@@ -106,6 +126,11 @@ namespace PepperLunch
 
         private async void repositoryItemButtonEdit_confirm_Click(object sender, EventArgs e)
         {
+            if (!await checkCustomerNotSyncAsync())
+            {
+                return;
+            }
+
             int[] index = gridView_receiptFB.GetSelectedRows();
             if (index != null)
             {
@@ -135,6 +160,17 @@ namespace PepperLunch
 
             }
 
+        }
+        async Task<bool> checkCustomerNotSyncAsync()
+        {
+            // check customer not sync
+            List<Customer> listOfLocal = await BLL_Synchronized.getCustomersNotSync();
+            if (listOfLocal.Count > 0)
+            {
+                XtraMessageBox.Show("Có Khách Hàng Mới Vui Lòng Đồng bộ Khách hàng mới trước khi đồng bộ hóa đơn !");
+                return false;
+            }
+            return true;
         }
 
         private async void repositoryItemButtonEdit_response_Click(object sender, EventArgs e)
@@ -184,6 +220,11 @@ namespace PepperLunch
                 repositoryItemButtonEdit_CompleteOrder.ReadOnly = true;
                 return;
             }
+        }
+
+        private void accordionCtrlE_Reload_Click(object sender, EventArgs e)
+        {
+            loadData();
         }
     }
 }

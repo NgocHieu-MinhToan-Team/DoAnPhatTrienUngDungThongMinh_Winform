@@ -202,10 +202,6 @@ namespace FireBase_PPL
                 {
                     return false;
                 }
-                else
-                {
-                    await updateInventory(receipt);
-                }
                 // get all detail 
                 List<DETAIL_RECEIPT> listAllDetail = await getDetailReceiptFromFirebase();
                 // insert receipt
@@ -213,15 +209,26 @@ namespace FireBase_PPL
                 if (!isExistReceipt(receipt))
                 {
                     // insert receipt to sql
-                    DAL_Receipt.insertReceipt(receipt,status);
-                    // insert detail receipt by idReceipt  to sql
-                    List<DETAIL_RECEIPT> listDetail = listAllDetail.Where(t => t.ID_RECEIPT == receipt.ID_RECEIPT).ToList();
-                    foreach (DETAIL_RECEIPT detail in listDetail)
+                    if (DAL_Receipt.insertReceipt(receipt, status))
                     {
-                        DAL_Receipt.insertDetailReceipt(detail);
+                        // insert detail receipt by idReceipt  to sql
+                        List<DETAIL_RECEIPT> listDetail = listAllDetail.Where(t => t.ID_RECEIPT == receipt.ID_RECEIPT).ToList();
+                        foreach (DETAIL_RECEIPT detail in listDetail)
+                        {
+                            // if there is error while insert
+                            if (!DAL_Receipt.insertDetailReceipt(detail))
+                            {
+                                return false;
+                            }
+                        }
+                        // update state to firebase
+                        await updateStatusReceipt(receipt, status);
+                        await updateInventory(receipt);
                     }
-                    // update state to firebase
-                    await updateStatusReceipt(receipt, status);
+                    else
+                    {
+                        return false;
+                    }
                 }
                 return true;
 

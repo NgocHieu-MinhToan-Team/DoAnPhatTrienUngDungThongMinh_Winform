@@ -47,8 +47,8 @@ namespace PepperLunch
             this.barBtn_Ingredients = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_FPGrowth = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage_manager = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup_Manage = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup_menu = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup_Firebase = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup_AI = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -226,31 +226,31 @@ namespace PepperLunch
             // ribbonPage_manager
             // 
             this.ribbonPage_manager.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1,
-            this.ribbonPageGroup2,
+            this.ribbonPageGroup_Manage,
+            this.ribbonPageGroup_menu,
             this.ribbonPageGroup_Firebase,
             this.ribbonPageGroup4,
             this.ribbonPageGroup_AI});
             this.ribbonPage_manager.Name = "ribbonPage_manager";
             this.ribbonPage_manager.Text = "Manage";
             // 
-            // ribbonPageGroup1
+            // ribbonPageGroup_Manage
             // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.barBtn_staff);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barBtn_receipt);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barBtn_customer);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barBtn_Import);
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "Manage Restaurant";
+            this.ribbonPageGroup_Manage.ItemLinks.Add(this.barBtn_staff);
+            this.ribbonPageGroup_Manage.ItemLinks.Add(this.barBtn_receipt);
+            this.ribbonPageGroup_Manage.ItemLinks.Add(this.barBtn_customer);
+            this.ribbonPageGroup_Manage.ItemLinks.Add(this.barBtn_Import);
+            this.ribbonPageGroup_Manage.Name = "ribbonPageGroup_Manage";
+            this.ribbonPageGroup_Manage.Text = "Manage Restaurant";
             // 
-            // ribbonPageGroup2
+            // ribbonPageGroup_menu
             // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.barBtn_Category);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barBtn_Product);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barBtn_Promotion);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barBtn_Ingredients);
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "Manage Menu";
+            this.ribbonPageGroup_menu.ItemLinks.Add(this.barBtn_Category);
+            this.ribbonPageGroup_menu.ItemLinks.Add(this.barBtn_Product);
+            this.ribbonPageGroup_menu.ItemLinks.Add(this.barBtn_Promotion);
+            this.ribbonPageGroup_menu.ItemLinks.Add(this.barBtn_Ingredients);
+            this.ribbonPageGroup_menu.Name = "ribbonPageGroup_menu";
+            this.ribbonPageGroup_menu.Text = "Manage Menu";
             // 
             // ribbonPageGroup_Firebase
             // 
@@ -345,7 +345,7 @@ namespace PepperLunch
 
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage_manager;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup_Manage;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
@@ -359,9 +359,8 @@ namespace PepperLunch
         public DevExpress.XtraBars.BarButtonItem barBtn_Import;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem barBtn_signOut;
-        private DevExpress.XtraBars.BarButtonItem barBtn_Product;
         private DevExpress.XtraBars.BarButtonItem barBtn_Category;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup_menu;
         private DevExpress.XtraBars.PopupMenu popupMenu1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup_Firebase;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
@@ -372,5 +371,7 @@ namespace PepperLunch
         private DevExpress.XtraBars.BarButtonItem barBtn_Ingredients;
         private DevExpress.XtraBars.BarButtonItem barBtn_FPGrowth;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup_AI;
+        public DevExpress.XtraBars.BarButtonItem barBtn_Product;
+
     }
 }
