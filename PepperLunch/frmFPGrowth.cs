@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using FireBase_PPL;
+using DevExpress.XtraSplashScreen;
 
 namespace PepperLunch
 {
@@ -26,17 +27,23 @@ namespace PepperLunch
         private void frmSyncCustomer_Load(object sender, EventArgs e)
         {
             List<FPGrowth_Item> list = BLL_Receipt.getListForFPGrowth();
-            gridView_sync.Columns.Clear();
-            gridControl_top.DataSource = list;
+            gridView_sql.Columns.Clear();
+            gridControl_sql.DataSource = list;
+            btnLoadDataToFirebase.Enabled = false;
         }
 
         private void btnTrain_Click(object sender, EventArgs e)
         {
             try
             {
-                double minsup = double.Parse(txtMinsup.Text);
-                double confidence = double.Parse(txtConfidence.Text);
-                if (minsup > 0 && minsup < 1 && confidence > 0 && confidence < 1)
+                if(!GeneralMethods.isNumberTypeDouble(comboBoxEdit_minSup.SelectedItem.ToString())
+                    || !GeneralMethods.isNumberTypeDouble(comboBoxEdit_confidence.SelectedItem.ToString())){
+                    XtraMessageBox.Show("Input is invalid or null");
+                    return;
+                }
+                double minsup = double.Parse(comboBoxEdit_minSup.SelectedItem.ToString());
+                double confidence = double.Parse(comboBoxEdit_confidence.SelectedItem.ToString());
+                if (minsup >= 0 && minsup <= 1 && confidence >= 0 && confidence <= 1)
                 {
                     List<FPGrowth_Item> list = BLL_Receipt.getListForFPGrowth();
                     string[] data = new string[list.Count];
@@ -45,16 +52,19 @@ namespace PepperLunch
                         data[i] = (i + 1).ToString() + "\t" + list[i].detail;
                     }
                     File.WriteAllLines("input.txt", data);
-                    gridControl_bottom.DataSource = BLL_FPGrowth.getResult(minsup,confidence);
+                    gridControl_train.DataSource = BLL_FPGrowth.getResult(minsup,confidence);
                     XtraMessageBox.Show("Training Success!");
+                    btnLoadDataToFirebase.Enabled = true;
+
                 }
                 else
                 {
                     XtraMessageBox.Show("Must be > 0");
                 }
             }
-            catch
+            catch(Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 XtraMessageBox.Show("Please Enter a Number (int,float,doule) !");
             }
             
@@ -62,8 +72,10 @@ namespace PepperLunch
 
         private void btnGetDataFromSQL_Click(object sender, EventArgs e)
         {
+            gridView_sql.ShowLoadingPanel();
             List<FPGrowth_Item> list = BLL_Receipt.getListForFPGrowth();
-            gridControl_top.DataSource = list;
+            gridControl_sql.DataSource = list;
+            gridView_sql.HideLoadingPanel();
         }
 
         private async void btnLoadDataToFirebase_Click(object sender, EventArgs e)
@@ -72,17 +84,22 @@ namespace PepperLunch
             //InsertDataToSql();
             try
             {
-                double minsup = double.Parse(txtMinsup.Text);
-                double confidence = double.Parse(txtConfidence.Text);
+                btnLoadDataToFirebase.Enabled = false;
+                SplashScreenManager.ShowForm(typeof(waitFrmLoading));
+                double minsup = double.Parse(comboBoxEdit_minSup.SelectedItem.ToString());
+                double confidence = double.Parse(comboBoxEdit_confidence.SelectedItem.ToString());
                 int numberRecord = int.Parse(txtNumberRecord.Text);
-                if (GeneralMethods.isNumberTypeDouble(minsup.ToString()) &&
-                    GeneralMethods.isNumberTypeDouble(confidence.ToString()) &&
-                    GeneralMethods.isDigit(numberRecord.ToString(),false))
+                //if (GeneralMethods.isNumberTypeDouble(minsup.ToString()) &&
+                //    GeneralMethods.isNumberTypeDouble(confidence.ToString()) &&
+                //GeneralMethods.isDigit(numberRecord.ToString(),false))
+                if (GeneralMethods.isDigit(numberRecord.ToString(), false))
                 {
                     // update FPGrowth to firebase  
                     List<FPGrowth_Item> list = BLL_FPGrowth.getResult(minsup, confidence);
                     if(await FB_FPGrowth.pushToFirebaseAsync(minsup,confidence, numberRecord))
+                    {
                         XtraMessageBox.Show("Upload Success!");
+                    }
                     else
                     {
                         XtraMessageBox.Show("error on firebase!");
@@ -92,6 +109,8 @@ namespace PepperLunch
                 {
                     XtraMessageBox.Show("Must be > 0");
                 }
+                SplashScreenManager.CloseForm();
+
             }
             catch
             {
@@ -101,6 +120,7 @@ namespace PepperLunch
 
         void InsertDataToSql()
         {
+            SplashScreenManager.ShowForm(typeof(waitFrmLoading));
             for (int i = 0; i < 1000; i++)//tao hoa don
             {
                 Random rd = new Random();
@@ -109,7 +129,7 @@ namespace PepperLunch
                 rc.ADDRESS_RECEIPT = "HCM";
                 rc.ID_CUSTOMER = "-N3Mz27GMSqHrwI-nA72";
                 rc.ID_METHOD = "METHOD02";
-                rc.ID_VOUCHER = "VOUCHER202261233859776";
+                rc.ID_VOUCHER = null;
                 rc.ID_RECEIPT = GeneralMethods.createID(i.ToString());
                 rc.STATE_RECEIPT = 3;
                 rc.TOTAL_PRODUCT = count;
@@ -139,6 +159,12 @@ namespace PepperLunch
                 }
                 Console.WriteLine(i + "\t" + rc.ID_RECEIPT);
             }
+            SplashScreenManager.CloseForm();
+        }
+
+        private void btnCreateData_Click(object sender, EventArgs e)
+        {
+            InsertDataToSql();
         }
     }
 }

@@ -19,7 +19,7 @@ namespace PepperLunch
     {
         BLL_IOGDetail bll_iogDetail = new BLL_IOGDetail();
         // get id staff 
-        private static string username = Program.frmlogin.staff_global.USERNAME_STAFF;
+        public static string username { get; set; }
         private const int TAB_HISTORY = 1;
         private const int TAB_ORDERING = 0;
 
@@ -49,7 +49,7 @@ namespace PepperLunch
             item.USERNAME_STAFF = username;
             item.DATE_IOG = dateTimePicker_dateCreate.Value;
             item.TOTAL_PRICE = 0;
-            item.NOTE =txtNote.Text;
+            item.NOTE ="";
             item.STATE_IMPORT = 0;
             BLL_IOG.insert(item);
             loadOrderingImport();
@@ -96,7 +96,7 @@ namespace PepperLunch
                 cbbSupplier.SelectedValue = item.ID_SUPPLIER;
                 dateTimePicker_dateCreate.Value = item.DATE_IOG;
                 int countQuantity = (int)bll_iogDetail.getList(item.ID_IOG).Sum(t => t.QUANTITY);
-                txtNote.Text = item.NOTE;
+               
             }
         }
 
@@ -116,22 +116,6 @@ namespace PepperLunch
         {
             gridControl_orders.DataSource = BLL_IOG.getImportsByStatus(TAB_ORDERING);
         }
-
-        private void repositoryItemButtonEdit_detele_Click(object sender, EventArgs e)
-        {
-            int[] arrRowSelected = gridView_history.GetSelectedRows();
-            if (arrRowSelected != null)
-            {
-                IMPORT item = (IMPORT)gridView_history.GetRow(arrRowSelected[0]);
-                BLL_IOG.delete(item.ID_IOG);
-                loadOrderingImport();
-            }
-            else
-            {
-                MessageBox.Show("Please choose a record Import of goods");
-            }
-        }
-
         private void cbbSupplier_SelectedValueChanged(object sender, EventArgs e)
         {
             // delete import
@@ -167,6 +151,28 @@ namespace PepperLunch
                 {
                     this.Close();
                     BLL_IOG.updateTotalPrice(item);
+                    Program.frmcontainer.barBtn_Import.PerformClick();
+                };
+                frm.ID_IOG = item.ID_IOG;
+                frm.ShowDialog();
+            }
+        }
+
+        private void btnLoadHistoryReceipt_Click(object sender, EventArgs e)
+        {
+            loadHistoryImport();
+        }
+
+        private void repositoryItemButtonEdit_change_Click(object sender, EventArgs e)
+        {
+            int[] arrRowSelected = gridView_history.GetSelectedRows();
+            if (arrRowSelected != null)
+            {
+                IMPORT item = (IMPORT)gridView_history.GetRow(arrRowSelected[0]);
+                frmConfirmImport frm = new frmConfirmImport();
+                frm.FormClosed += (o, evt) =>
+                {
+                    this.Close();
                     Program.frmcontainer.barBtn_Import.PerformClick();
                 };
                 frm.ID_IOG = item.ID_IOG;

@@ -37,13 +37,12 @@ namespace BLL_PPL
             }
         }
 
-        public static bool deleteProduct(PRODUCT data)
+        public static bool deleteProduct(string id)
         {
             try
             {
-                if (DAL_Product.deleteProduct(data))
+                if (DAL_Product.deleteProduct(id))
                 {
-                    MessageBox.Show("Delete Data Sucessfully !");
                     return true;
                 }
                 else
@@ -80,5 +79,6 @@ namespace BLL_PPL
                 return false;
             }
         }
+
     }
 }

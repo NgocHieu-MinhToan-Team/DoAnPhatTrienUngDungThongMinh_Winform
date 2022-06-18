@@ -52,8 +52,8 @@ namespace PepperLunch
             this.URL_IMAGE = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnSeeRecipe = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit_ShowRecipe = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
-            this.btnDel = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemButtonEdit_Del = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.Update = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemButtonEdit_Update = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.layout_dish = new System.Windows.Forms.TableLayoutPanel();
             this.txtNameVN = new DevExpress.XtraEditors.TextEdit();
             this.txtPrice = new DevExpress.XtraEditors.TextEdit();
@@ -63,7 +63,7 @@ namespace PepperLunch
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.btnUpdate = new DevExpress.XtraEditors.SimpleButton();
+            this.btnCreate = new DevExpress.XtraEditors.SimpleButton();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
@@ -81,7 +81,7 @@ namespace PepperLunch
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Product)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_ShowRecipe)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_Del)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_Update)).BeginInit();
             this.layout_dish.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameVN.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrice.Properties)).BeginInit();
@@ -124,7 +124,7 @@ namespace PepperLunch
             this.gridControl_Product.MainView = this.gridView1;
             this.gridControl_Product.Name = "gridControl_Product";
             this.gridControl_Product.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemButtonEdit_Del,
+            this.repositoryItemButtonEdit_Update,
             this.repositoryItemButtonEdit_ShowRecipe});
             this.gridControl_Product.Size = new System.Drawing.Size(725, 565);
             this.gridControl_Product.TabIndex = 0;
@@ -142,7 +142,7 @@ namespace PepperLunch
             this.PRICE,
             this.URL_IMAGE,
             this.btnSeeRecipe,
-            this.btnDel});
+            this.Update});
             gridFormatRule1.Name = "Format0";
             gridFormatRule1.Rule = null;
             this.gridView1.FormatRules.Add(gridFormatRule1);
@@ -156,6 +156,7 @@ namespace PepperLunch
             this.ID_PRODUCT.FieldName = "ID_PRODUCT";
             this.ID_PRODUCT.MinWidth = 25;
             this.ID_PRODUCT.Name = "ID_PRODUCT";
+            this.ID_PRODUCT.OptionsColumn.AllowEdit = false;
             this.ID_PRODUCT.Visible = true;
             this.ID_PRODUCT.VisibleIndex = 0;
             this.ID_PRODUCT.Width = 94;
@@ -221,25 +222,25 @@ namespace PepperLunch
             this.repositoryItemButtonEdit_ShowRecipe.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repositoryItemButtonEdit_ShowRecipe.Click += new System.EventHandler(this.repositoryItemButtonEdit_ShowRecipe_Click);
             // 
-            // btnDel
+            // Update
             // 
-            this.btnDel.ColumnEdit = this.repositoryItemButtonEdit_Del;
-            this.btnDel.MinWidth = 25;
-            this.btnDel.Name = "btnDel";
-            this.btnDel.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedRow;
-            this.btnDel.Visible = true;
-            this.btnDel.VisibleIndex = 6;
-            this.btnDel.Width = 94;
+            this.Update.ColumnEdit = this.repositoryItemButtonEdit_Update;
+            this.Update.MinWidth = 25;
+            this.Update.Name = "Update";
+            this.Update.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedRow;
+            this.Update.Visible = true;
+            this.Update.VisibleIndex = 6;
+            this.Update.Width = 94;
             // 
-            // repositoryItemButtonEdit_Del
+            // repositoryItemButtonEdit_Update
             // 
-            this.repositoryItemButtonEdit_Del.AutoHeight = false;
+            this.repositoryItemButtonEdit_Update.AutoHeight = false;
             editorButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions2.SvgImage")));
-            this.repositoryItemButtonEdit_Del.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.repositoryItemButtonEdit_Update.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.repositoryItemButtonEdit_Del.Name = "repositoryItemButtonEdit_Del";
-            this.repositoryItemButtonEdit_Del.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
-            this.repositoryItemButtonEdit_Del.Click += new System.EventHandler(this.repositoryItemButtonEdit_Del_Click);
+            this.repositoryItemButtonEdit_Update.Name = "repositoryItemButtonEdit_Update";
+            this.repositoryItemButtonEdit_Update.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.repositoryItemButtonEdit_Update.Click += new System.EventHandler(this.repositoryItemButtonEdit_Update_Click);
             // 
             // layout_dish
             // 
@@ -257,7 +258,7 @@ namespace PepperLunch
             this.layout_dish.Controls.Add(this.labelControl2, 1, 0);
             this.layout_dish.Controls.Add(this.labelControl3, 2, 0);
             this.layout_dish.Controls.Add(this.labelControl4, 3, 0);
-            this.layout_dish.Controls.Add(this.btnUpdate, 4, 1);
+            this.layout_dish.Controls.Add(this.btnCreate, 4, 1);
             this.layout_dish.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layout_dish.Location = new System.Drawing.Point(23, 23);
             this.layout_dish.Name = "layout_dish";
@@ -378,15 +379,14 @@ namespace PepperLunch
             this.labelControl4.TabIndex = 7;
             this.labelControl4.Text = "URL Image";
             // 
-            // btnUpdate
+            // btnCreate
             // 
-            this.btnUpdate.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnUpdate.Location = new System.Drawing.Point(577, 45);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(135, 28);
-            this.btnUpdate.TabIndex = 8;
-            this.btnUpdate.Text = "Save";
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.btnCreate.Location = new System.Drawing.Point(577, 45);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(135, 28);
+            this.btnCreate.TabIndex = 8;
+            this.btnCreate.Text = "Create";
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // accordionControl1
             // 
@@ -503,7 +503,7 @@ namespace PepperLunch
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Product)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_ShowRecipe)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_Del)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_Update)).EndInit();
             this.layout_dish.ResumeLayout(false);
             this.layout_dish.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameVN.Properties)).EndInit();
@@ -541,16 +541,16 @@ namespace PepperLunch
         private DevExpress.XtraEditors.TextEdit txtPrice;
         private DevExpress.XtraEditors.TextEdit txtNameEN;
         private DevExpress.XtraEditors.TextEdit txtURL;
-        private DevExpress.XtraEditors.SimpleButton btnUpdate;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
         private DevExpress.XtraGrid.Columns.GridColumn ID_PRODUCT;
         private DevExpress.XtraGrid.Columns.GridColumn NAME_PRODUCT_EN;
         private DevExpress.XtraGrid.Columns.GridColumn NAME_PRODUCT_VN;
         private DevExpress.XtraGrid.Columns.GridColumn PRICE;
         private DevExpress.XtraGrid.Columns.GridColumn URL_IMAGE;
-        private DevExpress.XtraGrid.Columns.GridColumn btnDel;
-        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit_Del;
+        private DevExpress.XtraGrid.Columns.GridColumn Update;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit_Update;
         private DevExpress.XtraGrid.Columns.GridColumn btnSeeRecipe;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit_ShowRecipe;
+        private DevExpress.XtraEditors.SimpleButton btnCreate;
     }
 }

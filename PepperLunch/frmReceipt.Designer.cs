@@ -86,7 +86,7 @@ namespace PepperLunch
             this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit_CompleteOrder = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
-            this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionCtrlE_Reload = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionCtrlE_exportExcel = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionCtrlE_exportWord = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionCtrlE_SyncFromFirebase = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -500,7 +500,7 @@ namespace PepperLunch
             this.accordionControl1.Appearance.AccordionControl.Options.UseFont = true;
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.accordionControlElement1,
+            this.accordionCtrlE_Reload,
             this.accordionCtrlE_exportExcel,
             this.accordionCtrlE_exportWord,
             this.accordionCtrlE_SyncFromFirebase});
@@ -511,35 +511,51 @@ namespace PepperLunch
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
-            // accordionControlElement1
+            // accordionCtrlE_Reload
             // 
-            this.accordionControlElement1.Appearance.Hovered.BackColor = System.Drawing.Color.Black;
-            this.accordionControlElement1.Appearance.Hovered.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.accordionControlElement1.Appearance.Hovered.Options.UseBackColor = true;
-            this.accordionControlElement1.Appearance.Hovered.Options.UseFont = true;
-            this.accordionControlElement1.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.accordionControlElement1.Appearance.Normal.ForeColor = System.Drawing.Color.White;
-            this.accordionControlElement1.Appearance.Normal.Options.UseFont = true;
-            this.accordionControlElement1.Appearance.Normal.Options.UseForeColor = true;
-            this.accordionControlElement1.Appearance.Pressed.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.accordionControlElement1.Appearance.Pressed.Options.UseFont = true;
-            this.accordionControlElement1.HeaderTemplate.AddRange(new DevExpress.XtraBars.Navigation.HeaderElementInfo[] {
+            this.accordionCtrlE_Reload.Appearance.Disabled.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.accordionCtrlE_Reload.Appearance.Disabled.Options.UseFont = true;
+            this.accordionCtrlE_Reload.Appearance.Hovered.BackColor = System.Drawing.Color.Black;
+            this.accordionCtrlE_Reload.Appearance.Hovered.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.accordionCtrlE_Reload.Appearance.Hovered.Options.UseBackColor = true;
+            this.accordionCtrlE_Reload.Appearance.Hovered.Options.UseFont = true;
+            this.accordionCtrlE_Reload.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.accordionCtrlE_Reload.Appearance.Normal.ForeColor = System.Drawing.Color.White;
+            this.accordionCtrlE_Reload.Appearance.Normal.Options.UseFont = true;
+            this.accordionCtrlE_Reload.Appearance.Normal.Options.UseForeColor = true;
+            this.accordionCtrlE_Reload.Appearance.Pressed.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.accordionCtrlE_Reload.Appearance.Pressed.Options.UseFont = true;
+            this.accordionCtrlE_Reload.HeaderTemplate.AddRange(new DevExpress.XtraBars.Navigation.HeaderElementInfo[] {
             new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Image),
             new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Text),
             new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.ContextButtons, DevExpress.XtraBars.Navigation.HeaderElementAlignment.Left),
             new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.HeaderControl)});
-            this.accordionControlElement1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement1.ImageOptions.SvgImage")));
-            this.accordionControlElement1.Name = "accordionControlElement1";
-            this.accordionControlElement1.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement1.Text = "RECEIPT";
-            this.accordionControlElement1.VisibleInFooter = false;
+            this.accordionCtrlE_Reload.Height = 50;
+            this.accordionCtrlE_Reload.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionCtrlE_Reload.ImageOptions.SvgImage")));
+            this.accordionCtrlE_Reload.Name = "accordionCtrlE_Reload";
+            this.accordionCtrlE_Reload.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionCtrlE_Reload.Text = "RECEIPT (Click to Reload)";
+            this.accordionCtrlE_Reload.VisibleInFooter = false;
+            this.accordionCtrlE_Reload.Click += new System.EventHandler(this.accordionCtrlE_Reload_Click);
             // 
             // accordionCtrlE_exportExcel
             // 
+            this.accordionCtrlE_exportExcel.Appearance.Disabled.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.accordionCtrlE_exportExcel.Appearance.Disabled.ForeColor = System.Drawing.Color.FloralWhite;
+            this.accordionCtrlE_exportExcel.Appearance.Disabled.Options.UseFont = true;
+            this.accordionCtrlE_exportExcel.Appearance.Disabled.Options.UseForeColor = true;
+            this.accordionCtrlE_exportExcel.Appearance.Hovered.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.accordionCtrlE_exportExcel.Appearance.Hovered.ForeColor = System.Drawing.Color.DarkGoldenrod;
+            this.accordionCtrlE_exportExcel.Appearance.Hovered.Options.UseFont = true;
+            this.accordionCtrlE_exportExcel.Appearance.Hovered.Options.UseForeColor = true;
             this.accordionCtrlE_exportExcel.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.accordionCtrlE_exportExcel.Appearance.Normal.ForeColor = System.Drawing.Color.FloralWhite;
             this.accordionCtrlE_exportExcel.Appearance.Normal.Options.UseFont = true;
             this.accordionCtrlE_exportExcel.Appearance.Normal.Options.UseForeColor = true;
+            this.accordionCtrlE_exportExcel.Appearance.Pressed.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.accordionCtrlE_exportExcel.Appearance.Pressed.ForeColor = System.Drawing.Color.Goldenrod;
+            this.accordionCtrlE_exportExcel.Appearance.Pressed.Options.UseFont = true;
+            this.accordionCtrlE_exportExcel.Appearance.Pressed.Options.UseForeColor = true;
             this.accordionCtrlE_exportExcel.Height = 40;
             this.accordionCtrlE_exportExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionCtrlE_exportExcel.ImageOptions.Image")));
             this.accordionCtrlE_exportExcel.Name = "accordionCtrlE_exportExcel";
@@ -549,10 +565,22 @@ namespace PepperLunch
             // 
             // accordionCtrlE_exportWord
             // 
+            this.accordionCtrlE_exportWord.Appearance.Disabled.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.accordionCtrlE_exportWord.Appearance.Disabled.ForeColor = System.Drawing.Color.FloralWhite;
+            this.accordionCtrlE_exportWord.Appearance.Disabled.Options.UseFont = true;
+            this.accordionCtrlE_exportWord.Appearance.Disabled.Options.UseForeColor = true;
+            this.accordionCtrlE_exportWord.Appearance.Hovered.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.accordionCtrlE_exportWord.Appearance.Hovered.ForeColor = System.Drawing.Color.DarkGoldenrod;
+            this.accordionCtrlE_exportWord.Appearance.Hovered.Options.UseFont = true;
+            this.accordionCtrlE_exportWord.Appearance.Hovered.Options.UseForeColor = true;
             this.accordionCtrlE_exportWord.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.accordionCtrlE_exportWord.Appearance.Normal.ForeColor = System.Drawing.Color.FloralWhite;
             this.accordionCtrlE_exportWord.Appearance.Normal.Options.UseFont = true;
             this.accordionCtrlE_exportWord.Appearance.Normal.Options.UseForeColor = true;
+            this.accordionCtrlE_exportWord.Appearance.Pressed.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.accordionCtrlE_exportWord.Appearance.Pressed.ForeColor = System.Drawing.Color.Goldenrod;
+            this.accordionCtrlE_exportWord.Appearance.Pressed.Options.UseFont = true;
+            this.accordionCtrlE_exportWord.Appearance.Pressed.Options.UseForeColor = true;
             this.accordionCtrlE_exportWord.Height = 40;
             this.accordionCtrlE_exportWord.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionCtrlE_exportWord.ImageOptions.Image")));
             this.accordionCtrlE_exportWord.Name = "accordionCtrlE_exportWord";
@@ -562,10 +590,22 @@ namespace PepperLunch
             // 
             // accordionCtrlE_SyncFromFirebase
             // 
+            this.accordionCtrlE_SyncFromFirebase.Appearance.Disabled.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.accordionCtrlE_SyncFromFirebase.Appearance.Disabled.ForeColor = System.Drawing.Color.FloralWhite;
+            this.accordionCtrlE_SyncFromFirebase.Appearance.Disabled.Options.UseFont = true;
+            this.accordionCtrlE_SyncFromFirebase.Appearance.Disabled.Options.UseForeColor = true;
+            this.accordionCtrlE_SyncFromFirebase.Appearance.Hovered.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.accordionCtrlE_SyncFromFirebase.Appearance.Hovered.ForeColor = System.Drawing.Color.DarkGoldenrod;
+            this.accordionCtrlE_SyncFromFirebase.Appearance.Hovered.Options.UseFont = true;
+            this.accordionCtrlE_SyncFromFirebase.Appearance.Hovered.Options.UseForeColor = true;
             this.accordionCtrlE_SyncFromFirebase.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.accordionCtrlE_SyncFromFirebase.Appearance.Normal.ForeColor = System.Drawing.Color.FloralWhite;
             this.accordionCtrlE_SyncFromFirebase.Appearance.Normal.Options.UseFont = true;
             this.accordionCtrlE_SyncFromFirebase.Appearance.Normal.Options.UseForeColor = true;
+            this.accordionCtrlE_SyncFromFirebase.Appearance.Pressed.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.accordionCtrlE_SyncFromFirebase.Appearance.Pressed.ForeColor = System.Drawing.Color.Goldenrod;
+            this.accordionCtrlE_SyncFromFirebase.Appearance.Pressed.Options.UseFont = true;
+            this.accordionCtrlE_SyncFromFirebase.Appearance.Pressed.Options.UseForeColor = true;
             this.accordionCtrlE_SyncFromFirebase.Height = 40;
             this.accordionCtrlE_SyncFromFirebase.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionCtrlE_SyncFromFirebase.ImageOptions.Image")));
             this.accordionCtrlE_SyncFromFirebase.Name = "accordionCtrlE_SyncFromFirebase";
@@ -594,7 +634,7 @@ namespace PepperLunch
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
             this.Name = "frmReceipt";
             this.NavigationControl = this.accordionControl1;
-            this.Text = "frmReceipt";
+            this.Text = "Receipt";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmReceipt_Load);
             this.fluentDesignFormContainer1.ResumeLayout(false);
@@ -616,7 +656,7 @@ namespace PepperLunch
         #endregion
         private DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer fluentDesignFormContainer1;
         private DevExpress.XtraBars.Navigation.AccordionControl accordionControl1;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrlE_Reload;
         private DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl fluentDesignFormControl1;
         private DevExpress.XtraGrid.GridControl gridControl_receiptFB;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView_receiptFB;

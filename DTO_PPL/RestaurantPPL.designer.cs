@@ -87,7 +87,7 @@ namespace DTO_PPL
     #endregion
 		
 		public RestaurantPPLDataContext() : 
-				base(global::DTO_PPL.Properties.Settings.Default.ManageRestaurantConnectionString2, mappingSource)
+				base(global::DTO_PPL.Properties.Settings.Default.ManageRestaurantConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -260,11 +260,11 @@ namespace DTO_PPL
 			}
 		}
 		
-		public System.Data.Linq.Table<IOGDETAIL_JOIN> IOGDETAIL_JOINs
+		public System.Data.Linq.Table<DETAILRECEIPT_JOIN> DETAILRECEIPT_JOINs
 		{
 			get
 			{
-				return this.GetTable<IOGDETAIL_JOIN>();
+				return this.GetTable<DETAILRECEIPT_JOIN>();
 			}
 		}
 		
@@ -276,19 +276,19 @@ namespace DTO_PPL
 			}
 		}
 		
+		public System.Data.Linq.Table<IOGDETAIL_JOIN> IOGDETAIL_JOINs
+		{
+			get
+			{
+				return this.GetTable<IOGDETAIL_JOIN>();
+			}
+		}
+		
 		public System.Data.Linq.Table<RECEIPT_FULL> RECEIPT_FULLs
 		{
 			get
 			{
 				return this.GetTable<RECEIPT_FULL>();
-			}
-		}
-		
-		public System.Data.Linq.Table<DETAILRECEIPT_JOIN> DETAILRECEIPT_JOINs
-		{
-			get
-			{
-				return this.GetTable<DETAILRECEIPT_JOIN>();
 			}
 		}
 	}
@@ -5471,86 +5471,72 @@ namespace DTO_PPL
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.IOGDETAIL_JOIN")]
-	public partial class IOGDETAIL_JOIN
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.DETAILRECEIPT_JOIN")]
+	public partial class DETAILRECEIPT_JOIN
 	{
 		
-		private string _ID_DETAIL_IOG;
+		private string _ID_DETAIL_RECEIPT;
 		
-		private string _ID_IOG;
+		private string _ID_RECEIPT;
 		
-		private string _ID_INGREDIENT;
-		
-		private System.Nullable<int> _PRICE;
+		private string _ID_PRODUCT;
 		
 		private System.Nullable<int> _QUANTITY;
 		
-		private string _NAME_INGREDIENT;
+		private System.Nullable<int> _PRICE;
 		
-		public IOGDETAIL_JOIN()
+		private string _NAME_PRODUCT_VN;
+		
+		private string _NAME_PRODUCT_EN;
+		
+		public DETAILRECEIPT_JOIN()
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_DETAIL_IOG", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string ID_DETAIL_IOG
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_DETAIL_RECEIPT", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ID_DETAIL_RECEIPT
 		{
 			get
 			{
-				return this._ID_DETAIL_IOG;
+				return this._ID_DETAIL_RECEIPT;
 			}
 			set
 			{
-				if ((this._ID_DETAIL_IOG != value))
+				if ((this._ID_DETAIL_RECEIPT != value))
 				{
-					this._ID_DETAIL_IOG = value;
+					this._ID_DETAIL_RECEIPT = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_IOG", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string ID_IOG
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_RECEIPT", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ID_RECEIPT
 		{
 			get
 			{
-				return this._ID_IOG;
+				return this._ID_RECEIPT;
 			}
 			set
 			{
-				if ((this._ID_IOG != value))
+				if ((this._ID_RECEIPT != value))
 				{
-					this._ID_IOG = value;
+					this._ID_RECEIPT = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_INGREDIENT", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string ID_INGREDIENT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PRODUCT", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ID_PRODUCT
 		{
 			get
 			{
-				return this._ID_INGREDIENT;
+				return this._ID_PRODUCT;
 			}
 			set
 			{
-				if ((this._ID_INGREDIENT != value))
+				if ((this._ID_PRODUCT != value))
 				{
-					this._ID_INGREDIENT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRICE", DbType="Int")]
-		public System.Nullable<int> PRICE
-		{
-			get
-			{
-				return this._PRICE;
-			}
-			set
-			{
-				if ((this._PRICE != value))
-				{
-					this._PRICE = value;
+					this._ID_PRODUCT = value;
 				}
 			}
 		}
@@ -5571,18 +5557,50 @@ namespace DTO_PPL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_INGREDIENT", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string NAME_INGREDIENT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRICE", DbType="Int")]
+		public System.Nullable<int> PRICE
 		{
 			get
 			{
-				return this._NAME_INGREDIENT;
+				return this._PRICE;
 			}
 			set
 			{
-				if ((this._NAME_INGREDIENT != value))
+				if ((this._PRICE != value))
 				{
-					this._NAME_INGREDIENT = value;
+					this._PRICE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_PRODUCT_VN", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string NAME_PRODUCT_VN
+		{
+			get
+			{
+				return this._NAME_PRODUCT_VN;
+			}
+			set
+			{
+				if ((this._NAME_PRODUCT_VN != value))
+				{
+					this._NAME_PRODUCT_VN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_PRODUCT_EN", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string NAME_PRODUCT_EN
+		{
+			get
+			{
+				return this._NAME_PRODUCT_EN;
+			}
+			set
+			{
+				if ((this._NAME_PRODUCT_EN != value))
+				{
+					this._NAME_PRODUCT_EN = value;
 				}
 			}
 		}
@@ -5702,6 +5720,123 @@ namespace DTO_PPL
 				if ((this._NAME_PRODUCT_EN != value))
 				{
 					this._NAME_PRODUCT_EN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_INGREDIENT", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string NAME_INGREDIENT
+		{
+			get
+			{
+				return this._NAME_INGREDIENT;
+			}
+			set
+			{
+				if ((this._NAME_INGREDIENT != value))
+				{
+					this._NAME_INGREDIENT = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.IOGDETAIL_JOIN")]
+	public partial class IOGDETAIL_JOIN
+	{
+		
+		private string _ID_DETAIL_IOG;
+		
+		private string _ID_IOG;
+		
+		private string _ID_INGREDIENT;
+		
+		private System.Nullable<int> _PRICE;
+		
+		private System.Nullable<int> _QUANTITY;
+		
+		private string _NAME_INGREDIENT;
+		
+		public IOGDETAIL_JOIN()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_DETAIL_IOG", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ID_DETAIL_IOG
+		{
+			get
+			{
+				return this._ID_DETAIL_IOG;
+			}
+			set
+			{
+				if ((this._ID_DETAIL_IOG != value))
+				{
+					this._ID_DETAIL_IOG = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_IOG", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ID_IOG
+		{
+			get
+			{
+				return this._ID_IOG;
+			}
+			set
+			{
+				if ((this._ID_IOG != value))
+				{
+					this._ID_IOG = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_INGREDIENT", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ID_INGREDIENT
+		{
+			get
+			{
+				return this._ID_INGREDIENT;
+			}
+			set
+			{
+				if ((this._ID_INGREDIENT != value))
+				{
+					this._ID_INGREDIENT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRICE", DbType="Int")]
+		public System.Nullable<int> PRICE
+		{
+			get
+			{
+				return this._PRICE;
+			}
+			set
+			{
+				if ((this._PRICE != value))
+				{
+					this._PRICE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QUANTITY", DbType="Int")]
+		public System.Nullable<int> QUANTITY
+		{
+			get
+			{
+				return this._QUANTITY;
+			}
+			set
+			{
+				if ((this._QUANTITY != value))
+				{
+					this._QUANTITY = value;
 				}
 			}
 		}
@@ -6069,141 +6204,6 @@ namespace DTO_PPL
 				if ((this._TYPE_METHOD != value))
 				{
 					this._TYPE_METHOD = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.DETAILRECEIPT_JOIN")]
-	public partial class DETAILRECEIPT_JOIN
-	{
-		
-		private string _ID_DETAIL_RECEIPT;
-		
-		private string _ID_RECEIPT;
-		
-		private string _ID_PRODUCT;
-		
-		private System.Nullable<int> _QUANTITY;
-		
-		private System.Nullable<int> _PRICE;
-		
-		private string _NAME_PRODUCT_VN;
-		
-		private string _NAME_PRODUCT_EN;
-		
-		public DETAILRECEIPT_JOIN()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_DETAIL_RECEIPT", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string ID_DETAIL_RECEIPT
-		{
-			get
-			{
-				return this._ID_DETAIL_RECEIPT;
-			}
-			set
-			{
-				if ((this._ID_DETAIL_RECEIPT != value))
-				{
-					this._ID_DETAIL_RECEIPT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_RECEIPT", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string ID_RECEIPT
-		{
-			get
-			{
-				return this._ID_RECEIPT;
-			}
-			set
-			{
-				if ((this._ID_RECEIPT != value))
-				{
-					this._ID_RECEIPT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PRODUCT", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string ID_PRODUCT
-		{
-			get
-			{
-				return this._ID_PRODUCT;
-			}
-			set
-			{
-				if ((this._ID_PRODUCT != value))
-				{
-					this._ID_PRODUCT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QUANTITY", DbType="Int")]
-		public System.Nullable<int> QUANTITY
-		{
-			get
-			{
-				return this._QUANTITY;
-			}
-			set
-			{
-				if ((this._QUANTITY != value))
-				{
-					this._QUANTITY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRICE", DbType="Int")]
-		public System.Nullable<int> PRICE
-		{
-			get
-			{
-				return this._PRICE;
-			}
-			set
-			{
-				if ((this._PRICE != value))
-				{
-					this._PRICE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_PRODUCT_VN", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string NAME_PRODUCT_VN
-		{
-			get
-			{
-				return this._NAME_PRODUCT_VN;
-			}
-			set
-			{
-				if ((this._NAME_PRODUCT_VN != value))
-				{
-					this._NAME_PRODUCT_VN = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_PRODUCT_EN", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string NAME_PRODUCT_EN
-		{
-			get
-			{
-				return this._NAME_PRODUCT_EN;
-			}
-			set
-			{
-				if ((this._NAME_PRODUCT_EN != value))
-				{
-					this._NAME_PRODUCT_EN = value;
 				}
 			}
 		}

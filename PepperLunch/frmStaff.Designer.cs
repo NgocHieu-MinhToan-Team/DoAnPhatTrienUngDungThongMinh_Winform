@@ -54,6 +54,19 @@ namespace PepperLunch
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.gridControl_staff = new DevExpress.XtraGrid.GridControl();
             this.gridView_Staff = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ROLE = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemComboBox_role = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemComboBox_gender = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionCtrlEle_newStaff = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -77,6 +90,8 @@ namespace PepperLunch
             ((System.ComponentModel.ISupportInitialize)(this.txtPhone.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_staff)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Staff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox_role)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox_gender)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxError_cbbGender)).BeginInit();
@@ -88,9 +103,9 @@ namespace PepperLunch
             this.fluentDesignFormContainer1.BackgroundImage = global::PepperLunch.Properties.Resources.bg_ppl;
             this.fluentDesignFormContainer1.Controls.Add(this.tablePanel1);
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(339, 39);
+            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(239, 39);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(751, 553);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(851, 553);
             this.fluentDesignFormContainer1.TabIndex = 0;
             // 
             // tablePanel1
@@ -103,9 +118,9 @@ namespace PepperLunch
             this.tablePanel1.Location = new System.Drawing.Point(0, 0);
             this.tablePanel1.Name = "tablePanel1";
             this.tablePanel1.Rows.AddRange(new DevExpress.Utils.Layout.TablePanelRow[] {
-            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 70F),
-            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 30F)});
-            this.tablePanel1.Size = new System.Drawing.Size(751, 553);
+            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 25F),
+            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 75F)});
+            this.tablePanel1.Size = new System.Drawing.Size(851, 553);
             this.tablePanel1.TabIndex = 0;
             // 
             // tablePanel3
@@ -113,12 +128,11 @@ namespace PepperLunch
             this.tablePanel1.SetColumn(this.tablePanel3, 0);
             this.tablePanel3.Columns.AddRange(new DevExpress.Utils.Layout.TablePanelColumn[] {
             new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 10F),
-            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 10F),
             new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 20F),
             new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 10F),
             new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 20F),
-            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 20F),
-            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 10F)});
+            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 10F),
+            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 20F)});
             this.tablePanel3.Controls.Add(this.labelControl9);
             this.tablePanel3.Controls.Add(this.cbbRole);
             this.tablePanel3.Controls.Add(this.cbbGender);
@@ -138,70 +152,69 @@ namespace PepperLunch
             this.tablePanel3.Controls.Add(this.labelControl3);
             this.tablePanel3.Controls.Add(this.labelControl4);
             this.tablePanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tablePanel3.Location = new System.Drawing.Point(3, 390);
+            this.tablePanel3.Location = new System.Drawing.Point(3, 3);
             this.tablePanel3.Name = "tablePanel3";
-            this.tablePanel1.SetRow(this.tablePanel3, 1);
+            this.tablePanel3.Padding = new System.Windows.Forms.Padding(20);
+            this.tablePanel1.SetRow(this.tablePanel3, 0);
             this.tablePanel3.Rows.AddRange(new DevExpress.Utils.Layout.TablePanelRow[] {
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 20F),
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 20F),
-            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 20F),
-            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 20F),
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 20F)});
-            this.tablePanel3.Size = new System.Drawing.Size(745, 160);
+            this.tablePanel3.Size = new System.Drawing.Size(845, 132);
             this.tablePanel3.TabIndex = 1;
             // 
             // labelControl9
             // 
-            this.tablePanel3.SetColumn(this.labelControl9, 1);
-            this.labelControl9.Location = new System.Drawing.Point(79, 133);
+            this.tablePanel3.SetColumn(this.labelControl9, 2);
+            this.labelControl9.Location = new System.Drawing.Point(292, 86);
             this.labelControl9.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl9.Name = "labelControl9";
-            this.tablePanel3.SetRow(this.labelControl9, 4);
+            this.tablePanel3.SetRow(this.labelControl9, 2);
             this.labelControl9.Size = new System.Drawing.Size(33, 21);
             this.labelControl9.TabIndex = 34;
             this.labelControl9.Text = "Role";
             // 
             // cbbRole
             // 
-            this.tablePanel3.SetColumn(this.cbbRole, 2);
+            this.tablePanel3.SetColumn(this.cbbRole, 3);
             this.cbbRole.FormattingEnabled = true;
-            this.cbbRole.Location = new System.Drawing.Point(153, 132);
+            this.cbbRole.Location = new System.Drawing.Point(382, 86);
             this.cbbRole.Margin = new System.Windows.Forms.Padding(4);
             this.cbbRole.Name = "cbbRole";
-            this.tablePanel3.SetRow(this.cbbRole, 4);
-            this.cbbRole.Size = new System.Drawing.Size(141, 29);
+            this.tablePanel3.SetRow(this.cbbRole, 2);
+            this.cbbRole.Size = new System.Drawing.Size(171, 29);
             this.cbbRole.TabIndex = 37;
             // 
             // cbbGender
             // 
-            this.tablePanel3.SetColumn(this.cbbGender, 4);
+            this.tablePanel3.SetColumn(this.cbbGender, 5);
             this.cbbGender.FormattingEnabled = true;
-            this.cbbGender.Location = new System.Drawing.Point(377, 4);
+            this.cbbGender.Location = new System.Drawing.Point(650, 24);
             this.cbbGender.Margin = new System.Windows.Forms.Padding(4);
             this.cbbGender.Name = "cbbGender";
             this.tablePanel3.SetRow(this.cbbGender, 0);
-            this.cbbGender.Size = new System.Drawing.Size(141, 29);
+            this.cbbGender.Size = new System.Drawing.Size(171, 29);
             this.cbbGender.TabIndex = 38;
             // 
             // dateEdit_birth
             // 
-            this.tablePanel3.SetColumn(this.dateEdit_birth, 4);
+            this.tablePanel3.SetColumn(this.dateEdit_birth, 5);
             this.dateEdit_birth.EditValue = null;
-            this.dateEdit_birth.Location = new System.Drawing.Point(377, 100);
+            this.dateEdit_birth.Location = new System.Drawing.Point(650, 86);
             this.dateEdit_birth.Margin = new System.Windows.Forms.Padding(4);
             this.dateEdit_birth.Name = "dateEdit_birth";
             this.dateEdit_birth.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEdit_birth.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.tablePanel3.SetRow(this.dateEdit_birth, 3);
-            this.dateEdit_birth.Size = new System.Drawing.Size(141, 24);
+            this.tablePanel3.SetRow(this.dateEdit_birth, 2);
+            this.dateEdit_birth.Size = new System.Drawing.Size(171, 22);
             this.dateEdit_birth.TabIndex = 36;
             // 
             // labelControl1
             // 
-            this.tablePanel3.SetColumn(this.labelControl1, 1);
-            this.labelControl1.Location = new System.Drawing.Point(78, 5);
+            this.tablePanel3.SetColumn(this.labelControl1, 0);
+            this.labelControl1.Location = new System.Drawing.Point(23, 25);
             this.labelControl1.Name = "labelControl1";
             this.tablePanel3.SetRow(this.labelControl1, 0);
             this.labelControl1.Size = new System.Drawing.Size(75, 21);
@@ -210,18 +223,18 @@ namespace PepperLunch
             // 
             // labelControl8
             // 
-            this.tablePanel3.SetColumn(this.labelControl8, 3);
-            this.labelControl8.Location = new System.Drawing.Point(301, 101);
+            this.tablePanel3.SetColumn(this.labelControl8, 4);
+            this.labelControl8.Location = new System.Drawing.Point(560, 86);
             this.labelControl8.Name = "labelControl8";
-            this.tablePanel3.SetRow(this.labelControl8, 3);
+            this.tablePanel3.SetRow(this.labelControl8, 2);
             this.labelControl8.Size = new System.Drawing.Size(98, 21);
             this.labelControl8.TabIndex = 25;
             this.labelControl8.Text = "Date Of Birth";
             // 
             // labelControl2
             // 
-            this.tablePanel3.SetColumn(this.labelControl2, 1);
-            this.labelControl2.Location = new System.Drawing.Point(78, 37);
+            this.tablePanel3.SetColumn(this.labelControl2, 0);
+            this.labelControl2.Location = new System.Drawing.Point(23, 56);
             this.labelControl2.Name = "labelControl2";
             this.tablePanel3.SetRow(this.labelControl2, 1);
             this.labelControl2.Size = new System.Drawing.Size(71, 21);
@@ -230,18 +243,18 @@ namespace PepperLunch
             // 
             // txtAddress
             // 
-            this.tablePanel3.SetColumn(this.txtAddress, 4);
-            this.txtAddress.Location = new System.Drawing.Point(377, 68);
+            this.tablePanel3.SetColumn(this.txtAddress, 1);
+            this.txtAddress.Location = new System.Drawing.Point(113, 86);
             this.txtAddress.Margin = new System.Windows.Forms.Padding(4);
             this.txtAddress.Name = "txtAddress";
             this.tablePanel3.SetRow(this.txtAddress, 2);
-            this.txtAddress.Size = new System.Drawing.Size(141, 24);
+            this.txtAddress.Size = new System.Drawing.Size(171, 22);
             this.txtAddress.TabIndex = 33;
             // 
             // labelControl7
             // 
-            this.tablePanel3.SetColumn(this.labelControl7, 3);
-            this.labelControl7.Location = new System.Drawing.Point(301, 69);
+            this.tablePanel3.SetColumn(this.labelControl7, 0);
+            this.labelControl7.Location = new System.Drawing.Point(23, 86);
             this.labelControl7.Name = "labelControl7";
             this.tablePanel3.SetRow(this.labelControl7, 2);
             this.labelControl7.Size = new System.Drawing.Size(60, 21);
@@ -250,50 +263,50 @@ namespace PepperLunch
             // 
             // txtUsername
             // 
-            this.tablePanel3.SetColumn(this.txtUsername, 2);
-            this.txtUsername.Location = new System.Drawing.Point(153, 4);
+            this.tablePanel3.SetColumn(this.txtUsername, 1);
+            this.txtUsername.Location = new System.Drawing.Point(113, 24);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Properties.Name = "fProperties";
             this.tablePanel3.SetRow(this.txtUsername, 0);
-            this.txtUsername.Size = new System.Drawing.Size(141, 24);
+            this.txtUsername.Size = new System.Drawing.Size(171, 23);
             this.txtUsername.TabIndex = 28;
             // 
             // txtPassword
             // 
-            this.tablePanel3.SetColumn(this.txtPassword, 2);
-            this.txtPassword.Location = new System.Drawing.Point(153, 36);
+            this.tablePanel3.SetColumn(this.txtPassword, 1);
+            this.txtPassword.Location = new System.Drawing.Point(113, 55);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Properties.Name = "fProperties";
             this.tablePanel3.SetRow(this.txtPassword, 1);
-            this.txtPassword.Size = new System.Drawing.Size(141, 24);
+            this.txtPassword.Size = new System.Drawing.Size(171, 23);
             this.txtPassword.TabIndex = 30;
             // 
             // txtSurname
             // 
-            this.tablePanel3.SetColumn(this.txtSurname, 2);
-            this.txtSurname.Location = new System.Drawing.Point(153, 100);
+            this.tablePanel3.SetColumn(this.txtSurname, 3);
+            this.txtSurname.Location = new System.Drawing.Point(382, 55);
             this.txtSurname.Margin = new System.Windows.Forms.Padding(4);
             this.txtSurname.Name = "txtSurname";
-            this.tablePanel3.SetRow(this.txtSurname, 3);
-            this.txtSurname.Size = new System.Drawing.Size(141, 24);
+            this.tablePanel3.SetRow(this.txtSurname, 1);
+            this.txtSurname.Size = new System.Drawing.Size(171, 23);
             this.txtSurname.TabIndex = 31;
             // 
             // txtName
             // 
-            this.tablePanel3.SetColumn(this.txtName, 2);
-            this.txtName.Location = new System.Drawing.Point(153, 68);
+            this.tablePanel3.SetColumn(this.txtName, 3);
+            this.txtName.Location = new System.Drawing.Point(382, 24);
             this.txtName.Margin = new System.Windows.Forms.Padding(4);
             this.txtName.Name = "txtName";
-            this.tablePanel3.SetRow(this.txtName, 2);
-            this.txtName.Size = new System.Drawing.Size(141, 24);
+            this.tablePanel3.SetRow(this.txtName, 0);
+            this.txtName.Size = new System.Drawing.Size(171, 23);
             this.txtName.TabIndex = 27;
             // 
             // labelControl6
             // 
-            this.tablePanel3.SetColumn(this.labelControl6, 3);
-            this.labelControl6.Location = new System.Drawing.Point(301, 37);
+            this.tablePanel3.SetColumn(this.labelControl6, 4);
+            this.labelControl6.Location = new System.Drawing.Point(560, 56);
             this.labelControl6.Name = "labelControl6";
             this.tablePanel3.SetRow(this.labelControl6, 1);
             this.labelControl6.Size = new System.Drawing.Size(45, 21);
@@ -302,19 +315,19 @@ namespace PepperLunch
             // 
             // txtPhone
             // 
-            this.tablePanel3.SetColumn(this.txtPhone, 4);
-            this.txtPhone.Location = new System.Drawing.Point(377, 36);
+            this.tablePanel3.SetColumn(this.txtPhone, 5);
+            this.txtPhone.Location = new System.Drawing.Point(650, 55);
             this.txtPhone.Margin = new System.Windows.Forms.Padding(4);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Properties.Name = "fProperties";
             this.tablePanel3.SetRow(this.txtPhone, 1);
-            this.txtPhone.Size = new System.Drawing.Size(141, 24);
+            this.txtPhone.Size = new System.Drawing.Size(171, 23);
             this.txtPhone.TabIndex = 29;
             // 
             // labelControl5
             // 
-            this.tablePanel3.SetColumn(this.labelControl5, 3);
-            this.labelControl5.Location = new System.Drawing.Point(301, 5);
+            this.tablePanel3.SetColumn(this.labelControl5, 4);
+            this.labelControl5.Location = new System.Drawing.Point(560, 25);
             this.labelControl5.Name = "labelControl5";
             this.tablePanel3.SetRow(this.labelControl5, 0);
             this.labelControl5.Size = new System.Drawing.Size(53, 21);
@@ -323,20 +336,20 @@ namespace PepperLunch
             // 
             // labelControl3
             // 
-            this.tablePanel3.SetColumn(this.labelControl3, 1);
-            this.labelControl3.Location = new System.Drawing.Point(78, 69);
+            this.tablePanel3.SetColumn(this.labelControl3, 2);
+            this.labelControl3.Location = new System.Drawing.Point(291, 25);
             this.labelControl3.Name = "labelControl3";
-            this.tablePanel3.SetRow(this.labelControl3, 2);
+            this.tablePanel3.SetRow(this.labelControl3, 0);
             this.labelControl3.Size = new System.Drawing.Size(43, 21);
             this.labelControl3.TabIndex = 20;
             this.labelControl3.Text = "Name";
             // 
             // labelControl4
             // 
-            this.tablePanel3.SetColumn(this.labelControl4, 1);
-            this.labelControl4.Location = new System.Drawing.Point(78, 101);
+            this.tablePanel3.SetColumn(this.labelControl4, 2);
+            this.labelControl4.Location = new System.Drawing.Point(291, 56);
             this.labelControl4.Name = "labelControl4";
-            this.tablePanel3.SetRow(this.labelControl4, 3);
+            this.tablePanel3.SetRow(this.labelControl4, 1);
             this.labelControl4.Size = new System.Drawing.Size(65, 21);
             this.labelControl4.TabIndex = 21;
             this.labelControl4.Text = "Surname";
@@ -345,22 +358,169 @@ namespace PepperLunch
             // 
             this.tablePanel1.SetColumn(this.gridControl_staff, 0);
             this.gridControl_staff.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl_staff.Location = new System.Drawing.Point(3, 3);
+            this.gridControl_staff.Location = new System.Drawing.Point(3, 141);
             this.gridControl_staff.MainView = this.gridView_Staff;
             this.gridControl_staff.Name = "gridControl_staff";
-            this.tablePanel1.SetRow(this.gridControl_staff, 0);
-            this.gridControl_staff.Size = new System.Drawing.Size(745, 381);
+            this.gridControl_staff.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemComboBox_role,
+            this.repositoryItemComboBox_gender});
+            this.tablePanel1.SetRow(this.gridControl_staff, 1);
+            this.gridControl_staff.Size = new System.Drawing.Size(845, 409);
             this.gridControl_staff.TabIndex = 0;
             this.gridControl_staff.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_Staff});
             // 
             // gridView_Staff
             // 
+            this.gridView_Staff.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3,
+            this.ROLE,
+            this.gridColumn4,
+            this.gridColumn5,
+            this.gridColumn6,
+            this.gridColumn10,
+            this.gridColumn7,
+            this.gridColumn8,
+            this.gridColumn9});
             this.gridView_Staff.FixedLineWidth = 3;
             this.gridView_Staff.GridControl = this.gridControl_staff;
             this.gridView_Staff.Name = "gridView_Staff";
-            this.gridView_Staff.OptionsBehavior.Editable = false;
             this.gridView_Staff.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView_Staff_RowClick);
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "USERNAME";
+            this.gridColumn1.FieldName = "USERNAME_STAFF";
+            this.gridColumn1.MinWidth = 25;
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.Width = 94;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "PASSWORD";
+            this.gridColumn2.FieldName = "PASSWORD_STAFF";
+            this.gridColumn2.MinWidth = 25;
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.Width = 94;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "ID GROUP";
+            this.gridColumn3.FieldName = "ID_GROUP";
+            this.gridColumn3.MinWidth = 25;
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.OptionsColumn.AllowEdit = false;
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.Width = 94;
+            // 
+            // ROLE
+            // 
+            this.ROLE.Caption = "CHOOSE ROLE ";
+            this.ROLE.ColumnEdit = this.repositoryItemComboBox_role;
+            this.ROLE.FieldName = "ROLE";
+            this.ROLE.MinWidth = 25;
+            this.ROLE.Name = "ROLE";
+            this.ROLE.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
+            this.ROLE.Visible = true;
+            this.ROLE.VisibleIndex = 3;
+            this.ROLE.Width = 94;
+            // 
+            // repositoryItemComboBox_role
+            // 
+            this.repositoryItemComboBox_role.AutoHeight = false;
+            this.repositoryItemComboBox_role.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox_role.Name = "repositoryItemComboBox_role";
+            this.repositoryItemComboBox_role.SelectedValueChanged += new System.EventHandler(this.repositoryItemComboBox_role_SelectedValueChanged);
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "SURNAME";
+            this.gridColumn4.FieldName = "SURNAME_STAFF";
+            this.gridColumn4.MinWidth = 25;
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 4;
+            this.gridColumn4.Width = 94;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "NAME";
+            this.gridColumn5.FieldName = "NAME_STAFF";
+            this.gridColumn5.MinWidth = 25;
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 5;
+            this.gridColumn5.Width = 94;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "GENDER";
+            this.gridColumn6.FieldName = "GENDER_STAFF";
+            this.gridColumn6.MinWidth = 25;
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.OptionsColumn.AllowEdit = false;
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 6;
+            this.gridColumn6.Width = 94;
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.Caption = "CHOOSE GENDER";
+            this.gridColumn10.ColumnEdit = this.repositoryItemComboBox_gender;
+            this.gridColumn10.FieldName = "GENDER";
+            this.gridColumn10.MinWidth = 25;
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 7;
+            this.gridColumn10.Width = 94;
+            // 
+            // repositoryItemComboBox_gender
+            // 
+            this.repositoryItemComboBox_gender.AutoHeight = false;
+            this.repositoryItemComboBox_gender.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.SpinDown)});
+            this.repositoryItemComboBox_gender.Name = "repositoryItemComboBox_gender";
+            this.repositoryItemComboBox_gender.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.repositoryItemComboBox_gender.SelectedValueChanged += new System.EventHandler(this.repositoryItemComboBox_gender_SelectedValueChanged);
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "DATE OF BIRTH";
+            this.gridColumn7.FieldName = "DATE_OF_BIRTH";
+            this.gridColumn7.MinWidth = 25;
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 8;
+            this.gridColumn7.Width = 94;
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "ADDRESS";
+            this.gridColumn8.FieldName = "ADDRESS_STAFF";
+            this.gridColumn8.MinWidth = 25;
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 9;
+            this.gridColumn8.Width = 94;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "PHONE";
+            this.gridColumn9.FieldName = "NUMBER_PHONE";
+            this.gridColumn9.MinWidth = 25;
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 10;
+            this.gridColumn9.Width = 94;
             // 
             // accordionControl1
             // 
@@ -378,7 +538,7 @@ namespace PepperLunch
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.OptionsMinimizing.AllowMinimizeMode = DevExpress.Utils.DefaultBoolean.False;
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Hidden;
-            this.accordionControl1.Size = new System.Drawing.Size(339, 553);
+            this.accordionControl1.Size = new System.Drawing.Size(239, 553);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -472,6 +632,8 @@ namespace PepperLunch
             ((System.ComponentModel.ISupportInitialize)(this.txtPhone.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_staff)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Staff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox_role)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox_gender)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxError_cbbGender)).EndInit();
@@ -512,5 +674,18 @@ namespace PepperLunch
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxError_cbbGender;
         private DevExpress.Utils.Layout.TablePanel tablePanel3;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxError_username;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn ROLE;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox_role;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox_gender;
     }
 }

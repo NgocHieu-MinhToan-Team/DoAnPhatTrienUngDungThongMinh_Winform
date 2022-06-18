@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ManageRestaurant" Class="RestaurantPPLDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=NGCHIUTRNC995;Initial Catalog=ManageRestaurant;Integrated Security=True" SettingsObjectName="DTO_PPL.Properties.Settings" SettingsPropertyName="ManageRestaurantConnectionString2" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=MINHTOAN\SQLEXPRESS;Initial Catalog=ManageRestaurant;Persist Security Info=True;User ID=sa" SettingsObjectName="DTO_PPL.Properties.Settings" SettingsPropertyName="ManageRestaurantConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.CATEGORY" Member="CATEGORies">
     <Type Name="CATEGORY">
       <Column Name="ID_CATEGORY" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -240,14 +240,15 @@
       <Association Name="SUPPLIER_IMPORT" Member="IMPORTs" ThisKey="ID_SUPPLIER" OtherKey="ID_SUPPLIER" Type="IMPORT" />
     </Type>
   </Table>
-  <Table Name="dbo.IOGDETAIL_JOIN" Member="IOGDETAIL_JOINs">
-    <Type Name="IOGDETAIL_JOIN">
-      <Column Name="ID_DETAIL_IOG" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="ID_IOG" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="ID_INGREDIENT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="PRICE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+  <Table Name="dbo.DETAILRECEIPT_JOIN" Member="DETAILRECEIPT_JOINs">
+    <Type Name="DETAILRECEIPT_JOIN">
+      <Column Name="ID_DETAIL_RECEIPT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_RECEIPT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_PRODUCT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="QUANTITY" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NAME_INGREDIENT" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PRICE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NAME_PRODUCT_VN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NAME_PRODUCT_EN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.RECIPE_JOIN" Member="RECIPE_JOINs">
@@ -258,6 +259,16 @@
       <Column Name="WEIGHT_DETAIL" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="FLAG_DEL" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NAME_PRODUCT_EN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NAME_INGREDIENT" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IOGDETAIL_JOIN" Member="IOGDETAIL_JOINs">
+    <Type Name="IOGDETAIL_JOIN">
+      <Column Name="ID_DETAIL_IOG" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_IOG" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_INGREDIENT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PRICE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QUANTITY" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NAME_INGREDIENT" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
@@ -282,17 +293,6 @@
       <Column Name="PHONE_CUSTOMER" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
       <Column Name="NAME_METHOD" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="TYPE_METHOD" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.DETAILRECEIPT_JOIN" Member="DETAILRECEIPT_JOINs">
-    <Type Name="DETAILRECEIPT_JOIN">
-      <Column Name="ID_DETAIL_RECEIPT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="ID_RECEIPT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="ID_PRODUCT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="QUANTITY" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PRICE" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NAME_PRODUCT_VN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="NAME_PRODUCT_EN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>

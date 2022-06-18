@@ -113,7 +113,6 @@ namespace BLL_PPL
             {
                 if (DAL_IOG.update(data))
                 {
-                    MessageBox.Show("Update Data Sucessfully !");
                     return true;
                 }
                 else

@@ -28,7 +28,7 @@ namespace PepperLunch
 
         private void frmManagePromotion_Load(object sender, EventArgs e)
         {
-
+            status = PROMOTION;
             loadPromotion();
         }
 
@@ -41,6 +41,11 @@ namespace PepperLunch
             pro.DATE_CREATE = DateTime.Today;
             pro.DATE_START = datePromotion_dayStart.Value;
             pro.DATE_END = datePromotion_dayEnd.Value;
+            if (pro.NAME_PROMOTION == "")
+            {
+                XtraMessageBox.Show("Name Promotion not be null");
+                return;
+            }
             BLL_Promotion.insertPromotion(pro);
             //reload table
             loadPromotion();
@@ -59,6 +64,11 @@ namespace PepperLunch
                 pro.DATE_CREATE = DateTime.Today;
                 pro.DATE_START = datePromotion_dayStart.Value;
                 pro.DATE_END = datePromotion_dayEnd.Value;
+                if (pro.NAME_PROMOTION == "")
+                {
+                    XtraMessageBox.Show("Name Promotion not be null");
+                    return;
+                }
                 BLL_Promotion.updatePromotion(pro);
                 //reload
                 loadPromotion();
@@ -79,9 +89,7 @@ namespace PepperLunch
 
         void loadPromotion()
         {
-            cbbPromotion.DataSource = BLL_Promotion.getPromotions();
-            cbbPromotion.DisplayMember = "NAME_PROMOTION";
-            cbbPromotion.ValueMember = "ID_PROMOTION";
+            cbbPromotion.Visible = false;
             gridView_main.Columns.Clear();
             // load data for gridview promotion
             gridControl_main.DataSource = BLL_Promotion.getPromotions();
@@ -91,6 +99,7 @@ namespace PepperLunch
         }
         void loadVoucher(string ID_PROMOTION)
         {
+           
             // load combobox
             cbbVoucher_typeCustomer.DataSource = BLL_Customer.getTypeCustomers();
             cbbVoucher_typeCustomer.DisplayMember = "NAME_TYPE";
@@ -110,6 +119,18 @@ namespace PepperLunch
             try
             {
                 VOUCHER vou = new VOUCHER();
+                if (
+                   txtTypeReducion.Text.Trim() == "" ||
+                   cbbVoucher_typeCustomer.SelectedValue.ToString() == "" ||
+                   !GeneralMethods.isDigit(txtPercentReducion.Text, false) ||
+                   !GeneralMethods.isDigit(txtAmountReduction.Text, false) ||
+                   !GeneralMethods.isDigit(txtVoucherQuantity.Text, false)
+
+                  )
+                {
+                    XtraMessageBox.Show("Values must not be null!");
+                    return;
+                }
                 vou.ID_VOUCHER = GeneralMethods.createID("VOUCHER");
                 vou.ID_PROMOTION = cbbPromotion.SelectedValue.ToString();
                 vou.USERNAME_STAFF = static_USERNAME_STAFF;
@@ -138,6 +159,18 @@ namespace PepperLunch
             if (arrRowSelected != null)
             {
                 VOUCHER vou = (VOUCHER)gridView_main.GetRow(arrRowSelected[0]);
+                if(
+                     vou.TYPE_REDUCTION.Trim()=="" ||
+                     vou.TYPE_CUSTOMER=="" || 
+                     !GeneralMethods.isDigit(vou.PERCENT_REDUCTION.ToString(),false) ||
+                     !GeneralMethods.isDigit(vou.AMOUNT_REDUCTION.ToString(),false) ||
+                     !GeneralMethods.isDigit(vou.QUANTITY_VOUCHER.ToString(), false)
+
+                    )
+                {
+                    XtraMessageBox.Show("Values must not be null!");
+                    return;
+                }
                 vou.USERNAME_STAFF = static_USERNAME_STAFF;
                 vou.DATE_CREATE = DateTime.Today;
                 vou.DATE_START = dateVoucher_dayStart.Value;
@@ -179,6 +212,11 @@ namespace PepperLunch
 
         private void accordionControlElement_voucher_Click(object sender, EventArgs e)
         {
+            cbbPromotion.Visible = true;
+            // load pormotion
+            cbbPromotion.DataSource = BLL_Promotion.getPromotions();
+            cbbPromotion.DisplayMember = "NAME_PROMOTION";
+            cbbPromotion.ValueMember = "ID_PROMOTION";
             if (cbbPromotion.SelectedValue != null)
             {
                 loadVoucher(cbbPromotion.SelectedValue.ToString());
@@ -233,7 +271,6 @@ namespace PepperLunch
                 loadVoucher(ID);
                 static_ID_PROMOTION = ID;
                 status = VOUCHER;
-                
             }
         }
     }

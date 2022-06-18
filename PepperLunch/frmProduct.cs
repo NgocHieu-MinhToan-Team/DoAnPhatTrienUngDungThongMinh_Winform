@@ -7,12 +7,13 @@ using System.Windows.Forms;
 
 using BLL_PPL;
 using DTO_PPL;
+using DevExpress.XtraEditors;
 
 namespace PepperLunch
 {
     public partial class frmProduct : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
-
+        string ID_CATE = null;
         public frmProduct()
         {
             InitializeComponent();
@@ -21,6 +22,12 @@ namespace PepperLunch
         private void frmProduct_Load(object sender, EventArgs e)
         {
             LoadData(false);
+            ID_CATE = "IDLMON01";
+            loadProductByID_Category("IDLMON01");
+            txtNameEN.Text = "";
+            txtNameVN.Text = "";
+            txtPrice.Text = "";
+            txtURL.Text = "";
         }
 
           void LoadData(bool isSynchronous)
@@ -57,6 +64,7 @@ namespace PepperLunch
             try
             {
                 AccordionControlElement element = sender as AccordionControlElement;
+                ID_CATE = element.Name;
                 loadProductByID_Category(element.Name);
             }
             catch
@@ -85,34 +93,6 @@ namespace PepperLunch
             }
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            int[] index = gridView1.GetSelectedRows();
-            string ID_cate;
-            if (index.Length > 0)
-            {
-                PRODUCT pro = (PRODUCT)gridView1.GetRow(index[0]);
-                pro.NAME_PRODUCT_EN = txtNameEN.Text;
-                pro.NAME_PRODUCT_VN = txtNameVN.Text;
-                pro.PRICE_PRODUCT = Int32.Parse(txtPrice.Text);
-                pro.IMAGE_PRODUCT = txtURL.Text;
-                BLL_Product.updateProduct(pro);
-                ID_cate = pro.ID_CATEGORY;
-                loadProductByID_Category(ID_cate);
-            }
-        }
-
-        private void repositoryItemButtonEdit_Del_Click(object sender, EventArgs e)
-        {
-            int[] index = gridView1.GetSelectedRows();
-            if (index.Length > 0)
-            {
-                PRODUCT pro = (PRODUCT)gridView1.GetRow(index[0]);
-                BLL_Product.deleteProduct(pro);
-                loadProductByID_Category(pro.ID_CATEGORY);
-            }
-        }
-
         private void repositoryItemButtonEdit_ShowRecipe_Click(object sender, EventArgs e)
         {
             int[] index = gridView1.GetSelectedRows();
@@ -124,6 +104,75 @@ namespace PepperLunch
                 frm.ShowDialog();
             }
            
+        }
+
+        private void repositoryItemButtonEdit_Update_Click(object sender, EventArgs e)
+        {
+            int[] index = gridView1.GetSelectedRows();
+            if (index.Length > 0)
+            {
+                try
+                {
+                    PRODUCT pro = (PRODUCT)gridView1.GetRow(index[0]);
+                    if(pro.NAME_PRODUCT_EN.Trim()=="" || pro.NAME_PRODUCT_VN.Trim()=="" || !GeneralMethods.isDigit(pro.PRICE_PRODUCT.ToString().Trim(), false))
+                    {
+                        XtraMessageBox.Show("Values are not null and FieldName Price must be number!");
+                        loadProductByID_Category(ID_CATE);
+                        return;
+                    }
+                    if (Int32.Parse(pro.PRICE_PRODUCT.ToString()) <= 0)
+                    {
+                        XtraMessageBox.Show("Price must be >0");
+                        loadProductByID_Category(ID_CATE);
+                        return;
+                    }
+                    BLL_Product.updateProduct(pro);
+                    loadProductByID_Category(ID_CATE);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtNameEN.Text.Trim() == "" || txtNameVN.Text.Trim() == "" || !GeneralMethods.isDigit(txtPrice.Text.Trim(), false))
+                {
+                    XtraMessageBox.Show("Values are not null and FieldName Price must be number!");
+                    return;
+                }
+              
+                PRODUCT pro = new PRODUCT();
+                pro.ID_PRODUCT = GeneralMethods.createID("PRO");
+                pro.ID_CATEGORY = ID_CATE;
+                pro.NAME_PRODUCT_EN = txtNameEN.Text;
+                pro.NAME_PRODUCT_VN = txtNameVN.Text;
+                pro.PRICE_PRODUCT = Int32.Parse(txtPrice.Text);
+                pro.IMAGE_PRODUCT = txtURL.Text;
+                BLL_Product.insertProduct(pro);
+                loadProductByID_Category(ID_CATE);
+                //open recipe 
+                frmRecipe frmrecipe = new frmRecipe();
+                frmRecipe.ID_PRODUCT = pro.ID_PRODUCT;
+                frmrecipe.FormClosing += Frmrecipe_FormClosing;
+                frmrecipe.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                XtraMessageBox.Show("Not be null");
+            }
+            
+        }
+
+        private void Frmrecipe_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Close();
+            Program.frmcontainer.barBtn_Product.PerformClick();
         }
     }
 }
