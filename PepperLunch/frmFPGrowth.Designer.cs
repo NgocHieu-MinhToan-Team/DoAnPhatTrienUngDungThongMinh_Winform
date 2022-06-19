@@ -281,7 +281,6 @@ namespace PepperLunch
             "0,8",
             "0,9",
             "1"});
-            this.comboBoxEdit_confidence.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.comboBoxEdit_confidence.Size = new System.Drawing.Size(150, 28);
             this.comboBoxEdit_confidence.TabIndex = 2;
             // 
