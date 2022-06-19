@@ -58,6 +58,27 @@ namespace BLL_PPL
             }
         }
 
+        public static bool removeProduct(string id)
+        {
+            try
+            {
+                if (DAL_Product.removeProduct(id))
+                {
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Delete Data Failed !");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
         public static bool updateProduct(PRODUCT data)
         {
             try

@@ -13,9 +13,13 @@ namespace DAL_PPL
         public DAL_Receipt(){ }
         public static List<RECEIPT> getList()
         {
-            return db.RECEIPTs.Select(t => t).ToList();
+            return db.RECEIPTs.Where(t => t.STATE_RECEIPT>0 && t.STATE_RECEIPT<3).ToList();
         }
-        
+        public static List<RECEIPT> getListState_3()
+        {
+            return db.RECEIPTs.Where(t => t.STATE_RECEIPT==3||t.STATE_RECEIPT==4).ToList();
+        }
+
         public static List<RECEIPT> getListForFPGrowth()
         {
             return db.RECEIPTs.Where(t => t.STATE_RECEIPT==3).ToList();

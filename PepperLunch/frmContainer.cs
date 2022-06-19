@@ -186,6 +186,7 @@ namespace PepperLunch
         private void barBtn_Ingredients_ItemClick(object sender, ItemClickEventArgs e)
         {
             frmIngredients newForm = new frmIngredients();
+            newForm.username = static_USERNAME_STAFF;
             newForm.Show();
         }
 

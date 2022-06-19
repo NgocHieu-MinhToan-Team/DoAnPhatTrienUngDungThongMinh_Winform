@@ -357,10 +357,6 @@
       <Project>{b00d9f1e-35e5-421b-9f65-c7b3cb6028e4}</Project>
       <Name>BLL_PPL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CallAPI_PPL\CallAPI_PPL.csproj">
-      <Project>{b46ba655-ddd0-4242-9f20-b47e45f61be5}</Project>
-      <Name>CallAPI_PPL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DTO_PPL\DTO_PPL.csproj">
       <Project>{29a6dab9-7e26-4997-b0da-ba669193aaa9}</Project>
       <Name>DTO_PPL</Name>

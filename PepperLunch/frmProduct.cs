@@ -82,15 +82,15 @@ namespace PepperLunch
 
         private void gridControl_Product_Click(object sender, EventArgs e)
         {
-            int[] index = gridView1.GetSelectedRows();
-            if (index.Length > 0)
-            {
-                PRODUCT pro = (PRODUCT)gridView1.GetRow(index[0]);
-                txtNameEN.Text = pro.NAME_PRODUCT_EN;
-                txtNameVN.Text = pro.NAME_PRODUCT_VN;
-                txtPrice.Text = pro.PRICE_PRODUCT.ToString();
-                txtURL.Text = pro.IMAGE_PRODUCT;
-            }
+            //int[] index = gridView1.GetSelectedRows();
+            //if (index.Length > 0)
+            //{
+            //    PRODUCT pro = (PRODUCT)gridView1.GetRow(index[0]);
+            //    txtNameEN.Text = pro.NAME_PRODUCT_EN;
+            //    txtNameVN.Text = pro.NAME_PRODUCT_VN;
+            //    txtPrice.Text = pro.PRICE_PRODUCT.ToString();
+            //    txtURL.Text = pro.IMAGE_PRODUCT;
+            //}
         }
 
         private void repositoryItemButtonEdit_ShowRecipe_Click(object sender, EventArgs e)
@@ -173,6 +173,19 @@ namespace PepperLunch
         {
             this.Close();
             Program.frmcontainer.barBtn_Product.PerformClick();
+        }
+
+        private void repositoryItemButtonEdit_del_Click(object sender, EventArgs e)
+        {
+            int[] index = gridView1.GetSelectedRows();
+            if (index.Length > 0)
+            {
+                PRODUCT pro = (PRODUCT)gridView1.GetRow(index[0]);
+                BLL_Product.removeProduct(pro.ID_PRODUCT);
+                loadProductByID_Category(ID_CATE);
+
+            }
+
         }
     }
 }

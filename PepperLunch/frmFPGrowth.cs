@@ -18,7 +18,9 @@ namespace PepperLunch
 {
     public partial class frmFPGrowth : DevExpress.XtraEditors.XtraForm
     {
-       
+
+        double minsup = 0;
+        double confidence = 0;
         public frmFPGrowth()
         {
             InitializeComponent();
@@ -41,10 +43,11 @@ namespace PepperLunch
                     XtraMessageBox.Show("Input is invalid or null");
                     return;
                 }
-                double minsup = double.Parse(comboBoxEdit_minSup.SelectedItem.ToString());
-                double confidence = double.Parse(comboBoxEdit_confidence.SelectedItem.ToString());
+                minsup = double.Parse(comboBoxEdit_minSup.SelectedItem.ToString());
+                confidence = double.Parse(comboBoxEdit_confidence.SelectedItem.ToString());
                 if (minsup >= 0 && minsup <= 1 && confidence >= 0 && confidence <= 1)
                 {
+
                     List<FPGrowth_Item> list = BLL_Receipt.getListForFPGrowth();
                     string[] data = new string[list.Count];
                     for (int i = 0; i < list.Count; i++)
@@ -84,10 +87,7 @@ namespace PepperLunch
             //InsertDataToSql();
             try
             {
-                btnLoadDataToFirebase.Enabled = false;
                 SplashScreenManager.ShowForm(typeof(waitFrmLoading));
-                double minsup = double.Parse(comboBoxEdit_minSup.SelectedItem.ToString());
-                double confidence = double.Parse(comboBoxEdit_confidence.SelectedItem.ToString());
                 int numberRecord = int.Parse(txtNumberRecord.Text);
                 //if (GeneralMethods.isNumberTypeDouble(minsup.ToString()) &&
                 //    GeneralMethods.isNumberTypeDouble(confidence.ToString()) &&
@@ -99,6 +99,7 @@ namespace PepperLunch
                     if(await FB_FPGrowth.pushToFirebaseAsync(minsup,confidence, numberRecord))
                     {
                         XtraMessageBox.Show("Upload Success!");
+                        btnLoadDataToFirebase.Enabled = false;
                     }
                     else
                     {

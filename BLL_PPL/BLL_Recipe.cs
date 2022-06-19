@@ -52,7 +52,6 @@ namespace BLL_PPL
             {
                 if (DAL_Recipe.remove(data))
                 {
-                    MessageBox.Show("Delete Data Sucessfully !");
                     return true;
                 }
                 else
