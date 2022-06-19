@@ -53,7 +53,7 @@ namespace FireBase_PPL
             try
             {
                 // convert from Dictionary to list 
-                if (order != null)
+                if (order.order != null)
                 {
                     foreach (var detail_item in order.order)
                     {
@@ -239,7 +239,51 @@ namespace FireBase_PPL
                 return false;
             }
         }
+        public static async Task<bool> updateReceiptCancelFromFirebase(RECEIPT receipt,int status)
+        {
+            try
+            {
+                if (status!=4)
+                {
+                    return false;
+                }
+                // get all detail 
+                List<DETAIL_RECEIPT> listAllDetail = await getDetailReceiptFromFirebase();
+                // insert receipt
+                    // if not  exist in sql
+                if (!isExistReceipt(receipt))
+                {
+                    // insert receipt to sql
+                    if (DAL_Receipt.insertReceipt(receipt, status))
+                    {
+                        // insert detail receipt by idReceipt  to sql
+                        List<DETAIL_RECEIPT> listDetail = listAllDetail.Where(t => t.ID_RECEIPT == receipt.ID_RECEIPT).ToList();
+                        foreach (DETAIL_RECEIPT detail in listDetail)
+                        {
+                            // if there is error while insert
+                            if (!DAL_Receipt.insertDetailReceipt(detail))
+                            {
+                                return false;
+                            }
+                        }
+                        // update state to firebase
+                        await updateStatusReceipt(receipt, status);
+                        //await updateInventory(receipt);
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                return true;
 
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
         private static async Task<bool> checkInventory(RECEIPT receipt)
         {
             List<DETAIL_RECEIPT> listAllDetail = await getDetailReceiptFromFirebase();

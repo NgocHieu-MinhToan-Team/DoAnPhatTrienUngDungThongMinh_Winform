@@ -144,7 +144,7 @@ namespace PepperLunch
         private void frmRecipe_FormClosing(object sender, FormClosingEventArgs e)
         {
 
-            List<RECIPE_JOIN> list = BLL_Recipe.getRecipeJoin(ID_PRODUCT);
+            List<DETAIL_PRODUCT> list = BLL_Recipe.getList(ID_PRODUCT);
             if (list.Count == 0)
             {
                 BLL_Product.deleteProduct(ID_PRODUCT);
@@ -155,11 +155,11 @@ namespace PepperLunch
             // else cancel and report to user
 
             string note = "";
-            foreach (RECIPE_JOIN item in list)
+            foreach(DETAIL_PRODUCT item in list)
             {
                 if (item.WEIGHT_DETAIL <= 0)
                 {
-                    note += item.NAME_INGREDIENT + " , ";
+                    note += item.ID_INGREDIENT + " , ";
                 }
             }
 

@@ -87,7 +87,7 @@ namespace DTO_PPL
     #endregion
 		
 		public RestaurantPPLDataContext() : 
-				base(global::DTO_PPL.Properties.Settings.Default.ManageRestaurantConnectionString1, mappingSource)
+				base(global::DTO_PPL.Properties.Settings.Default.ManageRestaurantConnectionString2, mappingSource)
 		{
 			OnCreated();
 		}

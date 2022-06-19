@@ -146,11 +146,14 @@ namespace PepperLunch
                 else
                 {
                     // update status Cancel Order 
+
                     DialogResult rs =  XtraMessageBox.Show("Đơn Hàng "+item.ID_RECEIPT+" của Khách hàng có ID :"+item.ID_CUSTOMER+"Đang Không Đủ Nguyên Liệu" +" ,Chọn Yes : Hủy Đơn Hàng -- No : Quay Lại ","Confifm",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
                     if (rs == DialogResult.Yes)
                     {
+                        await FB_Receipt.updateReceiptCancelFromFirebase(item, CANCEL);
                         await FB_Receipt.updateStatusReceipt(item, CANCEL);
                         XtraMessageBox.Show("Đơn Hàng Bị Hủy , Đang Phản Hồi Đến Khách Hàng");
+                        loadData();
                     }
                 }
                 //await FB_Receipt.updateDetailReceiptFromFirebase();
@@ -226,5 +229,16 @@ namespace PepperLunch
         {
             loadData();
         }
+
+        private void accordionCtrlE_openAllReceipt_Click(object sender, EventArgs e)
+        {
+            gridView_receiptSql.ShowLoadingPanel();
+            gridControl_receiptSql.DataSource = BLL_Receipt.getListState_3();
+            gridView_receiptSql.HideLoadingPanel();
+            repositoryItemButtonEdit_CompleteOrder.ReadOnly = false;
+            repositoryItemButtonEdit_response.ReadOnly = false;
+
+        }
+
     }
 }

@@ -15,6 +15,7 @@ namespace PepperLunch
 {
     public partial class frmIngredients : DevExpress.XtraEditors.XtraForm
     {
+        public string username { get; set; }
         public frmIngredients()
         {
             InitializeComponent();
@@ -119,7 +120,7 @@ namespace PepperLunch
                 IMPORT item = new IMPORT();
                 item.ID_IOG = GeneralMethods.createID("NH");
                 item.ID_SUPPLIER = rowData.ID_SUPPLIER;
-                item.USERNAME_STAFF = Program.frmlogin.staff_global.USERNAME_STAFF;
+                item.USERNAME_STAFF = username; // Program.frmlogin.staff_global.USERNAME_STAFF;
                 item.DATE_IOG = DateTime.Now;
                 item.TOTAL_PRICE = 0;
                 item.NOTE = "";

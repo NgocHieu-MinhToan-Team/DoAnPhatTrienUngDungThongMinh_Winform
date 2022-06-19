@@ -25,6 +25,11 @@ namespace BLL_PPL
         {
             return DAL_Receipt.getList();
         }
+
+        public static List<RECEIPT> getListState_3()
+        {
+            return DAL_Receipt.getListState_3();
+        }
         public static List<FPGrowth_Item> getListForFPGrowth()
         {
             List<RECEIPT> listSrc = DAL_Receipt.getListForFPGrowth();
