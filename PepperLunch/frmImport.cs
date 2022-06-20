@@ -150,7 +150,8 @@ namespace PepperLunch
                 frm.FormClosed += (o, evt) =>
                 {
                     this.Close();
-                    BLL_IOG.updateTotalPrice(item);
+                    // bỏ dòng bên dưới
+                   //BLL_IOG.updateTotalPrice(item);
                     Program.frmcontainer.barBtn_Import.PerformClick();
                 };
                 frm.ID_IOG = item.ID_IOG;

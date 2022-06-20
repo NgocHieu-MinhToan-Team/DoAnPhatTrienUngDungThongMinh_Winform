@@ -1,7 +1,15 @@
-﻿CREATE DATABASE ManageRestaurant
+﻿
+
+CREATE DATABASE ManageRestaurant
 GO
 use ManageRestaurant
 go
+
+
+
+--Thầy bấm chạy chạy tất cả được
+
+
 
 
 --USE MASTER 
@@ -676,7 +684,7 @@ VALUES
 --PROMOTION
 INSERT INTO PROMOTION
 VALUES
-('PROMOTION1','TEN PROMOTION','NV01','21-05-2022', '21-06-2022', '22-07-2022',0)
+('PROMOTION1','Chào Tháng 7','NV01','21-05-2022', '21-06-2022', '22-07-2022',0)
 --TYPE CUSTOMER
 INSERT INTO CUSTOMER_TYPE
 VALUES
@@ -686,40 +694,31 @@ VALUES
 
 
 --VOUCHER
---INSERT INTO VOUCHER
---VALUES
---('VOUCHER010','NV01', 'PROMOTION1', '21-05-2022', '21-06-2022', '22-07-2022', 'percent','TYPECUS01','15', 50000, 10, 0)
+INSERT INTO VOUCHER
+VALUES
+('VOUCHER001','NV01', 'PROMOTION1', '01-07-2022', '02-07-2022', '30-07-2022', 'Giảm 30% tối đa 20K','TYPECUS01',30, 20000, 10, 0),
+('VOUCHER002','NV01', 'PROMOTION1', '01-05-2022', '02-07-2022', '30-07-2022', 'Chào Bạn Mới 25K','TYPECUS01',15, 25000, 10, 0)
 
 
 
 
 Insert into NEWS
 VALUES
-('SK01','PROMOTION1','NV01', N'Khuyến mãi', N'Khi mua một dĩa rau trộn được tặng súp và kem', '20-06-2022', '22-07-2022',0)
+('SK01','PROMOTION1','NV01', N'Up Sale Bò', N'Đại Hội Cơm Bò Mỹ', '20-07-2022', '22-07-2022',0),
+('SK02','PROMOTION1','NV01', N'Tiếp sức mùa thi', N'Bữa Ăn Học Sinh / Sinh Viên', '20-07-2022', '22-07-2022',0),
+('SK03','PROMOTION1','NV01', N'Món Mới', N'TomYum', '20-07-2022', '22-07-2022',0),
+('SK04','PROMOTION1','NV01', N'WeekDay', N'Bữa trưa mỗi ngày', '20-07-2022', '22-07-2022',0)
 
 --IMAGE_NEWS
 Insert into IMAGE_NEWS
 values
-('IM01', 'SK01','HTTPS/URL')
+('IM01', 'SK01','https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/promotion%2Fpromotion_news.jpg?alt=media&token=b00393b6-0f2f-4e18-8646-9ce1fb5dd1e0'),
+('IM02', 'SK02','https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/promotion%2Fpromotion_meal.jpg?alt=media&token=b5f206c4-d7ce-48d6-8cbe-91b49d5f9042'),
+('IM03', 'SK03','https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/promotion%2Fpromotion_tomyum.jpg?alt=media&token=0cad3019-a90f-457d-8ad1-8e3805e7727a'),
+('IM04', 'SK04','https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/promotion%2Fpromotion_weekday.jpg?alt=media&token=833e90aa-3146-4378-adac-fdb7f9e4979a')
+
+
 -- CREATE VIEWS HERE
-
-INSERT INTO CUSTOMER
-VALUES
-('KH01','HUNG','LY',1,'5-1-2022',NULL,'0901395705','phmtoan2005@gmail.com','123','HCM','20-5-2001',0,'TYPECUS01')
-
-
-
---RECEIPT
-INSERT INTO RECEIPT
-VALUES
-('ID001','VOUCHER010','KH01','METHOD01','1-6-2022',2,235000,20,0,'')
---DETAIL_RECEIPT
-INSERT INTO DETAIL_RECEIPT
-VALUES
-('CTHD01','ID001','MAMON01',1,100000),
-('CTHD02','ID001','MAMON02',1,135000)
---IMPORT
-
 
 go
 CREATE VIEW RECEIPT_FULL AS
@@ -754,11 +753,3 @@ WHERE D.ID_INGREDIENT=I.ID_INGREDIENT
 
 
 
--- test join
-SELECT RC.*,VC.PERCENT_REDUCTION,VC.AMOUNT_REDUCTION ,CUS.ADDRESS_CUSTOMER,CUS.MAIL_CUSTOMER,CUS.NAME_CUSTOMER,CUS.SURNAME_CUSTOMER,CUS.PHONE_CUSTOMER,
-MT.NAME_METHOD,MT.TYPE_METHOD
-FROM RECEIPT AS RC left join VOUCHER 
-AS VC on RC.ID_VOUCHER = VC.ID_VOUCHER ,
-CUSTOMER AS CUS ,METHOD_PAY AS MT
-WHERE RC.ID_CUSTOMER=CUS.ID_CUSTOMER
-AND RC.ID_METHOD = MT.ID_METHOD
