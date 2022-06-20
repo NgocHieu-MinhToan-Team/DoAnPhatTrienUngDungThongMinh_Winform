@@ -62,9 +62,10 @@ namespace PepperLunch
             // 
             this.fluentDesignFormContainer1.Controls.Add(this.tableLayoutPanel1);
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(307, 39);
+            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(512, 62);
+            this.fluentDesignFormContainer1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(676, 545);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(1126, 856);
             this.fluentDesignFormContainer1.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -74,27 +75,32 @@ namespace PepperLunch
             this.tableLayoutPanel1.Controls.Add(this.gridControl_Category, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(40);
+            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(67, 63, 67, 63);
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1.935484F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 98.06451F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(676, 545);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1126, 856);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // gridControl_Category
             // 
             this.gridControl_Category.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl_Category.Location = new System.Drawing.Point(43, 52);
+            this.gridControl_Category.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.gridControl_Category.Location = new System.Drawing.Point(72, 82);
             this.gridControl_Category.MainView = this.gridView_Category;
+            this.gridControl_Category.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.gridControl_Category.Name = "gridControl_Category";
-            this.gridControl_Category.Size = new System.Drawing.Size(590, 450);
+            this.gridControl_Category.Size = new System.Drawing.Size(982, 706);
             this.gridControl_Category.TabIndex = 0;
             this.gridControl_Category.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_Category});
             // 
             // gridView_Category
             // 
+            this.gridView_Category.DetailHeight = 550;
+            this.gridView_Category.FixedLineWidth = 3;
             this.gridView_Category.GridControl = this.gridControl_Category;
             this.gridView_Category.Name = "gridView_Category";
             this.gridView_Category.OptionsBehavior.Editable = false;
@@ -102,9 +108,10 @@ namespace PepperLunch
             // 
             // txtNameCate
             // 
-            this.txtNameCate.Location = new System.Drawing.Point(15, 109);
+            this.txtNameCate.Location = new System.Drawing.Point(25, 170);
+            this.txtNameCate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.txtNameCate.Name = "txtNameCate";
-            this.txtNameCate.Size = new System.Drawing.Size(254, 28);
+            this.txtNameCate.Size = new System.Drawing.Size(423, 48);
             this.txtNameCate.TabIndex = 1;
             // 
             // label2
@@ -113,9 +120,10 @@ namespace PepperLunch
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FloralWhite;
-            this.label2.Location = new System.Drawing.Point(15, 4);
+            this.label2.Location = new System.Drawing.Point(25, 6);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(254, 34);
+            this.label2.Size = new System.Drawing.Size(743, 53);
             this.label2.TabIndex = 3;
             this.label2.Text = "Group Category";
             // 
@@ -125,18 +133,20 @@ namespace PepperLunch
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FloralWhite;
-            this.label1.Location = new System.Drawing.Point(15, 72);
+            this.label1.Location = new System.Drawing.Point(25, 112);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(254, 34);
+            this.label1.Size = new System.Drawing.Size(743, 53);
             this.label1.TabIndex = 2;
             this.label1.Text = "Name of Category";
             // 
             // cbbGroupCate
             // 
             this.cbbGroupCate.FormattingEnabled = true;
-            this.cbbGroupCate.Location = new System.Drawing.Point(15, 41);
+            this.cbbGroupCate.Location = new System.Drawing.Point(25, 64);
+            this.cbbGroupCate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.cbbGroupCate.Name = "cbbGroupCate";
-            this.cbbGroupCate.Size = new System.Drawing.Size(254, 29);
+            this.cbbGroupCate.Size = new System.Drawing.Size(421, 41);
             this.cbbGroupCate.TabIndex = 4;
             // 
             // accordionControl1
@@ -150,17 +160,19 @@ namespace PepperLunch
             this.accordionCtrlE_AddCate,
             this.accordionCtrlE_RemoveCate,
             this.accordionCtrlE_UpdateCate});
-            this.accordionControl1.Location = new System.Drawing.Point(0, 39);
+            this.accordionControl1.Location = new System.Drawing.Point(0, 62);
+            this.accordionControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl1.Size = new System.Drawing.Size(307, 545);
+            this.accordionControl1.Size = new System.Drawing.Size(512, 856);
             this.accordionControl1.TabIndex = 1;
             // 
             // accordionContentContainer1
             // 
             this.accordionContentContainer1.Controls.Add(this.tableLayoutPanel_input);
+            this.accordionContentContainer1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.accordionContentContainer1.Name = "accordionContentContainer1";
-            this.accordionContentContainer1.Size = new System.Drawing.Size(284, 144);
+            this.accordionContentContainer1.Size = new System.Drawing.Size(793, 226);
             this.accordionContentContainer1.TabIndex = 1;
             // 
             // tableLayoutPanel_input
@@ -173,14 +185,15 @@ namespace PepperLunch
             this.tableLayoutPanel_input.Controls.Add(this.txtNameCate, 0, 3);
             this.tableLayoutPanel_input.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel_input.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel_input.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.tableLayoutPanel_input.Name = "tableLayoutPanel_input";
-            this.tableLayoutPanel_input.Padding = new System.Windows.Forms.Padding(12, 4, 12, 4);
+            this.tableLayoutPanel_input.Padding = new System.Windows.Forms.Padding(20, 6, 20, 6);
             this.tableLayoutPanel_input.RowCount = 4;
             this.tableLayoutPanel_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel_input.Size = new System.Drawing.Size(284, 144);
+            this.tableLayoutPanel_input.Size = new System.Drawing.Size(793, 226);
             this.tableLayoutPanel_input.TabIndex = 0;
             // 
             // accordionCtrlEGroup
@@ -253,21 +266,23 @@ namespace PepperLunch
             // 
             this.fluentDesignFormControl1.FluentDesignForm = this;
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
+            this.fluentDesignFormControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(983, 39);
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1638, 62);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             // 
             // frmCategory
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(983, 584);
+            this.ClientSize = new System.Drawing.Size(1638, 918);
             this.ControlContainer = this.fluentDesignFormContainer1;
             this.Controls.Add(this.fluentDesignFormContainer1);
             this.Controls.Add(this.accordionControl1);
             this.Controls.Add(this.fluentDesignFormControl1);
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "frmCategory";
             this.NavigationControl = this.accordionControl1;
             this.Text = "frmCategory";
