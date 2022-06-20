@@ -13,6 +13,7 @@ using DevExpress.XtraSplashScreen;
 using DevExpress.XtraBars.Navigation;
 using DevExpress.XtraGrid.Views.Grid;
 using System.Threading.Tasks;
+using DevExpress.XtraEditors;
 
 namespace PepperLunch
 {
@@ -30,75 +31,71 @@ namespace PepperLunch
         #region Navigation Click
         private void frmHandleFirebase_Load(object sender, EventArgs e)
         {
-            btnSyncFood.Enabled = btnSyncNews.Enabled = false;
         }
 
         private void accordionCtrlE_Customer_Click(object sender, EventArgs e)
         {
-            frmSyncCustomer newFrm = new frmSyncCustomer();
+            frmFPGrowth newFrm = new frmFPGrowth();
             newFrm.Show();
         }
 
         #endregion
         void clearDataOnGridView()
         {
-            gridView_dataFromFB.Columns.Clear();
         }
 
         private void accordionCtrl_SyncToFirebase_Click(object sender, EventArgs e)
         {
-            btnSyncFood.Enabled = btnSyncNews.Enabled = true;
         }
 
         private async void btnSyncFood_Click(object sender, EventArgs e)
         {
-            clearDataOnGridView();
-            gridView_dataFromFB.ShowLoadingPanel();
-            var watch = System.Diagnostics.Stopwatch.StartNew();
             //handle start
-            await BLL_Synchronized.updateCategoriesToFirebaseAsync();
-            gridControl_dataFromFB.DataSource = await BLL_Synchronized.getCategoriesNotSync();
+            SplashScreenManager.ShowForm(typeof(waitFrmLoading));
+
+            if (await BLL_Synchronized.updateCategoriesToFirebaseAsync())
+            {
+                XtraMessageBox.Show("Load complete");
+            }
+            else
+            {
+                XtraMessageBox.Show("HAS ERROR");
+
+            }
             //handle end
-            watch.Stop();
-            gridView_dataFromFB.HideLoadingPanel();
-            string result =  watch.ElapsedMilliseconds.ToString() + " ms";
-            MessageBox.Show("Total Time Sync is : " + result);
+            SplashScreenManager.CloseForm();
+
         }
 
         private async void svgImage_food_Click(object sender, EventArgs e)
         {
-            clearDataOnGridView();
 
-            gridView_dataFromFB.ShowLoadingPanel();
-            var watch = System.Diagnostics.Stopwatch.StartNew();
-            //handle start
-            gridControl_dataFromFB.DataSource = await BLL_Synchronized.getCategoriesNotSync();
-            //handle end
-            watch.Stop();
-            gridView_dataFromFB.HideLoadingPanel();
-            string result =  watch.ElapsedMilliseconds.ToString() + " ms";
-            MessageBox.Show("Total Time Load is : " + result);
+           
         }
 
         private void svgImage_News_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Chức năng này tương tự với Food nên chưa làm !");
+            
         }
 
         private async void btnSyncNews_Click(object sender, EventArgs e)
         {
             if (cbbPromotion.SelectedValue != null)
             {
-                clearDataOnGridView();
-                gridView_dataFromFB.ShowLoadingPanel();
-                var watch = System.Diagnostics.Stopwatch.StartNew();
-                //handle start
-                await BLL_Synchronized.updateNewsToFirebaseAsync(cbbPromotion.SelectedValue.ToString());
+                
+                SplashScreenManager.ShowForm(typeof(waitFrmLoading));
+
+                if (await BLL_Synchronized.updateNewsToFirebaseAsync(cbbPromotion.SelectedValue.ToString()))
+                {
+                    XtraMessageBox.Show("Load complete");
+                }
+                else
+                {
+                    XtraMessageBox.Show("HAS ERROR");
+
+                }
                 //handle end
-                watch.Stop();
-                gridView_dataFromFB.HideLoadingPanel();
-                string result = watch.ElapsedMilliseconds.ToString() + " ms";
-                MessageBox.Show("Total Time Sync is : " + result);
+                SplashScreenManager.CloseForm();
 
             }
             else
@@ -111,16 +108,23 @@ namespace PepperLunch
         {
             if (cbbPromotion.SelectedValue != null)
             {
-                clearDataOnGridView();
-                gridView_dataFromFB.ShowLoadingPanel();
-                var watch = System.Diagnostics.Stopwatch.StartNew();
                 //handle start
-                await BLL_Synchronized.updateVoucherToFirebaseAsync(cbbPromotion.SelectedValue.ToString());
+                SplashScreenManager.ShowForm(typeof(waitFrmLoading));
+
+                if (await BLL_Synchronized.updateVoucherToFirebaseAsync(cbbPromotion.SelectedValue.ToString()))
+                {
+                    XtraMessageBox.Show("Load complete");
+                }
+                else
+                {
+                    XtraMessageBox.Show("HAS ERROR");
+
+                }
                 //handle end
-                watch.Stop();
-                gridView_dataFromFB.HideLoadingPanel();
-                string result = watch.ElapsedMilliseconds.ToString() + " ms";
-                MessageBox.Show("Total Time Sync is : " + result);
+                SplashScreenManager.CloseForm();
+
+                
+                //handle end
 
             }
             else
@@ -131,16 +135,24 @@ namespace PepperLunch
 
         private async void btnSyncMethodPay_Click(object sender, EventArgs e)
         {
-            clearDataOnGridView();
-            gridView_dataFromFB.ShowLoadingPanel();
-            var watch = System.Diagnostics.Stopwatch.StartNew();
             //handle start
-            await BLL_Synchronized.updateMethodToFirebaseAsync();
+            
+            SplashScreenManager.ShowForm(typeof(waitFrmLoading));
+
+            if (await BLL_Synchronized.updateMethodToFirebaseAsync())
+            {
+                XtraMessageBox.Show("Load complete");
+            }
+            else
+            {
+                XtraMessageBox.Show("HAS ERROR");
+
+            }
             //handle end
-            watch.Stop();
-            gridView_dataFromFB.HideLoadingPanel();
-            string result = watch.ElapsedMilliseconds.ToString() + " ms";
-            MessageBox.Show("Total Time Sync is : " + result);
+            SplashScreenManager.CloseForm();
+
+            //handle end
         }
+
     }
 }

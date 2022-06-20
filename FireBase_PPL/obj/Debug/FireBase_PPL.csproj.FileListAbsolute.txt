@@ -52,6 +52,8 @@ E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMin
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\Debug\DAL_PPL.dll
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\Debug\DAL_PPL.pdb
 E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\Debug\DAL_PPL.dll.config
+E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\Debug\FP__Growth.dll
+E:\HK2_Nam_3\Development_Application_AI\PepperLunch\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\Debug\FP__Growth.pdb
 Z:\Documents\Win10\DOAN\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\Debug\Accord.dll.config
 Z:\Documents\Win10\DOAN\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\Debug\FireBase_PPL.dll.config
 Z:\Documents\Win10\DOAN\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\Debug\FireBase_PPL.dll
@@ -60,6 +62,7 @@ Z:\Documents\Win10\DOAN\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\D
 Z:\Documents\Win10\DOAN\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\Debug\DAL_PPL.dll
 Z:\Documents\Win10\DOAN\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\Debug\DTO_PPL.dll
 Z:\Documents\Win10\DOAN\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\Debug\FireSharp.dll
+Z:\Documents\Win10\DOAN\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\Debug\FP__Growth.dll
 Z:\Documents\Win10\DOAN\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\Debug\Microsoft.Threading.Tasks.dll
 Z:\Documents\Win10\DOAN\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.dll
 Z:\Documents\Win10\DOAN\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\Debug\Microsoft.Threading.Tasks.Extensions.dll
@@ -71,6 +74,7 @@ Z:\Documents\Win10\DOAN\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\D
 Z:\Documents\Win10\DOAN\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\Debug\DAL_PPL.dll.config
 Z:\Documents\Win10\DOAN\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\Debug\DTO_PPL.pdb
 Z:\Documents\Win10\DOAN\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\Debug\DTO_PPL.dll.config
+Z:\Documents\Win10\DOAN\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\Debug\FP__Growth.pdb
 Z:\Documents\Win10\DOAN\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\Debug\Accord.xml
 Z:\Documents\Win10\DOAN\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\Debug\Microsoft.Threading.Tasks.xml
 Z:\Documents\Win10\DOAN\DoAnPhatTrienUngDungThongMinh_Winform\FireBase_PPL\bin\Debug\Microsoft.Threading.Tasks.Extensions.xml

@@ -4,10 +4,10 @@ use ManageRestaurant
 go
 
 
-USE MASTER 
-GO
-DROP DATABASE ManageRestaurant
-GO
+--USE MASTER 
+--GO
+--DROP DATABASE ManageRestaurant
+--GO
 
 
 
@@ -388,19 +388,19 @@ INSERT INTO PRODUCT VALUES
 ('MAMON53','IDLMON09','Nestle Milo',N'Sữa Milo',20000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/sideDish%2Fdrink%2FMilo.png?alt=media&token=e676dcc1-dd4d-428c-a1f8-833ad7d259fe',0),
 ('MAMON54','IDLMON09','Hot Green Tea',N'Trà Xanh Nóng',20000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/sideDish%2Fdrink%2Fhotgreentea.png?alt=media&token=9f9ccf09-d010-4f8f-b775-8561c4d33919',0),
 --PRODUCT ADD-ONS---
-('MAMON39','IDLMON10','King Oyster Mushroom',N'Nấm Sò vua',12000,'IMAGE',0),
-('MAMON40','IDLMON10','Edamame',N'Đậu Nhật',7000,'IMAGE',0),
-('MAMON41','IDLMON10','Cabbage',N'Bắp Cải',30000,'IMAGE',0),
-('MAMON42','IDLMON10','Broccoli',N'Bông Cải Xanh',30000,'IMAGE',0),
-('MAMON43','IDLMON10','Sweet Corn',N'Bắp ngọt',5000,'IMAGE',0),
-('MAMON44','IDLMON10','Okra',N'Đậu Bắp',15000,'IMAGE',0),
-('MAMON45','IDLMON10','Egg',N'Trứng Gà',20000,'IMAGE',0),
-('MAMON46','IDLMON10','Beef',N'Bò',30000,'IMAGE',0),
-('MAMONBPS1','IDLMON10','Chicken',N'Gà',12000,'IMAGE',0),
-('MAMONBPS2','IDLMON10','Cheese Chicken Sausage',N'Súc Xích Gà Phô Mai',12000,'IMAGE',0),
-('MAMONBJC1','IDLMON10','Salmon',N'Cá Hồi',10000,'IMAGE',0),
-('MAMONBJC2','IDLMON10','Scallops',N'Sò',15000,'IMAGE',0),
-('MAMON47','IDLMON10','Prawns',N'Tôm',30000,'IMAGE',0),
+--('MAMON39','IDLMON10','King Oyster Mushroom',N'Nấm Sò vua',12000,'IMAGE',0),
+--('MAMON40','IDLMON10','Edamame',N'Đậu Nhật',7000,'IMAGE',0),
+--('MAMON41','IDLMON10','Cabbage',N'Bắp Cải',30000,'IMAGE',0),
+--('MAMON42','IDLMON10','Broccoli',N'Bông Cải Xanh',30000,'IMAGE',0),
+--('MAMON43','IDLMON10','Sweet Corn',N'Bắp ngọt',5000,'IMAGE',0),
+--('MAMON44','IDLMON10','Okra',N'Đậu Bắp',15000,'IMAGE',0),
+--('MAMON45','IDLMON10','Egg',N'Trứng Gà',20000,'IMAGE',0),
+--('MAMON46','IDLMON10','Beef',N'Bò',30000,'IMAGE',0),
+--('MAMONBPS1','IDLMON10','Chicken',N'Gà',12000,'IMAGE',0),
+--('MAMONBPS2','IDLMON10','Cheese Chicken Sausage',N'Súc Xích Gà Phô Mai',12000,'IMAGE',0),
+--('MAMONBJC1','IDLMON10','Salmon',N'Cá Hồi',10000,'IMAGE',0),
+--('MAMONBJC2','IDLMON10','Scallops',N'Sò',15000,'IMAGE',0),
+--('MAMON47','IDLMON10','Prawns',N'Tôm',30000,'IMAGE',0),
 --PRODUCT COMBOS 
 ('MAMONCB01','IDLMON11','SET A',N'Combo A',30000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/sideDish%2Fcombo%2Fimg_menu_15.jpg?alt=media&token=fa1aa5ba-6e3b-42ad-ade5-6c5c27ca02d8',0),
 ('MAMONCB02','IDLMON11','SET B',N'Combo B',40000,'https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/sideDish%2Fcombo%2Fimg_menu_16.jpg?alt=media&token=74e01dc4-891b-49c9-960e-e58fc0021ef2',0)
@@ -602,33 +602,33 @@ VALUES
 ('ID178','MAMON53','NL0025',75,0),
 --Hot Green Tea
 ('ID179','MAMON54','NL0025',75,0),
---King Oyster Mushroom
-('ID183','MAMON39','NL0043',75,0),
---Edamame
-('ID184','MAMON40','NL0044',70,0),
---Cabbage
-('ID185','MAMON41','NL0045',5,0),
---Broccoli
-('ID186','MAMON42','NL0033',20,0),
---Sweet Corn
-('ID187','MAMON43','NL0047',20,0),
---Okra
-('ID188','MAMON44','NL0048',210,0),
+----King Oyster Mushroom
+--('ID183','MAMON39','NL0043',75,0),
+----Edamame
+--('ID184','MAMON40','NL0044',70,0),
+----Cabbage
+--('ID185','MAMON41','NL0045',5,0),
+----Broccoli
+--('ID186','MAMON42','NL0033',20,0),
+----Sweet Corn
+--('ID187','MAMON43','NL0047',20,0),
+----Okra
+--('ID188','MAMON44','NL0048',210,0),
 
---Egg
-('ID189','MAMON45','NL0016',190,0),
---Beef
-('ID190','MAMON46','NL0002',5,0),
---Chicken
-('ID191','MAMONBPS1','NL0005',5,0),
---Cheese Chicken Sausage
-('ID192','MAMONBPS2','NL0012',5,0),
---Salmon
-('ID193','MAMONBJC1','NL0007',40,0),
---Scallops
-('ID194','MAMONBJC2','NL0046',40,0),
---Prawns
-('ID195','MAMON47','NL0011',5,0),
+----Egg
+--('ID189','MAMON45','NL0016',190,0),
+----Beef
+--('ID190','MAMON46','NL0002',5,0),
+----Chicken
+--('ID191','MAMONBPS1','NL0005',5,0),
+----Cheese Chicken Sausage
+--('ID192','MAMONBPS2','NL0012',5,0),
+----Salmon
+--('ID193','MAMONBJC1','NL0007',40,0),
+----Scallops
+--('ID194','MAMONBJC2','NL0046',40,0),
+----Prawns
+--('ID195','MAMON47','NL0011',5,0),
 --SET A
 ('ID196','MAMONCB01','NL0024',500,0),
 ('ID197','MAMONCB01','NL0025',500,0),
@@ -640,30 +640,31 @@ VALUES
 --GROUP USER
 INSERT INTO GROUP_USER
 VALUES
-('AD1','ADMIN',0),
-('USER1','USER',0)
+('QL','Quản Lí',0),
+('FT','Nhân Viên Full-Time',0),
+('PT','Nhân Viên Part-Time',0)
 
 -- STAFF
 INSERT INTO STAFF
 (USERNAME_STAFF,PASSWORD_STAFF ,ID_GROUP,SURNAME_STAFF,NAME_STAFF,GENDER_STAFF ,
 DATE_OF_BIRTH ,ADDRESS_STAFF ,NUMBER_PHONE ,FLAG_DEL)
 VALUES
-('NV01','123','USER1',N'Ngô Tích',N'Vinh',1,'09-09-2001',N'39/7 Trần Quang Khải , Quận 1 HCM','0977263652',0),
-('NV02','123','USER1',N'Nguyễn Thị Thanh ',N'Hoa',0,'09-09-2001',N'48 Bùi Thị Xuân , Quận Tân Bình HCM','0963071488',0),
-('NV03','123','USER1',N'Nguyễn Ngọc Thảo',N' Quyên',1,'09-09-2001',N'39 Trương Thị Ngào , Quận 12 HCM','0983300149',0),
-('NV04','123','USER1',N'Vũ Ngọc',N' Anh',1,'09-09-2001',N'12 Lê Lợi , Quận 1 HCM','0932634971',0),
-('NV05','123','USER1',N'Phạm Thị Thúy',N' Vi',1,'09-09-2001',N'140 Lê Trọng Tấn , Quận Tân Phú HCM','0346312770',0),
-('NV06','123','USER1',N'Nguyễn Thị',N' Thư',1,'09-09-2001',N'167 Quang Trung , Quận Gò Vấp HCM','0348242789',0),
-('NV07','123','USER1',N'Nguyễn Thị Lệ ',N'Quỳnh',1,'09-09-2001',N'42 Tây Thạnh , Quận Tân Phú HCM','0327916792',0),
-('NV08','123','USER1',N'Võ Thị Tuyết',N' Nhung',1,'09-09-2001',N'52/11 Dương Đức Hiền , Quận Tân Phú HCM','0934263967',0),
-('NV09','123','USER1',N'Lê Thị Tú',N' Hảo',1,'09-09-2001',N'10 Trần Quang Khải , Quận 1 HCM','0354499599',0),
-('NV10','123','USER1',N'Phùng Kim',N' Yến',1,'09-09-2001',N'41 Nguyễn Ảnh Thủ , Quận 12 HCM','0909215728',0),
-('NV11','123','USER1',N'Trần Ngọc',N' Hiểu',1,'09-09-2001',N'12 Độc Lập , Quận Tân Phú HCM','0938202193',0),
-('NV12','123','USER1',N'Biện Hoàng',N' Vinh',1,'09-09-2001',N'09 Trần Hưng Đạo , Quận 3 HCM','0902353183',0),
-('NV13','123','USER1',N'Lâm Gia',N' Huy',1,'09-09-2001',N'11 Ngô Quyền , Quận 2 HCM','0522944609',0),
-('NV14','123','USER1',N'Phạm Minh',N' Toàn',1,'09-09-2001',N'12 Nguyễn Trãi , Quận 8 HCM','0901395705',0),
-('NV15','123','USER1',N'Nguyễn Thị Thanh',N'Tuyền',1,'09-09-2001',N'09 Trần Vinh , Quận 6 HCM','0367531861',0),
-('NV16','123','USER1',N'Đoàn Thị',N'Khánh',1,'09-09-2001',N'73 Trần Vinh , Quận 6 HCM','0367531861',0)
+('NV01','123','QL',N'Ngô Tích',N'Vinh',1,'09-09-2001',N'39/7 Trần Quang Khải , Quận 1 HCM','0977263652',0),
+('NV02','123','FT',N'Nguyễn Thị Thanh ',N'Hoa',0,'09-09-2001',N'48 Bùi Thị Xuân , Quận Tân Bình HCM','0963071488',0),
+('NV03','123','FT',N'Nguyễn Ngọc Thảo',N' Quyên',1,'09-09-2001',N'39 Trương Thị Ngào , Quận 12 HCM','0983300149',0),
+('NV04','123','PT',N'Vũ Ngọc',N' Anh',1,'09-09-2001',N'12 Lê Lợi , Quận 1 HCM','0932634971',0),
+('NV05','123','PT',N'Phạm Thị Thúy',N' Vi',1,'09-09-2001',N'140 Lê Trọng Tấn , Quận Tân Phú HCM','0346312770',0),
+('NV06','123','PT',N'Nguyễn Thị',N' Thư',1,'09-09-2001',N'167 Quang Trung , Quận Gò Vấp HCM','0348242789',0),
+('NV07','123','PT',N'Nguyễn Thị Lệ ',N'Quỳnh',1,'09-09-2001',N'42 Tây Thạnh , Quận Tân Phú HCM','0327916792',0),
+('NV08','123','PT',N'Võ Thị Tuyết',N' Nhung',1,'09-09-2001',N'52/11 Dương Đức Hiền , Quận Tân Phú HCM','0934263967',0),
+('NV09','123','PT',N'Lê Thị Tú',N' Hảo',1,'09-09-2001',N'10 Trần Quang Khải , Quận 1 HCM','0354499599',0),
+('NV10','123','PT',N'Phùng Kim',N' Yến',1,'09-09-2001',N'41 Nguyễn Ảnh Thủ , Quận 12 HCM','0909215728',0),
+('NV11','123','QL',N'Trần Ngọc',N' Hiểu',1,'09-09-2001',N'12 Độc Lập , Quận Tân Phú HCM','0938202193',0),
+('NV12','123','PT',N'Biện Hoàng',N' Vinh',1,'09-09-2001',N'09 Trần Hưng Đạo , Quận 3 HCM','0902353183',0),
+('NV13','123','PT',N'Lâm Gia',N' Huy',1,'09-09-2001',N'11 Ngô Quyền , Quận 2 HCM','0522944609',0),
+('toan','123','PT',N'Phạm Minh',N' Toàn',1,'09-09-2001',N'12 Nguyễn Trãi , Quận 8 HCM','0901395705',0),
+('NV15','123','PT',N'Nguyễn Thị Thanh',N'Tuyền',1,'09-09-2001',N'09 Trần Vinh , Quận 6 HCM','0367531861',0),
+('NV16','123','PT',N'Đoàn Thị',N'Khánh',1,'09-09-2001',N'73 Trần Vinh , Quận 6 HCM','0367531861',0)
 
 --METHOD_PAY
 INSERT INTO METHOD_PAY 
@@ -718,14 +719,7 @@ VALUES
 ('CTHD01','ID001','MAMON01',1,100000),
 ('CTHD02','ID001','MAMON02',1,135000)
 --IMPORT
-INSERT INTO IMPORT
-VALUES
-('IOG01','NCC01','NV01','21-5-2022',500000,'TEST',0,0)
 
---DETAIL_IMPORT
-INSERT INTO DETAIL_IMPORT
-VALUES
-('DETAILIOG01','IOG01','NL0001',500000,1)
 
 go
 CREATE VIEW RECEIPT_FULL AS
@@ -739,12 +733,19 @@ AND RC.ID_METHOD = MT.ID_METHOD
 
 
 go
+CREATE VIEW DETAILRECEIPT_JOIN AS 
+SELECT D.*,P.NAME_PRODUCT_VN ,P.NAME_PRODUCT_EN
+FROM DETAIL_RECEIPT D, PRODUCT P
+WHERE D.ID_PRODUCT=P.ID_PRODUCT
+
+go
 CREATE VIEW RECIPE_JOIN AS
 SELECT R.*,P.NAME_PRODUCT_EN,I.NAME_INGREDIENT
 FROM DETAIL_PRODUCT AS R , INGREDIENT AS I , PRODUCT AS P
 WHERE R.ID_PRODUCT=P.ID_PRODUCT AND R.ID_INGREDIENT=I.ID_INGREDIENT
 
 go
+
 CREATE VIEW IOGDETAIL_JOIN AS 
 SELECT D.*,I.NAME_INGREDIENT
 FROM DETAIL_IMPORT D, INGREDIENT I

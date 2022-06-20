@@ -44,18 +44,20 @@ namespace PepperLunch
             this.barBtn_SyncManual = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_Promotion = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_Recipe = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtn_Ingredients = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtn_FPGrowth = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage_manager = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup_Manage = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup_menu = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup_Firebase = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup_AI = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.barBtn_Ingredients = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
@@ -82,9 +84,11 @@ namespace PepperLunch
             this.barBtn_SyncManual,
             this.barBtn_Promotion,
             this.barBtn_Recipe,
-            this.barBtn_Ingredients});
+            this.barBtn_Ingredients,
+            this.barBtn_FPGrowth});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 27;
+            this.ribbon.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.ribbon.MaxItemId = 28;
             this.ribbon.Name = "ribbon";
             this.ribbon.OptionsStubGlyphs.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ribbon.OptionsStubGlyphs.UseFont = true;
@@ -203,33 +207,50 @@ namespace PepperLunch
             this.barBtn_Recipe.ImageOptions.SvgImageSize = new System.Drawing.Size(100, 100);
             this.barBtn_Recipe.Name = "barBtn_Recipe";
             // 
+            // barBtn_Ingredients
+            // 
+            this.barBtn_Ingredients.Caption = "Ingredients";
+            this.barBtn_Ingredients.Id = 26;
+            this.barBtn_Ingredients.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtn_Ingredients.ImageOptions.SvgImage")));
+            this.barBtn_Ingredients.Name = "barBtn_Ingredients";
+            this.barBtn_Ingredients.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_Ingredients_ItemClick);
+            // 
+            // barBtn_FPGrowth
+            // 
+            this.barBtn_FPGrowth.Caption = "FPGrowth";
+            this.barBtn_FPGrowth.Id = 27;
+            this.barBtn_FPGrowth.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtn_FPGrowth.ImageOptions.SvgImage")));
+            this.barBtn_FPGrowth.Name = "barBtn_FPGrowth";
+            this.barBtn_FPGrowth.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_FPGrowth_ItemClick);
+            // 
             // ribbonPage_manager
             // 
             this.ribbonPage_manager.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1,
-            this.ribbonPageGroup2,
+            this.ribbonPageGroup_Manage,
+            this.ribbonPageGroup_menu,
             this.ribbonPageGroup_Firebase,
-            this.ribbonPageGroup4});
+            this.ribbonPageGroup4,
+            this.ribbonPageGroup_AI});
             this.ribbonPage_manager.Name = "ribbonPage_manager";
             this.ribbonPage_manager.Text = "Manage";
             // 
-            // ribbonPageGroup1
+            // ribbonPageGroup_Manage
             // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.barBtn_staff);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barBtn_receipt);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barBtn_customer);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barBtn_Import);
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "Manage Restaurant";
+            this.ribbonPageGroup_Manage.ItemLinks.Add(this.barBtn_staff);
+            this.ribbonPageGroup_Manage.ItemLinks.Add(this.barBtn_receipt);
+            this.ribbonPageGroup_Manage.ItemLinks.Add(this.barBtn_customer);
+            this.ribbonPageGroup_Manage.ItemLinks.Add(this.barBtn_Import);
+            this.ribbonPageGroup_Manage.Name = "ribbonPageGroup_Manage";
+            this.ribbonPageGroup_Manage.Text = "Manage Restaurant";
             // 
-            // ribbonPageGroup2
+            // ribbonPageGroup_menu
             // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.barBtn_Category);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barBtn_Product);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barBtn_Promotion);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barBtn_Ingredients);
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "Manage Menu";
+            this.ribbonPageGroup_menu.ItemLinks.Add(this.barBtn_Category);
+            this.ribbonPageGroup_menu.ItemLinks.Add(this.barBtn_Product);
+            this.ribbonPageGroup_menu.ItemLinks.Add(this.barBtn_Promotion);
+            this.ribbonPageGroup_menu.ItemLinks.Add(this.barBtn_Ingredients);
+            this.ribbonPageGroup_menu.Name = "ribbonPageGroup_menu";
+            this.ribbonPageGroup_menu.Text = "Manage Menu";
             // 
             // ribbonPageGroup_Firebase
             // 
@@ -244,6 +265,12 @@ namespace PepperLunch
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             this.ribbonPageGroup4.Text = "System";
             // 
+            // ribbonPageGroup_AI
+            // 
+            this.ribbonPageGroup_AI.ItemLinks.Add(this.barBtn_FPGrowth);
+            this.ribbonPageGroup_AI.Name = "ribbonPageGroup_AI";
+            this.ribbonPageGroup_AI.Text = "AI";
+            // 
             // repositoryItemButtonEdit1
             // 
             this.repositoryItemButtonEdit1.AutoHeight = false;
@@ -254,6 +281,7 @@ namespace PepperLunch
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 635);
+            this.ribbonStatusBar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
             this.ribbonStatusBar.Size = new System.Drawing.Size(1261, 31);
@@ -281,17 +309,9 @@ namespace PepperLunch
             this.popupMenu1.Name = "popupMenu1";
             this.popupMenu1.Ribbon = this.ribbon;
             // 
-            // barBtn_Ingredients
-            // 
-            this.barBtn_Ingredients.Caption = "Ingredients";
-            this.barBtn_Ingredients.Id = 26;
-            this.barBtn_Ingredients.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem4.ImageOptions.SvgImage")));
-            this.barBtn_Ingredients.Name = "barBtn_Ingredients";
-            this.barBtn_Ingredients.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_Ingredients_ItemClick);
-            // 
             // frmContainer
             // 
-            this.Appearance.BackColor = System.Drawing.Color.DimGray;
+            this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(27)))), ((int)(((byte)(16)))));
             this.Appearance.Options.UseBackColor = true;
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
@@ -304,6 +324,7 @@ namespace PepperLunch
             this.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IconOptions.Image = global::PepperLunch.Properties.Resources.peper_logo;
             this.IsMdiContainer = true;
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "frmContainer";
             this.Ribbon = this.ribbon;
             this.StatusBar = this.ribbonStatusBar;
@@ -324,7 +345,7 @@ namespace PepperLunch
 
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage_manager;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup_Manage;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
@@ -338,9 +359,8 @@ namespace PepperLunch
         public DevExpress.XtraBars.BarButtonItem barBtn_Import;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem barBtn_signOut;
-        private DevExpress.XtraBars.BarButtonItem barBtn_Product;
         private DevExpress.XtraBars.BarButtonItem barBtn_Category;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup_menu;
         private DevExpress.XtraBars.PopupMenu popupMenu1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup_Firebase;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
@@ -349,5 +369,9 @@ namespace PepperLunch
         // public
         public DevExpress.XtraBars.BarButtonItem barBtn_Recipe;
         private DevExpress.XtraBars.BarButtonItem barBtn_Ingredients;
+        private DevExpress.XtraBars.BarButtonItem barBtn_FPGrowth;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup_AI;
+        public DevExpress.XtraBars.BarButtonItem barBtn_Product;
+
     }
 }

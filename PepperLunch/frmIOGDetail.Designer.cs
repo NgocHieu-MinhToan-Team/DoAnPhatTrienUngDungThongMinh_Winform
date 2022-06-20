@@ -54,7 +54,7 @@ namespace PepperLunch
             // 
             // tableLayoutPanel_Main
             // 
-            this.tableLayoutPanel_Main.BackColor = System.Drawing.SystemColors.ControlText;
+            this.tableLayoutPanel_Main.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel_Main.ColumnCount = 3;
             this.tableLayoutPanel_Main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
             this.tableLayoutPanel_Main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.555556F));
@@ -228,6 +228,8 @@ namespace PepperLunch
             // 
             // frmIOGDetail
             // 
+            this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(27)))), ((int)(((byte)(16)))));
+            this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1063, 601);
@@ -236,6 +238,7 @@ namespace PepperLunch
             this.Name = "frmIOGDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detail Import Of Good";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmIOGDetail_FormClosing);
             this.Load += new System.EventHandler(this.frmIOGDetail_Load);
             this.tableLayoutPanel_Main.ResumeLayout(false);
             this.tableLayoutPanel_Main.PerformLayout();

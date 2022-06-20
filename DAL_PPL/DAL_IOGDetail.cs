@@ -36,11 +36,11 @@ namespace DAL_PPL
                 return false;
             }
         }
-        public  bool delete(DETAIL_IMPORT data)
+        public  bool delete(string ID)
         {
             try
             {
-                DETAIL_IMPORT itemDelete = db.DETAIL_IMPORTs.SingleOrDefault(t => t.ID_DETAIL_IOG == data.ID_DETAIL_IOG);
+                DETAIL_IMPORT itemDelete = db.DETAIL_IMPORTs.SingleOrDefault(t => t.ID_DETAIL_IOG == ID);
                 db.DETAIL_IMPORTs.DeleteOnSubmit(itemDelete);
                 db.SubmitChanges();
                 return true;
@@ -62,6 +62,22 @@ namespace DAL_PPL
             }
             catch
             {
+                return false;
+            }
+        }
+        public bool update(IOGDETAIL_JOIN data)
+        {
+            try
+            {
+                DETAIL_IMPORT item = db.DETAIL_IMPORTs.SingleOrDefault(t => t.ID_DETAIL_IOG == data.ID_DETAIL_IOG);
+                item.PRICE = data.PRICE;
+                item.QUANTITY = data.QUANTITY;
+                db.SubmitChanges();
+                return true;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
                 return false;
             }
         }

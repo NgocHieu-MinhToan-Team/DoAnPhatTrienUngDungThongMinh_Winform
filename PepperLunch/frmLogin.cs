@@ -19,7 +19,7 @@ namespace PepperLunch
         {
             InitializeComponent();
         }
-        public STAFF staff_global { get; set; }
+        public  STAFF staff_global { get; set; }
         public frmContainer formContainer;
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -39,11 +39,14 @@ namespace PepperLunch
         {
             string username = txtusername.Text.Trim();
             string password = txtpassword.Text.Trim();
+            //string username = "toan";
+            //string password ="123";
             STAFF staff = BLL_Staff.checkLogin(username, password);
             if (staff != null)
             {
                 staff_global = staff;
                 Program.frmcontainer = new frmContainer();
+                Program.frmcontainer.static_ID_GROUP_USER = staff_global.ID_GROUP;
                 Program.frmcontainer.Show();
                 Hide();
             }

@@ -40,6 +40,11 @@ namespace PepperLunch
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
             this.tableLayoutPanel_Main = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel_left = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel_Ordering = new System.Windows.Forms.TableLayoutPanel();
@@ -47,12 +52,9 @@ namespace PepperLunch
             this.tableLayoutPanel_Inputs = new System.Windows.Forms.TableLayoutPanel();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.btnCreate = new DevExpress.XtraEditors.SimpleButton();
-            this.txtNote = new System.Windows.Forms.RichTextBox();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.dateTimePicker_dateCreate = new System.Windows.Forms.DateTimePicker();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.cbbSupplier = new System.Windows.Forms.ComboBox();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.tableLayoutPanel_order = new System.Windows.Forms.TableLayoutPanel();
             this.gridControl_orders = new DevExpress.XtraGrid.GridControl();
@@ -78,8 +80,8 @@ namespace PepperLunch
             this.DATE_DELIVERY2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Detele = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemButtonEdit_detele = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.repositoryItemButtonEdit_change = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.btnLoadHistoryReceipt = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel_Main.SuspendLayout();
             this.tableLayoutPanel_left.SuspendLayout();
             this.tableLayoutPanel_Ordering.SuspendLayout();
@@ -93,11 +95,12 @@ namespace PepperLunch
             this.tableLayoutPanel_history.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_history)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_history)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_detele)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_change)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel_Main
             // 
+            this.tableLayoutPanel_Main.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel_Main.ColumnCount = 1;
             this.tableLayoutPanel_Main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 84.2635F));
             this.tableLayoutPanel_Main.Controls.Add(this.tableLayoutPanel_left, 0, 0);
@@ -130,10 +133,10 @@ namespace PepperLunch
             this.tableLayoutPanel_Ordering.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tableLayoutPanel_Ordering.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel_Ordering.Controls.Add(this.groupBox_Ordering, 1, 0);
-            this.tableLayoutPanel_Ordering.Controls.Add(this.labelControl3, 0, 2);
             this.tableLayoutPanel_Ordering.Controls.Add(this.labelControl4, 0, 0);
             this.tableLayoutPanel_Ordering.Controls.Add(this.tableLayoutPanel_order, 0, 1);
             this.tableLayoutPanel_Ordering.Controls.Add(this.tableLayoutPanel_history, 0, 3);
+            this.tableLayoutPanel_Ordering.Controls.Add(this.btnLoadHistoryReceipt, 0, 2);
             this.tableLayoutPanel_Ordering.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel_Ordering.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel_Ordering.Name = "tableLayoutPanel_Ordering";
@@ -166,8 +169,6 @@ namespace PepperLunch
             this.tableLayoutPanel_Inputs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel_Inputs.Controls.Add(this.labelControl1, 0, 0);
             this.tableLayoutPanel_Inputs.Controls.Add(this.btnCreate, 0, 6);
-            this.tableLayoutPanel_Inputs.Controls.Add(this.txtNote, 0, 5);
-            this.tableLayoutPanel_Inputs.Controls.Add(this.labelControl5, 0, 4);
             this.tableLayoutPanel_Inputs.Controls.Add(this.dateTimePicker_dateCreate, 0, 3);
             this.tableLayoutPanel_Inputs.Controls.Add(this.labelControl2, 0, 2);
             this.tableLayoutPanel_Inputs.Controls.Add(this.cbbSupplier, 0, 1);
@@ -210,27 +211,6 @@ namespace PepperLunch
             this.btnCreate.TabIndex = 2;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
-            // txtNote
-            // 
-            this.txtNote.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNote.Location = new System.Drawing.Point(3, 213);
-            this.txtNote.Name = "txtNote";
-            this.txtNote.Size = new System.Drawing.Size(155, 36);
-            this.txtNote.TabIndex = 15;
-            this.txtNote.Text = "";
-            // 
-            // labelControl5
-            // 
-            this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl5.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Appearance.Options.UseForeColor = true;
-            this.labelControl5.Location = new System.Drawing.Point(3, 171);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(41, 21);
-            this.labelControl5.TabIndex = 5;
-            this.labelControl5.Text = "Note";
-            // 
             // dateTimePicker_dateCreate
             // 
             this.dateTimePicker_dateCreate.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -260,21 +240,6 @@ namespace PepperLunch
             this.cbbSupplier.Size = new System.Drawing.Size(155, 30);
             this.cbbSupplier.TabIndex = 9;
             this.cbbSupplier.SelectedValueChanged += new System.EventHandler(this.cbbSupplier_SelectedValueChanged);
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.FloralWhite;
-            this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Appearance.Options.UseForeColor = true;
-            this.labelControl3.Appearance.Options.UseTextOptions = true;
-            this.labelControl3.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.labelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelControl3.Location = new System.Drawing.Point(3, 355);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(818, 29);
-            this.labelControl3.TabIndex = 4;
-            this.labelControl3.Text = "History IOGs";
             // 
             // labelControl4
             // 
@@ -468,7 +433,7 @@ namespace PepperLunch
             this.gridControl_history.MainView = this.gridView_history;
             this.gridControl_history.Name = "gridControl_history";
             this.gridControl_history.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemButtonEdit_detele});
+            this.repositoryItemButtonEdit_change});
             this.gridControl_history.Size = new System.Drawing.Size(712, 267);
             this.gridControl_history.TabIndex = 2;
             this.gridControl_history.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -483,8 +448,7 @@ namespace PepperLunch
             this.gridColumn5,
             this.DATE_DELIVERY2,
             this.gridColumn6,
-            this.gridColumn7,
-            this.Detele});
+            this.gridColumn7});
             this.gridView_history.GridControl = this.gridControl_history;
             this.gridView_history.Name = "gridView_history";
             this.gridView_history.OptionsFind.AlwaysVisible = true;
@@ -552,6 +516,7 @@ namespace PepperLunch
             // gridColumn7
             // 
             this.gridColumn7.Caption = "NOTE";
+            this.gridColumn7.ColumnEdit = this.repositoryItemButtonEdit_change;
             this.gridColumn7.FieldName = "NOTE";
             this.gridColumn7.MinWidth = 25;
             this.gridColumn7.Name = "gridColumn7";
@@ -559,36 +524,36 @@ namespace PepperLunch
             this.gridColumn7.VisibleIndex = 6;
             this.gridColumn7.Width = 94;
             // 
-            // Detele
+            // repositoryItemButtonEdit_change
             // 
-            this.Detele.Caption = "Delete";
-            this.Detele.ColumnEdit = this.repositoryItemButtonEdit_detele;
-            this.Detele.MinWidth = 25;
-            this.Detele.Name = "Detele";
-            this.Detele.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedRow;
-            this.Detele.Visible = true;
-            this.Detele.VisibleIndex = 7;
-            this.Detele.Width = 94;
+            this.repositoryItemButtonEdit_change.AutoHeight = false;
+            editorButtonImageOptions3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions3.SvgImage")));
+            this.repositoryItemButtonEdit_change.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.repositoryItemButtonEdit_change.Name = "repositoryItemButtonEdit_change";
+            this.repositoryItemButtonEdit_change.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.repositoryItemButtonEdit_change.Click += new System.EventHandler(this.repositoryItemButtonEdit_change_Click);
             // 
-            // repositoryItemButtonEdit_detele
+            // btnLoadHistoryReceipt
             // 
-            this.repositoryItemButtonEdit_detele.AutoHeight = false;
-            this.repositoryItemButtonEdit_detele.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph)});
-            this.repositoryItemButtonEdit_detele.Name = "repositoryItemButtonEdit_detele";
-            this.repositoryItemButtonEdit_detele.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
-            this.repositoryItemButtonEdit_detele.Click += new System.EventHandler(this.repositoryItemButtonEdit_detele_Click);
+            this.btnLoadHistoryReceipt.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnLoadHistoryReceipt.Location = new System.Drawing.Point(3, 355);
+            this.btnLoadHistoryReceipt.Name = "btnLoadHistoryReceipt";
+            this.btnLoadHistoryReceipt.Size = new System.Drawing.Size(818, 29);
+            this.btnLoadHistoryReceipt.TabIndex = 8;
+            this.btnLoadHistoryReceipt.Text = "Load History Receipt";
+            this.btnLoadHistoryReceipt.Click += new System.EventHandler(this.btnLoadHistoryReceipt_Click);
             // 
             // frmImport
             // 
-            this.Appearance.BackColor = System.Drawing.SystemColors.WindowText;
+            this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(27)))), ((int)(((byte)(16)))));
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1093, 718);
             this.Controls.Add(this.tableLayoutPanel_Main);
             this.Name = "frmImport";
-            this.Text = "frmImport";
+            this.Text = "Import Of Goods";
             this.Load += new System.EventHandler(this.frmImport_Load);
             this.tableLayoutPanel_Main.ResumeLayout(false);
             this.tableLayoutPanel_left.ResumeLayout(false);
@@ -605,7 +570,7 @@ namespace PepperLunch
             this.tableLayoutPanel_history.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_history)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_history)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_detele)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_change)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -617,7 +582,6 @@ namespace PepperLunch
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel_Inputs;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.LabelControl labelControl5;
         private System.Windows.Forms.ComboBox cbbSupplier;
         private System.Windows.Forms.DateTimePicker dateTimePicker_dateCreate;
         private DevExpress.XtraEditors.SimpleButton btnCreate;
@@ -631,9 +595,6 @@ namespace PepperLunch
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
-        private DevExpress.XtraGrid.Columns.GridColumn Detele;
-        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit_detele;
-        private System.Windows.Forms.RichTextBox txtNote;
         private DevExpress.XtraGrid.GridControl gridControl_orders;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView_orders;
         private DevExpress.XtraGrid.Columns.GridColumn ID_IOG;
@@ -644,7 +605,6 @@ namespace PepperLunch
         private DevExpress.XtraGrid.Columns.GridColumn NOTE;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit_confirm;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit_UpdateIOG;
@@ -652,5 +612,7 @@ namespace PepperLunch
         private DevExpress.XtraGrid.Columns.GridColumn DATE_DELIVERY;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel_order;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel_history;
+        private DevExpress.XtraEditors.SimpleButton btnLoadHistoryReceipt;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit_change;
     }
 }

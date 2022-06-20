@@ -13,66 +13,29 @@ namespace DAL_PPL
         public DAL_Receipt(){ }
         public static List<RECEIPT> getList()
         {
-            return db.RECEIPTs.Select(t => t).ToList();
+            return db.RECEIPTs.Where(t => t.STATE_RECEIPT>0 && t.STATE_RECEIPT<3).ToList();
+        }
+        public static List<RECEIPT> getListState_3()
+        {
+            return db.RECEIPTs.Where(t => t.STATE_RECEIPT==3||t.STATE_RECEIPT==4).ToList();
+        }
+
+        public static List<RECEIPT> getListForFPGrowth()
+        {
+            return db.RECEIPTs.Where(t => t.STATE_RECEIPT==3).ToList();
         }
 
         public static List<DETAIL_RECEIPT> getDetailReceiptList(string ID)
         {
             return db.DETAIL_RECEIPTs.Where(t => t.ID_RECEIPT==ID).ToList();
         }
-        public static List<RECEIPT_FULL> getReceipts()
+        public static List<RECEIPT_FULL> getReceiptsJoin(string ID)
         {
-            var listAnonymous = from receipt in db.RECEIPT_FULLs
-                                select new
-                                {
-                                    ID_RECEIPT=receipt.ID_RECEIPT,
-                                    ID_VOUCHER = receipt.ID_VOUCHER,
-                                    ID_CUSTOMER=receipt.ID_CUSTOMER,
-                                    ID_METHOD=receipt.ID_METHOD,
-                                    DATE_CREATE = receipt.DATE_CREATE,
-                                    TOTAL_PRODUCT = receipt.TOTAL_PRODUCT,
-                                    TOTAL_PRICE = receipt.TOTAL_PRICE,
-                                    POINT = receipt.POINT,
-                                    PERCENT_REDUCTION = receipt.PERCENT_REDUCTION,
-                                    AMOUNT_REDUCTION = receipt.AMOUNT_REDUCTION,
-                                    ADDRESS_CUSTOMER = receipt.ADDRESS_CUSTOMER,
-                                    MAIL_CUSTOMER = receipt.MAIL_CUSTOMER,
-                                    NAME_CUSTOMER = receipt.NAME_CUSTOMER,
-                                    SURNAME_CUSTOMER = receipt.SURNAME_CUSTOMER,
-                                    PHONE_CUSTOMER = receipt.PHONE_CUSTOMER,
-                                    NAME_METHOD = receipt.NAME_METHOD,
-                                    TYPE_METHOD = receipt.TYPE_METHOD,
-                                    STATE_RECEIPT = receipt.STATE_RECEIPT
-                                };
-            List<RECEIPT_FULL> list = new List<RECEIPT_FULL>();
-            foreach (var itemAnonymous in listAnonymous)
-            {
-                RECEIPT_FULL item = new RECEIPT_FULL();
-                item.ID_RECEIPT = itemAnonymous.ID_RECEIPT;
-                item.ID_VOUCHER = itemAnonymous.ID_VOUCHER;
-                item.ID_CUSTOMER = itemAnonymous.ID_CUSTOMER;
-                item.ID_METHOD = itemAnonymous.ID_METHOD;
-                item.DATE_CREATE = itemAnonymous.DATE_CREATE;
-                item.TOTAL_PRODUCT = itemAnonymous.TOTAL_PRODUCT;
-                item.TOTAL_PRICE = itemAnonymous.TOTAL_PRICE;
-                item.POINT = itemAnonymous.POINT;
-                item.PERCENT_REDUCTION = itemAnonymous.PERCENT_REDUCTION;
-                item.AMOUNT_REDUCTION = itemAnonymous.AMOUNT_REDUCTION;
-                item.ADDRESS_CUSTOMER = itemAnonymous.ADDRESS_CUSTOMER;
-                item.NAME_CUSTOMER = itemAnonymous.NAME_CUSTOMER;
-                item.SURNAME_CUSTOMER = itemAnonymous.SURNAME_CUSTOMER;
-                item.PHONE_CUSTOMER = itemAnonymous.PHONE_CUSTOMER;
-                item.NAME_METHOD = itemAnonymous.NAME_METHOD;
-                item.TYPE_METHOD = itemAnonymous.TYPE_METHOD;
-                item.STATE_RECEIPT = itemAnonymous.STATE_RECEIPT;
-                list.Add(item);
-            }
-            return list;
+            return db.RECEIPT_FULLs.Where(t=>t.ID_RECEIPT==ID && t.STATE_RECEIPT==3).ToList();
         }
-
-        public static List<RECEIPT_FULL> readReceiptToExport()
+        public static List<DETAILRECEIPT_JOIN> getDetailReceiptsJoin(string ID)
         {
-            return getReceipts();
+            return db.DETAILRECEIPT_JOINs.Where(t => t.ID_RECEIPT == ID).ToList();
         }
 
         public static bool insertReceipt(RECEIPT_FULL data)
@@ -100,6 +63,31 @@ namespace DAL_PPL
             }
         }
 
+        public static bool insertReceipt(RECEIPT data)
+        {
+            try
+            {
+                RECEIPT item = new RECEIPT();
+                item.ID_RECEIPT = data.ID_RECEIPT;
+                item.ID_VOUCHER = data.ID_VOUCHER;
+                item.ID_CUSTOMER = data.ID_CUSTOMER;
+                item.ID_METHOD = data.ID_METHOD;
+                item.DATE_CREATE = data.DATE_CREATE;
+                item.TOTAL_PRODUCT = data.TOTAL_PRODUCT;
+                item.TOTAL_PRICE = data.TOTAL_PRICE;
+                item.POINT = data.POINT;
+                item.STATE_RECEIPT = data.STATE_RECEIPT;
+                db.RECEIPTs.InsertOnSubmit(item);
+                db.SubmitChanges();
+                return true;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
         public static bool insertDetailReceipt(DETAIL_RECEIPT data)
         {
             try
@@ -121,7 +109,7 @@ namespace DAL_PPL
             }
         }
 
-        public static bool insertReceipt(RECEIPT data)
+        public static bool insertReceipt(RECEIPT data,int STATUS)
         {
             try
             {
@@ -135,14 +123,15 @@ namespace DAL_PPL
                 item.TOTAL_PRODUCT = data.TOTAL_PRODUCT;
                 item.TOTAL_PRICE = data.TOTAL_PRICE;
                 item.POINT = data.POINT;
-                item.STATE_RECEIPT = data.STATE_RECEIPT;
+                item.STATE_RECEIPT = STATUS;
                 item.ADDRESS_RECEIPT = data.ADDRESS_RECEIPT;
                 db.RECEIPTs.InsertOnSubmit(item);
                 db.SubmitChanges();
                 return true;
             }
-            catch
+            catch(Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return false;
             }
         }
@@ -174,6 +163,21 @@ namespace DAL_PPL
                 item.TOTAL_PRICE = data.TOTAL_PRICE;
                 item.POINT = data.POINT;
                 item.STATE_RECEIPT = data.STATE_RECEIPT;
+                db.SubmitChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool updateStateReceipt(string ID_RECEIPT,int status)
+        {
+            try
+            {
+                RECEIPT item = db.RECEIPTs.SingleOrDefault(t => t.ID_RECEIPT == ID_RECEIPT);
+                item.STATE_RECEIPT = status;
                 db.SubmitChanges();
                 return true;
             }

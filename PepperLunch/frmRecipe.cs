@@ -143,15 +143,23 @@ namespace PepperLunch
 
         private void frmRecipe_FormClosing(object sender, FormClosingEventArgs e)
         {
+
+            List<DETAIL_PRODUCT> list = BLL_Recipe.getList(ID_PRODUCT);
+            if (list.Count == 0)
+            {
+                BLL_Product.deleteProduct(ID_PRODUCT);
+                return;
+            }
             // check weight in list recipe 
             // if entire weight in list recipe > 0 -> ok 
             // else cancel and report to user
+
             string note = "";
-            foreach (RECIPE_JOIN item in BLL_Recipe.getRecipeJoin(ID_PRODUCT))
+            foreach(DETAIL_PRODUCT item in list)
             {
                 if (item.WEIGHT_DETAIL <= 0)
                 {
-                    note += item.NAME_INGREDIENT + " , ";
+                    note += item.ID_INGREDIENT + " , ";
                 }
             }
 

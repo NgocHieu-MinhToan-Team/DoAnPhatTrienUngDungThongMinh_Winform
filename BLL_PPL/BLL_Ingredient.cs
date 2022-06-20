@@ -96,5 +96,15 @@ namespace BLL_PPL
             }
         }
 
+        public static bool checkNameExist(string name, string id_supplier)
+        {
+            INGREDIENT item = getListByID_SUPPLIER(id_supplier).SingleOrDefault(t => t.NAME_INGREDIENT == name);
+            if (item != null)
+            {
+                return false;
+            }
+            return true;
+        }
+
     }
 }

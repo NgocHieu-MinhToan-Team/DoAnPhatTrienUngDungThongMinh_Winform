@@ -41,6 +41,11 @@ namespace PepperLunch
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.layout_gridCtrl = new System.Windows.Forms.TableLayoutPanel();
             this.gridControl_Product = new DevExpress.XtraGrid.GridControl();
@@ -52,8 +57,8 @@ namespace PepperLunch
             this.URL_IMAGE = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnSeeRecipe = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit_ShowRecipe = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
-            this.btnDel = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemButtonEdit_Del = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.Update = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemButtonEdit_Update = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.layout_dish = new System.Windows.Forms.TableLayoutPanel();
             this.txtNameVN = new DevExpress.XtraEditors.TextEdit();
             this.txtPrice = new DevExpress.XtraEditors.TextEdit();
@@ -63,7 +68,7 @@ namespace PepperLunch
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.btnUpdate = new DevExpress.XtraEditors.SimpleButton();
+            this.btnCreate = new DevExpress.XtraEditors.SimpleButton();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
@@ -76,12 +81,14 @@ namespace PepperLunch
             this.accordionControlElement8 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement9 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement10 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.repositoryItemButtonEdit_del = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.fluentDesignFormContainer1.SuspendLayout();
             this.layout_gridCtrl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Product)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_ShowRecipe)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_Del)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_Update)).BeginInit();
             this.layout_dish.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameVN.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrice.Properties)).BeginInit();
@@ -89,44 +96,50 @@ namespace PepperLunch
             ((System.ComponentModel.ISupportInitialize)(this.txtURL.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_del)).BeginInit();
             this.SuspendLayout();
             // 
             // fluentDesignFormContainer1
             // 
             this.fluentDesignFormContainer1.Controls.Add(this.layout_gridCtrl);
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(312, 39);
+            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(520, 62);
+            this.fluentDesignFormContainer1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(771, 708);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(1285, 1112);
             this.fluentDesignFormContainer1.TabIndex = 0;
             // 
             // layout_gridCtrl
             // 
-            this.layout_gridCtrl.BackColor = System.Drawing.Color.Transparent;
+            this.layout_gridCtrl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(27)))), ((int)(((byte)(16)))));
             this.layout_gridCtrl.ColumnCount = 1;
             this.layout_gridCtrl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.layout_gridCtrl.Controls.Add(this.gridControl_Product, 0, 1);
             this.layout_gridCtrl.Controls.Add(this.layout_dish, 0, 0);
             this.layout_gridCtrl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layout_gridCtrl.Location = new System.Drawing.Point(0, 0);
+            this.layout_gridCtrl.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.layout_gridCtrl.Name = "layout_gridCtrl";
-            this.layout_gridCtrl.Padding = new System.Windows.Forms.Padding(20);
+            this.layout_gridCtrl.Padding = new System.Windows.Forms.Padding(33, 31, 33, 31);
             this.layout_gridCtrl.RowCount = 2;
             this.layout_gridCtrl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.52096F));
             this.layout_gridCtrl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.47904F));
-            this.layout_gridCtrl.Size = new System.Drawing.Size(771, 708);
+            this.layout_gridCtrl.Size = new System.Drawing.Size(1285, 1112);
             this.layout_gridCtrl.TabIndex = 1;
             // 
             // gridControl_Product
             // 
             this.gridControl_Product.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl_Product.Location = new System.Drawing.Point(23, 120);
+            this.gridControl_Product.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.gridControl_Product.Location = new System.Drawing.Point(38, 188);
             this.gridControl_Product.MainView = this.gridView1;
+            this.gridControl_Product.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.gridControl_Product.Name = "gridControl_Product";
             this.gridControl_Product.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemButtonEdit_Del,
-            this.repositoryItemButtonEdit_ShowRecipe});
-            this.gridControl_Product.Size = new System.Drawing.Size(725, 565);
+            this.repositoryItemButtonEdit_Update,
+            this.repositoryItemButtonEdit_ShowRecipe,
+            this.repositoryItemButtonEdit_del});
+            this.gridControl_Product.Size = new System.Drawing.Size(1209, 888);
             this.gridControl_Product.TabIndex = 0;
             this.gridControl_Product.UseEmbeddedNavigator = true;
             this.gridControl_Product.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -142,7 +155,10 @@ namespace PepperLunch
             this.PRICE,
             this.URL_IMAGE,
             this.btnSeeRecipe,
-            this.btnDel});
+            this.Update,
+            this.gridColumn1});
+            this.gridView1.DetailHeight = 550;
+            this.gridView1.FixedLineWidth = 3;
             gridFormatRule1.Name = "Format0";
             gridFormatRule1.Rule = null;
             this.gridView1.FormatRules.Add(gridFormatRule1);
@@ -154,62 +170,63 @@ namespace PepperLunch
             // 
             this.ID_PRODUCT.Caption = "ID";
             this.ID_PRODUCT.FieldName = "ID_PRODUCT";
-            this.ID_PRODUCT.MinWidth = 25;
+            this.ID_PRODUCT.MinWidth = 42;
             this.ID_PRODUCT.Name = "ID_PRODUCT";
+            this.ID_PRODUCT.OptionsColumn.AllowEdit = false;
             this.ID_PRODUCT.Visible = true;
             this.ID_PRODUCT.VisibleIndex = 0;
-            this.ID_PRODUCT.Width = 94;
+            this.ID_PRODUCT.Width = 157;
             // 
             // NAME_PRODUCT_EN
             // 
             this.NAME_PRODUCT_EN.Caption = "English";
             this.NAME_PRODUCT_EN.FieldName = "NAME_PRODUCT_EN";
-            this.NAME_PRODUCT_EN.MinWidth = 25;
+            this.NAME_PRODUCT_EN.MinWidth = 42;
             this.NAME_PRODUCT_EN.Name = "NAME_PRODUCT_EN";
             this.NAME_PRODUCT_EN.Visible = true;
             this.NAME_PRODUCT_EN.VisibleIndex = 1;
-            this.NAME_PRODUCT_EN.Width = 94;
+            this.NAME_PRODUCT_EN.Width = 157;
             // 
             // NAME_PRODUCT_VN
             // 
             this.NAME_PRODUCT_VN.Caption = "Vietnamese";
             this.NAME_PRODUCT_VN.FieldName = "NAME_PRODUCT_VN";
-            this.NAME_PRODUCT_VN.MinWidth = 25;
+            this.NAME_PRODUCT_VN.MinWidth = 42;
             this.NAME_PRODUCT_VN.Name = "NAME_PRODUCT_VN";
             this.NAME_PRODUCT_VN.Visible = true;
             this.NAME_PRODUCT_VN.VisibleIndex = 2;
-            this.NAME_PRODUCT_VN.Width = 94;
+            this.NAME_PRODUCT_VN.Width = 157;
             // 
             // PRICE
             // 
             this.PRICE.Caption = "AMOUNT (VND)";
             this.PRICE.FieldName = "PRICE_PRODUCT";
-            this.PRICE.MinWidth = 25;
+            this.PRICE.MinWidth = 42;
             this.PRICE.Name = "PRICE";
             this.PRICE.Visible = true;
             this.PRICE.VisibleIndex = 3;
-            this.PRICE.Width = 94;
+            this.PRICE.Width = 157;
             // 
             // URL_IMAGE
             // 
             this.URL_IMAGE.Caption = "URL";
             this.URL_IMAGE.FieldName = "IMAGE_PRODUCT";
-            this.URL_IMAGE.MinWidth = 25;
+            this.URL_IMAGE.MinWidth = 42;
             this.URL_IMAGE.Name = "URL_IMAGE";
             this.URL_IMAGE.Visible = true;
             this.URL_IMAGE.VisibleIndex = 4;
-            this.URL_IMAGE.Width = 94;
+            this.URL_IMAGE.Width = 157;
             // 
             // btnSeeRecipe
             // 
             this.btnSeeRecipe.Caption = "Open Recipe";
             this.btnSeeRecipe.ColumnEdit = this.repositoryItemButtonEdit_ShowRecipe;
-            this.btnSeeRecipe.MinWidth = 25;
+            this.btnSeeRecipe.MinWidth = 42;
             this.btnSeeRecipe.Name = "btnSeeRecipe";
             this.btnSeeRecipe.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
             this.btnSeeRecipe.Visible = true;
             this.btnSeeRecipe.VisibleIndex = 5;
-            this.btnSeeRecipe.Width = 94;
+            this.btnSeeRecipe.Width = 157;
             // 
             // repositoryItemButtonEdit_ShowRecipe
             // 
@@ -221,25 +238,25 @@ namespace PepperLunch
             this.repositoryItemButtonEdit_ShowRecipe.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repositoryItemButtonEdit_ShowRecipe.Click += new System.EventHandler(this.repositoryItemButtonEdit_ShowRecipe_Click);
             // 
-            // btnDel
+            // Update
             // 
-            this.btnDel.ColumnEdit = this.repositoryItemButtonEdit_Del;
-            this.btnDel.MinWidth = 25;
-            this.btnDel.Name = "btnDel";
-            this.btnDel.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedRow;
-            this.btnDel.Visible = true;
-            this.btnDel.VisibleIndex = 6;
-            this.btnDel.Width = 94;
+            this.Update.ColumnEdit = this.repositoryItemButtonEdit_Update;
+            this.Update.MinWidth = 42;
+            this.Update.Name = "Update";
+            this.Update.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedRow;
+            this.Update.Visible = true;
+            this.Update.VisibleIndex = 6;
+            this.Update.Width = 157;
             // 
-            // repositoryItemButtonEdit_Del
+            // repositoryItemButtonEdit_Update
             // 
-            this.repositoryItemButtonEdit_Del.AutoHeight = false;
+            this.repositoryItemButtonEdit_Update.AutoHeight = false;
             editorButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions2.SvgImage")));
-            this.repositoryItemButtonEdit_Del.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.repositoryItemButtonEdit_Update.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.repositoryItemButtonEdit_Del.Name = "repositoryItemButtonEdit_Del";
-            this.repositoryItemButtonEdit_Del.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
-            this.repositoryItemButtonEdit_Del.Click += new System.EventHandler(this.repositoryItemButtonEdit_Del_Click);
+            this.repositoryItemButtonEdit_Update.Name = "repositoryItemButtonEdit_Update";
+            this.repositoryItemButtonEdit_Update.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.repositoryItemButtonEdit_Update.Click += new System.EventHandler(this.repositoryItemButtonEdit_Update_Click);
             // 
             // layout_dish
             // 
@@ -257,58 +274,63 @@ namespace PepperLunch
             this.layout_dish.Controls.Add(this.labelControl2, 1, 0);
             this.layout_dish.Controls.Add(this.labelControl3, 2, 0);
             this.layout_dish.Controls.Add(this.labelControl4, 3, 0);
-            this.layout_dish.Controls.Add(this.btnUpdate, 4, 1);
+            this.layout_dish.Controls.Add(this.btnCreate, 4, 1);
             this.layout_dish.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layout_dish.Location = new System.Drawing.Point(23, 23);
+            this.layout_dish.Location = new System.Drawing.Point(38, 36);
+            this.layout_dish.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.layout_dish.Name = "layout_dish";
-            this.layout_dish.Padding = new System.Windows.Forms.Padding(10);
+            this.layout_dish.Padding = new System.Windows.Forms.Padding(17, 16, 17, 16);
             this.layout_dish.RowCount = 2;
             this.layout_dish.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.83333F));
             this.layout_dish.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.16667F));
-            this.layout_dish.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layout_dish.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layout_dish.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layout_dish.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layout_dish.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layout_dish.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layout_dish.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layout_dish.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layout_dish.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layout_dish.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layout_dish.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layout_dish.Size = new System.Drawing.Size(725, 91);
+            this.layout_dish.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.layout_dish.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.layout_dish.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.layout_dish.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.layout_dish.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.layout_dish.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.layout_dish.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.layout_dish.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.layout_dish.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.layout_dish.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.layout_dish.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.layout_dish.Size = new System.Drawing.Size(1209, 142);
             this.layout_dish.TabIndex = 1;
             // 
             // txtNameVN
             // 
             this.txtNameVN.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNameVN.Location = new System.Drawing.Point(154, 45);
+            this.txtNameVN.Location = new System.Drawing.Point(257, 71);
+            this.txtNameVN.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.txtNameVN.Name = "txtNameVN";
-            this.txtNameVN.Size = new System.Drawing.Size(135, 28);
+            this.txtNameVN.Size = new System.Drawing.Size(225, 48);
             this.txtNameVN.TabIndex = 0;
             // 
             // txtPrice
             // 
             this.txtPrice.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtPrice.Location = new System.Drawing.Point(295, 45);
+            this.txtPrice.Location = new System.Drawing.Point(492, 71);
+            this.txtPrice.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(135, 28);
+            this.txtPrice.Size = new System.Drawing.Size(225, 48);
             this.txtPrice.TabIndex = 1;
             // 
             // txtNameEN
             // 
             this.txtNameEN.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNameEN.Location = new System.Drawing.Point(13, 45);
+            this.txtNameEN.Location = new System.Drawing.Point(22, 71);
+            this.txtNameEN.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.txtNameEN.Name = "txtNameEN";
-            this.txtNameEN.Size = new System.Drawing.Size(135, 28);
+            this.txtNameEN.Size = new System.Drawing.Size(225, 48);
             this.txtNameEN.TabIndex = 2;
             // 
             // txtURL
             // 
             this.txtURL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtURL.Location = new System.Drawing.Point(436, 45);
+            this.txtURL.Location = new System.Drawing.Point(727, 71);
+            this.txtURL.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.txtURL.Name = "txtURL";
-            this.txtURL.Size = new System.Drawing.Size(135, 28);
+            this.txtURL.Size = new System.Drawing.Size(225, 48);
             this.txtURL.TabIndex = 3;
             // 
             // labelControl1
@@ -321,9 +343,10 @@ namespace PepperLunch
             this.labelControl1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelControl1.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
-            this.labelControl1.Location = new System.Drawing.Point(13, 13);
+            this.labelControl1.Location = new System.Drawing.Point(22, 21);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(135, 26);
+            this.labelControl1.Size = new System.Drawing.Size(225, 40);
             this.labelControl1.TabIndex = 4;
             this.labelControl1.Text = "Name EN";
             // 
@@ -338,9 +361,10 @@ namespace PepperLunch
             this.labelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelControl2.LineLocation = DevExpress.XtraEditors.LineLocation.Center;
             this.labelControl2.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
-            this.labelControl2.Location = new System.Drawing.Point(154, 13);
+            this.labelControl2.Location = new System.Drawing.Point(257, 21);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(135, 26);
+            this.labelControl2.Size = new System.Drawing.Size(225, 40);
             this.labelControl2.TabIndex = 5;
             this.labelControl2.Text = "Name VN";
             // 
@@ -355,9 +379,10 @@ namespace PepperLunch
             this.labelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelControl3.LineLocation = DevExpress.XtraEditors.LineLocation.Center;
             this.labelControl3.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
-            this.labelControl3.Location = new System.Drawing.Point(295, 13);
+            this.labelControl3.Location = new System.Drawing.Point(492, 21);
+            this.labelControl3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(135, 26);
+            this.labelControl3.Size = new System.Drawing.Size(225, 40);
             this.labelControl3.TabIndex = 6;
             this.labelControl3.Text = "PRICE";
             // 
@@ -372,35 +397,37 @@ namespace PepperLunch
             this.labelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelControl4.LineLocation = DevExpress.XtraEditors.LineLocation.Center;
             this.labelControl4.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
-            this.labelControl4.Location = new System.Drawing.Point(436, 13);
+            this.labelControl4.Location = new System.Drawing.Point(727, 21);
+            this.labelControl4.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(135, 26);
+            this.labelControl4.Size = new System.Drawing.Size(225, 40);
             this.labelControl4.TabIndex = 7;
             this.labelControl4.Text = "URL Image";
             // 
-            // btnUpdate
+            // btnCreate
             // 
-            this.btnUpdate.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnUpdate.Location = new System.Drawing.Point(577, 45);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(135, 28);
-            this.btnUpdate.TabIndex = 8;
-            this.btnUpdate.Text = "Save";
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.btnCreate.Location = new System.Drawing.Point(962, 71);
+            this.btnCreate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(225, 44);
+            this.btnCreate.TabIndex = 8;
+            this.btnCreate.Text = "Create";
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // accordionControl1
             // 
-            this.accordionControl1.Appearance.AccordionControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.accordionControl1.Appearance.AccordionControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(27)))), ((int)(((byte)(16)))));
             this.accordionControl1.Appearance.AccordionControl.Options.UseBackColor = true;
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement1});
-            this.accordionControl1.Location = new System.Drawing.Point(0, 39);
+            this.accordionControl1.Location = new System.Drawing.Point(0, 62);
+            this.accordionControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.OptionsMinimizing.AllowMinimizeMode = DevExpress.Utils.DefaultBoolean.False;
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
             this.accordionControl1.ShowFilterControl = DevExpress.XtraBars.Navigation.ShowFilterControl.Auto;
-            this.accordionControl1.Size = new System.Drawing.Size(312, 708);
+            this.accordionControl1.Size = new System.Drawing.Size(520, 1112);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -417,8 +444,9 @@ namespace PepperLunch
             // 
             this.fluentDesignFormControl1.FluentDesignForm = this;
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
+            this.fluentDesignFormControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1083, 39);
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1805, 62);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             // 
@@ -482,18 +510,40 @@ namespace PepperLunch
             this.accordionControlElement10.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement10.Text = "Element1";
             // 
+            // repositoryItemButtonEdit_del
+            // 
+            this.repositoryItemButtonEdit_del.AutoHeight = false;
+            editorButtonImageOptions3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions3.SvgImage")));
+            this.repositoryItemButtonEdit_del.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.repositoryItemButtonEdit_del.Name = "repositoryItemButtonEdit_del";
+            this.repositoryItemButtonEdit_del.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.repositoryItemButtonEdit_del.Click += new System.EventHandler(this.repositoryItemButtonEdit_del_Click);
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Remove";
+            this.gridColumn1.ColumnEdit = this.repositoryItemButtonEdit_del;
+            this.gridColumn1.MinWidth = 40;
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedRow;
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 7;
+            this.gridColumn1.Width = 125;
+            // 
             // frmProduct
             // 
             this.Appearance.BackColor = System.Drawing.Color.Black;
             this.Appearance.Options.UseBackColor = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1083, 747);
+            this.ClientSize = new System.Drawing.Size(1805, 1174);
             this.ControlContainer = this.fluentDesignFormContainer1;
             this.Controls.Add(this.fluentDesignFormContainer1);
             this.Controls.Add(this.accordionControl1);
             this.Controls.Add(this.fluentDesignFormControl1);
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "frmProduct";
             this.NavigationControl = this.accordionControl1;
             this.Text = "frmProduct";
@@ -503,7 +553,7 @@ namespace PepperLunch
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Product)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_ShowRecipe)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_Del)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_Update)).EndInit();
             this.layout_dish.ResumeLayout(false);
             this.layout_dish.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameVN.Properties)).EndInit();
@@ -512,6 +562,7 @@ namespace PepperLunch
             ((System.ComponentModel.ISupportInitialize)(this.txtURL.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit_del)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -541,16 +592,18 @@ namespace PepperLunch
         private DevExpress.XtraEditors.TextEdit txtPrice;
         private DevExpress.XtraEditors.TextEdit txtNameEN;
         private DevExpress.XtraEditors.TextEdit txtURL;
-        private DevExpress.XtraEditors.SimpleButton btnUpdate;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
         private DevExpress.XtraGrid.Columns.GridColumn ID_PRODUCT;
         private DevExpress.XtraGrid.Columns.GridColumn NAME_PRODUCT_EN;
         private DevExpress.XtraGrid.Columns.GridColumn NAME_PRODUCT_VN;
         private DevExpress.XtraGrid.Columns.GridColumn PRICE;
         private DevExpress.XtraGrid.Columns.GridColumn URL_IMAGE;
-        private DevExpress.XtraGrid.Columns.GridColumn btnDel;
-        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit_Del;
+        private DevExpress.XtraGrid.Columns.GridColumn Update;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit_Update;
         private DevExpress.XtraGrid.Columns.GridColumn btnSeeRecipe;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit_ShowRecipe;
+        private DevExpress.XtraEditors.SimpleButton btnCreate;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit_del;
     }
 }

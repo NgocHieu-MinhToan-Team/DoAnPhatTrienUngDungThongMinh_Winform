@@ -4,11 +4,14 @@ using BLL_PPL;
 using DTO_PPL;
 using System.Linq;
 using System.Collections.Generic;
+using DevExpress.XtraEditors;
 
 namespace PepperLunch
 {
     public partial class frmStaff : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
+        private string ID_GROUP_USER = null;
+        private int GENDER =-1;
         public string USERNAME_STAFF { get; set; }
         public frmStaff()
         {
@@ -24,7 +27,29 @@ namespace PepperLunch
 
         private void LoadData()
         {
+            //clear when reload 
+            repositoryItemComboBox_role.Items.Clear();
+            repositoryItemComboBox_gender.Items.Clear();
+
+
             List<STAFF> list = BLL_Staff.getStaffs();
+            List<GROUP_USER> listGrp = BLL_Staff.readGroupUser();
+            List<string> arrRole = new List<string>(); 
+            listGrp.ForEach((GROUP_USER) =>
+            {
+                arrRole.Add(GROUP_USER.ID_GROUP);
+            });
+            // cbb role
+            repositoryItemComboBox_role.Items.AddRange(arrRole.ToArray());
+            gridControl_staff.RepositoryItems.Add(repositoryItemComboBox_role);
+            // cbb gender
+            repositoryItemComboBox_gender.Items.AddRange(new string[] { "MALE", "FEMALE" });
+            gridControl_staff.RepositoryItems.Add(repositoryItemComboBox_gender);
+
+
+            gridView_Staff.Columns["GENDER"].ColumnEdit = repositoryItemComboBox_gender;
+            gridView_Staff.Columns["ROLE"].ColumnEdit = repositoryItemComboBox_role;
+
             gridControl_staff.DataSource = list;
             LoadCbbRole();
             LoadCbbGender(list);
@@ -39,6 +64,7 @@ namespace PepperLunch
 
         private void LoadCbbGender(List<STAFF> list)
         {
+            cbbGender.Items.Clear();
             // initial cbb gender manual
             var listGroupBy = list.GroupBy(n => new { n.GENDER_STAFF }).Select(g => new { g.Key.GENDER_STAFF }).ToList();
             foreach (var itemGroupBy in listGroupBy)
@@ -81,31 +107,36 @@ namespace PepperLunch
             }
         }
 
+      
         private void accordionCtrlEle_updateStaff_Click(object sender, EventArgs e)
         {
             int[] index = gridView_Staff.GetSelectedRows();
             if (index.Length > 0)
             {
                 STAFF data = (STAFF)gridView_Staff.GetRow(index[0]);
-                data.USERNAME_STAFF = txtUsername.Text.Trim();
-                data.PASSWORD_STAFF = txtPassword.Text.Trim();
-                data.SURNAME_STAFF = txtSurname.Text.Trim();
-                data.NAME_STAFF = txtName.Text.Trim();
-                data.NUMBER_PHONE = txtPhone.Text.Trim();
-                data.ADDRESS_STAFF = txtAddress.Text.Trim();
-                data.GENDER_STAFF = cbbGender.SelectedIndex;
-                data.ID_GROUP = (string)cbbRole.SelectedValue;
-                data.DATE_OF_BIRTH = dateEdit_birth.DateTime;
-                if (BLL_Staff.validateCreateStaff(data))
+                if (ID_GROUP_USER != null)
                 {
-                    BLL_Staff.updateStaff(data);
+                    data.ID_GROUP = ID_GROUP_USER;
+                }
+
+                if (GENDER >= 0 )
+                {
+                    data.GENDER_STAFF = GENDER;
+                }
+
+
+                if (BLL_Staff.updateStaff(data))
+                {
+                    XtraMessageBox.Show("Update infomation "+data.USERNAME_STAFF);
                     LoadData();
                 }
                 else
                 {
-                    MessageBox.Show("This username has existed , pleased try again !");
-                    txtUsername.Text = "";
+                    MessageBox.Show("Has Error!");
                 }
+                //reset choose cbb
+                ID_GROUP_USER = null;
+                GENDER = -1;
             }
         }
         private void accordionCtrlEle_removeStaff_Click(object sender, EventArgs e)
@@ -121,19 +152,27 @@ namespace PepperLunch
 
         private void gridView_Staff_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
-            int[] index = gridView_Staff.GetSelectedRows();
-            if (index.Length > 0)
+            //reset choose cbb
+            ID_GROUP_USER = null;
+            GENDER = -1;
+        }
+
+        private void repositoryItemComboBox_role_SelectedValueChanged(object sender, EventArgs e)
+        {
+            ComboBoxEdit cbb = sender as ComboBoxEdit;
+            ID_GROUP_USER = cbb.SelectedItem.ToString();
+        }
+
+        private void repositoryItemComboBox_gender_SelectedValueChanged(object sender, EventArgs e)
+        {
+            ComboBoxEdit cbb = sender as ComboBoxEdit;
+            if (cbb.SelectedItem.ToString() == "MALE")
             {
-                STAFF data = (STAFF)gridView_Staff.GetRow(index[0]);
-                txtUsername.Text = data.USERNAME_STAFF;
-                txtPassword.Text = data.PASSWORD_STAFF;
-                txtSurname.Text = data.SURNAME_STAFF;
-                txtName.Text = data.NAME_STAFF;
-                txtPhone.Text = data.NUMBER_PHONE;
-                txtAddress.Text = data.ADDRESS_STAFF;
-                cbbGender.SelectedIndex = (int)data.GENDER_STAFF;
-                cbbRole.SelectedValue = data.ID_GROUP;
-                dateEdit_birth.DateTime = (DateTime)data.DATE_OF_BIRTH;
+                GENDER = 1;
+            }
+            else
+            {
+                GENDER = 0;
             }
         }
     }

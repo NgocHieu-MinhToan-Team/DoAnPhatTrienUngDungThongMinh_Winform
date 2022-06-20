@@ -44,7 +44,7 @@ namespace DAL_PPL
             try
             {
                 DETAIL_PRODUCT itemDelete = db.DETAIL_PRODUCTs.SingleOrDefault(t => t.ID_DETAIL == data.ID_DETAIL);
-                itemDelete.FLAG_DEL = 1;
+                db.DETAIL_PRODUCTs.DeleteOnSubmit(data);
                 db.SubmitChanges();
                 return true;
             }

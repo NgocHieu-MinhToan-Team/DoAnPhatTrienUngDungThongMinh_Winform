@@ -15,6 +15,7 @@ namespace PepperLunch
 {
     public partial class frmIngredients : DevExpress.XtraEditors.XtraForm
     {
+        public string username { get; set; }
         public frmIngredients()
         {
             InitializeComponent();
@@ -50,9 +51,17 @@ namespace PepperLunch
             }
             ingredient.NAME_INGREDIENT = txtNameIngredient.Text;
             ingredient.INVENTORY = 0;
-            BLL_Ingredient.add(ingredient);
-           
-            
+            if(BLL_Ingredient.checkNameExist(ingredient.NAME_INGREDIENT, ingredient.ID_SUPPLIER))
+            {
+                if(BLL_Ingredient.add(ingredient))
+                    XtraMessageBox.Show("add success");
+            }
+            else
+            {
+                XtraMessageBox.Show("Supplier : " + ingredient.ID_SUPPLIER +"existed this ingredient "+ ingredient.NAME_INGREDIENT);
+            }
+            gridControl_Ingredient.DataSource = BLL_Ingredient.getList();
+
         }
 
         private void btnUpdateIngredient_Click(object sender, EventArgs e)
@@ -66,7 +75,16 @@ namespace PepperLunch
                 ingredient.ID_SUPPLIER = cbbSupplier.SelectedValue.ToString();
                 ingredient.INVENTORY = item.INVENTORY;
                 ingredient.NAME_INGREDIENT = txtNameIngredient.Text;
-                BLL_Ingredient.update(ingredient);
+                if (BLL_Ingredient.checkNameExist(ingredient.NAME_INGREDIENT, ingredient.ID_SUPPLIER))
+                {
+                    if (BLL_Ingredient.update(ingredient))
+                        XtraMessageBox.Show("add success");
+                }
+                else
+                {
+                    XtraMessageBox.Show("Supplier : " + ingredient.ID_SUPPLIER + "existed this ingredient " + ingredient.NAME_INGREDIENT);
+                }
+                gridControl_Ingredient.DataSource = BLL_Ingredient.getList();
             }
            
         }
@@ -84,6 +102,7 @@ namespace PepperLunch
                 ingredient.NAME_INGREDIENT = txtNameIngredient.Text;
                 BLL_Ingredient.remove(ingredient);
             }
+            gridControl_Ingredient.DataSource = BLL_Ingredient.getList();
         }
 
         private void btnImport_Click(object sender, EventArgs e)
@@ -101,7 +120,7 @@ namespace PepperLunch
                 IMPORT item = new IMPORT();
                 item.ID_IOG = GeneralMethods.createID("NH");
                 item.ID_SUPPLIER = rowData.ID_SUPPLIER;
-                item.USERNAME_STAFF = Program.frmlogin.staff_global.USERNAME_STAFF;
+                item.USERNAME_STAFF = username; // Program.frmlogin.staff_global.USERNAME_STAFF;
                 item.DATE_IOG = DateTime.Now;
                 item.TOTAL_PRICE = 0;
                 item.NOTE = "";

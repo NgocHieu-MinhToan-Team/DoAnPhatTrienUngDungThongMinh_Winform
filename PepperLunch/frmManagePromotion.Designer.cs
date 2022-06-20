@@ -105,7 +105,7 @@ namespace PepperLunch
             // 
             // tblLayout_Main
             // 
-            this.tblLayout_Main.BackColor = System.Drawing.Color.Transparent;
+            this.tblLayout_Main.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(27)))), ((int)(((byte)(16)))));
             this.tblLayout_Main.ColumnCount = 1;
             this.tblLayout_Main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.29448F));
             this.tblLayout_Main.Controls.Add(this.gridControl_main, 0, 1);
@@ -202,7 +202,7 @@ namespace PepperLunch
             // 
             // tblLayout_Voucher
             // 
-            this.tblLayout_Voucher.BackColor = System.Drawing.Color.Black;
+            this.tblLayout_Voucher.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(27)))), ((int)(((byte)(16)))));
             this.tblLayout_Voucher.ColumnCount = 4;
             this.tblLayout_Voucher.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tblLayout_Voucher.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -256,9 +256,9 @@ namespace PepperLunch
             this.labelControl15.Dock = System.Windows.Forms.DockStyle.Top;
             this.labelControl15.Location = new System.Drawing.Point(13, 184);
             this.labelControl15.Name = "labelControl15";
-            this.labelControl15.Size = new System.Drawing.Size(68, 21);
+            this.labelControl15.Size = new System.Drawing.Size(109, 21);
             this.labelControl15.TabIndex = 18;
-            this.labelControl15.Text = "Max Cost";
+            this.labelControl15.Text = "Max Reduction";
             // 
             // txtAmountReduction
             // 
@@ -413,11 +413,11 @@ namespace PepperLunch
             // 
             // tblLayout_Promotion
             // 
-            this.tblLayout_Promotion.BackColor = System.Drawing.Color.Black;
+            this.tblLayout_Promotion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(27)))), ((int)(((byte)(16)))));
             this.tblLayout_Promotion.ColumnCount = 3;
             this.tblLayout_Promotion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tblLayout_Promotion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
-            this.tblLayout_Promotion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57F));
+            this.tblLayout_Promotion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 58F));
             this.tblLayout_Promotion.Controls.Add(this.datePromotion_dayStart, 1, 1);
             this.tblLayout_Promotion.Controls.Add(this.labelControl3, 0, 0);
             this.tblLayout_Promotion.Controls.Add(this.txtNamePromotion, 1, 0);
@@ -584,6 +584,8 @@ namespace PepperLunch
             // 
             // frmManagePromotion
             // 
+            this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1274, 757);

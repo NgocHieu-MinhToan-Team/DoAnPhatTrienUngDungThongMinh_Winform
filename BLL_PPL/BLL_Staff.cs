@@ -119,7 +119,6 @@ namespace BLL_PPL
             {
                 if (DAL_Staff.updateStaff(data))
                 {
-                    MessageBox.Show("Update Data Sucessfully !");
                     return true;
                 }
                 else
@@ -172,13 +171,13 @@ namespace BLL_PPL
             }
         }
 
-        public static bool isAdmin(string ID_GROUP_USER)
+        public static int isAdmin(string ID_GROUP_USER)
         {
-            string role = DAL_Staff.getGroupUsers().SingleOrDefault(t => t.ID_GROUP == ID_GROUP_USER).ROLE_USER;
-            if (role == "ADMIN")
-                return true;
-            else
-                return false;
+            if (ID_GROUP_USER == "QL")
+                return 2;
+            else if (ID_GROUP_USER == "FT")
+                return 1;
+            else return 0;
         }
     }
 }

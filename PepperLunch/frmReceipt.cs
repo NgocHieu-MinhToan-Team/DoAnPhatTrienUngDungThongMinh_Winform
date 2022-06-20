@@ -1,4 +1,4 @@
-﻿using DevExpress.XtraBars;
+﻿ using DevExpress.XtraBars;
 using System;
 using System.Collections.Generic;
 using DevExpress.XtraGrid.Views.Base;
@@ -18,17 +18,18 @@ using DevExpress.XtraPrinting;
 using System.Diagnostics;
 using DevExpress.XtraSplashScreen;
 using DevExpress.XtraEditors;
+using System.Threading.Tasks;
 
 namespace PepperLunch
 {
     public partial class frmReceipt : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
         private const int CONFIRM = 1;
-        private const int COMPLETE = 2;
-        private const int CANCEL = 3;
+        private const int DELIVERY = 2;
+        private const int COMPLETE = 3;
+        private const int CANCEL = 4;
 
 
-        List<RECEIPT_FULL> listData;
         public frmReceipt()
         {
             InitializeComponent();
@@ -42,6 +43,13 @@ namespace PepperLunch
 
         async void loadData()
         {
+            // check customer not sync
+            List<Customer> listOfLocal = await BLL_Synchronized.getCustomersNotSync();
+            if (listOfLocal.Count>0)
+            {
+                XtraMessageBox.Show("Có Khách Hàng Mới Vui Lòng Đồng bộ Khách hàng mới trước khi đồng bộ hóa đơn !");
+            }
+
             accordionControl1.Enabled = false;
             gridView_receiptFB.ShowLoadingPanel();
             gridView_receiptSql.ShowLoadingPanel();
@@ -58,10 +66,11 @@ namespace PepperLunch
 
         private void accordionCtrlE_exportWord_Click(object sender, EventArgs e)
         {
-            int[] arrRowSelected = gridView_receiptFB.GetSelectedRows();
+            // export from from sql
+            int[] arrRowSelected = gridView_receiptSql.GetSelectedRows();
             if (arrRowSelected != null)
             {
-                RECEIPT item = (RECEIPT)gridView_receiptFB.GetRow(arrRowSelected[0]);
+                RECEIPT item = (RECEIPT)gridView_receiptSql.GetRow(arrRowSelected[0]);
                 BLL_Receipt.export_ReceiptToWord(item.ID_RECEIPT);
             }
             // retrieve to receipt to export 
@@ -71,13 +80,13 @@ namespace PepperLunch
         {
             string path = "Templates\\Export.xlsx";
             //Customize export options
-           gridView_receiptFB.OptionsPrint.PrintHeader = true;
+           gridView_receiptSql.OptionsPrint.PrintHeader = true;
             XlsxExportOptionsEx advOptions = new XlsxExportOptionsEx();
             advOptions.AllowGrouping = DevExpress.Utils.DefaultBoolean.False;
             advOptions.ShowTotalSummaries = DevExpress.Utils.DefaultBoolean.False;
             advOptions.SheetName = "Exported from Data Grid";
 
-            gridControl_receiptFB.ExportToXlsx(path, advOptions);
+            gridControl_receiptSql.ExportToXlsx(path, advOptions);
             // Open the created XLSX file with the default application.
             Process.Start(path);
         }
@@ -85,9 +94,21 @@ namespace PepperLunch
 
         private async void accordionCtrlE_SyncFromFirebase_Click(object sender, EventArgs e)
         {
-            
+            if (!await checkCustomerNotSyncAsync())
+            {
+                return;
+            }
+
             SplashScreenManager.ShowForm(typeof(waitFrmLoading));
             accordionControl1.Enabled = false;
+            List<RECEIPT> listNotSync = await FB_Receipt.getEntireNotSync();
+            if (listNotSync.Count == 0)
+            {
+                XtraMessageBox.Show("Chưa có đơn hàng mới !");
+                accordionControl1.Enabled = true;
+                SplashScreenManager.CloseForm();
+                return;
+            }
            
             if (await FB_Receipt.updateEntireReceiptFromFirebase(CONFIRM))
             {
@@ -105,6 +126,11 @@ namespace PepperLunch
 
         private async void repositoryItemButtonEdit_confirm_Click(object sender, EventArgs e)
         {
+            if (!await checkCustomerNotSyncAsync())
+            {
+                return;
+            }
+
             int[] index = gridView_receiptFB.GetSelectedRows();
             if (index != null)
             {
@@ -114,17 +140,20 @@ namespace PepperLunch
 
                 if (await FB_Receipt.updateReceiptFromFirebase(item,CONFIRM))
                 {
-                    XtraMessageBox.Show("Tất Cả Đơn Hàng Đã Được thêm Vào SQL");
+                    XtraMessageBox.Show("Đơn Hàng"+item.CUSTOMER+" Đã Được thêm Vào SQL");
                     loadData();
                 }
                 else
                 {
                     // update status Cancel Order 
+
                     DialogResult rs =  XtraMessageBox.Show("Đơn Hàng "+item.ID_RECEIPT+" của Khách hàng có ID :"+item.ID_CUSTOMER+"Đang Không Đủ Nguyên Liệu" +" ,Chọn Yes : Hủy Đơn Hàng -- No : Quay Lại ","Confifm",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
                     if (rs == DialogResult.Yes)
                     {
+                        await FB_Receipt.updateReceiptCancelFromFirebase(item, CANCEL);
                         await FB_Receipt.updateStatusReceipt(item, CANCEL);
                         XtraMessageBox.Show("Đơn Hàng Bị Hủy , Đang Phản Hồi Đến Khách Hàng");
+                        loadData();
                     }
                 }
                 //await FB_Receipt.updateDetailReceiptFromFirebase();
@@ -135,6 +164,17 @@ namespace PepperLunch
             }
 
         }
+        async Task<bool> checkCustomerNotSyncAsync()
+        {
+            // check customer not sync
+            List<Customer> listOfLocal = await BLL_Synchronized.getCustomersNotSync();
+            if (listOfLocal.Count > 0)
+            {
+                XtraMessageBox.Show("Có Khách Hàng Mới Vui Lòng Đồng bộ Khách hàng mới trước khi đồng bộ hóa đơn !");
+                return false;
+            }
+            return true;
+        }
 
         private async void repositoryItemButtonEdit_response_Click(object sender, EventArgs e)
         {
@@ -142,9 +182,16 @@ namespace PepperLunch
             if (index != null)
             {
                 RECEIPT item = (RECEIPT)gridView_receiptSql.GetRow(index[0]);
-                await FB_Receipt.updateStatusReceipt(item,COMPLETE);
-                XtraMessageBox.Show("Đơn Hàng Đã Xong , Chuyển Sang Trạng Thái Vận Chuyển");
-                loadData();
+                if(item.STATE_RECEIPT == CONFIRM)
+                {
+                    await FB_Receipt.updateStatusReceipt(item, DELIVERY);
+                
+                    XtraMessageBox.Show("Đơn Hàng Đã Xong , Chuyển Sang Trạng Thái Vận Chuyển");
+                    loadData();
+                    return;
+                }
+                repositoryItemButtonEdit_response.ReadOnly = true;
+                return;
             }
         }
 
@@ -158,6 +205,39 @@ namespace PepperLunch
                 frm.ID = item.ID_RECEIPT;
                 frm.ShowDialog();
             }
+        }
+
+        private async void repositoryItemButtonEdit_CompleteOrder_Click(object sender, EventArgs e)
+        {
+            int[] index = gridView_receiptSql.GetSelectedRows();
+            if (index != null)
+            {
+                RECEIPT item = (RECEIPT)gridView_receiptSql.GetRow(index[0]);
+                if (item.STATE_RECEIPT == DELIVERY)
+                {
+                    await FB_Receipt.updateStatusReceipt(item, COMPLETE);
+                    XtraMessageBox.Show("Hoàn Tất Giao Hàng");
+                    loadData();
+                    return;
+                }
+                repositoryItemButtonEdit_CompleteOrder.ReadOnly = true;
+                return;
+            }
+        }
+
+        private void accordionCtrlE_Reload_Click(object sender, EventArgs e)
+        {
+            loadData();
+        }
+
+        private void accordionCtrlE_openAllReceipt_Click(object sender, EventArgs e)
+        {
+            gridView_receiptSql.ShowLoadingPanel();
+            gridControl_receiptSql.DataSource = BLL_Receipt.getListState_3();
+            gridView_receiptSql.HideLoadingPanel();
+            repositoryItemButtonEdit_CompleteOrder.ReadOnly = false;
+            repositoryItemButtonEdit_response.ReadOnly = false;
+
         }
 
     }

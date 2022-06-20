@@ -16,8 +16,10 @@ namespace PepperLunch
     public partial class frmConfirmImport : DevExpress.XtraEditors.XtraForm
     {
         public string ID_IOG { get; set; }
-        List<IOGDETAIL_JOIN> listDetail;
+        List<IOGDETAIL_JOIN> listClone;
+
         BLL_IOGDetail bll_iogDetail = new BLL_IOGDetail();
+
 
         public frmConfirmImport()
         {
@@ -33,140 +35,97 @@ namespace PepperLunch
 
         void loadData()
         {
+            List<IOGDETAIL_JOIN> listDetail;
             listDetail = bll_iogDetail.getListJoinByID(ID_IOG);
-            gridControl_IOGDetail.DataSource = listDetail;
+            listClone = GeneralMethods.GetClone<IOGDETAIL_JOIN>(listDetail);
+            gridControl_IOGDetail.DataSource = listClone;
         }
 
-
-        private void gridView_IOGDetail_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        private void updateInventory(IOGDETAIL_JOIN DetailIOG)
         {
-
+            INGREDIENT updateItem = BLL_Ingredient.getList().SingleOrDefault(t => t.ID_INGREDIENT == DetailIOG.ID_INGREDIENT);
+            updateItem.INVENTORY += DetailIOG.QUANTITY;
+            BLL_Ingredient.update(updateItem);
         }
-
-        private void updateInventory(string ID_IOG)
+        private void frmConfirmImport_FormClosing(object sender, FormClosingEventArgs e)
         {
-            foreach (DETAIL_IMPORT detail in bll_iogDetail.getList(ID_IOG))
+            DialogResult resultDialog = XtraMessageBox.Show("Do you want to SAVE change?", "Confirm", MessageBoxButtons.YesNoCancel, System.Windows.Forms.MessageBoxIcon.Question);
+            if (resultDialog == DialogResult.Cancel)
             {
-                INGREDIENT updateItem = BLL_Ingredient.getList().SingleOrDefault(t => t.ID_INGREDIENT == detail.ID_INGREDIENT);
-                updateItem.INVENTORY += detail.QUANTITY;
-                BLL_Ingredient.update(updateItem);
+                e.Cancel = true;
+                return;
             }
-        }
-
-
-        private void repositoryItemButtonEdit_Confirm_Click(object sender, EventArgs e)
-        {
-            txtQuantity.Visible = false;
-        }
-
-        private void btnConfirm_Click_1(object sender, EventArgs e)
-        {
-
-            if(txtQuantity.Visible == false)
+            // save
+            if(resultDialog == DialogResult.Yes)
             {
-                if (!GeneralMethods.isDigit(txtPrice.Text, false))
+                //check entire price
+                foreach (IOGDETAIL_JOIN item in listClone)
                 {
-                    XtraMessageBox.Show("Not be Null and must be number");
-                    return;
+                    if (item.PRICE == 0)
+                    {
+                        DialogResult resultDialog2 = XtraMessageBox.Show("There are some price of ingredients not set! Do you want to SAVE change? ", "Confirm", MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
+                        if (resultDialog2 == DialogResult.No)
+                        {
+                            return;
+                        }
+                        break;
+                    }
                 }
-            }
-            else
-            {
-                if (!GeneralMethods.isDigit(txtQuantity.Text, false) || !GeneralMethods.isDigit(txtPrice.Text, false))
+                int totalPrice = 0;
+                foreach (IOGDETAIL_JOIN item in listClone)
                 {
-                    XtraMessageBox.Show("Not be Null and must be number");
-                    return;
+                    if (bll_iogDetail.update(item))
+                    {
+                        // update inventory
+                        updateInventory(item);
+                        totalPrice += int.Parse(item.PRICE.ToString()) * int.Parse(item.QUANTITY.ToString());
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("Has error", "Confirm");
+                    }
                 }
+                List<DETAIL_IMPORT> listDetail = bll_iogDetail.getList(ID_IOG);
+                // update import
+                IMPORT ip = BLL_IOG.getList().SingleOrDefault(t => t.ID_IOG == ID_IOG);
+                ip.STATE_IMPORT = 1;
+                ip.TOTAL_PRICE = totalPrice;
+                BLL_IOG.update(ip);
+
             }
-           
-            IMPORT imp = BLL_IOG.getList().SingleOrDefault(t => t.ID_IOG == ID_IOG);
-            string note = imp.NOTE;
-            int[] arrRowSelected = gridView_IOGDetail.GetSelectedRows();
-            if (arrRowSelected.Length > 0)
+        }
+
+        private void gridView_IOGDetail_ValidatingEditor(object sender, DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventArgs e)
+        {
+            // update so luong
+            int w ;
+            try
             {
-                 IOGDETAIL_JOIN datafromRow = (IOGDETAIL_JOIN)gridView_IOGDetail.GetRow(arrRowSelected[0]);
-                DETAIL_IMPORT item = bll_iogDetail.getList(ID_IOG).SingleOrDefault(t => t.ID_DETAIL_IOG == datafromRow.ID_DETAIL_IOG);
-                // update only price
-                if (txtQuantity.Visible == false)
+                w = Int32.Parse(e.Value.ToString());
+                if (w <= 0)
                 {
-                    item.PRICE =Int32.Parse(txtPrice.Text);
-                    bll_iogDetail.update(item);
+                    XtraMessageBox.Show("Quantity at least 1");
+                    // set default value
+                    e.Value = 0;
                 }
                 else
                 {
-
-                    int number = (int)(item.QUANTITY - Int32.Parse(txtQuantity.Text));
-
-                    if (number > 0)
-                    {
-                        note += "{ " + item.ID_INGREDIENT + " Thiếu " + Math.Abs(number).ToString() + " }, ";
-                    }
-                    //redundant / thừa
-                    if (number < 0)
-                    {
-                        note += "{ " + item.ID_INGREDIENT + " Thừa " + Math.Abs(number).ToString() + " }, ";
-                    }
-                    item.PRICE = Int32.Parse(txtPrice.Text);
-                    item.QUANTITY = Int32.Parse(txtQuantity.Text);
-                    bll_iogDetail.update(item);
-
-                    IMPORT import = new IMPORT();
-                    import.ID_IOG = ID_IOG;
-                    import.NOTE = note;
-                    BLL_IOG.updateNote(import);
-                }
-               
-                gridView_IOGDetail.DeleteRow(arrRowSelected[0]);
-                clearText();
-
-            }
-        }
-
-        private void repositoryItemButtonEdit_Incorrect_Click(object sender, EventArgs e)
-        {
-            txtQuantity.Visible = true;
-            clearText();
-        }
-
-        private void frmConfirmImport_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            DialogResult resultDialog = XtraMessageBox.Show("Do you want close ?", "Confirm", MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
-            if (resultDialog == DialogResult.No)
-            {
-                e.Cancel = true;
-            }
-
-            string report = "";
-            foreach (IOGDETAIL_JOIN detail in bll_iogDetail.getListJoinByID(ID_IOG))
-            {
-                if (detail.PRICE <= 0 || detail.QUANTITY <= 0)
-                {
-                    report += detail.NAME_INGREDIENT + " , ";
+                    XtraMessageBox.Show("Change success!");
                 }
             }
-
-            if (report != "")
+            catch
             {
-                XtraMessageBox.Show("Price or Quantity are not set in( " + report + " ).");
-                e.Cancel = true;
+                XtraMessageBox.Show("It must be number!");
+                // set old value
+                e.Value = 0;
+                return;
             }
-            else
-            {
-                // update ingredients
-                updateInventory(ID_IOG);
-                // update state import
-                IMPORT ip = BLL_IOG.getList().SingleOrDefault(t => t.ID_IOG == ID_IOG);
-                ip.STATE_IMPORT = 1;
-                // update all
-                BLL_IOG.update(ip);
-                // update only total price
-                BLL_IOG.updateTotalPrice(ip);
-            }
+           
         }
 
-        void clearText()
+        private void gridView_IOGDetail_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-            txtQuantity.Text= txtPrice.Text = "";
+            
         }
     }
 }

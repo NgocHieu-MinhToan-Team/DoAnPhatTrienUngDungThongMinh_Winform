@@ -223,11 +223,11 @@
     <Compile Include="frmIngredients.Designer.cs">
       <DependentUpon>frmIngredients.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSyncCustomer.cs">
+    <Compile Include="frmFPGrowth.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSyncCustomer.Designer.cs">
-      <DependentUpon>frmSyncCustomer.cs</DependentUpon>
+    <Compile Include="frmFPGrowth.Designer.cs">
+      <DependentUpon>frmFPGrowth.cs</DependentUpon>
     </Compile>
     <Compile Include="waitFrmLoading.cs">
       <SubType>Form</SubType>
@@ -297,8 +297,8 @@
     <EmbeddedResource Include="frmIngredients.resx">
       <DependentUpon>frmIngredients.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSyncCustomer.resx">
-      <DependentUpon>frmSyncCustomer.cs</DependentUpon>
+    <EmbeddedResource Include="frmFPGrowth.resx">
+      <DependentUpon>frmFPGrowth.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="waitFrmLoading.resx">
       <DependentUpon>waitFrmLoading.cs</DependentUpon>
@@ -340,7 +340,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Templates\Export.doc" />
     <None Include="Templates\Export.xlsx" />
   </ItemGroup>
   <ItemGroup>

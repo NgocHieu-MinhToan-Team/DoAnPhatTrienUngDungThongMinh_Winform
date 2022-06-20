@@ -29,7 +29,6 @@ namespace BLL_PPL
             {
                 if (bll_iogDetail.insert(data))
                 {
-                    MessageBox.Show("Insert Data Sucessfully !");
                     return true;
                 }
                 else
@@ -50,13 +49,12 @@ namespace BLL_PPL
             return GeneralMethods.isDigit(text1, false);
         }
 
-        public  bool delete(DETAIL_IMPORT data)
+        public  bool delete(string ID)
         {
             try
             {
-                if (bll_iogDetail.delete(data))
+                if (bll_iogDetail.delete(ID))
                 {
-                    MessageBox.Show("Delete Data Sucessfully !");
                     return true;
                 }
                 else
@@ -79,6 +77,27 @@ namespace BLL_PPL
                 if (bll_iogDetail.update(data))
                 {
                     MessageBox.Show("Update Data Sucessfully !");
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Update Data Failed !");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
+        public bool update(IOGDETAIL_JOIN data)
+        {
+            try
+            {
+                if (bll_iogDetail.update(data))
+                {
                     return true;
                 }
                 else
